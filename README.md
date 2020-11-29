@@ -1,2 +1,2 @@
 # AnnotatedTX
-Annotated transactions for the Swiss EPR
+Annotated messages for the Swiss EPR transactions
