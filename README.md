@@ -3,19 +3,19 @@ Guidelines for implementing Swiss EPR transactions with annotated messages
 
 ## Patient Management
 
-**[PDQ](../PDQ.md)**
+**[PDQ](../blob/PDQ.md)**
 
-**[PIX Feed](../PIXFeed.md)**
+**[PIX Feed](../blob/PIXFeed.md)**
 
-**[PIX Query](../PIXQuery.md)**
+**[PIX Query](../blob/PIXQuery.md)**
 
 ## Document Management
 
-**[Registry Stored Query](../RegistryStoredQuery.md)**
+**[Registry Stored Query](../blob/RegistryStoredQuery.md)**
 
-**[Retrieve Document Set](../RetrieveDocumentSet.md)**
+**[Retrieve Document Set](../blob/RetrieveDocumentSet.md)**
 
-**[Provide and Register Document Set](../ProvideAndRegister.md)**
+**[Provide and Register Document Set](../blob/ProvideAndRegister.md)**
 
 ## Authentication
 
