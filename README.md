@@ -3,26 +3,26 @@ Guidelines for implementing Swiss EPR transactions with annotated messages
 
 ## Patient Management
 
-**[PDQ](../PDQ.md)**
+**[PDQ](../main/PDQ.md)**
 
-**[PIX Feed](../PIXFeed.md)**
+**[PIX Feed](../main/PIXFeed.md)**
 
-**[PIX Query](../PIXQuery.md)**
+**[PIX Query](../main/PIXQuery.md)**
 
 ## Document Management
 
-**[Registry Stored Query](../RegistryStoredQuery.md)**
+**[Registry Stored Query](../main/RegistryStoredQuery.md)**
 
-**[Retrieve Document Set](../RetrieveDocumentSet.md)**
+**[Retrieve Document Set](../main/RetrieveDocumentSet.md)**
 
-**[Provide and Register Document Set](../ProvideAndRegister.md)**
+**[Provide and Register Document Set](../main/ProvideAndRegister.md)**
 
 ## Authentication
 
-**[Authenticate User](https://profiles.ihe.net/ITI)**
+**[Authenticate User](../main/AuthenticateUser.md)**
 
 ## Authorization
 
-**[Get X-User Assertion](https://profiles.ihe.net/ITI)**
+**[Get X-User Assertion](../main/GetXAssertion.md)**
 
-**[Provide X-User Assertion](https://profiles.ihe.net/ITI)**
+**[Provide X-User Assertion](../main/ProvideXAssertion.md)**
