@@ -16,13 +16,21 @@ TBD
 
 ## Message Semantics
 
-### Request
+### Request Message
 
 TBD
 
-### Response
+### Response Message
 
 TBD
+
+### Protocol Message
+
+TBD
+
+```
+code block here    
+```
 
 ## Transport Protocol
 
