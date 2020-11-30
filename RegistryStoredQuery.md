@@ -27,7 +27,7 @@ The SOAP *Header* element conveys the following information:
 - *To* : The URL of the registry stored query service. 
 - *MessageID* : a UUID of the message. 
 - *Action* : The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
-- *Security* : The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Get X-User Assertion](../main/GetXAssertion.md)**).  
+- *Security* : The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information: 
@@ -71,7 +71,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 ### Response Message
 
-Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response is hard to read for humans and needs some background information. 
+Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message needs some background information to interpret. 
 
 The structure of the result set is as follows (see example below): 
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* XML schema.
