@@ -9,15 +9,23 @@ TBD
 
 TBD
 
-## Message 
+## Message Semantics
 
 TBD
 
-## Transport 
+### Request
+
+TBD
+
+### Response
+
+TBD
+
+## Transport Protocol
 
 TBD 
 
-## Security   
+## Security Requirements   
 
 TBD
 

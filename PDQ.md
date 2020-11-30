@@ -14,15 +14,21 @@ The community sends a response with all patient data sets matching the search cr
 
 TBD
 
-## Message 
+## Message Semantics
+
+### Request
 
 TBD
 
-## Transport 
+### Response
+
+TBD
+
+## Transport Protocol
 
 TBD 
 
-## Security   
+## Security Requirements  
 
 TBD
 

@@ -13,15 +13,23 @@ If the patient is registered in the community, the community sends a response wi
 
 TBD
 
-## Message 
+## Message Semantics
 
 TBD
 
-## Transport 
+### Request
+
+TBD
+
+### Response
+
+TBD
+
+## Transport Protocol 
 
 TBD 
 
-## Security   
+## Security Requirements    
 
 TBD
 

@@ -9,7 +9,15 @@ TBD
 
 TBD
 
-## Message 
+## Message Semantics
+
+TBD
+
+### Request
+
+TBD
+
+### Response
 
 TBD
 
@@ -17,7 +25,7 @@ TBD
 
 TBD 
 
-## Security   
+## Security Requirements   
 
 TBD
 

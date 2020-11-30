@@ -10,22 +10,30 @@ To register the patient data the primary system shall perform a **[Patient Ident
 
 The community response includes either a success confirmation, or a error code in the case an error occured in the community during registration. In the success case the community stores the patient data provided by the primary system, matches the data set to other patient data set registered by other primary systems and assigns the patient data set to a master patient record and the master patient ID (XAD-PID).
 
-To perform the PIX V3 feed fo the EPR, primary systems must retrieve the demographic data and the EPR-SPID from the ZAS central service. While the interface to be used by the communities is specified in the ordinances to the Swiss electronic patient dossier, the interface for primary systems is not, since communities provide simplified interfaces for primary systems to retrieve the data or included the interface in the registration workflow. Plase contact the community you want to connect to on implementation details.   
+To perform the PIX V3 feed fo the EPR, primary systems must retrieve the demographic data and the EPR-SPID from the ZAS central service. While the interface to be used by the communities is specified in the ordinances to the Swiss electronic patient dossier, the interface for primary systems is not, since communities provide simplified interfaces for primary systems to retrieve the data or included the interface in the registration workflow. Please contact the community you want to connect to on implementation details.   
  
 
 # Transaction 
 
 TBD
 
-## Message 
+## Message Semantics
 
 TBD
 
-## Transport 
+### Request
+
+TBD
+
+### Response
+
+TBD
+
+## Transport Protocol 
 
 TBD 
 
-## Security   
+## Security Requirements   
 
 TBD
 
