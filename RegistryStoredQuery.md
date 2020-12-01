@@ -496,7 +496,10 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.  
 
 ```
-code block here    
+POST /RegistryStoredQueryService HTTP/1.1
+Host: company.example.org
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
 ```
 
 ## Audit Log
