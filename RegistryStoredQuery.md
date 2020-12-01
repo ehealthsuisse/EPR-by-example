@@ -1,6 +1,19 @@
 # Registry Stored Query
 Transaction to lookup the document metadata for the documents stored in a patients EPR.
 
+**CONTENTS**
+
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+		- [Request Message](#request-message)
+		- [Response Message](#response-message)
+		- [Message Interpretation](#message-interpretation)
+	* [Protocol Message](#protocol-message)
+	* [Transport Protocol](#transport-protocol)
+- [Security Requirements](#security-requirements) 
+- [Test Opportunity](#test-opportunity)  
+
 # Overview
 
 Primary systems shall use this transaction to retrieve the document metadata for the documents stored in a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used to retrieve the document metadata.
@@ -24,10 +37,10 @@ The sample request is a standard XML SOAP request with the query embedded in the
 
 The SOAP *Header* element conveys the following information: 
 
-- *To* : The URL of the registry stored query service. 
-- *MessageID* : a UUID of the message. 
-- *Action* : The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
-- *Security* : The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
+- *To* element: The URL of the registry stored query service. 
+- *MessageID* element: a UUID of the message. 
+- *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information: 
@@ -38,7 +51,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 ```
 0 <?xml version="1.0" encoding="UTF-8"?>
-1 <soapenv:Envelope xmlns="!-- namespaces supressed -->">
+1 <soapenv:Envelope xmlns="!-- namespaces omitted -->">
 2  <soapenv:Header>
 3   <wsa:To soapenv:mustUnderstand="1">https://epd-test.com/Registry/services/RegistryService</wsa:To>
 4   <wsa:MessageID soapenv:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
@@ -74,13 +87,409 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message needs some background information to interpret. 
 
 The structure of the result set is as follows (see example below): 
-- The metadata of the individual documents are bundled in a *ExtrinsicObject* XML schema.
-- The metadata attributes are encoded either as *Slot*, as *Classification* or the *ExternalIdentifier* schema. 
-- Metadata attributes encoded as *Slots* can be identified by the slot's *name* attribute. 
-- Metadata attributes encoded as *Classification* can be identified by the classification's *classificationScheme* attribute.
+- The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
+- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements. 
+- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute. 
+- Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The full table of the identifier used to indicate the metadata attributes is defined by the metadat model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of the ordinances of the Swiss electronic patient dossier.
+The full table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of the ordinances of the Swiss electronic patient dossier.
+
+The listing below displays a response message. The raw version of the message may be found **[here]()**. 
+
+```
+0 <?xml version='1.0' encoding='utf-8'?>
+1 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+2  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+3   <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
+4   <wsa:RelatesTo>urn:uuid:CF016FD9-67DE-4F6B-AD2D-6E27F11FB060</wsa:RelatesTo>
+5  </soapenv:Header>
+6  <soapenv:Body>
+7   <ns4:AdhocQueryResponse xmlns="!-- namespaces ommitted --"
+8    status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success">
+9    <ns2:RegistryObjectList>
+10     <ns2:ExtrinsicObject>
+11      <!-- other ExtrinsicObjects omitted -->
+12     </ns2:ExtrinsicObject>
+13     <ns2:ExtrinsicObject
+14      mimeType="application/pdf"
+15      lid="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+16      objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1"
+17      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"
+18      id="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+19      home="urn:oid:1.3.6.1.4.1.21367.2017.2.6.19">
+20      <ns2:Slot name="hash">
+21       <ns2:ValueList>
+22        <ns2:Value>512ed4e1e4bc6a443eb472896379458f6fc6bd5b</ns2:Value>
+23       </ns2:ValueList>
+24      </ns2:Slot>
+25      <ns2:Slot name="languageCode">
+26       <ns2:ValueList>
+27        <ns2:Value>de-CH</ns2:Value>
+28       </ns2:ValueList>
+29      </ns2:Slot>
+30      <ns2:Slot name="documentAvailability">
+31       <ns2:ValueList>
+32        <ns2:Value>urn:ihe:iti:2010:DocumentAvailability:Online</ns2:Value>
+33       </ns2:ValueList>
+34      </ns2:Slot>
+35      <ns2:Slot name="repositoryUniqueId">
+36       <ns2:ValueList>
+37        <ns2:Value>1.3.6.1.4.1.21367.2017.2.3.54</ns2:Value>
+38       </ns2:ValueList>
+39      </ns2:Slot>
+40      <ns2:Slot name="size">
+41       <ns2:ValueList>
+42        <ns2:Value>490356</ns2:Value>
+43       </ns2:ValueList>
+44      </ns2:Slot>
+45      <ns2:Slot name="creationTime">
+46       <ns2:ValueList>
+47        <ns2:Value>20200921112949</ns2:Value>
+48       </ns2:ValueList>
+49      </ns2:Slot>
+50      <ns2:Slot name="sourcePatientId">
+51       <ns2:ValueList>
+52        <ns2:Value>0a4a32b3e1e3c154a4530961fd20b6ad^^^&amp;1.1.1.2.2&amp;ISO</ns2:Value>
+53       </ns2:ValueList>
+54      </ns2:Slot>
+55      <ns2:Name>
+56       <ns2:LocalizedString value="TestdokumentWHO"/>
+57      </ns2:Name>
+58      <ns2:VersionInfo versionName="1"/>
+59      <ns2:Classification
+60       classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a"
+61       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+62       nodeRepresentation="734163000"
+63       id="urn:uuid:27952372-8ea3-4502-9730-3aaf50f49970">
+64       <ns2:Slot name="codingScheme">
+65        <ns2:ValueList>
+66         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+67        </ns2:ValueList>
+68       </ns2:Slot>
+69       <ns2:Name>
+70        <ns2:LocalizedString value="Care Plan (record artifact)"/>
+71       </ns2:Name>
+72      </ns2:Classification>
+73      <ns2:Classification
+74       classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f"
+75       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+76       nodeRepresentation="17621005"
+77       id="urn:uuid:3b1bb5a7-bd75-44b4-a5b3-54cddc45ffd0">
+78       <ns2:Slot name="codingScheme">
+79        <ns2:ValueList>
+80         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+81        </ns2:ValueList>
+82       </ns2:Slot>
+83       <ns2:Name>
+84        <ns2:LocalizedString value="Normal (qualifier value)"/>
+85       </ns2:Name>
+86      </ns2:Classification>
+87      <ns2:Classification
+88       classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d"
+89       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+90       nodeRepresentation="urn:ihe:iti:xds:2017:mimeTypeSufficient"
+91       id="urn:uuid:fcb25c5e-4cc0-4334-9495-039fe9830cce">
+92       <ns2:Slot name="codingScheme">
+93        <ns2:ValueList>
+94         <ns2:Value>1.3.6.1.4.1.19376.1.2.3</ns2:Value>
+95        </ns2:ValueList>
+96       </ns2:Slot>
+97       <ns2:Name>
+98        <ns2:LocalizedString value="MimeType sufficient"/>
+99       </ns2:Name>
+100      </ns2:Classification>
+101      <ns2:Classification
+102       classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1"
+103       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+104       nodeRepresentation="22232009"
+105       id="urn:uuid:f072a9f5-a6d2-428a-a771-a2e6c8d1cc77">
+106       <ns2:Slot name="codingScheme">
+107        <ns2:ValueList>
+108         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+109        </ns2:ValueList>
+110       </ns2:Slot>
+111       <ns2:Name>
+112        <ns2:LocalizedString value="Hospital (environment)"/>
+113       </ns2:Name>
+114      </ns2:Classification>
+115      <ns2:Classification
+116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
+117       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+118       nodeRepresentation="394579002"
+119       id="urn:uuid:c06cc1de-8f54-43e0-96bc-9f6b75868edf">
+120       <ns2:Slot name="codingScheme">
+121        <ns2:ValueList>
+122         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+123        </ns2:ValueList>
+124       </ns2:Slot>
+125       <ns2:Name>
+126        <ns2:LocalizedString value="Cardiology (qualifier value)"/>
+127       </ns2:Name>
+128      </ns2:Classification>
+129      <ns2:Classification
+130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
+131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+132       nodeRepresentation="773130005"
+133       id="urn:uuid:24686d21-85a4-43d9-9153-04fa469a50f4">
+134       <ns2:Slot name="codingScheme">
+135        <ns2:ValueList>
+136         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+137        </ns2:ValueList>
+138       </ns2:Slot>
+139       <ns2:Name>
+140        <ns2:LocalizedString value="Nursing care plan (record artifact)"/>
+141       </ns2:Name>
+142      </ns2:Classification>
+143      <ns2:ExternalIdentifier
+144       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+145       identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab"
+146       value="1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623"
+147       lid="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d"
+148       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+149       id="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d">
+150       <ns2:Name>
+151        <ns2:LocalizedString value="XDSDocumentEntry.uniqueId"/>
+152       </ns2:Name>
+153      </ns2:ExternalIdentifier>
+154      <ns2:ExternalIdentifier
+155       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+156       identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427"
+157       value="7e1c6e78-58f1-4a43-ae88-0d5a5c4ab43e^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO"
+158       lid="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95"
+159       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+160       id="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95">
+161       <ns2:Name>
+162        <ns2:LocalizedString value="XDSDocumentEntry.patientId"/>
+163       </ns2:Name>
+164      </ns2:ExternalIdentifier>
+165     </ns2:ExtrinsicObject>
+166     <ns2:ExtrinsicObject>
+167      <!-- other ExtrinsicObjects omitted -->
+168     </ns2:ExtrinsicObject>
+169    </ns2:RegistryObjectList>
+170   </ns4:AdhocQueryResponse>
+171  </soapenv:Body>
+172 </soapenv:Envelope>
+```
+
+### Message Interpretation
+
+The response message is quite lengthy, therefore a step by step interpretation might help to interpret the response. 
+
+The SOAP *Header* element conveys the following information: 
+ 
+- *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework. 
+- *RelatesTo* element: The *messageID* of the query request (see above). 
+
+
+```
+2  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+3   <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
+4   <wsa:RelatesTo>urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:RelatesTo>
+5  </soapenv:Header>    
+```
+
+The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying the metadata of a single document.
+
+```
+13     <ns2:ExtrinsicObject
+14      mimeType="application/pdf"
+15      lid="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+16      objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1"
+17      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"
+18      id="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+19      home="urn:oid:1.3.6.1.4.1.21367.2017.2.6.19">
+...
+165     </ns2:ExtrinsicObject>   
+```
+
+The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
+
+- *mimeType* attribute: The document mime type. It's value must match a mime type supported by the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *status* attribute: The status of the document, which should be *Approved*.  
+
+As explained above, a subset of the relevant metadata are defined in ebXML *slot* elements. These are:   
+
+```
+25      <ns2:Slot name="languageCode">
+26       <ns2:ValueList>
+27        <ns2:Value>de-CH</ns2:Value>
+28       </ns2:ValueList>
+29      </ns2:Slot>    
+```
+
+- *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+
+```
+35      <ns2:Slot name="repositoryUniqueId">
+36       <ns2:ValueList>
+37        <ns2:Value>1.3.6.1.4.1.21367.2017.2.3.54</ns2:Value>
+38       </ns2:ValueList>
+39      </ns2:Slot>   
+```
+
+- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**). 
+
+```
+45      <ns2:Slot name="creationTime">
+46       <ns2:ValueList>
+47        <ns2:Value>20200921112949</ns2:Value>
+48       </ns2:ValueList>
+49      </ns2:Slot> 
+```
+
+- *creationTime*: The timestamp the document was uploaded to the patient EPR (or last modified).
+
+```
+55      <ns2:Name>
+56       <ns2:LocalizedString value="TestdokumentWHO"/>
+57      </ns2:Name>
+```
+
+- *Name*: The document name to display in the UI.
+
+
+As explained above, a subset of the relevant metadata are defined in ebXML *Classification* elements. These are:  
+
+```
+59      <ns2:Classification
+60       classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a"
+61       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+62       nodeRepresentation="734163000"
+63       id="urn:uuid:27952372-8ea3-4502-9730-3aaf50f49970">
+64       <ns2:Slot name="codingScheme">
+65        <ns2:ValueList>
+66         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+67        </ns2:ValueList>
+68       </ns2:Slot>
+69       <ns2:Name>
+70        <ns2:LocalizedString value="Care Plan (record artifact)"/>
+71       </ns2:Name>
+72      </ns2:Classification>   
+```
+
+- Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to *urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *Name* : The human readable display name of the document class. 
+
+
+```
+115      <ns2:Classification
+116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
+117       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+118       nodeRepresentation="394579002"
+119       id="urn:uuid:c06cc1de-8f54-43e0-96bc-9f6b75868edf">
+120       <ns2:Slot name="codingScheme">
+121        <ns2:ValueList>
+122         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+123        </ns2:ValueList>
+124       </ns2:Slot>
+125       <ns2:Name>
+126        <ns2:LocalizedString value="Cardiology (qualifier value)"/>
+127       </ns2:Name>
+128      </ns2:Classification>   
+```
+
+- Practice Setting Code: The practice setting code the document is regostered with. The value conveyed with the *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *Name* : The human readable display name of the practice setting code. 
+
+
+```
+115      <ns2:Classification
+116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
+117       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+118       nodeRepresentation="394579002"
+119       id="urn:uuid:c06cc1de-8f54-43e0-96bc-9f6b75868edf">
+120       <ns2:Slot name="codingScheme">
+121        <ns2:ValueList>
+122         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+123        </ns2:ValueList>
+124       </ns2:Slot>
+125       <ns2:Name>
+126        <ns2:LocalizedString value="Cardiology (qualifier value)"/>
+127       </ns2:Name>
+128      </ns2:Classification>   
+```
+
+- Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *Name* : The human readable display name of the practice setting code. 
+
+```
+129      <ns2:Classification
+130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
+131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+132       nodeRepresentation="773130005"
+133       id="urn:uuid:24686d21-85a4-43d9-9153-04fa469a50f4">
+134       <ns2:Slot name="codingScheme">
+135        <ns2:ValueList>
+136         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+137        </ns2:ValueList>
+138       </ns2:Slot>
+139       <ns2:Name>
+140        <ns2:LocalizedString value="Nursing care plan (record artifact)"/>
+141       </ns2:Name>
+142      </ns2:Classification>
+```
+
+- Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *Name* : The human readable display name of the document type code. 
+
+
+```
+129      <ns2:Classification
+130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
+131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+132       nodeRepresentation="773130005"
+133       id="urn:uuid:24686d21-85a4-43d9-9153-04fa469a50f4">
+134       <ns2:Slot name="codingScheme">
+135        <ns2:ValueList>
+136         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
+137        </ns2:ValueList>
+138       </ns2:Slot>
+139       <ns2:Name>
+140        <ns2:LocalizedString value="Nursing care plan (record artifact)"/>
+141       </ns2:Name>
+142      </ns2:Classification>
+```
+
+- Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+- *Name* : The human readable display name of the document type code. 
+
+As explained above, a subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
+
+```
+143      <ns2:ExternalIdentifier
+144       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+145       identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab"
+146       value="1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623"
+147       lid="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d"
+148       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+149       id="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d">
+150       <ns2:Name>
+151        <ns2:LocalizedString value="XDSDocumentEntry.uniqueId"/>
+152       </ns2:Name>
+153      </ns2:ExternalIdentifier>
+```
+
+- Class Code: The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
+
+
+```
+154      <ns2:ExternalIdentifier
+155       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
+156       identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427"
+157       value="7e1c6e78-58f1-4a43-ae88-0d5a5c4ab43e^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO"
+158       lid="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95"
+159       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
+160       id="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95">
+161       <ns2:Name>
+162        <ns2:LocalizedString value="XDSDocumentEntry.patientId"/>
+163       </ns2:Name>
+164      </ns2:ExternalIdentifier>
+```
+
+- The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID) in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
+
 
 ### Protocol Message
 
@@ -94,7 +503,11 @@ code block here
 
 TBD 
 
-## Security Requirements    
+```
+code block here    
+```
+
+# Security Requirements    
 
 TBD
 
