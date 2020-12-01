@@ -493,7 +493,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 
 ## Transport Protocol 
 
-TBD 
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.  
 
 ```
 code block here    
