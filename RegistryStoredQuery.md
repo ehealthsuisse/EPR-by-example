@@ -493,11 +493,13 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 
 ## Transport Protocol 
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.  
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
 POST /RegistryStoredQueryService HTTP/1.1
 Host: company.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive 
 Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn  
 ```
