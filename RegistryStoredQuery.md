@@ -1,5 +1,5 @@
 # Registry Stored Query
-Transaction to lookup the document metadata for the documents stored in a patients EPR.
+Transaction to lookup the document metadata for the documents stored in a patient's EPR. Primary systems shall use this transaction to view the metadata of the available documents for to display the data in the UI.   
 
 **CONTENTS**
 
@@ -524,7 +524,7 @@ The following snippet shows a example audit message to be written by the primary
 15  <AuditSourceIdentification code="1" AuditSourceID="application"/>
 16  <ParticipantObjectIdentification ParticipantObjectID="123456789" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
 17   <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
-18   <ParticipantObjectQuery>PHF...!-- omitted for brewety --...yeTo==</ParticipantObjectQuery>
+18   <ParticipantObjectQuery>PHF...!-- omitted for brevity --...yeTo==</ParticipantObjectQuery>
 19  </ParticipantObjectIdentification>
 20 </AuditMessage>    
 ```
