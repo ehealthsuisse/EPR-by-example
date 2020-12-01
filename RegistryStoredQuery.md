@@ -9,8 +9,8 @@ Transaction to lookup the document metadata for the documents stored in a patien
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 		- [Message Interpretation](#message-interpretation)
-	* [Protocol Message](#protocol-message)
 	* [Transport Protocol](#transport-protocol)
+	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements) 
 - [Test Opportunity](#test-opportunity)  
 
@@ -275,7 +275,8 @@ The listing below displays a response message. The raw version of the message ma
 
 ### Message Interpretation
 
-The response message is quite lengthy, therefore a step by step interpretation might help to interpret the response. 
+The response message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard. 
+Therefore a step by step interpretation may be of help to interpret the response. 
 
 The SOAP *Header* element conveys the following information: 
  
@@ -301,7 +302,7 @@ The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying 
 18      id="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
 19      home="urn:oid:1.3.6.1.4.1.21367.2017.2.6.19">
 ...
-165     </ns2:ExtrinsicObject>   
+165    </ns2:ExtrinsicObject>   
 ```
 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
@@ -348,7 +349,6 @@ As explained above, a subset of the relevant metadata are defined in ebXML *slot
 ```
 
 - *Name*: The document name to display in the UI.
-
 
 As explained above, a subset of the relevant metadata are defined in ebXML *Classification* elements. These are:  
 
@@ -471,7 +471,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 153      </ns2:ExternalIdentifier>
 ```
 
-- Class Code: The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
+- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
 
 
 ```
@@ -491,14 +491,6 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 - The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID) in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
 
 
-### Protocol Message
-
-TBD
-
-```
-code block here    
-```
-
 ## Transport Protocol 
 
 TBD 
@@ -506,6 +498,43 @@ TBD
 ```
 code block here    
 ```
+
+## Audit Log
+
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF](https://gazelle.ihe.net/gss/audit-messages/view.seam?id=16)** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+
+The following snippet shows a example audit message to be written by the primary system: 
+
+```
+0 <?xml version="1.0"?>
+1 <AuditMessage>
+2  <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:38:36+01:00" EventOutcomeIndicator="0">
+3   <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+4   <EventTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+5  </EventIdentification>
+6  <ActiveParticipant UserID="application" AlternativeUserID="8844" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+7   <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+8  </ActiveParticipant>
+9  <ActiveParticipant UserID="mia.muster@domain.com">
+10   <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+11  </ActiveParticipant>
+12  <ActiveParticipant UserID="https://service.com/registry" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+13   <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+14  </ActiveParticipant>
+15  <AuditSourceIdentification code="1" AuditSourceID="application"/>
+16  <ParticipantObjectIdentification ParticipantObjectID="123456789" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+17   <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+18   <ParticipantObjectQuery>PHF...!-- omitted for brewety --...yeTo==</ParticipantObjectQuery>
+19  </ParticipantObjectIdentification>
+20 </AuditMessage>    
+```
+
+The message is made of the following blocks: 
+- *EventIdentification* (line 2 to 5): Element of the details of the event including the timestamp.
+- *ActiveParticipant* (line 6 to 8): Element of the primary system application initiating the request. 
+- *ActiveParticipant* (line 9 to 11): Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant* (line 12 to 14): Element with information on the responding service endpoint.
+- *ParticipantObjectIdentification* (line 16 to 19): Element with information on the request message including a UUencoded copy of the request message.    
 
 # Security Requirements    
 

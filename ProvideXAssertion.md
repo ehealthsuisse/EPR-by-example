@@ -21,17 +21,17 @@ TBD
 
 TBD
 
-### Protocol Message
+## Transport 
+
+TBD 
+
+## Audit Log
 
 TBD
 
 ```
 code block here    
 ```
-
-## Transport 
-
-TBD 
 
 ## Security Requirements   
 
