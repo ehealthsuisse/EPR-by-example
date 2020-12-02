@@ -84,7 +84,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 ### Response Message
 
-Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message needs some background information to interpret. 
+Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message is quite lengthy and needs some background information to interpret. 
 
 The structure of the result set is as follows (see example below): 
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
@@ -276,7 +276,7 @@ The listing below displays a response message. The raw version of the message ma
 ### Message Interpretation
 
 The response message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard. 
-Therefore a step by step interpretation may be of help to interpret the response. 
+Therefore the following step by step interpretation may be of help to interpret the response. 
 
 The SOAP *Header* element conveys the following information: 
  
@@ -493,7 +493,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 
 ## Transport Protocol 
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)** specification. It may look like:  
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
 POST /RegistryStoredQueryService HTTP/1.1
@@ -543,7 +543,14 @@ The message is made of the following blocks:
 
 # Security Requirements    
 
-TBD
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../main/ProvideXAssertion.md)** for the implementation details. 
+
+
+Note: 
+- Some test environments dropped the mutual authentciation or TLS for testing purposes. Please contact your test system provider on the details. 
+- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 
 # Test Opportunity
 
