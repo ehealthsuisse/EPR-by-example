@@ -18,7 +18,7 @@ Transaction to lookup the document metadata for the documents stored in a patien
 
 Primary systems shall use this transaction to retrieve the document metadata for the documents stored in a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used to retrieve the document metadata.
 
-To retrieve the document metadata of the doczûmet stored in a patients EPR, the the primary system shall perform a **[Registry Stored Query \[ITI-18\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html#3.18)**. The Registry Stored Query [ITI-18] supports various query parameter as search and filter parameter. The most common parameter used in the Swiss EPR are the patient ID in CX format and the status information, which must be *Approved*. 
+To retrieve the document metadata of the document stored in a patients EPR, the the primary system shall perform a **[Registry Stored Query \[ITI-18\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)**. The Registry Stored Query [ITI-18] supports various query parameter as search and filter parameter. The most common parameter used in the Swiss EPR are the patient ID in CX format and the status information, which must be *Approved*. 
 
 The community responds with the metadata sets of all documents registered in the patient's EPR, which match the search and filter parameter of the query. The profile is based upon the **[ebXML](http://www.ebxml.org)** standard. Due to the genericity of the ebXML standard, the response is not human readable and needs without background information given below.
 
@@ -31,11 +31,9 @@ Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** stand
 
 ### Request Message
 
-The following snippet displays a sample requests recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here]()**. 
+The following snippet displays a sample request recorded during the EPR projectathon in September 2020. Some elements were ommitted to increase readability. The raw request file may be found **[here]()**. 
 
-The sample request is a standard XML SOAP request with the query embedded in the *Body* element of the SOAP envelope. 
-
-The SOAP *Header* element conveys the following information: 
+The sample request is a standard XML SOAP request with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
 
 - *To* element: The URL of the registry stored query service. 
 - *MessageID* element: a UUID of the message. 
@@ -547,11 +545,10 @@ To ensure privacy the transction must be secured unsing https with mutual authen
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../main/ProvideXAssertion.md)** for the implementation details. 
 
-
 Note: 
-- Some test environments dropped the mutual authentciation or TLS for testing purposes. Please contact your test system provider on the details. 
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 
 # Test Opportunity
 
-TBD
+TODO
