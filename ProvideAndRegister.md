@@ -189,7 +189,7 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 
 #### Document Metadata
 
-HERE: same interpretation as in **[RegistryStoredQuery](.../main/RegistryStoredQuery.md#message-interpretation)**
+HERE: same interpretation as in **[RegistryStoredQuery](../main/RegistryStoredQuery.md#message-interpretation)**
 
 TODO: delete listing when done
 
