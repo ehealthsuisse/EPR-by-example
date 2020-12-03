@@ -167,11 +167,50 @@ content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 
 ## Audit Log
 
-TODO
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF]()** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+
+The following snippet shows a example audit message to be written by the primary system: 
 
 ```
-code block here    
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="C" EventDateTime="2020-11-17T18:40:14+01:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110107" originalText="Import" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-43" originalText="Retrieve Document Set" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="source_id" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/repository" AlternativeUserID="3245" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="2" AuditSourceID="connectathon"/>
+<ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+ <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+</ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="&lt;ihe:DocumentUniqueID&gt;" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
+  <ParticipantObjectIDTypeCode csd-code="9" originalText="Report Number" codeSystemName="RFC-3881"/>
+  <ParticipantObjectDetail type="Repository Unique Id" value="MS4xOS42LjI0LjEwOS40Mi4xLjU="/>
+  <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoxLjE5LjYuMjQuMTA5LjQyLjEuMw=="/>
+ </ParticipantObjectIdentification>
+</AuditMessage>
+
 ```
+
+The message is made of the following blocks: 
+- *EventIdentification*: Element with event related information including the timestamp.
+- *ActiveParticipant*: Element of information related to the primary system performing the query. 
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant*: Element with information on the responding service endpoint.
+- *ParticipantObjectIdentification*: Element with request message related information.    
+
+
+**TODO**: 
+- update the link to the Gazelle Security Suite 
+- use real world example 
 
 ## Security Requirements   
 

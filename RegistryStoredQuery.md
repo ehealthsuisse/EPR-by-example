@@ -504,7 +504,7 @@ Content-Length: nnnn
 
 ## Audit Log
 
-Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF](https://gazelle.ihe.net/gss/audit-messages/view.seam?id=16)** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF]()** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system: 
 
@@ -533,11 +533,15 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks: 
-- *EventIdentification* (line 2 to 5): Element of the details of the event including the timestamp.
-- *ActiveParticipant* (line 6 to 8): Element of the primary system application initiating the request. 
-- *ActiveParticipant* (line 9 to 11): Element with information on the authenticated user initiating the request. 
-- *ActiveParticipant* (line 12 to 14): Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification* (line 16 to 19): Element with information on the request message including a UUencoded copy of the request message.    
+- *EventIdentification*: Element with event related information including the timestamp.
+- *ActiveParticipant*: Element of information related to the primary system performing the query. 
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant*: Element with information on the responding service endpoint.
+- *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query. 
+
+**TODO**: 
+- update the link to the Gazelle Security Suite 
+- use real world example  
 
 # Security Requirements    
 
