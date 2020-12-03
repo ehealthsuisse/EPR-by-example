@@ -71,7 +71,7 @@ The SOAP *Header* element conveys the following information:
 The SOAP *Body* element conveys the folowing objects in ebXML syntax: 
 
 - *RegistryRegistryPackage* defining the submission set and it's metadata.
-- *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../main/RegistryStoredQuery.md)**).
+- *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../main/RegistryStoredQuery.md#response-message)**).
 - *Association* linking the document metadata to the submission set.  
 
 We will explain the *RegistryRegistryPackage* object defining the submission set first. For the other elements, see below.  
