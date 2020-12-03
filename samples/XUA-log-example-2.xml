@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage>
+  <EventIdentification EventActionCode="E" EventDateTime="2020-11-04T15:19:32.884Z" EventOutcomeIndicator="0">
+    <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"/>
+    <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
+    <PurposeOfUse csd-code="99-101" codeSystemName="1.3.6.1.4.1.21367.3000.4.1" originalText="TREATMENT"/>
+   </EventIdentification>
+  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" UserName="synaim1.ihe-europe.net" UserIsRequestor="false" NetworkAccessPointID="83.175.121.235" NetworkAccessPointTypeCode="2">
+    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
+  </ActiveParticipant>
+  <ActiveParticipant UserID="&lt;valid@urn:ihe-europe:sts&gt;" UserName="&lt;valid@urn:ihe-europe:sts&gt;" UserIsRequestor="true">
+    <RoleIDCode csd-code="112247003" codeSystemName="2.16.840.1.113883.6.96" originalText="Medical Doctor"/>
+   </ActiveParticipant>
+  <ActiveParticipant UserID="valid" UserName="valid" UserIsRequestor="true">
+    <RoleIDCode csd-code="112247003" codeSystemName="2.16.840.1.113883.6.96" originalText="Medical Doctor"/>
+   </ActiveParticipant>
+  <ActiveParticipant
+    UserID="https://cat1.demo.icw-global.com/chr/webservices/xdsb/documentRegistry/iti18RegistryStoredQuery"
+    AlternativeUserID="8655"
+    UserIsRequestor="false"
+    NetworkAccessPointID="cat1.demo.icw-global.com"
+    NetworkAccessPointTypeCode="1">
+    <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
+   </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="ICW.DRR.CHR.UID" AuditSourceID="CHR.UID">
+    <AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other"/>
+  </AuditSourceIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="IHEBLUE-2737^^^&amp;1.3.6.1.4.1.21367.13.20.3000&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+   </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
+    <ParticipantObjectQuery>PHF1...c3Q+
+    </ParticipantObjectQuery>
+    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
+  </ParticipantObjectIdentification>
+</AuditMessage>

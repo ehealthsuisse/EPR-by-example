@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="C" EventDateTime="2020-11-17T18:40:14+01:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110107" originalText="Import" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-43" originalText="Retrieve Document Set" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="source_id" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/repository" AlternativeUserID="3245" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="2" AuditSourceID="connectathon"/>
+<ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+ <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+</ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="&lt;ihe:DocumentUniqueID&gt;" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
+  <ParticipantObjectIDTypeCode csd-code="9" originalText="Report Number" codeSystemName="RFC-3881"/>
+  <ParticipantObjectDetail type="Repository Unique Id" value="MS4xOS42LjI0LjEwOS40Mi4xLjU="/>
+  <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoxLjE5LjYuMjQuMTA5LjQyLjEuMw=="/>
+ </ParticipantObjectIdentification>
+</AuditMessage>

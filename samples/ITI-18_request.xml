@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns="!-- namespaces ommitted -->">
+ <soapenv:Header>
+  <wsa:To soapenv:mustUnderstand="1">https://epd-test.com/Registry/services/RegistryService</wsa:To>
+  <wsa:MessageID soapenv:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
+  <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
+  <wsse:Security>
+   <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+    <!-- CH:XUA Assertion omitted -->
+   </saml2:Assertion>
+  </wsse:Security>
+ </soapenv:Header>
+ <soapenv:Body>
+  <ns0:AdhocQueryRequest>
+   <ns0:ResponseOption returnType="ObjectRef" returnComposedObjects="true"/>
+   <rim:AdhocQuery id="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d">
+    <rim:Slot name="$XDSDocumentEntryStatus">
+     <rim:ValueList>
+      <rim:Value>('urn:oasis:names:tc:ebxml-regrep:StatusType:Approved')</rim:Value>
+     </rim:ValueList>
+    </rim:Slot>
+    <rim:Slot name="$XDSDocumentEntryPatientId">
+     <rim:ValueList>
+      <rim:Value>'7e1c6e78-58f1-4a43-ae88-0d5a5c4ab43e^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO'</rim:Value>
+     </rim:ValueList>
+    </rim:Slot>
+   </rim:AdhocQuery>
+  </ns0:AdhocQueryRequest>
+ </soapenv:Body>
+</soapenv:Envelope>

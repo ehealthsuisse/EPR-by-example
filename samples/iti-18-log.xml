@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:38:36+01:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="application" AlternativeUserID="8844" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/registry" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="1" AuditSourceID="application"/>
+ <ParticipantObjectIdentification ParticipantObjectID="123456789" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+  <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+  <ParticipantObjectQuery>PHF...!-- omitted for brewety --...yeTo==</ParticipantObjectQuery>
+ </ParticipantObjectIdentification>
+</AuditMessage>

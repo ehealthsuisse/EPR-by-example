@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+    <wsa:Action>urn:ihe:iti:2007:RetrieveDocumentSetResponse</wsa:Action>
+    <wsa:RelatesTo>urn:uuid:1EB10F67-6562-46D5-9B6B-5DC42EB2B4A6</wsa:RelatesTo>
+  </soapenv:Header>
+  <soapenv:Body>
+    <ns3:RetrieveDocumentSetResponse xmlns=" !-- namespaces omitted -- ">
+      <ns6:RegistryResponse status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>
+      <ns3:DocumentResponse>
+        <ns3:HomeCommunityId>urn:oid:1.3.6.1.4.1.21367.2017.2.6.19</ns3:HomeCommunityId>
+        <ns3:RepositoryUniqueId>1.3.6.1.4.1.21367.2017.2.3.54</ns3:RepositoryUniqueId>
+        <ns3:DocumentUniqueId>1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623</ns3:DocumentUniqueId>
+        <ns3:mimeType>application/pdf</ns3:mimeType>
+        <ns3:Document xmlns:xop="http://www.w3.org/2004/08/xop/include">
+          <xop:Include href="cid:72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org"/>
+        </ns3:Document>
+      </ns3:DocumentResponse>
+    </ns3:RetrieveDocumentSetResponse>
+  </soapenv:Body>
+</soapenv:Envelope>

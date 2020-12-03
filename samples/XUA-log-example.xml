@@ -1,0 +1,28 @@
+<AuditMessage>
+  <EventIdentification EventActionCode="E" EventDateTime="2020-11-04T14:41:35.655+01:00" EventOutcomeIndicator="0">
+    <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+    <EventTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+    <PurposeOfUse csd-code="99-101" originalText="TREATMENT" codeSystemName="connectathon PurposeOfUse codes"/>
+  </EventIdentification>
+  <ActiveParticipant UserID="" AlternativeUserID="XDSServer.std" UserIsRequestor="false" NetworkAccessPointID="cat" NetworkAccessPointTypeCode="1">
+    <RoleIDCode csd-code="110153" originalText="Source Role ID" codeSystemName="DCM"/>
+  </ActiveParticipant>
+  <ActiveParticipant UserID="valid" UserName="<valid@urn:ihe-europe:sts>" UserIsRequestor="true"/>
+  <ActiveParticipant UserID="https://cat1.demo.icw-global.com/chr/webservices/xdsb/documentRegistry/iti18RegistryStoredQuery" UserIsRequestor="false" NetworkAccessPointID="cat1.demo.icw-global.com" NetworkAccessPointTypeCode="1">
+    <RoleIDCode csd-code="110152" originalText="Destination Role ID" codeSystemName="DCM"/>
+  </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="1234567890128" AuditSourceID="synedra AIM">
+    <AuditSourceTypeCode csd-code="4"/>
+  </AuditSourceIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="IHEBLUE-2737^^^&1.3.6.1.4.1.21367.13.20.3000&ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+  </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:5c4f972b-d56b-40ac-a5fc-c8ca9b40b9d4" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+    <ParticipantObjectQuery>
+      PHF1Z...+Cg==
+    </ParticipantObjectQuery>
+    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
+    <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4yLjMuNC41"/>
+  </ParticipantObjectIdentification>
+</AuditMessage>
