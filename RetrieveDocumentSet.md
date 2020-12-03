@@ -29,7 +29,7 @@ Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** stand
 
 ### Request Message
 
-The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](../main/samples/ITI-43_request_raw.xml)**. 
+The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_request_raw.xml)**. 
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
 
@@ -71,7 +71,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 
 ### Response Message
 
-The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](../main/samples/ITI-43_response_raw.xml)**. 
+The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_response_raw.xml)**. 
 
 The SOAP *Header* element of the response conveys the following information: 
  

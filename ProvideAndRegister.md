@@ -38,11 +38,11 @@ The structure of the result set is as follows (see example below):
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. 
+The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.1](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.1)** and **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** . 
 
 The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A full listing with line numbers used in the step by step interpretation below is found **[here]()**. The raw version of the request message may be found **[here]()**. 
+A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. 
 
 ### Message Interpretation
 
@@ -51,9 +51,9 @@ Therefore the following step by step interpretation may be of help to interpret 
 
 The SOAP *Header* element conveys the following information: 
 
-- *To* element: The URL of the registry stored query service. 
+- *To* element: The URL of the provide an register document set service. 
 - *MessageID* element: a UUID of the message. 
-- *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework. 
 - *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
 
 ```
@@ -68,31 +68,25 @@ The SOAP *Header* element conveys the following information:
 11  </soapenv:Header>    
 ```
 
-The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements (lines 12 to 16 below) with the following information: 
+The SOAP *Body* element conveys the folowing objects in ebXML syntax: 
 
-- *HomeCommunityId* : Unique ID of the community. 
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../main/RegistryStoredQuery.md)** response. 
-- *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
+- *RegistryRegistryPackage* defining the submission set and it's metadata.
+- *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../main/RegistryStoredQuery.md)**).
+- *Association* linking the document metadata to the submission set.  
 
-TODO: delete listing when done
+We will explain the *RegistryRegistryPackage* object defining the submission set first. For the other elements, see below.  
+
+#### Submission Set
+
+The structure of the *RegistryRegistryPackage* object defining the submission set is as follows (see example below): 
+- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements. 
+- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute. 
+- Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
+- The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
+
+The *RegistryRegistryPackage* object defining the submission set has one *Slot* child elements with name *submissionTime* which conveys the request timestamp, and a *Name* element to convey the display name of the submission set (see lines 17 to 25 below). 
 
 ```
-1 <?xml version='1.0' encoding='utf-8'?>
-2 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
-3  <soapenv:Header>
-4   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
-5    <saml2:Assertion>
-6     <!-- ommitted for brevity -->
-7    </saml2:Assertion>
-8   </wsse:Security>
-9   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
-10   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID>
-11  </soapenv:Header>
-12  <soapenv:Body>
-13   <xdsb:ProvideAndRegisterDocumentSetRequest xmlns=" !--namespaces omitted -- ">
-14    <lcm:SubmitObjectsRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0">
-15     <rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-16 
 17      <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
 18       <rim:Slot name="submissionTime">
 19        <rim:ValueList>
@@ -102,6 +96,16 @@ TODO: delete listing when done
 23       <rim:Name>
 24        <rim:LocalizedString value="DocumentSet"/>
 25       </rim:Name>
+
+```
+
+The *RegistryRegistryPackage* object defining the submission set has three *Classification* child elements conveying the submission set metadata: 
+
+- Content Type Code: The submission set content type code attribute, indicated by the value of the classificationScheme equal to *urn:uuid:aa543740-bdda-424e-8c96-df4873be8500*. The value conveyed with the nodeRepresentation attribute and the codingScheme value must match one of the supported values in the Swiss EPR as defined in Annex 3.
+- submission author: The submission set author element, indicated by the value of the classificationScheme equal to *urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d*. The author element is optional in the EPR. If present, it shall convey the information on the person, which initated the request. 
+- submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd* required to identify the *RegistryPackage* object as a XDS.b submission set.
+
+```
 26       <rim:Classification
 27        classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500"
 28        classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
@@ -141,6 +145,15 @@ TODO: delete listing when done
 62        classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
 63        id="B6E18810-CD5B-3DCB-1B07-E510FE593365"
 64        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"/>
+```
+
+The *RegistryRegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements: 
+
+- *XDSSubmissionSet.sourceId*: Conveys the OID of the primary system performing the request. 
+- *XDSSubmissionSet.uniqueId*: Conveys a UUID of the submission set. 
+- *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format (see **[PIX Feed](../main/PIXFeed.md)**). 
+
+```
 65       <rim:ExternalIdentifier
 66        id="013AD74B-3180-8B49-9D51-440F3C9B16B8"
 67        identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832"
@@ -172,6 +185,15 @@ TODO: delete listing when done
 93        </rim:Name>
 94       </rim:ExternalIdentifier>
 95      </rim:RegistryPackage>
+```
+
+#### Document Metadata
+
+HERE: same interpretation as in **[RegistryStoredQuery](.../main/RegistryStoredQuery.md#message-interpretation)**
+
+TODO: delete listing when done
+
+```
 96 
 97      <rim:ExtrinsicObject
 98       id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
@@ -352,7 +374,11 @@ TODO: delete listing when done
 273        </rim:Name>
 274       </rim:ExternalIdentifier>
 275      </rim:ExtrinsicObject>
-276 
+```
+
+#### Association
+
+```
 277      <rim:Association
 278       associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember"
 279       id="5A36769E-DE9B-3A3F-9F37-CD6B962BAFB6"
@@ -365,12 +391,6 @@ TODO: delete listing when done
 286       </rim:Slot>
 287      </rim:Association>
 288      
-289     </rim:RegistryObjectList>
-290    </lcm:SubmitObjectsRequest>
-291    <xdsb:Document id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"><xop:Include href="cid:1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org"/></xdsb:Document>
-292   </xdsb:ProvideAndRegisterDocumentSetRequest>
-293  </soapenv:Body>
-294 </soapenv:Envelope>
 ```
 
 ### Response Message

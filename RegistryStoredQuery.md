@@ -95,7 +95,7 @@ The table of the identifier used to indicate the metadata attributes is defined 
 
 The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of the ordinances of the Swiss electronic patient dossier.
 
-The listing below displays a response message. For a step by step interpretion, see section below. The raw version of the message may be found **[here](https://../main/samples/ITI-18_response_raw.xml)**. 
+The listing below displays a response message. For a step by step interpretion, see section below. The raw version of the message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18_response_raw.xml)**. 
 
 ```
 0 <?xml version='1.0' encoding='utf-8'?>
