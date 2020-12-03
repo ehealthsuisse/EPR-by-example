@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
   <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
