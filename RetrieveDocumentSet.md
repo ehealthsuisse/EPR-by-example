@@ -1,5 +1,5 @@
 # Retrieve Document Set
-Transaction to retrieve a single document or a set of documents from a community repository. Primary systems shall use this transaction to read documents from the EPR to integrate to the primary system or to display the document in the UI.   
+Transaction to retrieve one or more documents from a community. Primary systems shall use this transaction to read documents from the EPR and integrate to the primary system or to display the document in the UI.   
 
 **CONTENTS**
 
@@ -17,7 +17,7 @@ Transaction to retrieve a single document or a set of documents from a community
 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
-To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)**. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../main/PIXQuery.md)**, and the repository as well as the documents unique IDs from the response of the **[Registry Stored Query](../main/RegistryStoredQuery.md)**. In the Swiss EPR currently only supports the synchronous exchange option is supported.    
+To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../main/PIXQuery.md)**, and the repository as well as the documents unique IDs taken from the response of the **[Registry Stored Query](../main/RegistryStoredQuery.md)**. In the Swiss EPR currently only supports the synchronous exchange option is supported.    
 
 The community responds the set of documents. 
 
@@ -31,7 +31,7 @@ Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** stand
 
 The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here]()**. 
 
-The sample request is a standard XML SOAP request with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
+The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
 
 - *To* element: The URL of the repository service. 
 - *MessageID* element: a UUID of the message. 
