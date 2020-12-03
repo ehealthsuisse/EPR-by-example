@@ -44,6 +44,36 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 
 A request message is quite lengthy. A full listing with line numbers used in the step by step interpretation below is found **[here]()**. The raw version of the request message may be found **[here]()**. 
 
+### Message Interpretation
+
+The request message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard. 
+Therefore the following step by step interpretation may be of help to interpret the response. 
+
+The SOAP *Header* element conveys the following information: 
+
+- *To* element: The URL of the registry stored query service. 
+- *MessageID* element: a UUID of the message. 
+- *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
+
+```
+3  <soapenv:Header>
+4   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
+5    <saml2:Assertion>
+6     <!-- ommitted for brevity -->
+7    </saml2:Assertion>
+8   </wsse:Security>
+9   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
+10  <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID>
+11  </soapenv:Header>    
+```
+
+The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements (lines 12 to 16 below) with the following information: 
+
+- *HomeCommunityId* : Unique ID of the community. 
+- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../main/RegistryStoredQuery.md)** response. 
+- *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
+
 TODO: delete listing when done
 
 ```
@@ -342,24 +372,6 @@ TODO: delete listing when done
 293  </soapenv:Body>
 294 </soapenv:Envelope>
 ```
-
-
-### Message Interpretation
-
-The request message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard. 
-Therefore the following step by step interpretation may be of help to interpret the response. 
-
-The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements (lines 12 to 16 below) with the following information: 
-
-- *HomeCommunityId* : Unique ID of the community. 
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../main/RegistryStoredQuery.md)** response. 
-- *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
-
-
-```
-code block here    
-```
-
 
 ### Response Message
 
