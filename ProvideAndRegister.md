@@ -389,15 +389,14 @@ TODO: delete listing when done
 284         <rim:Value>Original</rim:Value>
 285        </rim:ValueList>
 286       </rim:Slot>
-287      </rim:Association>
-288      
+287      </rim:Association>   
 ```
 
 ### Response Message
 
 TBD
 
-## Transport 
+## Transport Protocol
 
 ```
 POST /XDSDocumentRepositoryService HTTP/1.1

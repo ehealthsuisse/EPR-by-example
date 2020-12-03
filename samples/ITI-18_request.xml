@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns="!-- namespaces ommitted -->">
  <soapenv:Header>
   <wsa:To soapenv:mustUnderstand="1">https://epd-test.com/Registry/services/RegistryService</wsa:To>

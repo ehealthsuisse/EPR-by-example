@@ -97,6 +97,8 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 
 The listing below displays a response message. For a step by step interpretion, see section below. The raw version of the message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18_response_raw.xml)**. 
 
+TODO: remove listing and replace with link to file. 
+
 ```
 0 <?xml version='1.0' encoding='utf-8'?>
 1 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
