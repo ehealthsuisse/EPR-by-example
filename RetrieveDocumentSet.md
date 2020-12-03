@@ -8,7 +8,6 @@ Transaction to retrieve a single document or a set of documents from a community
 	* [Message Semantics](#message-semantics)
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
-		- [Message Interpretation](#message-interpretation)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements) 
@@ -114,8 +113,6 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which co
 
 The system shall send the request messages to the repository service of the community using the 
 MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
-
-TODO: add example request
 
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like: 
 
