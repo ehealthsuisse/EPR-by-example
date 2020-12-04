@@ -1,5 +1,5 @@
 # Swiss EPR Transactions
-Swiss EPR transactions by example with annotated messages examples
+Swiss EPR transactions by example
 
 ## Patient Management
 
