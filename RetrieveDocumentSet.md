@@ -117,11 +117,9 @@ binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/so
 
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like: 
 
-
 ```
-POST /RegistryStoredQueryService HTTP/1.1
-Host: company.example.org
-Accept-Encoding: gzip, deflate
+DefaultHttpResponse(chunked: false)
+HTTP/1.1 200 OK
 Connection: Keep-Alive 
 Content-Length: nnnn  
 Content-Type: multipart/related; boundary=MIMEBoundary4A7AE55984E7438034;type="application/xop+xml"; start="<0.09BC7F4BE2E4D3EF1B@apache.org>";start-info="text/xml; charset=utf-8"
