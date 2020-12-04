@@ -13,7 +13,7 @@
   <xdsb:ProvideAndRegisterDocumentSetRequest xmlns=" !--namespaces omitted -- ">
    <lcm:SubmitObjectsRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0">
     <rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-
+     <!-- submission set definition -->
      <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
       <rim:Slot name="submissionTime">
        <rim:ValueList>
@@ -93,7 +93,7 @@
        </rim:Name>
       </rim:ExternalIdentifier>
      </rim:RegistryPackage>
-
+     <!-- document metadata -->
      <rim:ExtrinsicObject
       id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
       mimeType="application/pdf"
@@ -273,7 +273,7 @@
        </rim:Name>
       </rim:ExternalIdentifier>
      </rim:ExtrinsicObject>
-
+     <!-- link the document metadata to the submission set -->
      <rim:Association
       associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember"
       id="5A36769E-DE9B-3A3F-9F37-CD6B962BAFB6"
@@ -285,7 +285,7 @@
        </rim:ValueList>
       </rim:Slot>
      </rim:Association>
-     
+
     </rim:RegistryObjectList>
    </lcm:SubmitObjectsRequest>
    <xdsb:Document id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"><xop:Include href="cid:1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org"/></xdsb:Document>

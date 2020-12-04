@@ -326,7 +326,7 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Element of information related to the primary system performing the query. 
 - *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
 - *ActiveParticipant*: Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../main/PIXFeed.md)**.  
+- *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../main/PIXFeed.md)**).  
 - *ParticipantObjectIdentification*: Element with request message related information.  
 
 
