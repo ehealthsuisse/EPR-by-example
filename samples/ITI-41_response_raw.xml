@@ -1,0 +1,32 @@
+DefaultHttpResponse(chunked: false)
+HTTP/1.1 200 OK
+Connection: keep-alive
+Vary: Accept-Encoding
+Server: WildFly/10
+Content-Type: multipart/related; type="application/xop+xml"; boundary="uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c"; start="<root.message@cxf.apache.org>"; start-info="application/soap+xml"
+Date: Thu, 24 Sep 2020 15:43:11 GMT
+Content-Length: 1136
+
+--uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c
+Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
+Content-Transfer-Encoding: binary
+Content-ID: <root.message@cxf.apache.org>
+
+<?xml version='1.0' encoding='utf-8'?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+ <soap:Header>
+  <Action xmlns="http://www.w3.org/2005/08/addressing" soap:mustUnderstand="true">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-bResponse</Action>
+  <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:3dbfa2b7-3cd6-46b3-b642-9569bb3b43fb</MessageID>
+  <To xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  <RelatesTo xmlns="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</RelatesTo>
+ </soap:Header>
+ <soap:Body>
+  <ns2:RegistryResponse
+  xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+  xmlns:ns2="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+  xmlns:ns3="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0"
+  xmlns:ns4="urn:ihe:iti:xds-b:2007"
+  status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>
+ </soap:Body>
+</soap:Envelope>
+--uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c--

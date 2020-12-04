@@ -102,7 +102,8 @@ The SOAP *Header* element of the response conveys the following information:
 20 </soapenv:Envelope>   
 ```
 
-The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which conveys 1..N *DocumentResponse* elements (lines 9 to 17 below) with the following information: 
+The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which conveys 1..N *DocumentResponse* elements 
+(lines 9 to 17 below) with the following information: 
 
 - *HomeCommunityId* : Unique ID of the community. 
 - *RepositoryUniqueId*: Unique ID of repository. 
@@ -111,8 +112,8 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which co
 
 ## Transport Protocol
 
-The system shall send the request messages to the repository service of the community using the 
-MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
+The system shall send the request messages to the repository service of the community using the MIME Multipart/Related 
+binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
 
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like: 
 

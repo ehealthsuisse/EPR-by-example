@@ -1,3 +1,24 @@
+DefaultHttpRequest(chunked: false)
+POST /PegIHE/tf7/services/XDSDocumentRepository?pServiceId=RepStandalone HTTP/1.1
+requestType: ITI41
+Access-Control-Allow-Origin: https://dev.avintis.com/ehgw/api
+Access-Control-Allow-Methods: OPTION, GET, POST, DELETE, PATCH, PUT, HEAD
+frameworkMessageId: b2275987-6393-4938-a5c9-a3ad12d5b297
+frameworkMessageId_old: 2292d845-2ef3-4cf1-b55c-40bdba6f8c14
+Access-Control-Allow-Headers: Authorization,Access-Control-Allow-Origin,Content-Type,Content-Length, X-Requested-With
+Cache-Control: private
+Access-Control-Allow-Credentials: true
+frameworkContext: PostProcessing^WSO2^WSO2^PostProcessing_aInterface
+OData-Version: 4.0
+Expires: Thu, 01 Jan 1970 01:00:00 CET
+frameworkTransactionId: 4798062b-3d14-4bd5-a76e-71f22a28bf27
+CHARACTER_SET_ENCODING: utf-8
+Content-Type: multipart/related; boundary="MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149"; type="application/xop+xml"; start="<0.15b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149@apache.org>"; start-info="application/soap+xml"; action="urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b"
+Host: 10.2.101.10:11076
+Connection: Keep-Alive
+User-Agent: Synapse-PT-HttpComponents-NIO
+Content-Length: 181931
+
 --MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149
 Content-Type: application/xop+xml; charset=utf-8; type="application/soap+xml"
 Content-Transfer-Encoding: binary

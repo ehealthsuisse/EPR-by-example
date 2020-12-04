@@ -196,8 +196,8 @@ The request contains 1..N *ExtrinsicObject* representing the document metadata f
 The request contains one *Association* object linking the document and document metadata to a submission set defined in the *RegistryPackage* (see **[Submission Set](../main/ProvideAndRegister.md#submission-set)**). 
 
 The *Association* object thus conveys two parameter to link the objects: 
-- *sourceObject*: Must match the *id* attribute of the submission set *RegistryPackage*. 
-- *targetObject*: Must match the *id* attribute value of the document metadata *ExtrinsicObject*.  
+- *sourceObject*: The attribute value must match the *id* attribute of the submission set *RegistryPackage*. 
+- *targetObject*: The attribute value must match the *id* attribute value of the document metadata *ExtrinsicObject*.  
 
 In addition the *Association* object conveys a status indicator, which must take the value *Original* (see snippet below). 
 
@@ -217,9 +217,14 @@ In addition the *Association* object conveys a status indicator, which must take
 
 ### Response Message
 
-TBD
+The provide and register service responds with a massage indicating the success of the transaction. 
 
 ## Transport Protocol
+
+The system shall send the request messages to the repository service of the community using the MIME Multipart/Related 
+binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
+
+The request in MTOM format may look as follows: 
 
 ```
 POST /XDSDocumentRepositoryService HTTP/1.1
@@ -245,6 +250,44 @@ Content-ID: <1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org>
 --MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149--
 
 ```
+
+The provide and register service sends the response message in the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. 
+
+The response in MTOM format may look as follows: 
+
+```
+DefaultHttpResponse(chunked: false)
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: multipart/related; type="application/xop+xml"; boundary="uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c"; start="<root.message@cxf.apache.org>"; start-info="application/soap+xml"
+Date: Thu, 24 Sep 2020 15:43:11 GMT
+Content-Length: 1136
+
+--uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c
+Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
+Content-Transfer-Encoding: binary
+Content-ID: <root.message@cxf.apache.org>
+
+<?xml version='1.0' encoding='utf-8'?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+ <soap:Header>
+  <Action xmlns="http://www.w3.org/2005/08/addressing" soap:mustUnderstand="true">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-bResponse</Action>
+  <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:3dbfa2b7-3cd6-46b3-b642-9569bb3b43fb</MessageID>
+  <To xmlns="http://www.w3.org/2005/08/addressing">http://www.w3.org/2005/08/addressing/anonymous</To>
+  <RelatesTo xmlns="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</RelatesTo>
+ </soap:Header>
+ <soap:Body>
+  <ns2:RegistryResponse
+  xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+  xmlns:ns2="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+  xmlns:ns3="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0"
+  xmlns:ns4="urn:ihe:iti:xds-b:2007"
+  status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>
+ </soap:Body>
+</soap:Envelope>
+--uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c--
+```
+
 
 ## Audit Log
 
