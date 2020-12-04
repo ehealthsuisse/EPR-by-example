@@ -291,15 +291,54 @@ Content-ID: <root.message@cxf.apache.org>
 
 ## Audit Log
 
-TBD
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=700)** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+
+The following snippet shows a example audit message to be written by the primary system: 
 
 ```
-code block here    
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="R" EventDateTime="2020-11-17T18:39:39+01:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110106" originalText="Export" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-41" originalText="Provide and Register Document Set-b" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="application" AlternativeUserID="0002" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/repository" AlternativeUserID="0002" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
+ <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+ </ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:6b948daf-ab4a-4d51-a1a4-e9f4b2e05ff7" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="20">
+  <ParticipantObjectIDTypeCode csd-code="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" originalText="submission set classificationNode" codeSystemName="IHE XDS Metadata"/>
+ </ParticipantObjectIdentification>
+</AuditMessage>    
 ```
+
+The message is made of the following blocks: 
+- *EventIdentification*: Element with event related information including the timestamp.
+- *ActiveParticipant*: Element of information related to the primary system performing the query. 
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant*: Element with information on the responding service endpoint.
+- *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../main/PIXFeed.md)**.  
+- *ParticipantObjectIdentification*: Element with request message related information.  
+
 
 ## Security Requirements   
 
-TBD
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../main/ProvideXAssertion.md)** for the implementation details. 
+
+Note: 
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
+- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details. 
 
 # Test Opportunity
 
