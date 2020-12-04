@@ -1,8 +1,6 @@
 DefaultHttpResponse(chunked: false)
 HTTP/1.1 200 OK
 Connection: keep-alive
-Vary: Accept-Encoding
-Server: WildFly/10
 Content-Type: multipart/related; type="application/xop+xml"; boundary="uuid:2a1acced-0234-4a54-8dd3-b9f9b753169c"; start="<root.message@cxf.apache.org>"; start-info="application/soap+xml"
 Date: Thu, 24 Sep 2020 15:43:11 GMT
 Content-Length: 1136

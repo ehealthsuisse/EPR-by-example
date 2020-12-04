@@ -365,8 +365,7 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Element with information on the responding service endpoint.
 - *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query. 
 
-**TODO**: 
-- update the link to the Gazelle Security Suite 
+**TODO**:
 - use real world example  
 
 # Security Requirements    

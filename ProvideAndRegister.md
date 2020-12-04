@@ -15,9 +15,14 @@ Transaction to store one or more documents to a community. Primary systems shall
 
 # Overview
 
-Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
+Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR. 
+In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
-To store the document metadata of the document, the the primary system shall perform a **[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../main/PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the binary data of the document.  
+To store the document metadata of the document, the the primary system shall perform a 
+**[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction. 
+Within the request, the primary systems shall provide the master patient ID as retrieved from the 
+**[PIX Query](../main/PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the 
+binary data of the document.  
 
 The community responds with a code indicating the successful registration of the document. 
 
@@ -25,11 +30,13 @@ The community responds with a code indicating the successful registration of the
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE profile and the ordinances to the Swiss EPR. 
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE 
+profile and the ordinances to the Swiss EPR. 
 
 ### Request Message
 
-Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the request message is quite lengthy and needs some background information to interpret. 
+Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the request message is quite lengthy and needs some
+background information to interpret. 
 
 The structure of the result set is as follows (see example below): 
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
@@ -38,9 +45,13 @@ The structure of the result set is as follows (see example below):
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.1](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.1)** and **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** . 
+The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in 
+**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.1](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.1)** and 
+**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** . 
 
-The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of the ordinances of the Swiss electronic patient dossier.
+The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in 
+**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
+of the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. 
 
