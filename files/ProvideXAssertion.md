@@ -1,11 +1,17 @@
 # Provide X-User Assertion
-Method to provide a SAML 2.0 authorization assertion in the Web Service Security header of transactions. 
+Method to provide a SAML 2.0 authorization assertion in the Web Service Security header of transactions.
+
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+	* [Adit Log](#audit-log)
+- [Test Opportunity](#test-opportunity)
 
 # Overview
 
 TBD   
 
-# Transaction 
+# Transaction
 
 TBD
 
@@ -13,17 +19,9 @@ TBD
 
 TBD
 
-### Request Message
-
-TBD
-
-### Response Message
-
-TBD
-
-## Transport 
-
-TBD 
+```
+code block here    
+```
 
 ## Audit Log
 
@@ -32,10 +30,6 @@ TBD
 ```
 code block here    
 ```
-
-## Security Requirements   
-
-TBD
 
 # Test Opportunity
 

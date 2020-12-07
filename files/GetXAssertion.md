@@ -1,11 +1,21 @@
 # Get X-User Assertion
-Transaction to retrieve a SAML 2.0 authorization assertion
+Transaction to retrieve a SAML 2.0 assertion for authorization.
+
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+		- [Request Message](#request-message)
+		- [Response Message](#response-message)
+	* [Transport Protocol](#transport-protocol)
+	* [Adit Log](#audit-log)
+- [Security Requirements](#security-requirements)
+- [Test Opportunity](#test-opportunity) 
 
 # Overview
 
 TBD   
 
-# Transaction 
+# Transaction
 
 TBD
 
@@ -13,17 +23,33 @@ TBD
 
 TBD
 
+```
+code block here    
+```
+
 ### Request Message
 
 TBD
+
+```
+code block here    
+```
 
 ### Response Message
 
 TBD
 
+```
+code block here    
+```
+
 ## Transport Protocol
 
-TBD 
+TBD
+
+```
+code block here    
+```
 
 ## Audit Log
 

@@ -10,41 +10,48 @@ Transaction to retrieve one or more documents from a community. Primary systems 
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
-- [Security Requirements](#security-requirements) 
+- [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)  
 
 # Overview
 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
-To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../files/PIXQuery.md)**, and the repository as well as the documents unique IDs taken from the response of the **[Registry Stored Query](../files/RegistryStoredQuery.md)**. In the Swiss EPR currently only supports the synchronous exchange option is supported.    
+To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall
+provide the master patient ID as retrieved from the **[PIX Query](../files/PIXQuery.md)**, and the repository as well as
+the documents unique IDs taken from the response of the **[Registry Stored Query](../files/RegistryStoredQuery.md)**. In
+the Swiss EPR currently only supports the synchronous exchange option is supported.    
 
-The community responds the set of documents. 
+The community responds the set of documents.
 
-# Transaction 
+# Transaction
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE profile and the ordinances to the Swiss EPR. 
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE
+profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_request_raw.xml)**. 
+The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations
+to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_request_raw.xml)**.
 
-The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
+The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The
+SOAP *Header* element conveys the following information:
 
-- *To* element: The URL of the repository service. 
-- *MessageID* element: a UUID of the message. 
-- *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
+- *To* element: The URL of the repository service.
+- *MessageID* element: a UUID of the message.
+- *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
+authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
 
 
-The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements (lines 12 to 16 below) with the following information: 
+The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements
+(lines 12 to 16 below) with the following information:
 
-- *HomeCommunityId* : Unique ID of the community. 
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../files/RegistryStoredQuery.md)** response. 
+- *HomeCommunityId* : Unique ID of the community.
+- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../files/RegistryStoredQuery.md)** response.
 - *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
-
 
 ```
 0 <?xml version="1.0" encoding="UTF-8"?>
@@ -71,11 +78,12 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 
 ### Response Message
 
-The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abbrevations to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_response_raw.xml)**. 
+The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abbrevations
+to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-43_response_raw.xml)**.
 
-The SOAP *Header* element of the response conveys the following information: 
- 
-- *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework. 
+The SOAP *Header* element of the response conveys the following information:
+
+- *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: The *messageID* of the request (see above).  
 
 ```
@@ -102,25 +110,26 @@ The SOAP *Header* element of the response conveys the following information:
 20 </soapenv:Envelope>   
 ```
 
-The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which conveys 1..N *DocumentResponse* elements 
-(lines 9 to 17 below) with the following information: 
+The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which conveys 1..N *DocumentResponse* elements
+(lines 9 to 17 below) with the following information:
 
-- *HomeCommunityId* : Unique ID of the community. 
-- *RepositoryUniqueId*: Unique ID of repository. 
+- *HomeCommunityId* : Unique ID of the community.
+- *RepositoryUniqueId*: Unique ID of repository.
 - *DocumentUniqueId*: Unique ID of the document.
-- *Document* element (line 14 to 16): It's *Include* element conveys the *content-id* reference of the attached document in the MTOM response (see below). 
+- *Document* element (line 14 to 16): It's *Include* element conveys the *content-id* reference of the attached document in the MTOM response (see below).
 
 ## Transport Protocol
 
-The system shall send the request messages to the repository service of the community using the MIME Multipart/Related 
+The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
 binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
 
-The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like: 
+The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP
+**[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like:
 
 ```
 DefaultHttpResponse(chunked: false)
 HTTP/1.1 200 OK
-Connection: Keep-Alive 
+Connection: Keep-Alive
 Content-Length: nnnn  
 Content-Type: multipart/related; boundary=MIMEBoundary4A7AE55984E7438034;type="application/xop+xml"; start="<0.09BC7F4BE2E4D3EF1B@apache.org>";start-info="text/xml; charset=utf-8"
 
@@ -156,16 +165,20 @@ content-type: application/octet-stream
 content-transfer-encoding: binary
 content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 
-!-- Binary Data omitted -- 
+!-- Binary Data omitted --
 
 --MIMEBoundary4A7AE55984E7438034--
 ```
 
 ## Audit Log
 
-Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706)** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
+The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706)** and the
+**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+1.5 "Requirements on ATNA").  
 
-The following snippet shows a example audit message to be written by the primary system: 
+The following snippet shows a example audit message to be written by the primary system:
 
 ```
 <?xml version="1.0"?>
@@ -196,22 +209,22 @@ The following snippet shows a example audit message to be written by the primary
 
 ```
 
-The message is made of the following blocks: 
+The message is made of the following blocks:
 - *EventIdentification*: Element with event related information including the timestamp.
-- *ActiveParticipant*: Element of information related to the primary system performing the query. 
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant*: Element of information related to the primary system performing the query.
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
 - *ActiveParticipant*: Element with information on the responding service endpoint.
 - *ParticipantObjectIdentification*: Element with request message related information.    
 
-
 ## Security Requirements   
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended
+validation required) and client and server side certifcate validation.
 
-To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details. 
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.
 
-Note: 
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
+Note:
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 
 # Test Opportunity

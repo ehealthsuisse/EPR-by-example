@@ -1,31 +1,59 @@
 # Authenticate User
-Transaction to authenticate a user with SAML 2.0 
+Transaction to authenticate a user with SAML 2.0
+
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+		- [Request Message](#request-message)
+		- [Response Message](#response-message)
+	* [Transport Protocol](#transport-protocol)
+	* [Adit Log](#audit-log)
+- [Security Requirements](#security-requirements)
+- [Test Opportunity](#test-opportunity) 
 
 # Overview
 
 TBD   
 
-# Transaction 
+# Transaction
 
 TBD
 
-## Message Semantics 
+## Message Semantics
 
 TBD
+
+```
+code block here    
+```
 
 ### Request Message
 
 TBD
 
+```
+code block here    
+```
+
 ### Response Message
 
 TBD
 
-## Transport Protocol 
+```
+code block here    
+```
 
-TBD 
+## Transport Protocol
+
+TBD
+
+```
+code block here    
+```
 
 ## Audit Log
+
+TBD
 
 ```
 code block here    

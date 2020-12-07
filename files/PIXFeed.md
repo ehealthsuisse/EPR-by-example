@@ -3,6 +3,16 @@
 Transaction to register a patient in a community. Primary systems shall use this transaction to register
 patient data to be able to provide and retrieve documents to the patients EPR.
 
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+		- [Request Message](#request-message)
+		- [Response Message](#response-message)
+	* [Transport Protocol](#transport-protocol)
+	* [Adit Log](#audit-log)
+- [Security Requirements](#security-requirements)
+- [Test Opportunity](#test-opportunity) 
+
 # Overview
 
 Primary systems shall use this transaction to register patient data with the local ID, the patient is
@@ -36,23 +46,41 @@ TBD
 
 TBD
 
+```
+code block here    
+```
+
 ### Request Message
 
 TBD
+
+```
+code block here    
+```
 
 ### Response Message
 
 TBD
 
+```
+code block here    
+```
+
 ## Transport Protocol
 
 TBD
+
+```
+code block here    
+```
 
 ## Audit Log
 
 TBD
 
-    code block here    
+```
+code block here    
+```
 
 ## Security Requirements
 
