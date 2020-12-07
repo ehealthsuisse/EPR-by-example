@@ -170,7 +170,12 @@ object as follows:
 
 
 ```
-<ns1:patient classCode="PAT">
+33     <ns1:subject typeCode="SUBJ" contextConductionInd="false">
+34      <ns1:registrationEvent classCode="REG" moodCode="EVN">
+35       <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" nullFlavor="NA"/>
+36       <ns1:statusCode code="active"/>
+37       <ns1:subject1 typeCode="SBJ">
+38        <ns1:patient classCode="PAT">
 39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.36" extension="TIE4873"/>
 40         <ns1:statusCode code="active"/>
 41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
@@ -211,6 +216,19 @@ object as follows:
 76          </ns1:queryMatchObservation>
 77         </ns1:subjectOf1>
 78        </ns1:patient>
+79       </ns1:subject1>
+80       <ns1:custodian typeCode="CST">
+81        <ns1:assignedEntity classCode="ASSIGNED">
+82         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.36"/>
+83         <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+84          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+85           <ns1:given>org</ns1:given>
+86          </ns1:name>
+87         </ns1:assignedOrganization>
+88        </ns1:assignedEntity>
+89       </ns1:custodian>
+90      </ns1:registrationEvent>
+91     </ns1:subject>
 ```
 
 The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. 
