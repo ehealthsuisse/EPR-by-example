@@ -2,6 +2,16 @@
 
 Transaction to search for patient identities and data from a community using the patient demographic data as search criteria. Primary systems may use this transaction to verify if a patient uses a Swiss EPR and is already registered in the community.  
 
+- [Overview](#overview)
+- [Transaction](#transaction)
+	* [Message Semantics](#message-semantics)
+		- [Request Message](#request-message)
+		- [Response Message](#response-message)
+	* [Transport Protocol](#transport-protocol)
+	* [Adit Log](#audit-log)
+- [Security Requirements](#security-requirements) 
+- [Test Opportunity](#test-opportunity) 
+
 # Overview
 
 Primary systems may use this transaction to search for patients which are already registred in the community, either because the patient opended the Swiss EPR in the community or because the patient opended the Swiss EPR in a remote community and was already registered by annother primary system to store documents. In the Swiss EPR the **[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for patients by demographic data. 
@@ -104,8 +114,8 @@ The SOAP *Header* element conveys the following information:
 ```
 
 For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient data is 
-authorized for all applications, which are registered and authenticate with a client certificate (see **[Security](../PDQ.md#Security)** 
-section below).  
+authorized for all applications, which are registered and authenticate with a client certificate 
+(see section **[Security](../PDQ.md##security-requirements)**).  
 
 ### Response Message
 
