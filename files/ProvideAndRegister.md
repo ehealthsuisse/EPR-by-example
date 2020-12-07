@@ -228,7 +228,15 @@ In addition the *Association* object conveys a status indicator, which must take
 
 ### Response Message
 
-The provide and register service responds with a massage indicating the success of the transaction. 
+The provide and register service responds with a message indicating the success of the transaction. The outcome indicator is 
+encoded in the *Body* element of the SOAP envelope as follows: 
+
+```
+  <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>. 
+```
+
+The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_response.xml)**. 
+
 
 ## Transport Protocol
 

@@ -155,9 +155,71 @@ and the *streetAddressLine* to match:
 The query supports many more search options and filter parameter. For a documentation of the options 
 see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**. 
 
+
 ### Response Message
 
-TBD
+Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
+background information to interpret. The raw version of a response message may be found 
+**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. For a step by step interpretation 
+of the message, see section below. 
+
+#### Message Interpretation
+
+The PDQV3 service responds with a list of patient data which match the search parameter of the request in a HL7 V3 *controlAct*
+object as follows: 
+
+
+```
+<ns1:patient classCode="PAT">
+39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.36" extension="TIE4873"/>
+40         <ns1:statusCode code="active"/>
+41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
+42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN">
+43           <ns1:given>Alice</ns1:given>
+44           <ns1:family>Maiden</ns1:family>
+45          </ns1:name>
+46          <ns1:administrativeGenderCode code="F"/>
+47          <ns1:birthTime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:TS" value="19880101"/>
+48          <ns1:addr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:AD" use="HP">
+49           <ns1:city>Pontarlier</ns1:city>
+50           <ns1:postalCode>25300</ns1:postalCode>
+51           <ns1:streetName>Ruelle de la Tour</ns1:streetName>
+52          </ns1:addr>
+53          <ns1:asOtherIDs classCode="PAT">
+54           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45" extension="069dc839-8fdf-4908-88d8-a985c1a42779" assigningAuthorityName="XDS Affinity Domain"/>
+55           <ns1:statusCode code="active"/>
+56           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+57            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45"/>
+58           </ns1:scopingOrganization>
+59          </ns1:asOtherIDs>
+60          <ns1:asOtherIDs classCode="PAT">
+61           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.65" extension="TIE4873" assigningAuthorityName="ISO"/>
+62           <ns1:statusCode code="active"/>
+63           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+64            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.65"/>
+65           </ns1:scopingOrganization>
+66          </ns1:asOtherIDs>
+67         </ns1:patientPerson>
+68         <ns1:providerOrganization classCode="ORG" determinerCode="INSTANCE">
+69          <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.13.20.2000"/>
+70          <ns1:contactParty classCode="CON"/>
+71         </ns1:providerOrganization>
+72         <ns1:subjectOf1>
+73          <ns1:queryMatchObservation classCode="COND" moodCode="EVN">
+74           <ns1:code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:CD" code="IHE_PDQ"/>
+75           <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:INT" value="100"/>
+76          </ns1:queryMatchObservation>
+77         </ns1:subjectOf1>
+78        </ns1:patient>
+```
+
+The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. 
+
+```
+
+```
+
+
 
 ## Transport Protocol
 
