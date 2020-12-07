@@ -3,26 +3,26 @@ Swiss EPR transactions by example
 
 ## Patient Management
 
-**[PDQ](../main/PDQ.md)** - Search for patient data by demographics
+**[PDQ](../main/files/PDQ.md)** - Search for patient data by demographics
 
-**[PIX Feed](../main/PIXFeed.md)** - register patient data
+**[PIX Feed](../main/files/PIXFeed.md)** - register patient data
 
-**[PIX Query](../main/PIXQuery.md)** - query the master patient ID and EPR-SPID for patients
+**[PIX Query](../main/files/PIXQuery.md)** - query the master patient ID and EPR-SPID for patients
 
 ## Document Management
 
-**[Registry Stored Query](../main/RegistryStoredQuery.md)** - get and display document metadata
+**[Registry Stored Query](../main/files/RegistryStoredQuery.md)** - get and display document metadata
 
-**[Retrieve Document Set](../main/RetrieveDocumentSet.md)** - get and display a document 
+**[Retrieve Document Set](../main/files/RetrieveDocumentSet.md)** - get and display a document 
 
-**[Provide and Register Document Set](../main/ProvideAndRegister.md)** - store documents in the EPR 
+**[Provide and Register Document Set](../main/files/ProvideAndRegister.md)** - store documents in the EPR 
 
 ## Authentication
 
-**[Authenticate User](../main/AuthenticateUser.md)** - Authenticate a user 
+**[Authenticate User](../main/files/AuthenticateUser.md)** - Authenticate a user 
 
 ## Authorization
 
-**[Get X-User Assertion](../main/GetXAssertion.md)** - Retrieve SAML 2.0 Assertions for authorization
+**[Get X-User Assertion](../main/files/GetXAssertion.md)** - Retrieve SAML 2.0 Assertions for authorization
 
-**[Provide X-User Assertion](../main/ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize acess
+**[Provide X-User Assertion](../main/files/ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize acess
