@@ -16,29 +16,40 @@ Transaction to lookup the document metadata for the documents stored in a patien
 
 # Overview
 
-Primary systems shall use this transaction to retrieve the document metadata for the documents stored in a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used to retrieve the document metadata.
+Primary systems shall use this transaction to retrieve the document metadata for the documents stored in a patients EPR. 
+In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall 
+be used to retrieve the document metadata.
 
-To retrieve the document metadata of the document stored in a patients EPR, the the primary system shall perform a **[Registry Stored Query \[ITI-18\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)**. The Registry Stored Query [ITI-18] supports various query parameter as search and filter parameter. The most common parameter used in the Swiss EPR are the patient ID in CX format and the status information, which must be *Approved*. 
+To retrieve the document metadata of the document stored in a patients EPR, the the primary system shall perform a 
+**[Registry Stored Query \[ITI-18\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)**. The 
+Registry Stored Query [ITI-18] supports various query parameter as search and filter parameter. The most 
+common parameter used in the Swiss EPR are the patient ID in CX format and the status information, which must be *Approved*. 
 
-The community responds with the metadata sets of all documents registered in the patient's EPR, which match the search and filter parameter of the query. The profile is based upon the **[ebXML](http://www.ebxml.org)** standard. Due to the genericity of the ebXML standard, the response is not human readable and needs without background information given below.
+The community responds with the metadata sets of all documents registered in the patient's EPR, which match the search 
+and filter parameter of the query. The profile is based upon the **[ebXML](http://www.ebxml.org)** standard. Due to the 
+genericity of the ebXML standard, the response is not human readable and needs without background information given below.
 
 
 # Transaction 
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE profile and the ordinances to the Swiss EPR. 
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE 
+profile and the ordinances to the Swiss EPR. 
 
 ### Request Message
 
-The following snippet displays a sample request recorded during the EPR projectathon in September 2020. Some elements were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18_request_raw.xml)**. 
+The following snippet displays a sample request recorded during the EPR projectathon in September 2020. Some elements 
+were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18_request_raw.xml)**. 
 
-The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The SOAP *Header* element conveys the following information: 
+The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. 
+The SOAP *Header* element conveys the following information: 
 
 - *To* element: The URL of the registry stored query service. 
 - *MessageID* element: a UUID of the message. 
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization 
+(see **[Provide X-User Assertion](../main/files/ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information: 
