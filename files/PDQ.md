@@ -82,6 +82,31 @@ background information to interpret. The raw version of a request message may be
 </env:Envelope>
 ```
 
+#### Message Interpretation
+
+The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. 
+Therefore the following step by step interpretation may be of help to interpret the response. 
+
+The SOAP *Header* element conveys the following information: 
+
+- *To* element: The URL of the provide an register document set service. 
+- *MessageID* element: a UUID of the message. 
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework. 
+
+```
+2  <env:Header>
+3   <wsa:To xmlns:wsa="http://www.w3.org/2005/08/addressing">
+4    https://epd-service.com:7443/PIXPDQ/services/PDQV3Service
+5   </wsa:To>
+6   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:cf11d39c-8a2e-4683-bbe6-9f2b6f63f8c0</wsa:MessageID>
+7   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing" env:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201305UV02</wsa:Action>
+8  </env:Header>
+```
+
+For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient data is 
+authorized for all applications, which are registered and authenticate with a client certificate (see ../PDQ.md#Security).  
+
+
 ### Response Message
 
 TBD
