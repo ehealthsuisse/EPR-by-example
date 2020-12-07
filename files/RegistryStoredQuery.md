@@ -49,7 +49,7 @@ The SOAP *Header* element conveys the following information:
 - *MessageID* element: a UUID of the message. 
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
 - *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization 
-(see **[Provide X-User Assertion](../main/files/ProvideXAssertion.md)**).  
+(see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information: 
