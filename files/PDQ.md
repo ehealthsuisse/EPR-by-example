@@ -12,13 +12,75 @@ The community sends a response with all patient data sets matching the search cr
 
 # Transaction 
 
-TBD
-
 ## Message Semantics
+
+Messages are encoded as described in the HL7 V3 standard with restictions defined in the **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-TBD
+Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the request message is quite lengthy and needs some
+background information to interpret. The raw version of a request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_request.xml)**. For a step by step interpretation of the request message, see section below. 
+
+```
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+ <env:Header>
+  <wsa:To xmlns:wsa="http://www.w3.org/2005/08/addressing">
+   https://epd-service.com:7443/PIXPDQ/services/PDQV3Service
+  </wsa:To>
+  <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:cf11d39c-8a2e-4683-bbe6-9f2b6f63f8c0</wsa:MessageID>
+  <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing" env:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201305UV02</wsa:Action>
+ </env:Header>
+ <env:Body>
+  <PRPA_IN201305UV02 xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ITSVersion="XML_1.0">
+   <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+   <creationTime value="20200922105735.304"/>
+   <interactionId extension="PRPA_IN201305UV02" root="2.16.840.1.113883.1.6"/>
+   <processingCode code="P"/>
+   <processingModeCode code="T"/>
+   <acceptAckCode code="AL"/>
+   <receiver typeCode="RCV">
+    <device classCode="DEV" determinerCode="INSTANCE">
+     <id root="1.3.6.1.4.1.21367.2017.2.4.105"/>
+    </device>
+   </receiver>
+   <sender typeCode="SND">
+    <device classCode="DEV" determinerCode="INSTANCE">
+     <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+    </device>
+   </sender>
+   <controlActProcess classCode="CACT" moodCode="EVN">
+    <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.6"/>
+    <authorOrPerformer typeCode="AUT">
+     <assignedPerson classCode="ASSIGNED">
+      <id extension="client_application" root="1.3.6.1.4.1.24930"/>
+     </assignedPerson>
+    </authorOrPerformer>
+    <queryByParameter>
+     <queryId root="32adda44-a2a6-457f-84da-6982aa1ae921"/>
+     <statusCode code="new"/>
+     <responseModalityCode code="R"/>
+     <responsePriorityCode code="I"/>
+     <initialQuantity value="200"/>
+     <parameterList>
+      <livingSubjectName>
+       <value>
+        <family>Maiden</family>
+       </value>
+       <semanticsText>LivingSubject.name</semanticsText>
+      </livingSubjectName>
+      <patientAddress>
+       <value>
+        <streetAddressLine>Ruelle de la Tour</streetAddressLine>
+       </value>
+       <semanticsText>Patient.addr</semanticsText>
+      </patientAddress>
+     </parameterList>
+    </queryByParameter>
+   </controlActProcess>
+  </PRPA_IN201305UV02>
+ </env:Body>
+</env:Envelope>
+```
 
 ### Response Message
 
