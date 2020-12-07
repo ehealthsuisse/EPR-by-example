@@ -3,11 +3,11 @@ Swiss EPR transactions by example
 
 ## Patient Management
 
-**[PDQ](../main/files/PDQ.md)** - Search for patient data by demographics
+**[PDQ V3](../main/files/PDQ.md)** - Search for patient data by demographics
 
-**[PIX Feed](../main/files/PIXFeed.md)** - register patient data
+**[PIX V3 Feed](../main/files/PIXFeed.md)** - register patient data
 
-**[PIX Query](../main/files/PIXQuery.md)** - query the master patient ID and EPR-SPID for patients
+**[PIX V3 Query](../main/files/PIXQuery.md)** - query the master patient ID and EPR-SPID for patients
 
 ## Document Management
 

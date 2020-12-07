@@ -165,19 +165,20 @@ of the message, see section below.
 
 #### Message Interpretation
 
-The PDQV3 service responds with a list of patient data which match the search parameter of the request in a HL7 V3 *controlAct*
-object as follows: 
+The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element of 
+the *controlAct* object. The *subject* child element conveys the following information: 
 
+- *name*: conveying the given and the family names of the matching patient data. 
+- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
+- *birthTime*: the data of birth of the matching patient data. 
+- *addr* : The address data of the patient. 
+- *asOtherIDs*: A list of 1..N IDs, the patient is registered with in the community.  
+
+Each *asOtherId* conveys the ID the patient is registered in the community and conveys the following information:
+-  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with it's local ID. 
+- *extension*: The master patient ID (XAD-PID), if the assiging authority in the *root* attribute is the master patient index of the community, or a local ID assigned by a primary system otherwise.    
 
 ```
-33     <ns1:subject typeCode="SUBJ" contextConductionInd="false">
-34      <ns1:registrationEvent classCode="REG" moodCode="EVN">
-35       <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" nullFlavor="NA"/>
-36       <ns1:statusCode code="active"/>
-37       <ns1:subject1 typeCode="SBJ">
-38        <ns1:patient classCode="PAT">
-39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.36" extension="TIE4873"/>
-40         <ns1:statusCode code="active"/>
 41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
 42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN">
 43           <ns1:given>Alice</ns1:given>
@@ -205,38 +206,9 @@ object as follows:
 65           </ns1:scopingOrganization>
 66          </ns1:asOtherIDs>
 67         </ns1:patientPerson>
-68         <ns1:providerOrganization classCode="ORG" determinerCode="INSTANCE">
-69          <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.13.20.2000"/>
-70          <ns1:contactParty classCode="CON"/>
-71         </ns1:providerOrganization>
-72         <ns1:subjectOf1>
-73          <ns1:queryMatchObservation classCode="COND" moodCode="EVN">
-74           <ns1:code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:CD" code="IHE_PDQ"/>
-75           <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:INT" value="100"/>
-76          </ns1:queryMatchObservation>
-77         </ns1:subjectOf1>
-78        </ns1:patient>
-79       </ns1:subject1>
-80       <ns1:custodian typeCode="CST">
-81        <ns1:assignedEntity classCode="ASSIGNED">
-82         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.36"/>
-83         <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-84          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
-85           <ns1:given>org</ns1:given>
-86          </ns1:name>
-87         </ns1:assignedOrganization>
-88        </ns1:assignedEntity>
-89       </ns1:custodian>
-90      </ns1:registrationEvent>
-91     </ns1:subject>
 ```
 
-The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. 
-
-```
-
-```
-
+For a raw version of a response message example, see **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. 
 
 
 ## Transport Protocol

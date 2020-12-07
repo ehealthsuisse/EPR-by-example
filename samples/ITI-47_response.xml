@@ -97,7 +97,7 @@
 97      <ns1:resultCurrentQuantity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:INT" value="1"/>
 98      <ns1:resultRemainingQuantity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:INT" value="0"/>
 99     </ns1:queryAck>
-100     <ns1:queryByParameter>
+100    <ns1:queryByParameter>
 101      <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="32adda44-a2a6-457f-84da-6982aa1ae921"/>
 102      <ns1:statusCode code="new"/>
 103      <ns1:responseModalityCode code="R"/>
