@@ -115,7 +115,7 @@ The SOAP *Header* element conveys the following information:
 
 For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient data is 
 authorized for all applications, which are registered and authenticate with a client certificate 
-(see section **[Security](../PDQ.md##security-requirements)**).  
+(see section **[Security](../PDQ.md#security-requirements)**).  
 
 ### Response Message
 
