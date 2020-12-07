@@ -20,9 +20,10 @@ registered by annother primary system to store documents. In the Swiss EPR the
 **[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for patients 
 by demographic data. 
 
-To search for patients the primary system shall perform a **[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)**. Within the query request the primary system shall provide the demographic data as search criteria. In 
-the Swiss EPR each community must support the name, birthdate, gender and nationality. Individual communities may support other 
-demographic data (e.g., address and other contact data).  
+To search for patients the primary system shall perform a 
+**[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)**. Within the query request the 
+primary system shall provide the demographic data as search criteria. In the Swiss EPR each community must support the name, 
+birthdate, gender and nationality. Individual communities may support other demographic data (e.g., address and other contact data).  
 
 The community sends a response with all patient data sets matching the search criteria. Each patient data set contains the 
 known demographic data, the EPR-SPID and the assigned ID. The response contains the master data set as well as all known 
@@ -32,7 +33,8 @@ patient data sets, as registered by other primary systems.
 
 ## Message Semantics
 
-Messages are encoded as described in the HL7 V3 standard with restictions defined in the **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)** profile and the ordinances to the Swiss EPR.
+Messages are encoded as described in the HL7 V3 standard with restictions defined in the 
+**[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
@@ -169,7 +171,8 @@ The PDQV3 service responds with a list of patient data which match the search pa
 the *controlAct* object. The *subject* child element conveys the following information: 
 
 - *name*: conveying the given and the family names of the matching patient data. 
-- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
+- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in 
+**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
 - *birthTime*: the data of birth of the matching patient data. 
 - *addr* : The address data of the patient. 
 - *asOtherIDs*: A list of 1..N IDs, the patient is registered with in the community.  
@@ -208,16 +211,22 @@ Each *asOtherId* conveys the ID the patient is registered in the community and c
 67         </ns1:patientPerson>
 ```
 
-For a raw version of a response message example, see **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. 
-
-
 ## Transport Protocol
 
-TBD 
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+
+```
+POST /PDQV3Service HTTP/1.1
+Host: company.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive 
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
+```
 
 ## Audit Log
 
-TBD
+*TODO*
 
 ```
 code block here    
@@ -225,8 +234,11 @@ code block here
 
 ## Security Requirements  
 
-TBD
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+
+Note: 
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
 
 # Test Opportunity
 
-TBD
+*TODO*
