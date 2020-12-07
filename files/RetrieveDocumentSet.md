@@ -17,7 +17,7 @@ Transaction to retrieve one or more documents from a community. Primary systems 
 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
-To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../main/PIXQuery.md)**, and the repository as well as the documents unique IDs taken from the response of the **[Registry Stored Query](../main/RegistryStoredQuery.md)**. In the Swiss EPR currently only supports the synchronous exchange option is supported.    
+To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall provide the master patient ID as retrieved from the **[PIX Query](../files/PIXQuery.md)**, and the repository as well as the documents unique IDs taken from the response of the **[Registry Stored Query](../files/RegistryStoredQuery.md)**. In the Swiss EPR currently only supports the synchronous exchange option is supported.    
 
 The community responds the set of documents. 
 
@@ -36,13 +36,13 @@ The request message shall be a XML SOAP envelope with the query embedded in the 
 - *To* element: The URL of the repository service. 
 - *MessageID* element: a UUID of the message. 
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework. 
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../main/ProvideXAssertion.md)**).  
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements (lines 12 to 16 below) with the following information: 
 
 - *HomeCommunityId* : Unique ID of the community. 
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../main/RegistryStoredQuery.md)** response. 
+- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](../files/RegistryStoredQuery.md)** response. 
 - *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
 
 
@@ -208,7 +208,7 @@ The message is made of the following blocks:
 
 To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
 
-To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../main/ProvideXAssertion.md)** for the implementation details. 
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details. 
 
 Note: 
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 

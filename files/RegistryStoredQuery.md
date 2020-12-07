@@ -55,7 +55,8 @@ The SOAP *Header* element conveys the following information:
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information: 
 
 - *Slot* element with name *$XDSDocumentEntryStatus*: The status filter parameter, which must take the value *urn:oasis:names:tc:ebxml-regrep:StatusType:Approved* (line 18).  
-- *Slot* element with name *$XDSDocumentEntryPatientId*: The master patient ID (XAD-PID) of the patient in CX format (see **[PIX Feed](../main/PIXFeed.md)**) (line 23). 
+- *Slot* element with name *$XDSDocumentEntryPatientId*: The master patient ID (XAD-PID) of the patient in CX format 
+(see **[PIX Feed](../files/PIXFeed.md)**) (line 23). 
 
 
 ```
@@ -165,7 +166,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *slot
 39      </ns2:Slot>   
 ```
 
-- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**). 
+- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**). 
 
 ```
 45      <ns2:Slot name="creationTime">
@@ -306,7 +307,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 153      </ns2:ExternalIdentifier>
 ```
 
-- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
+- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
 
 
 ```
@@ -323,7 +324,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 164      </ns2:ExternalIdentifier>
 ```
 
-- The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID) in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../main/RetrieveDocumentSet.md)**).
+- The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID) in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
 
 
 ## Transport Protocol 
@@ -383,7 +384,7 @@ The message is made of the following blocks:
 
 To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
 
-To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../main/ProvideXAssertion.md)** for the implementation details. 
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details. 
 
 Note: 
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
