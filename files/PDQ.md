@@ -1,4 +1,4 @@
-# Patient Demographics Query 
+# Patient Demographics Query
 
 Transaction to search for patient identities and data from a community using the patient demographic data as search criteria. Primary systems may use this transaction to verify if a patient uses a Swiss EPR and is already registered in the community.  
 
@@ -9,50 +9,51 @@ Transaction to search for patient identities and data from a community using the
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
-- [Security Requirements](#security-requirements) 
-- [Test Opportunity](#test-opportunity) 
+- [Security Requirements](#security-requirements)
+- [Test Opportunity](#test-opportunity)
 
 # Overview
 
-Primary systems may use this transaction to search for patients which are already registred in the community, either because the 
-patient opended the Swiss EPR in the community or because the patient opended the Swiss EPR in a remote community and was already 
-registered by annother primary system to store documents. In the Swiss EPR the 
-**[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for patients 
-by demographic data. 
+Primary systems may use this transaction to search for patients which are already registred in the community, either
+because the patient opended the Swiss EPR in the community or because the patient opended the Swiss EPR in a remote
+community and was already registered by annother primary system to store documents. In the Swiss EPR the
+**[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for
+patients by demographic data.
 
-To search for patients the primary system shall perform a 
-**[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)**. Within the query request the 
-primary system shall provide the demographic data as search criteria. In the Swiss EPR each community must support the name, 
-birthdate, gender and nationality. Individual communities may support other demographic data (e.g., address and other contact data).  
+To search for patients the primary system shall perform a
+**[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)**. Within the query request
+the primary system shall provide the demographic data as search criteria. In the Swiss EPR each community must support the
+name, birthdate, gender and nationality. Individual communities may support other demographic data (e.g., address and other
+contact data).  
 
-The community sends a response with all patient data sets matching the search criteria. Each patient data set contains the 
-known demographic data, the EPR-SPID and the assigned ID. The response contains the master data set as well as all known 
+The community sends a response with all patient data sets matching the search criteria. Each patient data set contains the
+known demographic data, the EPR-SPID and the assigned ID. The response contains the master data set as well as all known
 patient data sets, as registered by other primary systems.    
 
-# Transaction 
+# Transaction
 
 ## Message Semantics
 
-Messages are encoded as described in the HL7 V3 standard with restictions defined in the 
+Messages are encoded as described in the HL7 V3 standard with restictions defined in the
 **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the request message is quite lengthy and needs some
-background information to interpret. The raw version of a request message may be found 
-**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_request.xml)**. For a step by step interpretation 
-of the request message, see section below. 
+background information to interpret. The raw version of a request message may be found
+**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_request.xml)**. For a step by step interpretation
+of the request message, see section below.
 
 #### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. 
-Therefore the following step by step interpretation may be of help to interpret the response. 
+The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
+Therefore the following step by step interpretation may be of help to interpret the response.
 
-The SOAP *Header* element conveys the following information: 
+The SOAP *Header* element conveys the following information:
 
-- *To* element: The URL of the provide an register document set service. 
-- *MessageID* element: a UUID of the message. 
-- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework. 
+- *To* element: The URL of the provide an register document set service.
+- *MessageID* element: a UUID of the message.
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
 ```
 2  <env:Header>
@@ -64,18 +65,18 @@ The SOAP *Header* element conveys the following information:
 8  </env:Header>
 ```
 
-For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient data is 
-authorized for all applications, which are registered and authenticate with a client certificate 
-(see section **[Security](PDQ.md#security-requirements)**). 
+For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient
+data is authorized for all applications, which are registered and authenticate with a client certificate
+(see section **[Security](PDQ.md#security-requirements)**).
 
-The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in 
-which primary systems must set the following values: 
-- *creationTime*: A timestamp in unix time format. 
-- *sender* : The OID of the sender application initiating the request. 
-- *receiver*: The OID of the receiver application which shall respond to the request. 
+The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
+which primary systems must set the following values:
+- *creationTime*: A timestamp in unix time format.
+- *sender* : The OID of the sender application initiating the request.
+- *receiver*: The OID of the receiver application which shall respond to the request.
 
 ```
-1     <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+11    <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
 12    <creationTime value="20200922105735.304"/>
 13    <interactionId extension="PRPA_IN201305UV02" root="2.16.840.1.113883.1.6"/>
 14    <processingCode code="P"/>
@@ -91,9 +92,9 @@ which primary systems must set the following values:
 24      <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
 25     </device>
 26    </sender>
-``` 
+```
 
-The query is encoded in a HL7 V3 *controlAct* object as follows: 
+The query is encoded in a HL7 V3 *controlAct* object as follows:
 
 ```
 27    <controlActProcess classCode="CACT" moodCode="EVN">
@@ -127,7 +128,7 @@ The query is encoded in a HL7 V3 *controlAct* object as follows:
 55    </controlActProcess>
 ```
 
-The HL7 *controlAct* object conveys the query search parameter in a HL7 V3 *parameterList* element. 
+The HL7 *controlAct* object conveys the query search parameter in a HL7 V3 *parameterList* element.
 
 In the above example these are the *livingSubjectName* conveying the name of the patient to search for,  
 
@@ -140,7 +141,7 @@ In the above example these are the *livingSubjectName* conveying the name of the
 46       </livingSubjectName>
 ```
 
-and the *streetAddressLine* to match: 
+and the *streetAddressLine* to match:
 
 ```
 47       <patientAddress>
@@ -154,31 +155,29 @@ and the *streetAddressLine* to match:
 55    </controlActProcess>
 ```
 
-The query supports many more search options and filter parameter. For a documentation of the options 
-see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**. 
-
+The query supports many more search options and filter parameter. For a documentation of the options
+see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
 
 ### Response Message
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
-background information to interpret. The raw version of a response message may be found 
-**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. For a step by step interpretation 
-of the message, see section below. 
+background information to interpret. The raw version of a response message may be found
+**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-47_response.xml)**. For a step by step interpretation
+of the message, see section below.
 
 #### Message Interpretation
 
-The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element of 
-the *controlAct* object. The *subject* child element conveys the following information: 
+The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element of the *controlAct* object. The *subject* child element conveys the following information:
 
-- *name*: conveying the given and the family names of the matching patient data. 
-- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in 
+- *name*: conveying the given and the family names of the matching patient data.
+- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
 **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
-- *birthTime*: the data of birth of the matching patient data. 
-- *addr* : The address data of the patient. 
+- *birthTime*: the data of birth of the matching patient data.
+- *addr* : The address data of the patient.
 - *asOtherIDs*: A list of 1..N IDs, the patient is registered with in the community.  
 
 Each *asOtherId* conveys the ID the patient is registered in the community and conveys the following information:
--  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with it's local ID. 
+-  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with it's local ID.
 - *extension*: The master patient ID (XAD-PID), if the assiging authority in the *root* attribute is the master patient index of the community, or a local ID assigned by a primary system otherwise.    
 
 ```
@@ -219,7 +218,7 @@ The primary system shall send the request messages to the registry of the commun
 POST /PDQV3Service HTTP/1.1
 Host: company.example.org
 Accept-Encoding: gzip, deflate
-Connection: Keep-Alive 
+Connection: Keep-Alive
 Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn  
 ```
@@ -234,10 +233,11 @@ code block here
 
 ## Security Requirements  
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates
+(extended validation required) and client and server side certifcate validation.
 
-Note: 
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
+Note:
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
 # Test Opportunity
 
