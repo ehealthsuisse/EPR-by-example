@@ -79,7 +79,7 @@ The SOAP *Header* element conveys the following information:
 11  </soapenv:Header>    
 ```
 
-The SOAP *Body* element conveys the folowing objects in ebXML syntax: 
+The SOAP *Body* element conveys the following objects in ebXML syntax: 
 
 - *RegistryRegistryPackage* defining the submission set and it's metadata.
 - *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**).
