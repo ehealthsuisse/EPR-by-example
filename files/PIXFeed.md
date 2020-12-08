@@ -255,7 +255,12 @@ The following snippet shows a example audit message to be written by the primary
 </AuditMessage>  
 ```
 
-**TODO**:explain
+The message is made of the following blocks:
+- *EventIdentification*: Element with event related information including the timestamp.
+- *ActiveParticipant*: Element of information related to the primary system performing the query.
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
+- *ActiveParticipant*: Element with information on the responding service endpoint.
+- *ParticipantObjectIdentification*: Element with request message related information.
 
 ## Security Requirements  
 
