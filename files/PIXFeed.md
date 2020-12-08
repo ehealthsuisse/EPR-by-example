@@ -75,7 +75,7 @@ The SOAP *Header* element conveys the following information:
 
 For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient
 data is authorized for all applications, which are registered and authenticate with a client certificate
-(see section **[Security](PDQ.md#security-requirements)**).
+(see section **[Security](PIXFeed.md#security-requirements)**).
 
 The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
 which primary systems must set the following values:
@@ -204,32 +204,37 @@ The *custodian* element shall convey the OID of the provider organization in the
 
 ### Response Message
 
-TBD
-
-```
-code block here    
-```
+The PIX V3 Feed service responds with a message indicating the success of the transaction. A raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-44_response.xml)**.
 
 ## Transport Protocol
 
-TBD
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
-code block here    
+POST /PDQV3Service HTTP/1.1
+Host: company.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
 ```
 
 ## Audit Log
 
-TBD
+*TODO*
 
 ```
 code block here    
 ```
 
-## Security Requirements
+## Security Requirements  
 
-TBD
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates
+(extended validation required) and client and server side certifcate validation.
+
+Note:
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
 # Test Opportunity
 
-TBD
+*TODO*
