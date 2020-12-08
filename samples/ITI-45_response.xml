@@ -1,0 +1,88 @@
+1 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+2  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+3   <wsa:Action xmlns:mustUnderstand="http://www.w3.org/2003/05/soap-envelope" mustUnderstand:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201310UV02</wsa:Action>
+4   <wsa:RelatesTo>urn:uuid:c12e1f14-c2c9-4a94-ba27-6411e8c90b75</wsa:RelatesTo>
+5  </soapenv:Header>
+6  <soapenv:Body>
+7   <ns1:PRPA_IN201310UV02 xmlns:ns1="urn:hl7-org:v3" ITSVersion="XML_1.0">
+8    <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.2.3.4.5" extension="30"/>
+9    <ns1:creationTime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:TS" value="20200921170502"/>
+10    <ns1:versionCode code="V3PR1"/>
+11    <ns1:interactionId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.840.1.113883" extension="PRPA_IN201310UV02"/>
+12    <ns1:processingCode code="P"/>
+13    <ns1:processingModeCode code="T"/>
+14    <ns1:acceptAckCode code="NE"/>
+15    <ns1:receiver typeCode="RCV">
+16     <ns1:device classCode="DEV" determinerCode="INSTANCE">
+17      <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+18     </ns1:device>
+19    </ns1:receiver>
+20    <ns1:sender typeCode="SND">
+21     <ns1:device classCode="DEV" determinerCode="INSTANCE">
+22      <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.4.105"/>
+23     </ns1:device>
+24    </ns1:sender>
+25    <ns1:acknowledgement>
+26     <ns1:typeCode code="AA"/>
+27     <ns1:targetMessage>
+28      <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.840.1.113883.1.6.1" extension="1.21600700702136"/>
+29     </ns1:targetMessage>
+30    </ns1:acknowledgement>
+31    <ns1:controlActProcess classCode="CACT" moodCode="EVN">
+32     <ns1:code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:CD" code="PRPA_TE201310UV02"/>
+33     <ns1:subject typeCode="SUBJ">
+34      <ns1:registrationEvent classCode="REG" moodCode="EVN">
+35       <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" nullFlavor="NA"/>
+36       <ns1:statusCode code="active"/>
+37       <ns1:subject1 typeCode="SBJ">
+38        <ns1:patient classCode="PAT">
+39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45" extension="799b00ee-2f2a-4444-8f93-c91730578af4" assigningAuthorityName="XDS Affinity Domain"/>
+40         <ns1:statusCode code="active"/>
+41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
+42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN" nullFlavor="NA"/>
+43          <ns1:asOtherIDs classCode="ROL">
+44           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3" extension="761337610435209810" assigningAuthorityName="SPID"/>
+45           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+46            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3"/>
+47           </ns1:scopingOrganization>
+48          </ns1:asOtherIDs>
+49         </ns1:patientPerson>
+50        </ns1:patient>
+51       </ns1:subject1>
+52       <ns1:custodian typeCode="CST">
+53        <ns1:assignedEntity classCode="ASSIGNED">
+54         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
+55         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
+56         <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+57          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+58           <ns1:given>org</ns1:given>
+59          </ns1:name>
+60         </ns1:assignedOrganization>
+61        </ns1:assignedEntity>
+62       </ns1:custodian>
+63      </ns1:registrationEvent>
+64     </ns1:subject>
+65     <ns1:queryAck>
+66      <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="4ecd362e-8d17-4abe-b991-3793bc2e1399"/>
+67      <ns1:statusCode code="deliveredResponse"/>
+68      <ns1:queryResponseCode code="OK"/>
+69     </ns1:queryAck>
+70     <ns1:queryByParameter>
+71      <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="4ecd362e-8d17-4abe-b991-3793bc2e1399"/>
+72      <ns1:statusCode code="new"/>
+73      <ns1:responsePriorityCode code="I"/>
+74      <ns1:parameterList>
+75       <ns1:dataSource>
+76        <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45"/>
+77        <ns1:semanticsText>DataSource.id</ns1:semanticsText>
+78       </ns1:dataSource>
+79       <ns1:patientIdentifier>
+80        <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.12559.11.25.1.19" extension="CHFACILITY9810"/>
+81        <ns1:semanticsText>Patient.Id</ns1:semanticsText>
+82       </ns1:patientIdentifier>
+83      </ns1:parameterList>
+84     </ns1:queryByParameter>
+85    </ns1:controlActProcess>
+86   </ns1:PRPA_IN201310UV02>
+87  </soapenv:Body>
+88 </soapenv:Envelope>

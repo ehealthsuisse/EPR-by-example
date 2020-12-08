@@ -47,20 +47,23 @@ Messages are encoded as described in the HL7 V3 standard with restictions define
 
 ### Request Message
 
-Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy and needs some background information to interpret. A raw version of a request message may be found
-**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-44_request.xml)**. For a step by step interpretation
-of the request message, see section below.
+Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
+A raw version of a request message may be found
+**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-44_request.xml)**.
+
+For a step by step interpretation of the request message, see section below.
 
 #### Message Interpretation
 
 The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
-Therefore the following step by step interpretation may be of help to interpret the response.
 
-The SOAP *Header* element conveys the following information:
+The SOAP *Header* element shall convey the following information:
 
 - *To* element: The URL of the provide an register document set service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
+
+Optional elements may be included according to the specification in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.
 
 ```
 2  <soap:Header>
@@ -73,12 +76,13 @@ The SOAP *Header* element conveys the following information:
 9  </soap:Header>
 ```
 
-For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient
-data is authorized for all applications, which are registered and authenticate with a client certificate
-(see section **[Security](PIXFeed.md#security-requirements)**).
+For the patient identiy feed no *Security* header element is required, since in the Swiss EPR the access to the patient
+data is authorized for all applications, which are registered in the community and authenticate with a client certificate
+(see section **[Security Requirements](PIXFeed.md#security-requirements)**).
 
-The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
-which primary systems must set the following values:
+The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax.
+
+Primary systems shall set the following values:
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
@@ -110,8 +114,6 @@ and the EPR-SPID is missing. This seems to be Post CH specific, since the Post C
 The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 
 ```
-28    <controlActProcess classCode="CACT" moodCode="EVN">
-29     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.18"/>
 30     <subject typeCode="SUBJ" contextConductionInd="false">
 31      <registrationEvent classCode="REG" moodCode="EVN">
 32       <id nullFlavor="NA"/>
@@ -211,12 +213,12 @@ The PIX V3 Feed service responds with a message indicating the success of the tr
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
-POST /PDQV3Service HTTP/1.1
+POST /PIXV3FeedService HTTP/1.1
 Host: company.example.org
 Accept-Encoding: gzip, deflate
 Connection: Keep-Alive
 Content-Type: application/soap+xml; charset="utf-8"
-Content-Length: nnnn  
+Content-Length: nnn  
 ```
 
 ## Audit Log
@@ -229,7 +231,7 @@ code block here
 
 ## Security Requirements  
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certifcate validation.
 
 Note:

@@ -30,7 +30,6 @@ The community responds with the metadata sets of all documents registered in the
 and filter parameter of the query. The profile is based upon the **[ebXML](http://www.ebxml.org)** standard. Due to the
 genericity of the ebXML standard, the response is not human readable and needs without background information given below.
 
-
 # Transaction
 
 ## Message Semantics
@@ -57,7 +56,6 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 - *Slot* element with name *$XDSDocumentEntryStatus*: The status filter parameter, which must take the value *urn:oasis:names:tc:ebxml-regrep:StatusType:Approved* (line 18).  
 - *Slot* element with name *$XDSDocumentEntryPatientId*: The master patient ID (XAD-PID) of the patient in CX format
 (see **[PIX Feed](./PIXFeed.md)**) (line 23).
-
 
 ```
 0 <?xml version="1.0" encoding="UTF-8"?>
@@ -123,7 +121,6 @@ The SOAP *Header* element conveys the following information:
 
 - *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: The *messageID* of the query request (see above).
-
 
 ```
 2  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
@@ -217,7 +214,6 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Clas
 attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
 - *Name* : The human readable display name of the document class.
 
-
 ```
 115      <ns2:Classification
 116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
@@ -239,7 +235,6 @@ attribute and the *codingScheme* value must match one of the supported values in
 *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
 defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
 - *Name* : The human readable display name of the practice setting code.
-
 
 ```
 115      <ns2:Classification
@@ -325,7 +320,6 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Exte
 - The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
 value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
 
-
 ```
 154      <ns2:ExternalIdentifier
 155       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
@@ -342,7 +336,6 @@ value must be used when retrieving documents to display (see **[Retrieve Documen
 
 - The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
 in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
-
 
 ## Transport Protocol
 
@@ -404,7 +397,7 @@ The message is made of the following blocks:
 
 # Security Requirements    
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certificates (extended
 validation required) and client and server side certifcate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
