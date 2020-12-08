@@ -23,7 +23,7 @@ be used.
 To store the document metadata of the document, the the primary system shall perform a
 **[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction.
 Within the request, the primary systems shall provide the master patient ID as retrieved from the
-**[PIX Query](../files/PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the
+**[PIX Query](./PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the
 binary data of the document.  
 
 The community responds with a code indicating the successful registration of the document.
