@@ -221,7 +221,8 @@ The message is made of the following blocks:
 To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended
 validation required) and client and server side certifcate validation.
 
-To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
+envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.

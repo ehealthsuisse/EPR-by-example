@@ -11,7 +11,7 @@ patient data to be able to provide and retrieve documents to the patients EPR.
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity) 
+- [Test Opportunity](#test-opportunity)
 
 # Overview
 
@@ -25,8 +25,8 @@ transaction. In the feed request the primary system must provide the demographic
 the ZAS central service, which includes the name, birthdate, gender, nationality and the EPR-SPID.
 Primary systems may provide other demographic data (e.g., address and other contact data).
 
-The community response includes either a success confirmation, or a error code in the case an error
-occured in the community during registration. In the success case the community stores the patient data
+The community response includes a success confirmation, or a error code in the case an error
+occured in the community during registration. In case of success the community stores the patient data
 provided by the primary system, matches the data set to other patient data set registered by other
 primary systems and assigns the patient data set to a master patient record and the master patient ID
 (XAD-PID).
@@ -40,22 +40,166 @@ implementation details.
 
 # Transaction
 
-TBD
-
 ## Message Semantics
 
-TBD
-
-```
-code block here    
-```
+Messages are encoded as described in the HL7 V3 standard with restictions defined in the
+**[IHE Patient Identity Feed HL7 V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-TBD
+Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy and needs some background information to interpret. A raw version of a request message may be found
+**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-44_request.xml)**. For a step by step interpretation
+of the request message, see section below.
+
+#### Message Interpretation
+
+The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
+Therefore the following step by step interpretation may be of help to interpret the response.
+
+The SOAP *Header* element conveys the following information:
+
+- *To* element: The URL of the provide an register document set service.
+- *MessageID* element: a UUID of the message.
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
 ```
-code block here    
+2  <soap:Header>
+3   <Action xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201301UV02</Action>
+4   <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:7a180388-6ba7-4cbc-bffe-dfcdc4e602b7</MessageID>
+5   <To xmlns="http://www.w3.org/2005/08/addressing">http://epd-core.int.adswissnet.healthcare/mpi/pixmanager</To>
+6   <ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+7    <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+8   </ReplyTo>
+9  </soap:Header>
+```
+
+For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient
+data is authorized for all applications, which are registered and authenticate with a client certificate
+(see section **[Security](PDQ.md#security-requirements)**).
+
+The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
+which primary systems must set the following values:
+- *creationTime*: A timestamp in unix time format.
+- *sender* : The OID of the sender application initiating the request.
+- *receiver*: The OID of the receiver application which shall respond to the request.
+
+```
+10  <soap:Body>
+11   <PRPA_IN201301UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+12    <id root="647aee99-56e7-46f5-ac26-bb691834204a"/>
+13    <creationTime value="20200923113348"/>
+14    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201301UV02"/>
+15    <processingCode code="P"/>
+16    <processingModeCode code="T"/>
+17    <acceptAckCode code="AL"/>
+18    <receiver typeCode="RCV">
+19     <device classCode="DEV" determinerCode="INSTANCE">
+20      <id root="1.3.6.1.4.1.21367.2017.2.4.98"/>
+21     </device>
+22    </receiver>
+23    <sender typeCode="SND">
+24     <device classCode="DEV" determinerCode="INSTANCE">
+25      <id root="1.3.6.1.4.1.21367.2017.2.2.100"/>
+26     </device>
+27    </sender>
+```
+
+*TODO*: The following example does not convey all attributes as defined in the ordinances, since some of the ZAS data
+and the EPR-SPID is missing. This seems to be Post CH specific, since the Post CH plattform resolves the AHVN13 to the ZAS data in the background. Also some fields are empty (e.g., the telecom and some qualifier attributes).   
+
+The patient data are encoded in a HL7 V3 *controlAct* object as follows:
+
+```
+28    <controlActProcess classCode="CACT" moodCode="EVN">
+29     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.18"/>
+30     <subject typeCode="SUBJ" contextConductionInd="false">
+31      <registrationEvent classCode="REG" moodCode="EVN">
+32       <id nullFlavor="NA"/>
+33       <statusCode code="active"/>
+34       <subject1 typeCode="SBJ">
+35        <patient classCode="PAT">
+36         <id root="1.3.6.1.4.1.21367.2017.2.5.75" extension="T944"/>
+37         <statusCode code="active"/>
+38         <patientPerson classCode="PSN" determinerCode="INSTANCE">
+39          <name>
+40           <given>OVIE</given>
+41           <family qualifier="">BERGAN</family>
+42          </name>
+43          <administrativeGenderCode code="1" codeSystem="2.16.840.1.113883.5.1"/>
+44          <birthTime value="20020329"/>
+45          <addr>
+46           <streetAddressLine>KONIZBERGSTRASSE</streetAddressLine>
+47           <city>Bern</city>
+48           <postalCode>3018</postalCode>
+49          </addr>
+50          <asOtherIDs classCode="ACCESS">
+51           <id root="2.16.756.5.30.1.127.3.10.3" extension="761338420435200768"/>
+52           <scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+53            <id root="2.16.756.5.30.1.127.3.10.3"/>
+54           </scopingOrganization>
+55          </asOtherIDs>
+56         </patientPerson>
+57         <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+58          <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
+59          <name>Spital Administration</name>
+60          <contactParty classCode="CON">
+61           <telecom value=""/>
+62          </contactParty>
+63         </providerOrganization>
+64        </patient>
+65       </subject1>
+66       <custodian typeCode="CST">
+67        <assignedEntity classCode="ASSIGNED">
+68         <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
+69         <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+70          <name>Spital Administration</name>
+71         </assignedOrganization>
+72        </assignedEntity>
+73       </custodian>
+74      </registrationEvent>
+75     </subject>
+76    </controlActProcess>
+```
+
+The *subject* child element conveys the following information in it's child elements.
+
+The *patientPerson* child element conveys the patient data including:  
+- *name*: conveying the given and the family names of the matching patient data.
+- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
+**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
+- *birthTime*: the data of birth of the matching patient data.
+- *addr* : The address data of the patient.
+- *asOtherIDs*: The assigned patient ID's.   
+- *custodian*: Information on the provider organization.
+
+The *asOtherId* elements shall include the
+
+- local ID the patient is registered in the primary system, with the OID of the primary system in the *root* attribute, and the ID value in the *extension* attribute.
+
+```
+50          <asOtherIDs classCode="ACCESS">
+51           <id root="2.16.756.5.30.1.127.3.10.3" extension="761338420435200768"/>
+52           <scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+53            <id root="2.16.756.5.30.1.127.3.10.3"/>
+54           </scopingOrganization>
+55          </asOtherIDs>
+```
+
+- the EPR-SPID with the OID of the ZAS in the *root* attribute, and the value in the *extension* attribute.
+
+*TODO*: EPR-SPID is missing in the above example
+
+The *custodian* element shall convey the OID of the provider organization in the *id* child element:
+
+```
+66       <custodian typeCode="CST">
+67        <assignedEntity classCode="ASSIGNED">
+68         <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
+69         <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+70          <name>Spital Administration</name>
+71         </assignedOrganization>
+72        </assignedEntity>
+73       </custodian>
 ```
 
 ### Response Message

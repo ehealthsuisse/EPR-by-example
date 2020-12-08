@@ -1,5 +1,6 @@
 # Provide and Register Document Set
-Transaction to store one or more documents to a community. Primary systems shall use this transaction to export documents and the to a community repository to add it to a patients EPR.  
+Transaction to store one or more documents to a community. Primary systems shall use this transaction to export documents
+and the to a community repository to add it to a patients EPR.  
 
 **CONTENTS**
 
@@ -10,62 +11,64 @@ Transaction to store one or more documents to a community. Primary systems shall
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
-- [Security Requirements](#security-requirements) 
+- [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)  
 
 # Overview
 
-Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR. 
-In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
+Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR.
+In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall
+be used.
 
-To store the document metadata of the document, the the primary system shall perform a 
-**[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction. 
-Within the request, the primary systems shall provide the master patient ID as retrieved from the 
-**[PIX Query](../files/PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the 
+To store the document metadata of the document, the the primary system shall perform a
+**[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction.
+Within the request, the primary systems shall provide the master patient ID as retrieved from the
+**[PIX Query](../files/PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the
 binary data of the document.  
 
-The community responds with a code indicating the successful registration of the document. 
+The community responds with a code indicating the successful registration of the document.
 
-# Transaction 
+# Transaction
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE 
-profile and the ordinances to the Swiss EPR. 
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE
+profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
 Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the request message is quite lengthy and needs some
-background information to interpret. 
+background information to interpret.
 
-The structure of the result set is as follows (see example below): 
+The structure of the result set is as follows (see example below):
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
-- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements. 
-- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute. 
+- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
+- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute.
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in 
-**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.1](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.1)** and 
-**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** . 
+The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in
+**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.1](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.1)** and
+**[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** .
 
-The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in 
+The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in
 **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
 of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. 
+A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**.
 
 ### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard. 
-Therefore the following step by step interpretation may be of help to interpret the response. 
+The request message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard.
+Therefore the following step by step interpretation may be of help to interpret the response.
 
-The SOAP *Header* element conveys the following information: 
+The SOAP *Header* element conveys the following information:
 
-- *To* element: The URL of the provide an register document set service. 
-- *MessageID* element: a UUID of the message. 
-- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework. 
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
+- *To* element: The URL of the provide an register document set service.
+- *MessageID* element: a UUID of the message.
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
+authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
 
 ```
 3  <soapenv:Header>
@@ -79,7 +82,7 @@ The SOAP *Header* element conveys the following information:
 11  </soapenv:Header>    
 ```
 
-The SOAP *Body* element conveys the following objects in ebXML syntax: 
+The SOAP *Body* element conveys the following objects in ebXML syntax:
 
 - *RegistryRegistryPackage* defining the submission set and it's metadata.
 - *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**).
@@ -89,13 +92,15 @@ We will explain the *RegistryRegistryPackage* object defining the submission set
 
 #### Submission Set
 
-The structure of the *RegistryPackage* object defining the submission set is as follows (see example below): 
-- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements. 
-- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute. 
+The structure of the *RegistryPackage* object defining the submission set is as follows (see example below):
+- The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
+- Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute.
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The *RegistryRegistryPackage* object defining the submission set has one *Slot* child elements with name *submissionTime* which conveys the request timestamp, and a *Name* element to convey the display name of the submission set (see lines 17 to 25 below). 
+The *RegistryRegistryPackage* object defining the submission set has one *Slot* child elements with name *submissionTime*
+which conveys the request timestamp, and a *Name* element to convey the display name of the submission set (see lines 17 to
+	25 below).
 
 ```
 17      <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
@@ -110,11 +115,16 @@ The *RegistryRegistryPackage* object defining the submission set has one *Slot* 
 
 ```
 
-The *RegistryRegistryPackage* object defining the submission set has three *Classification* child elements conveying the submission set metadata: 
+The *RegistryRegistryPackage* object defining the submission set has three *Classification* child elements conveying the
+submission set metadata:
 
-- Content Type Code: The submission set content type code attribute, indicated by the value of the classificationScheme equal to *urn:uuid:aa543740-bdda-424e-8c96-df4873be8500*. The value conveyed with the nodeRepresentation attribute and the codingScheme value must match one of the supported values in the Swiss EPR as defined in Annex 3.
-- submission author: The submission set author element, indicated by the value of the classificationScheme equal to *urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d*. The author element is optional in the EPR. If present, it shall convey the information on the person, which initated the request. 
-- submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd* required to identify the *RegistryPackage* object as a XDS.b submission set.
+- Content Type Code: The submission set content type code attribute, indicated by the value of the classificationScheme
+equal to *urn:uuid:aa543740-bdda-424e-8c96-df4873be8500*. The value conveyed with the nodeRepresentation attribute and the
+codingScheme value must match one of the supported values in the Swiss EPR as defined in Annex 3.
+- submission author: The submission set author element, indicated by the value of the classificationScheme equal to *urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d*. The author element is optional in the EPR. If present, it shall convey the
+information on the person, which initated the request.
+- submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd*
+required to identify the *RegistryPackage* object as a XDS.b submission set.
 
 ```
 26       <rim:Classification
@@ -158,11 +168,12 @@ The *RegistryRegistryPackage* object defining the submission set has three *Clas
 64        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"/>
 ```
 
-The *RegistryRegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements: 
+The *RegistryRegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements:
 
-- *XDSSubmissionSet.sourceId*: Conveys the OID of the primary system performing the request. 
-- *XDSSubmissionSet.uniqueId*: Conveys a UUID of the submission set. 
-- *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format (see **[PIX Feed](../files/PIXFeed.md)**). 
+- *XDSSubmissionSet.sourceId*: Conveys the OID of the primary system performing the request.
+- *XDSSubmissionSet.uniqueId*: Conveys a UUID of the submission set.
+- *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format
+(see **[PIX Feed](../files/PIXFeed.md)**).
 
 ```
 65       <rim:ExternalIdentifier
@@ -200,17 +211,20 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 
 #### Document Metadata
 
-The request contains 1..N *ExtrinsicObject* representing the document metadata for earch document. The interpretation of the document metadata matches the document metadata interpretation, which is explained in detail in step by step example in the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**) for the interpretation of the document metadata.
+The request contains 1..N *ExtrinsicObject* representing the document metadata for earch document. The interpretation of
+the document metadata matches the document metadata interpretation, which is explained in detail in step by step example in
+the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**) for the interpretation of the document metadata.
 
 #### Association
 
-The request contains one *Association* object linking the document and document metadata to a submission set defined in the *RegistryPackage* (see **[Submission Set](../files/ProvideAndRegister.md#submission-set)**). 
+The request contains one *Association* object linking the document and document metadata to a submission set defined in the
+*RegistryPackage* (see **[Submission Set](../files/ProvideAndRegister.md#submission-set)**).
 
-The *Association* object thus conveys two parameter to link the objects: 
-- *sourceObject*: The attribute value must match the *id* attribute of the submission set *RegistryPackage*. 
+The *Association* object thus conveys two parameter to link the objects:
+- *sourceObject*: The attribute value must match the *id* attribute of the submission set *RegistryPackage*.
 - *targetObject*: The attribute value must match the *id* attribute value of the document metadata *ExtrinsicObject*.  
 
-In addition the *Association* object conveys a status indicator, which must take the value *Original* (see snippet below). 
+In addition the *Association* object conveys a status indicator, which must take the value *Original* (see snippet below).
 
 ```
 277      <rim:Association
@@ -224,26 +238,26 @@ In addition the *Association* object conveys a status indicator, which must take
 285        </rim:ValueList>
 286       </rim:Slot>
 287      </rim:Association>   
-``` 
+```
 
 ### Response Message
 
-The provide and register service responds with a message indicating the success of the transaction. The outcome indicator is 
-encoded in the *Body* element of the SOAP envelope as follows: 
+The provide and register service responds with a message indicating the success of the transaction. The outcome indicator is
+encoded in the *Body* element of the SOAP envelope as follows:
 
 ```
-  <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>. 
+  <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>.
 ```
 
-The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_response.xml)**. 
+The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_response.xml)**.
 
 
 ## Transport Protocol
 
-The system shall send the request messages to the repository service of the community using the MIME Multipart/Related 
+The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
 binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
 
-The request in MTOM format may look as follows: 
+The request in MTOM format may look as follows:
 
 ```
 POST /XDSDocumentRepositoryService HTTP/1.1
@@ -270,9 +284,10 @@ Content-ID: <1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org>
 
 ```
 
-The provide and register service sends the response message in the MIME Multipart/Related binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. 
+The provide and register service sends the response message in the MIME Multipart/Related binding as specified in the SOAP
+**[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
 
-The response in MTOM format may look as follows: 
+The response in MTOM format may look as follows:
 
 ```
 DefaultHttpResponse(chunked: false)
@@ -310,9 +325,13 @@ Content-ID: <root.message@cxf.apache.org>
 
 ## Audit Log
 
-Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol. The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=700)** and the **[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section 1.5 "Requirements on ATNA").  
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
+The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=700)** and the
+**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+1.5 "Requirements on ATNA").  
 
-The following snippet shows a example audit message to be written by the primary system: 
+The following snippet shows a example audit message to be written by the primary system:
 
 ```
 <?xml version="1.0"?>
@@ -340,10 +359,10 @@ The following snippet shows a example audit message to be written by the primary
 </AuditMessage>    
 ```
 
-The message is made of the following blocks: 
+The message is made of the following blocks:
 - *EventIdentification*: Element with event related information including the timestamp.
-- *ActiveParticipant*: Element of information related to the primary system performing the query. 
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request. 
+- *ActiveParticipant*: Element of information related to the primary system performing the query.
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
 - *ActiveParticipant*: Element with information on the responding service endpoint.
 - *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../files/PIXFeed.md)**).  
 - *ParticipantObjectIdentification*: Element with request message related information.  
@@ -351,13 +370,15 @@ The message is made of the following blocks:
 
 ## Security Requirements   
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended validation required) and client and server side certifcate validation. 
+To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certifcates (extended
+validation required) and client and server side certifcate validation.
 
-To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details. 
+To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
+envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.
 
-Note: 
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details. 
-- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details. 
+Note:
+- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
+- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.
 
 # Test Opportunity
 

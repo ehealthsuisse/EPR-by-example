@@ -1,5 +1,5 @@
 # Provide X-User Assertion
-Method to provide a SAML 2.0 authorization assertion in the Web Service Security header of transactions.
+Method to provide a SAML 2.0 assertion in the Web Service Security header to authorize transactions.
 
 - [Overview](#overview)
 - [Transaction](#transaction)

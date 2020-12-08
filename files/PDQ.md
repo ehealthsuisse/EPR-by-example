@@ -35,7 +35,7 @@ patient data sets, as registered by other primary systems.
 ## Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restictions defined in the
-**[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)** profile and the ordinances to the Swiss EPR.
+**[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
@@ -167,7 +167,8 @@ of the message, see section below.
 
 #### Message Interpretation
 
-The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element of the *controlAct* object. The *subject* child element conveys the following information:
+The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element
+of the *controlAct* object. The *subject* child element conveys the following information:
 
 - *name*: conveying the given and the family names of the matching patient data.
 - *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
