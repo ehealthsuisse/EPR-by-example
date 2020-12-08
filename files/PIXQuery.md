@@ -9,7 +9,7 @@ Transaction to get the master patient ID of a patient in a community using the l
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity) 
+- [Test Opportunity](#test-opportunity)
 
 # Overview
 
@@ -22,7 +22,7 @@ To retrieve the master patient ID for the patient to access the patients EPR, th
 **[Patient V3 Query \[ITI-45\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)**. Within the query request the
 primary system shall provide the local ID of the patient in the primary system, as well as the *data source* parameter
 of the assigning authority of the community and the the assigning authority EPR-SPID. The local ID must match the local
-ID the primary system registered the patient with (see **[PIX Feed](../main/PIXFeed.md)**).  
+ID the primary system registered the patient with (see **[PIX Feed](./PIXFeed.md)**).  
 
 If the patient is registered in the community, the community sends a response with the master patient ID (XAD-PID) and
 the EPR-SPID.
