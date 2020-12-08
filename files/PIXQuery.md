@@ -46,7 +46,7 @@ For a step by step interpretation of the request message, see section below.
 
 The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
 
-The SOAP *Header* element shall conveys the following information:
+The SOAP *Header* element shall convey the following information:
 
 - *To* element: The URL of the provide an register document set service.
 - *MessageID* element: a UUID of the message.
@@ -142,15 +142,63 @@ The query parameter are conveyed in the *queryByParameter* child element:
 
 ### Response Message
 
-The PIX V3 Feed service responds with the master patient ID and the EPR-SPID, the patient is regitered with in the community.
+The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EPR-SPID, the patient is registered with in
+the community.
+
+The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
+of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_response.xml)**.
 
 #### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_response.xml)**.
+The SOAP *Header* element shall conveys the following information:
+- *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
+- *RelatesTo* element: A copy of the unique ID of the query request.
 
 ```
-code block here    
+<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+ <wsa:Action xmlns:mustUnderstand="http://www.w3.org/2003/05/soap-envelope" mustUnderstand:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201310UV02</wsa:Action>
+ <wsa:RelatesTo>urn:uuid:c12e1f14-c2c9-4a94-ba27-6411e8c90b75</wsa:RelatesTo>
+</soapenv:Header>  
 ```
+
+The SOAP *Body* element conveys the administrative information required for a PRPA_IN201310UV02 message in HL7 V3 syntax and the query result encoded in the *controlActProcess* element.
+
+The *controlActProcess* element conveys the following information for the primary system in the *subject* child element:
+
+*patient* element:
+
+```
+38        <ns1:patient classCode="PAT">
+39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45" extension="799b00ee-2f2a-4444-8f93-c91730578af4" assigningAuthorityName="XDS Affinity Domain"/>
+40         <ns1:statusCode code="active"/>
+41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
+42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN" nullFlavor="NA"/>
+43          <ns1:asOtherIDs classCode="ROL">
+44           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3" extension="761337610435209810" assigningAuthorityName="SPID"/>
+45           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+46            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3"/>
+47           </ns1:scopingOrganization>
+48          </ns1:asOtherIDs>
+49         </ns1:patientPerson>
+50        </ns1:patient>
+```
+
+*custodian* element:
+
+```
+52       <ns1:custodian typeCode="CST">
+53        <ns1:assignedEntity classCode="ASSIGNED">
+54         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
+55         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
+56         <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+57          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+58           <ns1:given>org</ns1:given>
+59          </ns1:name>
+60         </ns1:assignedOrganization>
+61        </ns1:assignedEntity>
+62       </ns1:custodian>
+```
+
 
 ## Transport Protocol
 
