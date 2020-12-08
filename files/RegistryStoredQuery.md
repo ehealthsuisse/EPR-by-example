@@ -114,7 +114,7 @@ be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18
 
 ### Message Interpretation
 
-The response message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard.
+The response message is not very complex, but quite lengthy due to the genericity of the ebXML standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
 
 The SOAP *Header* element conveys the following information:

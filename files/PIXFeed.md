@@ -55,7 +55,7 @@ For a step by step interpretation of the request message, see section below.
 
 #### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
+The request message is not very complex, but lengthy due to the genericity of the HL7 V3 standard.
 
 The SOAP *Header* element shall convey the following information:
 
@@ -223,11 +223,39 @@ Content-Length: nnn
 
 ## Audit Log
 
-*TODO*
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
+The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=701)** and the
+**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+1.5 "Requirements on ATNA").  
+
+The following snippet shows a example audit message to be written by the primary system:
 
 ```
-code block here    
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="C" EventDateTime="2020-11-15T18:09:49+02:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110110" originalText="Patient Record" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-44" originalText="Patient Identity Feed" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="source_id" AlternativeUserID="00002752" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/mpi" AlternativeUserID="pixman" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
+ <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+  <ParticipantObjectDetail type="II" value="MDAwMDI3NTI="/>
+ </ParticipantObjectIdentification>
+</AuditMessage>  
 ```
+
+**TODO**:explain
 
 ## Security Requirements  
 

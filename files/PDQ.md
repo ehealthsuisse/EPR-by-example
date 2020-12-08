@@ -46,7 +46,7 @@ of the request message, see section below.
 
 #### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
+The request message is not very complex, but lengthy due to the genericity of the HL7 V3 standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
 
 The SOAP *Header* element conveys the following information:

@@ -145,7 +145,7 @@ The query parameter are conveyed in the *queryByParameter* child element:
 The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EPR-SPID, the patient is registered with in
 the community.
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
+The request message is not very complex, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
 of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_response.xml)**.
 
 #### Message Interpretation
@@ -161,11 +161,16 @@ The SOAP *Header* element shall conveys the following information:
 </soapenv:Header>  
 ```
 
-The SOAP *Body* element conveys the administrative information required for a PRPA_IN201310UV02 message in HL7 V3 syntax and the query result encoded in the *controlActProcess* element.
+The SOAP *Body* element conveys the administrative information required for a PRPA_IN201310UV02 message in HL7 V3 syntax
+and the query result encoded in the *controlActProcess* element.
 
 The *controlActProcess* element conveys the following information for the primary system in the *subject* child element:
 
-*patient* element:
+The *patient* child element conveys the master patient ID (XAD-SPID) and the EPR-SPID as follows:
+- *id* : The master patient ID (XAD-SPID), with the community OID as the assigning authority in the *root* and the ID in the *extension* attribute (line 39 in the example below).
+- *asOtherIDs*: The EPR-SPID, with the ZAS OID as assigning authority in the *root* and the ID in the *extension* attribute (line 44 in the example below).
+
+**TODO**: adapt to the update of the ordinances planned to April 2021.  
 
 ```
 38        <ns1:patient classCode="PAT">
@@ -183,7 +188,7 @@ The *controlActProcess* element conveys the following information for the primar
 50        </ns1:patient>
 ```
 
-*custodian* element:
+The *custodian* child element conveys information on the responding system as follows:
 
 ```
 52       <ns1:custodian typeCode="CST">
@@ -199,10 +204,9 @@ The *controlActProcess* element conveys the following information for the primar
 62       </ns1:custodian>
 ```
 
-
 ## Transport Protocol
 
-TBD
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:
 
 ```
 POST /PIXV3QueryService HTTP/1.1
@@ -215,11 +219,42 @@ Content-Length: nnnn
 
 ## Audit Log
 
-TBD
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
+The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=705)** and the
+**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+1.5 "Requirements on ATNA").  
+
+The following snippet shows a example audit message to be written by the primary system:
 
 ```
-code block here    
+<?xml version="1.0"?>
+<AuditMessage>
+ <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:40:41+01:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
+  <EventTypeCode csd-code="ITI-45" originalText="PIX Query" codeSystemName="IHE Transactions"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="source_id" AlternativeUserID="3345" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="mia.muster@domain.com">
+  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://service.com/mpi" AlternativeUserID="207" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
+ <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1" ParticipantObjectDataLifeCycle="6">
+  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
+ </ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+  <ParticipantObjectIDTypeCode csd-code="ITI-45" originalText="PIX Query" codeSystemName="IHE Transactions"/>
+  <ParticipantObjectQuery>PHF1...!--omitted for brevity-- ...ADS=</ParticipantObjectQuery>
+ </ParticipantObjectIdentification>
+</AuditMessage>   
 ```
+
+**TODO**:explain
 
 ## Security Requirements    
 

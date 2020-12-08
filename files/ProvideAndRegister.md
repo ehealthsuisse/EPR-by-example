@@ -59,7 +59,7 @@ A request message is quite lengthy. A listing with abbrevations used in the step
 
 ### Message Interpretation
 
-The request message is not complex in nature, but quite lengthy due to the genericity of the ebXML standard.
+The request message is not very complex, but lengthy due to the genericity of the ebXML standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
 
 The SOAP *Header* element conveys the following information:
