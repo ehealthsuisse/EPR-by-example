@@ -4,7 +4,7 @@ Method to provide a SAML 2.0 assertion in the Web Service Security header to aut
 - [Overview](#overview)
 - [Transaction](#transaction)
 	* [Message Semantics](#message-semantics)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Test Opportunity](#test-opportunity)
 
 # Overview

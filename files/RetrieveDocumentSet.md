@@ -9,7 +9,7 @@ Transaction to retrieve one or more documents from a community. Primary systems 
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)  
 

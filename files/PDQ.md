@@ -8,7 +8,7 @@ Transaction to search for patient identities and data from a community using the
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)
 

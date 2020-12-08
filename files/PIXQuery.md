@@ -7,7 +7,7 @@ Transaction to get the master patient ID of a patient in a community using the l
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)
 

@@ -9,7 +9,7 @@ patient data to be able to provide and retrieve documents to the patients EPR.
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)
 

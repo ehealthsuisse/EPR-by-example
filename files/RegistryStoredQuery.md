@@ -10,7 +10,7 @@ Transaction to lookup the document metadata for the documents stored in a patien
 		- [Response Message](#response-message)
 		- [Message Interpretation](#message-interpretation)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)  
 

@@ -10,7 +10,7 @@ and the to a community repository to add it to a patients EPR.
 		- [Request Message](#request-message)
 		- [Response Message](#response-message)
 	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
+	* [Audit Log](#audit-log)
 - [Security Requirements](#security-requirements)
 - [Test Opportunity](#test-opportunity)  
 
