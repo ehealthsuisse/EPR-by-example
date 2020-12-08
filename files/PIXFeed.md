@@ -259,7 +259,7 @@ The following snippet shows a example audit message to be written by the primary
 
 ## Security Requirements  
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certificates
+To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certifcate validation.
 
 Note:

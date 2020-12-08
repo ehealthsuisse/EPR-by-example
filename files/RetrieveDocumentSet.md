@@ -217,7 +217,7 @@ The message is made of the following blocks:
 
 ## Security Requirements   
 
-To ensure privacy the transction must be secured unsing https with mutual authentication, with X.509 certificates (extended
+To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates (extended
 validation required) and client and server side certifcate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
