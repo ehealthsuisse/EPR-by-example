@@ -142,7 +142,11 @@ The query parameter are conveyed in the *queryByParameter* child element:
 
 ### Response Message
 
-TBD
+The PIX V3 Feed service responds with the master patient ID and the EPR-SPID, the patient is regitered with in the community.
+
+#### Message Interpretation
+
+The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_response.xml)**.
 
 ```
 code block here    
