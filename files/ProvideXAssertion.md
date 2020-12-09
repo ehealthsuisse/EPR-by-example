@@ -32,12 +32,12 @@ TBD
 6    <Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
 7    <Security>
 8      <saml2:Assertion>
-9				< !-- assertion content ommitted for brevity -->
+9				... <!-- assertion content ommitted for brevity -->
 10      </saml2:Assertion>
 11    <Security>
 12  </Header>
 13  <Body>
-14		<!-- body elements of transaction used in conjuction ommitted for brevity -->
+14		... <!-- body elements of transaction used in conjuction ommitted for brevity -->
 15  <Body>
 16 </soapenv:Envelope>    
 ```
