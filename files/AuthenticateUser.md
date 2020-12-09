@@ -23,7 +23,18 @@ The EPR requires primary systems to implement authentication as described in the
 - **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
 - **[Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)**.
 
-TODO: SAML profile reference
+Primary systems do need implement all the bindings and profiles supported by the SAML 2.0 specification family.
+
+In the Swiss EPR the following bindings are required:
+- HTTP POST binding.
+- HTTP Artifact binding.
+- SAML SOAP binding.    
+
+In the Swiss EPR the following profiles are required:
+- Web Browser SSO Profile.
+- Single Logout Profile.
+
+
 
 # Transaction
 
