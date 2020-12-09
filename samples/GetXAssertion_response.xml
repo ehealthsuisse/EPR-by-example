@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+ <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+  <wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal</wsa:Action>
+  <wsa:RelatesTo>urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:RelatesTo>
+ </soapenv:Header>
+ <soapenv:Body>
+  <wst:RequestSecurityTokenResponseCollection xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+   <wst:RequestSecurityTokenResponse>
+    <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+    <wst:Lifetime>
+     <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2020-09-21T13:39:23.200Z</wsu:Created>
+     <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2020-09-21T13:54:23.200Z</wsu:Expires>
+    </wst:Lifetime>
+    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:Address>https://sp.communilty.ch</wsa:Address>
+     </wsa:EndpointReference>
+    </wsp:AppliesTo>
+    <wst:RequestedSecurityToken>
+     <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="_96189571-c72c-4a10-8f1c-6d5b27efa797" IssueInstant="2020-09-21T13:39:23.200Z" Version="2.0">
+      <!-- assertion omitted for brevity -->
+     </saml2:Assertion>
+    </wst:RequestedSecurityToken>
+    <wst:RequestedAttachedReference>
+     <wsse:SecurityTokenReference xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <wsse:Reference URI="_96189571-c72c-4a10-8f1c-6d5b27efa797" ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0"/>
+     </wsse:SecurityTokenReference>
+    </wst:RequestedAttachedReference>
+   </wst:RequestSecurityTokenResponse>
+  </wst:RequestSecurityTokenResponseCollection>
+ </soapenv:Body>
+</soapenv:Envelope>
