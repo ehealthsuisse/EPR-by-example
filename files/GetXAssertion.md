@@ -123,7 +123,7 @@ of the ordinances of the Swiss electronic patient dossier.
 ### Response Message
 
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_response_raw.xml)**.
+were ommitted to increase readability. The raw file may be found **[here](../samples/GetXAssertion_response_raw.xml)**.
 
 The respone message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization.
 

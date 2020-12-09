@@ -55,7 +55,7 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
 of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_request.xml)**.
+A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](../samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](../samples/ITI-41_request.xml)**.
 
 ### Message Interpretation
 
@@ -249,7 +249,7 @@ encoded in the *Body* element of the SOAP envelope as follows:
   <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>.
 ```
 
-The raw version of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-41_response.xml)**.
+The raw version of a response message may be found **[here](../samples/ITI-41_response.xml)**.
 
 
 ## Transport Protocol

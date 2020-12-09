@@ -38,7 +38,7 @@ Messages are encoded as described in the HL7 V3 standard with restictions define
 
 Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
 A raw version of a request message may be found
-**[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_request.xml)**.
+**[here](../samples/ITI-45_request.xml)**.
 
 For a step by step interpretation of the request message, see section below.
 
@@ -146,7 +146,7 @@ The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EP
 the community.
 
 The request message is not very complex, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
-of a response message may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-45_response.xml)**.
+of a response message may be found **[here](../samples/ITI-45_response.xml)**.
 
 #### Message Interpretation
 
