@@ -39,7 +39,7 @@ profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-The following snippet displays a sample request recorded during the EPR projectathon in September 2020. Some elements
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/ITI-18_request_raw.xml)**.
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.

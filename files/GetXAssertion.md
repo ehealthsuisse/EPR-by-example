@@ -29,22 +29,15 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 
 ### Request Message
 
-The following snippets display a sample request recorded during the EPR projectathon in September 2020. Some elements
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_request_raw.xml)**.
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
 
-- *To* element: The URL of the registry stored query service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the IdP Assertion which authenticates the user (see **[Authenticate User](../files/AuthenticateUser.md)**).  
-
-The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information:
-
-- *Slot* element with name *$XDSDocumentEntryStatus*: The status filter parameter, which must take the value *urn:oasis:names:tc:ebxml-regrep:StatusType:Approved* (line 18).  
-- *Slot* element with name *$XDSDocumentEntryPatientId*: The master patient ID (XAD-PID) of the patient in CX format
-(see **[PIX Feed](./PIXFeed.md)**) (line 23).
+- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element must contain the IdP Assertion taken from user authentication (see **[Authenticate User](../files/AuthenticateUser.md)**).  
 
 ```
 1 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
@@ -52,7 +45,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 3   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
 4   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:MessageID>
 5   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-6    <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_dbce1232740fcad9e020f927fd25a5d04779b4cc" IssueInstant="2020-09-21T13:38:43.857Z" Version="2.0">
+6    <saml2:Assertion>
 7      <!-- IdP Assertion content ommitted for brevity -->
 8    </saml2:Assertion>
 9   </wsse:Security>
@@ -61,7 +54,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 12   <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
 13    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
 14     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
-15      <wsa:Address>https://sp.communilty.ch</wsa:Address>
+15      <wsa:Address>https://sp.community.ch</wsa:Address>
 16     </wsa:EndpointReference>
 17    </wsp:AppliesTo>
 18    <wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2">
@@ -84,6 +77,42 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 35   </wst:RequestSecurityToken>
 36  </env:Body>
 37 </env:Envelope>    
+```
+
+The SOAP *Body* element contains the *RequestSecurityToken* element with the following claims to be set by the primary system. It's child element read:
+
+**AppliesTo** the URL of the community endpoint the XUA assertion shall be used for authorization, whose value is set in the *Address* child element.
+
+13    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+14     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+15      <wsa:Address>https://sp.community.ch</wsa:Address>
+16     </wsa:EndpointReference>
+17    </wsp:AppliesTo>
+
+**resourceID** conveying the EPR-SPID of the patient EPR to access in CX format (see see **[PIXFeed](../files/PIXFeed.md)**)
+
+```
+19     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
+20      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">761337610411353650^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue>
+21     </saml2:Attribute>
+```
+
+**purposeOfUse** conveying the purpose of use of the request, which must be taken from the EPR value set defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
+of the ordinances of the Swiss electronic patient dossier.
+
+```
+23      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
+24       <PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="CE"/>
+25      </saml2:AttributeValue>
+```
+
+**role** conveying the EPR role of the user, which must be taken from the EPR value set defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+
+```
+27     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role">
+28      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
+29       <Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Behandelnde(r)" xsi:type="CE"/>
+30      </saml2:AttributeValue>
 ```
 
 ### Response Message
