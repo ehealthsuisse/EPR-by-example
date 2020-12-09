@@ -31,7 +31,7 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 ### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_request_raw.xml)**.
+were ommitted to increase readability. The raw request file may be found **[here](../samples/GetXAssertion_request_raw.xml)**.
 
 The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](../XUA_samples/)**   
 
