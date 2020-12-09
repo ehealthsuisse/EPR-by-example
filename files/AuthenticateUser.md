@@ -38,7 +38,7 @@ The usage of the profiles and binding used to authenticate user for the Swiss EP
 
 # Transaction
 
-![Authentication Sequence Diagram](../media/SAML-Artifact-flow.png)
+![Authentication Sequence Diagram](../media/SAML-Artifact-flow-1.png)
 
 **Figure 1: Authentication Sequence Diagram**
 
