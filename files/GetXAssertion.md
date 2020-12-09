@@ -179,16 +179,15 @@ Content-Length: nnnn
 
 ## Audit Log
 
-TBD
-
-```
-code block here    
-```
+Primary systems should protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
 
 ## Security Requirements  
 
-TBD
+To ensure privacy the transaction must be secured using https with mutual authentication, using X.509 certificates (extended
+validation required) and client and server side certifcate validation.
+
+The retrieval of a XUA assertion requires user authentication by providing the IdP assertion in the *Security* header of the SOAP envelope (see **[Message Semantics](GetXAssertion.md#message-semantics)**). The IdP assertion shall be retrieved by the primary system by using the **[AuthenticateUser](./AuthenticateUser.md)** transaction.  
 
 # Test Opportunity
 
-TBD
+TODO
