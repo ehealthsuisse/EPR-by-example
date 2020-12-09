@@ -38,9 +38,20 @@ The usage of the profiles and binding used to authenticate user for the Swiss EP
 
 # Transaction
 
-![Authentication Sequence Diagram](../media/SAML-Artifact-flow-2.png)
+The transaction to authenticate a user for the access to the Swiss EPR is a multi-step flow consiting of HTTP Post and SOAP Web Service calls, as displayed in the following figure:
+
+![Authentication Sequence](../media/SAML-Artifact-flow.png)
 
 **Figure 1: Authentication Sequence Diagram**
+
+The sequence consists of the following steps, each with a assigned transaction message:
+
+- [01 .. 04] The user (claimant) is redirected to the identity provider via the user agent (browser) with a SAML 2.0 *AuthnRequest* message.
+- [05] The user authenticates at the identity provider with her authentciation means.
+- [06 .. 07] The identity provider responds to the *AuthnRequest* request with a SAML 2.0 artifact, redirecting to the primary system (relying party).  
+- [08] The   
+
+
 
 ## Message Semantics
 
