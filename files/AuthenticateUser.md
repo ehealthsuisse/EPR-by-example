@@ -26,15 +26,13 @@ The EPR requires primary systems to implement authentication as described in the
 Primary systems do need implement all the bindings and profiles supported by the SAML 2.0 specification family.
 
 In the Swiss EPR the following bindings are required:
-- HTTP POST binding.
-- HTTP Artifact binding.
-- SAML SOAP binding.    
+- HTTP POST Binding.
+- HTTP Artifact Binding.
+- SAML SOAP Binding.    
 
 In the Swiss EPR the following profiles are required:
 - Web Browser SSO Profile.
 - Single Logout Profile.
-
-
 
 # Transaction
 
