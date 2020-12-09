@@ -34,9 +34,13 @@ In the Swiss EPR the following profiles are required:
 - Web Browser SSO Profile.
 - Single Logout Profile.
 
+The usage of the profiles and binding used to authenticate user for the Swiss EPR is described in the following sections.
+
 # Transaction
 
-TBD
+![Authentication Sequence Diagram](media/SAML-Artifact-flow.png)
+
+**Figure 1: Authentication Sequence Diagram**
 
 ## Message Semantics
 
