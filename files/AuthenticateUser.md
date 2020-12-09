@@ -38,7 +38,7 @@ The usage of the profiles and binding used to authenticate user for the Swiss EP
 
 # Transaction
 
-The transaction to authenticate a user for the access to the Swiss EPR is a multi-step flow consiting of HTTP Post and SOAP Web Service calls, as displayed in the following figure:
+The transaction to authenticate a user for the access to the Swiss EPR is a multi-step flow consisting of HTTP Post and SOAP Web Service calls, as displayed in the following figure:
 
 ![Authentication Sequence](../media/SAML-Artifact-flow.png)
 
