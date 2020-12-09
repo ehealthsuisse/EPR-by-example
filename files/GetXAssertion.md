@@ -125,7 +125,7 @@ of the ordinances of the Swiss electronic patient dossier.
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw file may be found **[here](../samples/GetXAssertion_response_raw.xml)**.
 
-The respone message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization.
+The response message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization. For primary systems, there is no need to extract information from the XUA assertion.  
 
 ```
 1 <?xml version='1.0' encoding='utf-8'?>
@@ -162,8 +162,6 @@ The respone message is a XML SOAP envelope with the XUA Assertion embedded in th
 32  </soapenv:Body>
 33 </soapenv:Envelope>  
 ```
-
-Primary systems do not need to extract information from the XUA Assertion. Examples of XUA Assertion may be found **[here](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/E/190306_XUA_Samples.zip)**.   
 
 ## Transport Protocol
 
