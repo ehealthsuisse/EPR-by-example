@@ -21,7 +21,9 @@ This transaction is not standalone and shall be used in conjunction with other t
 
 ## Message Semantics
 
-TBD
+Primary systems shall use a **[Get X-User Assertion ](./GetXAssertion.md)** transaction to retrieve XUA SAML Assertion for authorization, before performing transactions which require authorization. The XUA SAML Assertion for authorization shall be added to the *Security* header of the SOAP envelope used for the transaction, which requires authorization.  
+
+The following snippet shows an abbreviated example message with a SAML Assertion:  
 
 ```
 1 <?xml version="1.0" encoding="UTF-8"?>
@@ -32,12 +34,12 @@ TBD
 6    <Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
 7    <Security>
 8      <saml2:Assertion>
-9				... <!-- assertion content ommitted for brevity -->
+9			  <!-- assertion content ommitted for brevity -->
 10      </saml2:Assertion>
 11    <Security>
 12  </Header>
 13  <Body>
-14		... <!-- body elements of transaction used in conjuction ommitted for brevity -->
+14  <!-- body elements of transaction used in conjuction ommitted for brevity -->
 15  <Body>
 16 </soapenv:Envelope>    
 ```
