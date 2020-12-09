@@ -9,7 +9,7 @@ Method to provide a SAML 2.0 assertion in the Web Service Security header to aut
 
 # Overview
 Primary systems shall use this transaction to incorporate SAML 2 assertions retrieved by the
-**[Get X-User Assertion ](./GetXAssertion.md)** to XDS.b transactions as defined in the **[IHE XUA profile(https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
+**[Get X-User Assertion ](./GetXAssertion.md)** to XDS.b transactions as defined in the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
 **[Ammendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.   
 
 # Transaction
@@ -44,7 +44,7 @@ The following snippet shows an abbreviated example message with a SAML Assertion
 16 </soapenv:Envelope>    
 ```
 
-For the details on the Assertion content, please see **[Get X-User Assertion ](./GetXAssertion.md#message-semantics)**
+For the details on the Assertion content, please see the step by step example in **[Get X-User Assertion ](./GetXAssertion.md)**.
 
 ## Audit Log
 
