@@ -83,11 +83,13 @@ The SOAP *Body* element contains the *RequestSecurityToken* element with the fol
 
 **AppliesTo** the URL of the community endpoint the XUA assertion shall be used for authorization, whose value is set in the *Address* child element.
 
+```
 13    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
 14     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
 15      <wsa:Address>https://sp.community.ch</wsa:Address>
 16     </wsa:EndpointReference>
 17    </wsp:AppliesTo>
+```
 
 **resourceID** conveying the EPR-SPID of the patient EPR to access in CX format (see see **[PIXFeed](../files/PIXFeed.md)**)
 
