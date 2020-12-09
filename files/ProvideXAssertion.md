@@ -39,10 +39,12 @@ The following snippet shows an abbreviated example message with a SAML Assertion
 11    <Security>
 12  </Header>
 13  <Body>
-14  <!-- body elements of transaction used in conjuction ommitted for brevity -->
+14   <!-- body elements of transaction used in conjuction ommitted for brevity -->
 15  <Body>
 16 </soapenv:Envelope>    
 ```
+
+For the details on the Assertion content, please see **[Get X-User Assertion ](./GetXAssertion.md#message-semantics)**
 
 ## Audit Log
 
