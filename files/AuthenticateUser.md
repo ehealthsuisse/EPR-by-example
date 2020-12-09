@@ -1,5 +1,5 @@
 # Authenticate User
-Transaction to authenticate a user with SAML 2.0
+Transaction to authenticate a user at a identity provider certified for the Swiss EPR. Primary systems shall use this transaction to retrieve a IdP assertion. The IdP assertion is required to retrieve the XUA Assertion to be used with EPR transactions.
 
 - [Overview](#overview)
 - [Transaction](#transaction)
@@ -9,11 +9,12 @@ Transaction to authenticate a user with SAML 2.0
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity) 
+- [Test Opportunity](#test-opportunity)
 
 # Overview
 
-TBD   
+Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the Swiss EPR. The requirements for the transaction are defined in
+**[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of the ordinances of the Swiss EPR.
 
 # Transaction
 
