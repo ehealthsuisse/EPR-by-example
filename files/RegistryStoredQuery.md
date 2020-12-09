@@ -279,7 +279,6 @@ defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundh
 *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
 - *Name* : The human readable display name of the document type code.
 
-
 ```
 129      <ns2:Classification
 130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"

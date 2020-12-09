@@ -32,6 +32,8 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_request_raw.xml)**.
 
+The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](./XUA_samples/)**   
+
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
 
@@ -119,7 +121,10 @@ of the ordinances of the Swiss electronic patient dossier.
 
 ### Response Message
 
-TBD
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
+were ommitted to increase readability. The raw file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_response_raw.xml)**.
+
+The respone message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization.
 
 ```
 1 <?xml version='1.0' encoding='utf-8'?>
@@ -142,7 +147,7 @@ TBD
 18      </wsa:EndpointReference>
 19     </wsp:AppliesTo>
 20     <wst:RequestedSecurityToken>
-21      <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="_96189571-c72c-4a10-8f1c-6d5b27efa797" IssueInstant="2020-09-21T13:39:23.200Z" Version="2.0">
+21      <saml2:Assertion>
 22       <!-- assertion content omitted for brevity -->
 23      </saml2:Assertion>
 24     </wst:RequestedSecurityToken>
@@ -157,12 +162,20 @@ TBD
 33 </soapenv:Envelope>  
 ```
 
+Primary systems do not need to extract information from the XUA Assertion. Examples of XUA Assertion may be found **[here](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/E/190306_XUA_Samples.zip)**.   
+
 ## Transport Protocol
 
-TBD
+The primary system shall send the request messages to the X-Assertion Provider of the community using the http
+POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
-code block here    
+POST /RegistryStoredQueryService HTTP/1.1
+Host: company.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
 ```
 
 ## Audit Log
