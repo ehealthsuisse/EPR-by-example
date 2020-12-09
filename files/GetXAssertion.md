@@ -14,7 +14,8 @@ Transaction to retrieve a SAML 2.0 assertion for authorization of transactions i
 # Overview
 
 Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with the
-**[Provide X-User Assertion](./ProvideXAssertion.md)** with XDS.b transactions as defined in the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
+**[Provide X-User Assertion](./ProvideXAssertion.md)** with XDS.b transactions as defined in
+the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
 **[Amendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
 
 The primary system shall provide claims (e.g., user role, purpose of use) with the request as defined in **[Ammendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
@@ -32,7 +33,7 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found **[here](https://github.com/msmock/AnnotatedTX/blob/main/samples/GetXAssertion_request_raw.xml)**.
 
-The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](./XUA_samples/)**   
+The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](../XUA_samples/)**   
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
