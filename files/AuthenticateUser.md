@@ -49,7 +49,9 @@ The sequence consists of the following steps, each with a assigned transaction m
 - [01 .. 04] The user (claimant) is redirected to the identity provider via the user agent (browser) with a SAML 2.0 *AuthnRequest* message.
 - [05] The user authenticates at the identity provider with her authentciation means.
 - [06 .. 07] The identity provider responds to the *AuthnRequest* request with a SAML 2.0 artifact, redirecting to the primary system (relying party).  
-- [08] The   
+- [08] The primary system sends a *ArtifactResolve* message to resolve the SAML artifact to the SAML 2 IdP Assertion.
+- [09] The IdP responds the IdP Assertion in the *ArtifactResponse*.    
+
 
 
 
