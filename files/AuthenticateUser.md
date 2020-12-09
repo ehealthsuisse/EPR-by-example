@@ -13,8 +13,16 @@ Transaction to authenticate a user at a identity provider certified for the Swis
 
 # Overview
 
-Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the Swiss EPR. The requirements for the transaction are defined in
+Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the Swiss EPR.
+
+The requirements for the transaction are defined in
 **[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of the ordinances of the Swiss EPR.
+
+The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
+- **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
+- **[Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)**.
+
+TODO: SAML profile reference
 
 # Transaction
 
