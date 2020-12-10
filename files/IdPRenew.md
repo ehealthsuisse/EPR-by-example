@@ -84,7 +84,7 @@ and namespaces were ommitted to increase readability. The raw request file may b
 61  </Header>
 ```
 
-A new SAML 2.0 IdP Assertion is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). For details of the assertion see **[here](../XUA_samples)**.
+A new SAML 2.0 IdP Assertion is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). For examples of Swiss EPR compliant XUA assertions see **[here](../XUA_samples)**.
 
 ```
 62  <Body Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754">
