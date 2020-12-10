@@ -13,13 +13,17 @@ Swiss EPR transactions by example
 
 **[Registry Stored Query](../main/files/RegistryStoredQuery.md)** - get and display document metadata
 
-**[Retrieve Document Set](../main/files/RetrieveDocumentSet.md)** - get and display documents 
+**[Retrieve Document Set](../main/files/RetrieveDocumentSet.md)** - get and display documents
 
 **[Provide and Register Document Set](../main/files/ProvideAndRegister.md)** - store documents in the EPR
 
 ## Authentication
 
 **[Authenticate User](../main/files/AuthenticateUser.md)** - Authenticate a user
+
+**[IdP Renew]()** - renew a IdP assertion
+
+**[SSO Logout]()** - Logout a authentciated user  
 
 ## Authorization
 
