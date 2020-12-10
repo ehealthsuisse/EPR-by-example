@@ -2,11 +2,12 @@
 Transaction to authenticate a user at a identity provider certified for the Swiss EPR. Primary systems shall use this transaction to retrieve a IdP assertion. The IdP assertion is required to retrieve the XUA Assertion to be used with EPR transactions.
 
 - [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Authentication Request](#authentication-request)
-		- [Authentication Redirect](#authentication-redirect)
-		- [Artifact Resolve](#artifact-resolve)
+- [Transactions](#transactions)
+	* [Authentication Request](#authentication-request)
+		- [Message Semantics](#message-semantics)
+		- [Transport Protocol](#transport-protocol)
+	*[Authentication Redirect](#authentication-redirect)
+	*[Artifact Resolve](#artifact-resolve)
 		- [Artifact Response](#artifact-response)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
@@ -38,7 +39,7 @@ In the Swiss EPR the following profiles are required:
 
 The usage of the profiles and binding used to authenticate user for the Swiss EPR is described in the following sections.
 
-# Transaction
+# Transactions
 
 The transaction to authenticate a user for the access to the Swiss EPR is a multi-step flow consisting of HTTP Post and SOAP Web Service calls, as displayed in the following figure:
 
@@ -54,9 +55,11 @@ The sequence consists of the following steps, each using assigned transaction me
 - [08] The primary system sends a *ArtifactResolve* message to resolve the SAML artifact to the SAML 2 IdP Assertion via the SOAP backchannel.
 - [09] The IdP responds the IdP Assertion in the *ArtifactResponse* message.
 
-## Message Semantics
+## Authentication Request
 
-### Authentication Request
+### Message Semantics
+
+#### Request Message
 
 This request shall be performed by the primary system when the user aims to access the EPR. The primary system shall redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
@@ -65,11 +68,11 @@ were ommitted to increase readability. The raw request file may be found
 **[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
 
 The *AuthnRequest* conveys the following informantion to be set by the primary system:
-- *ID*: A unique ID of the request message (line 7 in example below).
-- *Issuer*: A ID of the primary system as URL (line 9 in example below).
+- *ID*: A unique ID of the request message (line 7 in the example below).
+- *Issuer*: A ID of the primary system as URL (line 9 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
-- *SignatureValue*: The signature of the request (line 23).
-- *X509Certificate*: The X509 certificate used to sign the request.
+- *SignatureValue*: The signature of the request (line 23 in the example below).
+- *X509Certificate*: The X509 certificate used to sign the request (line 26 in the example below).
 
 ```
 1 <AuthnRequest
@@ -105,20 +108,31 @@ The *AuthnRequest* conveys the following informantion to be set by the primary s
 31 </AuthnRequest>  
 ```
 
-### Authentication Redirect
-
+### Response Message
 When the user was authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. It conveys two parameter to be used by the primary system:
 - *SAMLart*: The SAML artifact to be used in the *ArtifactResolve* request (see section below).
-- *RelayState*: An unique identifier of the conversation, the primary system sent with the Authentication Request.
+- *RelayState*: An unique identifier of the conversation, the primary system initally sent with the Authentication Request.
 
 ```
 https://epdtest.mycompany.local:8549/ACS?SAMLart=AAQAAOjXNPPr%2Fr7FO5WpiZ%2B2vAl5KMFibkRaAGwIkwXh%2Bo7DgsG2LMDE58c%3D&RelayState=idp%23468
 
 ```
 
-### Artifact Resolve
+### Transport Protocol
+
+TBD
+
+```
+code block here    
+```
+
+## Artifact Resolve
+
+### Message Semantics
+
+#### Request Message
 
 TBD
 
@@ -155,7 +169,7 @@ TBD
 30 </Envelope>   
 ```
 
-### Artifact Response
+#### Response Message
 
 TBD
 
@@ -260,7 +274,7 @@ TBD
 
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 TBD
 
@@ -276,7 +290,7 @@ Primary systems shall protocol the transaction in their logs to ensure tracabili
 
 All HTTP transactions shall use TLS secured transports (HTTPS) to ensure data privacy.
 
-The Artifact Resolve transaction must be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.   
+The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.   
 
 # Test Opportunity
 
