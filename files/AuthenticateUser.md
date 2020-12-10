@@ -255,15 +255,13 @@ code block here
 
 ## Audit Log
 
-TBD
-
-```
-code block here    
-```
+Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in the ordinances of the Swiss EPR.
 
 ## Security Requirements   
 
-TBD
+All HTTP transactions shall use TLS secured transports to ensure data privacy.
+
+The Artifact Resolve transaction must be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.   
 
 # Test Opportunity
 
