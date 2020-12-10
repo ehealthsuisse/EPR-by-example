@@ -127,6 +127,7 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 
 The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion. The primary system shall use the SOAP backchannel with an *ArtifactResolve* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
+
 ### Message Semantics
 
 #### Request Message
