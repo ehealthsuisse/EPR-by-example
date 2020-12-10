@@ -10,10 +10,12 @@ Transaction to authenticate a user at a identity provider certified for the Swis
 
 # Overview
 
-Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the Swiss EPR.
+Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the
+Swiss EPR.
 
 The requirements for the transaction are defined in
-**[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of the ordinances of the Swiss EPR.
+**[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of
+the ordinances of the Swiss EPR.
 
 The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
 - **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
@@ -51,9 +53,12 @@ The sequence consists of the following steps, each using assigned transaction me
 
 ## Authentication Request
 
-The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall
+redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in
+**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
-When the user is authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
+When the user is authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary
+system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
 
 ### Message Semantics
 
@@ -128,7 +133,8 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 
 The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion.
 
-The primary system shall use the SOAP backchannel with an *ArtifactResolve* request message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+The primary system shall use the SOAP backchannel with an *ArtifactResolve* request message as defined in
+**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
 The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
@@ -250,9 +256,11 @@ The *ArtifactResponse* conveys the following information which shall be evaluate
 
 The following snippet shows an example of a IdP Assertion conveyed with the response.
 
-The primary system must keep the IdP Assertion in memory to use it to authenticate the **[Get X-User Assertion](./GetXAssertion.md)** transaction.
+The primary system must keep the IdP Assertion in memory to use it to authenticate the
+**[Get X-User Assertion](./GetXAssertion.md)** transaction.
 
-The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the assertion:
+The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the
+assertion:
 -  *NameID* : This element conveys the user ID assigned by IdP. Primary systems may use it to locally authenticate the user in the primary system.
 - *AttributeStatement*: IdP may provide user attributes in the *AttributeStatement* child elements. The optional fields cover the GLN of the healthcare professional and other attributes, the primary system may use internally.
 
@@ -321,11 +329,13 @@ Content-Length: nnnn
 
 ### Security Requirements   
 
-The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.  
+The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with
+client and server certificate validation. The certificates shall be exchanged during the client registration process.  
 
 ## Audit Log
 
-Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in the ordinances of the Swiss EPR.
+Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in
+the ordinances of the Swiss EPR.
 
 # Test Opportunity
 
