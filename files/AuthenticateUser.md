@@ -51,11 +51,11 @@ The sequence consists of the following steps, each using assigned transaction me
 
 ## Authentication Request
 
+The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+
 ### Message Semantics
 
 #### Request Message
-
-This request shall be performed by the primary system when the user aims to access the EPR. The primary system shall redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found
@@ -116,11 +116,7 @@ https://epdtest.mycompany.local:8549/ACS?SAMLart=AAQAAOjXNPPr%2Fr7FO5WpiZ%2B2vAl
 
 ### Transport Protocol
 
-TBD
-
-```
-code block here    
-```
+The transaction uses front channel HTTP communication via the user agent (browser).
 
 ### Security Requirements   
 
@@ -128,6 +124,8 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 
 
 ## Artifact Resolve
+
+The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion. The primary system shall use the SOAP backchannel with an *ArtifactResolve* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
 ### Message Semantics
 
@@ -275,10 +273,16 @@ TBD
 
 ### Transport Protocol
 
-TBD
+The primary system shall send the request messages to the IdP of the community using the http POST binding as defined
+in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
-code block here    
+POST /IdPAuthenticationService HTTP/1.1
+Host: idp.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
 ```
 
 ### Security Requirements   
