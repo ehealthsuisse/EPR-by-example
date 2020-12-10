@@ -48,33 +48,33 @@ and namespaces were ommitted to increase readability. The raw request file may b
 22      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
 23       <InclusiveNamespaces PrefixList="soap"/>
 24      </CanonicalizationMethod>
-25      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256" />
+25      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/>
 26      <Reference URI="#TS-15277e04-85e0-4b9c-9692-76c3e7be17bc" >
 27       <Transforms>
-28        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" >
+28        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
 29         <InclusiveNamespaces PrefixList="soap wsse"/>
 30        </Transform>
 31       </Transforms>
-32       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+32       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
 33       <DigestValue>LCxW9EORpApnpju2Q17b0MB1LGt8CMCuvoOqCtlhFx0=</DigestValue>
 34      </Reference>
 35      <Reference URI="#_33c9f0c5-c7d2-4d53-ad2f-944320637754" >
 36       <Transforms>
-37        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+37        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
 38       </Transforms>
-39       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+39       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
 40       <DigestValue>TwKUz3SxOx1NaFVvy55AbbpWXbUJmfn+mreDpkNa/pg=</ds:DigestValue>
 41      </Reference>
 42     </SignedInfo>
 43     <SignatureValue>
 44      <!-- signature value omitted -->
 45     </SignatureValue>
-46     <KeyInfo Id="KI-2c6438fa-738a-4ffb-aa52-379bd9380b1a" >
+46     <KeyInfo Id="KI-2c6438fa-738a-4ffb-aa52-379bd9380b1a">
 47      <SecurityTokenReference Id="STR-76ccd654-581d-446e-a00b-8ed529bcc4ab">
 51       <X509Data>
 52        <X509IssuerSerial>
-53         <X509IssuerName >CN=lk,OU=lk,O=lk,L=lsn,ST=vd,C=ch</X509IssuerName>
-54         <X509SerialNumber >1029096151</X509SerialNumber>
+53         <X509IssuerName>CN=lk,OU=lk,O=lk,L=lsn,ST=vd,C=ch</X509IssuerName>
+54         <X509SerialNumber>1029096151</X509SerialNumber>
 55        </X509IssuerSerial>
 56       </X509Data>
 57      </SecurityTokenReference>
@@ -93,7 +93,7 @@ The SAML Assertion to be renewd shall be conveyed in the the *Body* of the SOAP 
 65    <TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</TokenType>
 66    <RenewTarget>
 67     <Assertion>
-68      <!-- Assertion returned by the IdP ommitted for brevity -->
+68      <!-- Assertion to be renewed ommitted for brevity -->
 69     </Assertion>
 70    </RenewTarget>
 71    <Renewing/>
