@@ -1,0 +1,32 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+ <SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"/>
+ <SOAP-ENV:Body xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <wst:RequestSecurityTokenResponse xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" Context="">
+   <wst:TokenType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+    http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0
+   </wst:TokenType>
+   <wst:Lifetime xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+    <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+     2019-03-26T15:13:13.378Z
+    </wsu:Created>
+    <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+     2019-03-26T15:18:13.378Z
+    </wsu:Expires>
+   </wst:Lifetime>
+   <wst:RequestedSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+    <!-- Assertion returned by the IdP ommitted fro brevity -->
+   </wst:RequestedSecurityToken>
+   <wst:RequestedAttachedReference xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+    <wsse:SecurityTokenReference
+     xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+     xmlns:NS1="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"
+     xmlns="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd"
+     NS1:TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0">
+     <wsse:KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      #ID_cf6f7da6-c670-4c35-b413-39182b5672f2
+     </wsse:KeyIdentifier>
+    </wsse:SecurityTokenReference>
+   </wst:RequestedAttachedReference>
+  </wst:RequestSecurityTokenResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
