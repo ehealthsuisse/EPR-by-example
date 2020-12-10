@@ -12,25 +12,25 @@
 
 # Overview
 
-TBD
+*TODO*
 
 # Transaction
 
 ## Message Semantics
 
-TBD
+*TODO*
 
 ### Request Message
 
-TBD
+*TODO*
 
 #### Message Interpretation
 
-TBD
+*TODO*
 
 ## Transport Protocol
 
-TBD
+*TODO*
 
 ## Audit Log
 
@@ -42,7 +42,7 @@ code block here
 
 ## Security Requirements  
 
-TBD
+*TODO*
 
 # Test Opportunity
 
