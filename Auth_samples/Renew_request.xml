@@ -41,7 +41,7 @@
 41      </ds:Reference>
 42     </ds:SignedInfo>
 43     <ds:SignatureValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-44      MXd0WKOSV/1p8U630+CrSu/1vLBbefqtpUI6HSyjfA68+ULGkdMNi5D++wJjB/j0sCdEs6g9tiWqiQoa5kk/tUXCeDIKjv ...oodmB+gly/1lYmFez4sapcBg7ZGEMwCLTQcuMKw9y+jrYghSc2fCOeLQw9EQ==
+44      <!-- signature value omitted -->
 45     </ds:SignatureValue>
 46     <ds:KeyInfo Id="KI-2c6438fa-738a-4ffb-aa52-379bd9380b1a" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 47      <wsse:SecurityTokenReference
@@ -65,7 +65,7 @@
 65    <wst:TokenType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
 66    <wst:RenewTarget xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
 67     <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns="urn:oasis:names:tc:SAML:2.0:assertion" ID="ID_6ff2590e-8df8-4f04-9ae0-cfd16d816c49" IssueInstant="2019-03-26T15:12:13.246Z" Version="2.0">
-68      <!-- to be renewed assertion omitted -->
+68      <!-- assertion omitted -->
 69     </saml:Assertion>
 70    </wst:RenewTarget>
 71    <wst:Renewing xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"/>
