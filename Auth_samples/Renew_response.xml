@@ -1,29 +1,22 @@
-1 <Envelope>
-2  <Header/>
-3  <Body>
-4   <RequestSecurityTokenResponse  Context="">
-5    <TokenType>
-6     http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0
-7    </TokenType>
-8    <Lifetime>
-9     <wsu:Created>
-10      2019-03-26T15:13:13.378Z
-11     </wsu:Created>
-12     <wsu:Expires>
-13      2019-03-26T15:18:13.378Z
-14     </wsu:Expires>
-15    </Lifetime>
-16    <RequestedSecurityToken>
-17     <!-- Assertion returned by the IdP ommitted fro brevity -->
-18    </RequestedSecurityToken>
-19    <RequestedAttachedReference>
-20     <SecurityTokenReference
-24      TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0">
-25      <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">
-26       #ID_cf6f7da6-c670-4c35-b413-39182b5672f2
-27      </KeyIdentifier>
-28     </SecurityTokenReference>
-29    </RequestedAttachedReference>
-30   </RequestSecurityTokenResponse>
-31  </Body>
-32 </Envelope>
+<Envelope>
+ <Header/>
+ <Body>
+  <RequestSecurityTokenResponse Context="">
+   <TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</TokenType>
+   <Lifetime>
+    <wsu:Created>2019-03-26T15:13:13.378Z</wsu:Created>
+    <wsu:Expires>2019-03-26T15:18:13.378Z</wsu:Expires>
+   </Lifetime>
+   <RequestedSecurityToken>
+    <Assertion>
+     <!-- Assertion returned by the IdP ommitted for brevity -->
+    </Assertion>
+   </RequestedSecurityToken>
+   <RequestedAttachedReference>
+    <SecurityTokenReference TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0">
+     <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">#ID_cf6f7da6-c670-4c35-b413-39182b5672f2</KeyIdentifier>
+    </SecurityTokenReference>
+   </RequestedAttachedReference>
+  </RequestSecurityTokenResponse>
+ </Body>
+</Envelope>

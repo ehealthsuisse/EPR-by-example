@@ -33,7 +33,7 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found **[here](../samples/GetXAssertion_request_raw.xml)**.
 
-The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](../XUA_samples/)**   
+The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](../XUA_samples/)**.   
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
@@ -126,6 +126,8 @@ The following snippet is taken from a sample response recorded during the EPR pr
 were ommitted to increase readability. The raw file may be found **[here](../samples/GetXAssertion_response_raw.xml)**.
 
 The response message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization. For primary systems, there is no need to extract information from the XUA assertion.  
+
+The XUA Assertion is omitted in the snippet below. For examples of see (**[here](../XUA_samples)**.  
 
 ```
 1 <?xml version='1.0' encoding='utf-8'?>

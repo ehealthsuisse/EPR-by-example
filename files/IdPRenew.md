@@ -56,14 +56,14 @@ and namespaces were ommitted to increase readability. The raw request file may b
 30        </Transform>
 31       </Transforms>
 32       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-33       <DigestValue >LCxW9EORpApnpju2Q17b0MB1LGt8CMCuvoOqCtlhFx0=</DigestValue>
+33       <DigestValue>LCxW9EORpApnpju2Q17b0MB1LGt8CMCuvoOqCtlhFx0=</DigestValue>
 34      </Reference>
 35      <Reference URI="#_33c9f0c5-c7d2-4d53-ad2f-944320637754" >
 36       <Transforms>
 37        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
 38       </Transforms>
 39       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-40       <DigestValue >TwKUz3SxOx1NaFVvy55AbbpWXbUJmfn+mreDpkNa/pg=</ds:DigestValue>
+40       <DigestValue>TwKUz3SxOx1NaFVvy55AbbpWXbUJmfn+mreDpkNa/pg=</ds:DigestValue>
 41      </Reference>
 42     </SignedInfo>
 43     <SignatureValue>
@@ -82,6 +82,11 @@ and namespaces were ommitted to increase readability. The raw request file may b
 59    </Signature>
 60   </Security>
 61  </Header>
+```
+
+A new SAML 2.0 IdP Assertion is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). For details of the assertion see **[here](../XUA_samples)**.
+
+```
 62  <Body Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754">
 63   <RequestSecurityToken>
 64    <RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Renew</RequestType>
@@ -106,34 +111,26 @@ and namespaces were ommitted to increase readability. The raw request file may b
 1 <Envelope>
 2  <Header/>
 3  <Body>
-4   <RequestSecurityTokenResponse  Context="">
-5    <TokenType>
-6     http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0
-7    </TokenType>
-8    <Lifetime>
-9     <wsu:Created>
-10      2019-03-26T15:13:13.378Z
-11     </wsu:Created>
-12     <wsu:Expires>
-13      2019-03-26T15:18:13.378Z
-14     </wsu:Expires>
-15    </Lifetime>
-16    <RequestedSecurityToken>
-17     <Assertion> <!-- Assertion returned by the IdP ommitted for brevity --> </Assertion>
-18    </RequestedSecurityToken>
-19    <RequestedAttachedReference>
-20     <SecurityTokenReference
-24      TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0">
-25      <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">
-26       #ID_cf6f7da6-c670-4c35-b413-39182b5672f2
-27      </KeyIdentifier>
-28     </SecurityTokenReference>
-29    </RequestedAttachedReference>
-30   </RequestSecurityTokenResponse>
-31  </Body>
-32 </Envelope>
+4   <RequestSecurityTokenResponse Context="">
+5    <TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</TokenType>
+6    <Lifetime>
+7     <wsu:Created>2019-03-26T15:13:13.378Z</wsu:Created>
+8     <wsu:Expires>2019-03-26T15:18:13.378Z</wsu:Expires>
+9    </Lifetime>
+10    <RequestedSecurityToken>
+11     <Assertion>
+12      <!-- Assertion returned by the IdP ommitted for brevity -->
+13     </Assertion>
+14    </RequestedSecurityToken>
+15    <RequestedAttachedReference>
+16     <SecurityTokenReference TokenType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0">
+17      <KeyIdentifier ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLID">#ID_cf6f7da6-c670-4c35-b413-39182b5672f2</KeyIdentifier>
+18     </SecurityTokenReference>
+19    </RequestedAttachedReference>
+20   </RequestSecurityTokenResponse>
+21  </Body>
+22 </Envelope>
 ```
-
 
 ## Transport Protocol
 
