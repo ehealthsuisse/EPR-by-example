@@ -186,6 +186,13 @@ The following snippet is taken from a sample response recorded during the EPR pr
 were ommitted to increase readability. The raw request file may be found
 **[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
 
+The *ArtifactResponse* conveys the following informantion which shall be evaluated by the primary system:
+- *Issuer*: A ID of the primary system as URL (line 4 in the example below).
+- *SignedInfo*: Signature metadata and the digest value used for the signature.
+- *SignatureValue*: The signature of the request (line 18 in the example below).
+- *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
+- *ssertion*: The IdP assertion conveying the attributes of the authenticated user.  
+
 ```
 1 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
 2  <SOAP-ENV:Body>
@@ -242,7 +249,7 @@ were ommitted to increase readability. The raw request file may be found
 97 </SOAP-ENV:Envelope>
 ```
 
-The following snippet shows an example of a IdP Assertion conveyd with the response.
+The following snippet shows an example of a IdP Assertion conveyed with the response.
 
 ```
 47     <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67" IssueInstant="2020-09-24T11:19:41.633Z" Version="2.0">
