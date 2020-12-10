@@ -23,7 +23,7 @@
       <ds:DigestValue>1RZPbh508clAQoKhxnQZEenNFyg=</ds:DigestValue>
      </ds:Reference>
     </ds:SignedInfo>
-    <ds:SignatureValue><!-- omitted for brevity --> </ds:SignatureValue>
+    <ds:SignatureValue> <!-- omitted for brevity --> </ds:SignatureValue>
     <ds:KeyInfo>
      <ds:X509Data>
       <ds:X509SKI>gYMVdgdR5LG/983GRTJIch0a+zU=</ds:X509SKI>
@@ -85,6 +85,7 @@
       </saml2:AuthnContext>
      </saml2:AuthnStatement>
      <saml2:AttributeStatement>
+      <!-- other vendor specific attributes omitted for brevity -->
       <saml2:Attribute Name="GLN" NameFormat="urn:oasis:names:tc:ebcore:partyid-type:DataUniversalNumberingSystem:0060">
        <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9801000050702</saml2:AttributeValue>
       </saml2:Attribute>
