@@ -1,31 +1,31 @@
-<AuthnRequest
- xmlns="urn:oasis:names:tc:SAML:2.0:protocol"
- AssertionConsumerServiceURL="https://epdtest.mycompany.local:8549/ACS"
- IssueInstant="2020-09-24T13:19:25.208+02:00"
- Destination="https://fed.idp.ch:443/saml/3.0/idp/"
- ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
- ID="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
- Version="2.0">
- <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
- <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-  <SignedInfo>
-   <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-   <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-   <Reference URI="#SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0">
-    <Transforms>
-     <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-     <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-    </Transforms>
-    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-    <DigestValue>TdN8cZ5mvY7pOsrpOK0h+YlnvlhOOHYecaBN59yH4w0=</DigestValue>
-   </Reference>
-  </SignedInfo>
-  <SignatureValue><!-- omitted for brevity --></SignatureValue>
-  <KeyInfo>
-   <X509Data>
-    <X509Certificate><!-- omitted for brevity --></X509Certificate>
-   </X509Data>
-  </KeyInfo>
- </Signature>
- <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" AllowCreate="true"/>
-</AuthnRequest>
+1 <AuthnRequest
+2  xmlns="urn:oasis:names:tc:SAML:2.0:protocol"
+3  AssertionConsumerServiceURL="https://epdtest.mycompany.local:8549/ACS"
+4  IssueInstant="2020-09-24T13:19:25.208+02:00"
+5  Destination="https://fed.idp.ch:443/saml/3.0/idp/"
+6  ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
+7  ID="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
+8  Version="2.0">
+9  <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
+10  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+11   <SignedInfo>
+12    <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+13    <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+14    <Reference URI="#SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0">
+15     <Transforms>
+16      <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+17      <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+18     </Transforms>
+19     <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+20     <DigestValue>TdN8cZ5mvY7pOsrpOK0h+YlnvlhOOHYecaBN59yH4w0=</DigestValue>
+21    </Reference>
+22   </SignedInfo>
+23   <SignatureValue><!-- omitted for brevity --></SignatureValue>
+24   <KeyInfo>
+25    <X509Data>
+26     <X509Certificate><!-- omitted for brevity --></X509Certificate>
+27    </X509Data>
+28   </KeyInfo>
+29  </Signature>
+30  <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" AllowCreate="true"/>
+31 </AuthnRequest>

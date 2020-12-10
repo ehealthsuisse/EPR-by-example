@@ -1,30 +1,30 @@
-<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
- <Body>
-  <ArtifactResolve xmlns="urn:oasis:names:tc:SAML:2.0:protocol" ID="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF" Version="2.0" IssueInstant="2020-09-24T13:19:41.822+02:00" Destination="https://fed.idp.ch/nevisauth/services/artifactresolution">
-   <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
-   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-    <SignedInfo>
-     <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-     <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-     <Reference URI="#SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF">
-      <Transforms>
-       <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-       <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-      </Transforms>
-      <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-      <DigestValue>R+bMs3semvJBgae/3wnNVZp0eTpIhQQK4+S2KqRj1bM=</DigestValue>
-     </Reference>
-    </SignedInfo>s
-    <SignatureValue> <!-- omitted for brevity --> </SignatureValue>
-    <KeyInfo>
-     <X509Data>
-      <X509Certificate> <!-- omitted for brevity --> </X509Certificate>
-     </X509Data>
-    </KeyInfo>
-   </Signature>
-   <Artifact>
-    AAQAAOjXNPPr/r7FO5WpiZ+2vAl5KMFibkRaAGwIkwXh+o7DgsG2LMDE58c=
-   </Artifact>
-  </ArtifactResolve>
- </Body>
-</Envelope>
+1 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+2  <Body>
+3   <ArtifactResolve xmlns="urn:oasis:names:tc:SAML:2.0:protocol" ID="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF" Version="2.0" IssueInstant="2020-09-24T13:19:41.822+02:00" Destination="https://fed.idp.ch/nevisauth/services/artifactresolution">
+4    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
+5    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+6     <SignedInfo>
+7      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+8      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+9      <Reference URI="#SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF">
+10       <Transforms>
+11        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+12        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+13       </Transforms>
+14       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+15       <DigestValue>R+bMs3semvJBgae/3wnNVZp0eTpIhQQK4+S2KqRj1bM=</DigestValue>
+16      </Reference>
+17     </SignedInfo>s
+18     <SignatureValue> <!-- omitted for brevity --> </SignatureValue>
+19     <KeyInfo>
+20      <X509Data>
+21       <X509Certificate> <!-- omitted for brevity --> </X509Certificate>
+22      </X509Data>
+23     </KeyInfo>
+24    </Signature>
+25    <Artifact>
+26     AAQAAOjXNPPr/r7FO5WpiZ+2vAl5KMFibkRaAGwIkwXh+o7DgsG2LMDE58c=
+27    </Artifact>
+28   </ArtifactResolve>
+29  </Body>
+30 </Envelope>
