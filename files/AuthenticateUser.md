@@ -4,8 +4,9 @@ Transaction to authenticate a user at a identity provider certified for the Swis
 - [Overview](#overview)
 - [Transaction](#transaction)
 	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
+		- [Authentication Request](#authentciation-request)
+		- [Authentication Redirect](#authentciation-redirect)
+		- [Artifact Resolve](#artifact-resolve)
 	* [Transport Protocol](#transport-protocol)
 	* [Adit Log](#audit-log)
 - [Security Requirements](#security-requirements)
@@ -44,15 +45,17 @@ The transaction to authenticate a user for the access to the Swiss EPR is a mult
 
 **Figure 1: Authentication Sequence Diagram**
 
-The sequence consists of the following steps, each with a assigned transaction message:
+The sequence consists of the following steps, each using assigned transaction messages:
 
 - [01 .. 04] The user (claimant) is redirected to the identity provider via the user agent (browser) with a SAML 2.0 *AuthnRequest* message.
-- [05] The user authenticates at the identity provider with her authentciation means.
-- [06 .. 07] The identity provider responds with a SAML 2.0 artifact, redirecting to the primary system (relying party).  
-- [08] The primary system sends a *ArtifactResolve* message to resolve the SAML artifact to the SAML 2 IdP Assertion.
+- [05] The user (claimant) authenticates at the identity provider with her authenticiation means.
+- [06 .. 07] The identity provider responds a SAML 2.0 artifact in a HTTP redirect to the primary system (relying party).  
+- [08] The primary system sends a *ArtifactResolve* message to resolve the SAML artifact to the SAML 2 IdP Assertion via the SOAP backchannel.
 - [09] The IdP responds the IdP Assertion in the *ArtifactResponse* message.
 
 ## Message Semantics
+
+### Authentication Request
 
 TBD
 
@@ -60,7 +63,15 @@ TBD
 code block here    
 ```
 
-### Request Message
+### Authentication Redirect
+
+TBD
+
+```
+code block here    
+```
+
+### Artifact Resolve
 
 TBD
 
