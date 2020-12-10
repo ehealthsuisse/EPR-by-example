@@ -188,7 +188,7 @@ were ommitted to increase readability. The raw version may be found **[here](../
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
-- *SignatureValue*: The signature of the request (line 18 in the example below).
+- *SignatureValue*: The signature of the request (line 18 in the example below) which shall be validated by the primary system.
 - *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
 - *ssertion*: The IdP assertion conveying the attributes of the authenticated user.  
 
@@ -250,6 +250,12 @@ The *ArtifactResponse* conveys the following information which shall be evaluate
 
 The following snippet shows an example of a IdP Assertion conveyed with the response.
 
+The primary system must keep the IdP Assertion in memory to use it to authenticate the **[Get X-User Assertion](./GetXAssertion.md)** transaction.
+
+The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the assertion:
+-  *NameID* : This element conveys the user ID assigned by IdP. Primary systems may use it to locally authenticate the user in the primary system.
+- *AttributeStatement*: IdP may provide user attributes in the *AttributeStatement* child elements. The optional fields cover the GLN of the healthcare professional and other attributes, the primary system may use internally.
+
 ```
 47     <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67" IssueInstant="2020-09-24T11:19:41.633Z" Version="2.0">
 48      <saml2:Issuer>fed.idp.ch</saml2:Issuer>
@@ -298,7 +304,6 @@ The following snippet shows an example of a IdP Assertion conveyed with the resp
 91       </saml2:Attribute>
 92      </saml2:AttributeStatement>
 ```
-
 
 ### Transport Protocol
 
