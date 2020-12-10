@@ -4,17 +4,7 @@ Transaction to authenticate a user at a identity provider certified for the Swis
 - [Overview](#overview)
 - [Transactions](#transactions)
 	* [Authentication Request](#authentication-request)
-		- [Message Semantics](#message-semantics)
-		- [Transport Protocol](#transport-protocol)
-		- [Security Requirements](#security-requirements)
-	* [Authentication Redirect](#authentication-redirect)
-		- [Message Semantics](#message-semantics)
-		- [Transport Protocol](#transport-protocol)
-		- [Security Requirements](#security-requirements)
 	* [Artifact Resolve](#artifact-resolve)
-		- [Message Semantics](#message-semantics)
-		- [Transport Protocol](#transport-protocol)
-		- [Security Requirements](#security-requirements)
 	* [Adit Log](#audit-log)
 - [Test Opportunity](#test-opportunity)
 
@@ -112,7 +102,7 @@ The *AuthnRequest* conveys the following informantion to be set by the primary s
 31 </AuthnRequest>  
 ```
 
-### Response Message
+#### Response Message
 When the user was authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. It conveys two parameter to be used by the primary system:
@@ -131,6 +121,11 @@ TBD
 ```
 code block here    
 ```
+
+### Security Requirements   
+
+The transactions shall use TLS secured transports (HTTPS) to ensure data privacy and with server authentication.
+
 
 ## Artifact Resolve
 
@@ -286,15 +281,13 @@ TBD
 code block here    
 ```
 
+### Security Requirements   
+
+The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.  
+
 ## Audit Log
 
 Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in the ordinances of the Swiss EPR.
-
-## Security Requirements   
-
-All HTTP transactions shall use TLS secured transports (HTTPS) to ensure data privacy.
-
-The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.   
 
 # Test Opportunity
 
