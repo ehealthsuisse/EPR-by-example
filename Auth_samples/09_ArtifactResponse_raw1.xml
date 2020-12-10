@@ -1,0 +1,141 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+ <SOAP-ENV:Body>
+  <saml2p:ArtifactResponse
+   xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   ID="ArtifactResponse_bf738b81c935d2c2f47604e01388553c2407ac40"
+   InResponseTo="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF"
+   IssueInstant="2020-09-24T11:19:42.030Z"
+   Version="2.0">
+   <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">fed.idp.ch</saml2:Issuer>
+   <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:SignedInfo>
+     <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+     <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+     <ds:Reference URI="#ArtifactResponse_bf738b81c935d2c2f47604e01388553c2407ac40">
+      <ds:Transforms>
+       <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+       <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+        <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/>
+       </ds:Transform>
+      </ds:Transforms>
+      <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <ds:DigestValue>1RZPbh508clAQoKhxnQZEenNFyg=</ds:DigestValue>
+     </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>
+     bHdmZkABX2tW765ar07UXEjQzxLTA06dU5OQe2cv181XqDmoY57BiPc5IccrOCJuCgYXwZXHCfC/n1NwsQI9N4ZSV91Qd0kCv4yWdDLUBi9E7dZZ5gcJ/RzTO+vCcOXfqBah19UCD2S5mBLOQ+aS0WqFdGPDL93ZAW/6UQEIIco/N1Dv8cbUDbkcaqSKVlUXz8A7EwhsDbIqVRRlyhRzRDUvJDvs7Bvy75wuVq+x01219uWLxk0yC2LnqL0RpMT/+yLKElHMrFeUFtLM8mqvlltDEgQUH32nIYVv1AH4TSFxitNAC0cnrvJxCR7LRj7VkZK/eDCCsYV+zsv/hqdHygtoZ8PgLVEtE6JKNbuJxRZy9IbIABJcBrk7//lkHlfH37A7GylRqjJo0SMZ+wcD+KFuYi34Zsv9qYsSzunbU2NlBiSgcaYYJKZd1dCWtKgFtBS0EtGQhbtEe/+7xUiFeItc4WygTyGBIDgyVhQwR+VXGqI16RRiCpGxwckOsgc9v79vV/lDev0SGl9ypuzemw8AKrif1Gbq53P0FdkQtvy3ng5J6muoQ2bJlQoZqPRqomw5oZxK2FEEtLIFPkbXnUmr4GOMynQxJ+X4lxgLrNXfZoXDwQ0sWMuQkYUO2NmH1xLhsO3ceUUt2CBe91p6iob3VysvtiUwZL2d4Wa+Ez0=
+    </ds:SignatureValue>
+    <ds:KeyInfo>
+     <ds:X509Data>
+      <ds:X509SKI>gYMVdgdR5LG/983GRTJIch0a+zU=</ds:X509SKI>
+     </ds:X509Data>
+    </ds:KeyInfo>
+   </ds:Signature>
+   <saml2p:Status>
+    <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+   </saml2p:Status>
+   <saml2p:Response
+    xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
+    Destination="https://epdtest.mycompany.local:8549/ACS"
+    ID="Response_ef5597568f1bc48233cac63c5a51ca3026566d59"
+    InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
+    IssueInstant="2020-09-24T11:19:41.634Z"
+    Version="2.0">
+    <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">fed.idp.ch</saml2:Issuer>
+    <saml2p:Status>
+     <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+    </saml2p:Status>
+    <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67" IssueInstant="2020-09-24T11:19:41.633Z" Version="2.0">
+     <saml2:Issuer>fed.idp.ch</saml2:Issuer>
+     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      <ds:SignedInfo>
+       <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+       <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+       <ds:Reference URI="#Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67">
+        <ds:Transforms>
+         <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+         <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+          <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/>
+         </ds:Transform>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue>P/I9Ym+p/Zzs0ANXHmAjqZcuBp2FJ75j6oCM6Gd0bVg=</ds:DigestValue>
+       </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue>
+       ZYOOfNCuca6Ji1En+S08sRI89MY+lkd45kDod5qJQufu7mX9vmWf2EcW5EifD3fuyraf9K+1DSbmWK/z3ICDC9CYv53/IjGesIldzXY1QMG2QDlRQs2IyCzUcslFe6AeCt4pqasTojNZozOon7qqx3LZKMq9Nx2BImgqCPwJmEHLOtBi/HDJaqumV5IZMgfrUwl7dZrKE/BlTnktxhocPpRRFJv4tOqG0pCH2Wo+0t+1uG/Cm2VQDYXkvRmBsMlZYNV/nayiIo0tNGLsnmFvO4w98zaMur3gfliVrADlzdCgBrxyfLaTLoLF8ErsMltz2P1xnWM47wQrlEq5CNd9Qdc9tyFCZFa+cPS7pEzJlAcGXzH9It76ya5/dTgaxfNPcRZbrIGE/u+kgW8+8EBuNBsivxS3gdDxN6OzcSveLg46voNg6SyLJmGnTuwN9XFe35Nl5MOgvhDYv6GfiwejK7o82GsM2mWRLVY5wXC0g3pCULuCUiUGniSqmSZALZHl7EVoarSlljcv1vJSuCkwrAMYp9e7E4EAGhbG1N7/URSNqYqPhljAg5zfl3BglZH8pKEJxE29Lc3NSdFqy2FGJWMga+cmJDmQ6RXhML6hoyZr2HC/9k2Sgk3iHUFErvqcXQMU7W7aVechThXnCQityhJgdvauzwvi8AdQKoofiy8=
+      </ds:SignatureValue>
+      <ds:KeyInfo>
+       <ds:X509Data>
+        <ds:X509Certificate>
+         MIII3zCCBsegAwIBAgIUdxSWH78kyh1UBzy06ltlfEDYC6cwDQYJKoZIhvcNAQELBQAwSTELMAkG
+         A1UEBhMCQk0xGTAXBgNVBAoMEFF1b1ZhZGlzIExpbWl0ZWQxHzAdBgNVBAMMFlF1b1ZhZGlzIEVW
+         IFNTTCBJQ0EgRzMwHhcNMTkxMTIwMTU0MTM1WhcNMjExMTIwMTU1MTAwWjCB0zETMBEGCysGAQQB
+         gjc8AgEDEwJDSDEYMBYGCysGAQQBgjc8AgECDAdaw7xyaWNoMR0wGwYDVQQPDBRQcml2YXRlIE9y
+         Z2FuaXphdGlvbjEYMBYGA1UEBRMPQ0hFLTEwMy40ODkuMjE4MQswCQYDVQQGEwJDSDEQMA4GA1UE
+         CAwHWsO8cmljaDEUMBIGA1UEBwwLV2FsbGlzZWxsZW4xGzAZBgNVBAoMEkhlYWx0aCBJbmZvIE5l
+         dCBBRzEXMBUGA1UEAwwOZmVkLmhpbnRlc3QuY2gwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIK
+         AoICAQCZzQEsbyf09eyb9uHCFg2DlsnsutZpla+O7oxWbV9GxXhU3f0P7Tx/aaX5t629NOgu/+Tw
+         +UxVVHcE2kfYwSE9cCkslRnORs/PEn7/fful0UIYzScsAAOZovUdsOuHR7aL+dxFvMkM6EjzTNc3
+         0sMFCZdJ9QxMSh8gL2k0+crSHqna9P7KkMIeoU+Ej2zqv397TG6lLDw5kXYktevWUpsX3MD5lZ3j
+         aA0/pbQFeMMbC/6h5EeDE0fM8tobl59/VDbNaL0OVlchuraKsbJPWZFojKlohgfDwiobAUyyb0cT
+         cxANaz10UwwnKgqGbpbPIwR4Jpj5kr3nP0PMLlnI8m9A8WRnNLpF5sPekxa/NOqsu0xb/MKe/giP
+         oYGttkiQQfbgEEN8nd4Olbt2LXPGclmsY8dSnDVuerroIXm+EEaPWKkofVcchPvZGDHnaZjk0ALT
+         tCYdcklV0SAyZ5ArbIGjbXp1jaxumbeg6hYmV6bOagSQz9Ed+JlJ2ZClf6abMi66s++9W5zuAnSm
+         H4LWWTzCMlqtKh4IFiMDy36v9sCP5RCnfBWn/sS29cephLRzS/2T4kAorxOyjfBvX2COFb0VsleS
+         zg0ofbFRV5dchcM7+qnrAAMoKudsP1B3Mn8RZizQkNUV+/ljnsarbL3Fl5qlTLGq0nzVl0hfz5nR
+         qyCWKwIDAQABo4IDMjCCAy4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBTlhFTQkEmfOLryyeEq
+         CMVOn6BIPzB4BggrBgEFBQcBAQRsMGowOQYIKwYBBQUHMAKGLWh0dHA6Ly90cnVzdC5xdW92YWRp
+         c2dsb2JhbC5jb20vcXZldnNzbGczLmNydDAtBggrBgEFBQcwAYYhaHR0cDovL2V2Lm9jc3AucXVv
+         dmFkaXNnbG9iYWwuY29tMBkGA1UdEQQSMBCCDmZlZC5oaW50ZXN0LmNoMFoGA1UdIARTMFEwRgYM
+         KwYBBAG+WAACZAECMDYwNAYIKwYBBQUHAgEWKGh0dHA6Ly93d3cucXVvdmFkaXNnbG9iYWwuY29t
+         L3JlcG9zaXRvcnkwBwYFZ4EMAQEwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMDwGA1Ud
+         HwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwucXVvdmFkaXNnbG9iYWwuY29tL3F2ZXZzc2xnMy5jcmww
+         HQYDVR0OBBYEFIGDFXYHUeSxv/fNxkUySHIdGvs1MA4GA1UdDwEB/wQEAwIFoDCCAX4GCisGAQQB
+         1nkCBAIEggFuBIIBagFoAHcAu9nfvB+KcbWTlCOXqpJ7RzhXlQqrUugakJZkNo4e0YUAAAFuiYMI
+         mgAABAMASDBGAiEA4FSL0HoVekV4mKZTlLip78HV4r/lxuO+/achzWDrYbACIQCTzxPkJZv/O7aT
+         nzAf2DGpj6soZH3WHSn++6r+g1107AB1AFYUBpov18Ls0/XhvUSyPsdGdrm8mRFcwO+UmFXWidDd
+         AAABbomDCLoAAAQDAEYwRAIgBMpTonyXuJf4KmDpDDx76afh0fWHi6qnGaoF6wFgPM0CIDzQQKgu
+         0oMMCTT2PO4yPWYPCnkHPjhBLmfsuneIjnSYAHYAh3W/51l8+IxDmV+9827/Vo1HVjb/SrVgwbTq
+         /16ggw8AAAFuiYMInwAABAMARzBFAiB4EVKUHveiNTcHb9jCJpQ+2l6U/i8unMufbAU2B5iyKAIh
+         AMhJOLpSTZb37ERIn0kW4OdcxYpOnvdx+SUmJ02yFfdlMA0GCSqGSIb3DQEBCwUAA4ICAQBAjwRR
+         FroITiueT02RgZA996YjxEfAg3AJHwnU6iSX13oRP2aWhWh+/iyQCEoUOK813sVvqdB3iU4FZdiA
+         QkxIjRp/R3JBoThMiWwbqEDSCI5cuUtruZqvOG+TwOAt0tJ/UStVGKwzGdtPIf1WJCT5hvxKPGP9
+         s6fk0cO2+pLx+8OWjeNetE/4PlHmrE91C/q0w41mT6AYAG2eQSQQt66n7Hw/iZF9Z+cmKO64gN/J
+         8t/WclM6goJFvd+PWL8LAcgNKhU0uCmi/PpMAatXUdAK7+i4VweIBJ69EASjuhCgFXColhyXt4wt
+         v9IrwGWwG4MAvhMokY+BI4Ir3C+KN2AOHwBG3BurhCWdpRS+BFkQdCSxUk7DLCL/IngLMmMDkg9h
+         ku1MeczO03qfbl7ktDqSlY/OjsjjLrBJcSdODRGbJ+mIS0PnpUJff4CqB9ajnKToXkxPULF+vI98
+         HcwW0cBDWj2XT8jaec7dmbvZtaifsKzB3K5WIKQhTBpE7ZmfTCPGeEh31uOcHVjhbN9wo3dDGZkZ
+         SRzvB+c8FcwRUil1eUitkdqEnET9gW9UDhKXXDWJZwgl+Cybni66SmHiskTIrHvrY8eZDkUXYT/C
+         jnVWMlJ/gm2dvj5yI/eA2sjPpFGL8OQg7BImeRL+jLY71xh/70JZHv+01sAniRHESYsUwA==
+        </ds:X509Certificate>
+       </ds:X509Data>
+      </ds:KeyInfo>
+     </ds:Signature>
+     <saml2:Subject>
+      <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">pjtt31</saml2:NameID>
+      <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+       <saml2:SubjectConfirmationData InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0" NotOnOrAfter="2020-09-24T12:19:41.634Z" Recipient="https://epdtest.mycompany.local:8549/ACS"/>
+      </saml2:SubjectConfirmation>
+     </saml2:Subject>
+     <saml2:Conditions NotBefore="2020-09-24T11:19:41.633Z" NotOnOrAfter="2020-09-24T12:09:41.633Z">
+      <saml2:AudienceRestriction>
+       <saml2:Audience>https://epdtest.mycompany.local:8549/ACS</saml2:Audience>
+      </saml2:AudienceRestriction>
+     </saml2:Conditions>
+     <saml2:AuthnStatement AuthnInstant="2020-09-24T11:19:41.633Z" SessionNotOnOrAfter="2020-09-24T13:19:41.633Z">
+      <saml2:AuthnContext>
+       <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml2:AuthnContextClassRef>
+      </saml2:AuthnContext>
+     </saml2:AuthnStatement>
+     <saml2:AttributeStatement>
+      <saml2:Attribute Name="GLN" NameFormat="urn:oasis:names:tc:ebcore:partyid-type:DataUniversalNumberingSystem:0060">
+       <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9801000050702</saml2:AttributeValue>
+      </saml2:Attribute>
+     </saml2:AttributeStatement>
+    </saml2:Assertion>
+   </saml2p:Response>
+  </saml2p:ArtifactResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

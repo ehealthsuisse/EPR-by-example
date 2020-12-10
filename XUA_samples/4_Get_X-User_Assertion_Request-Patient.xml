@@ -7,35 +7,23 @@
 		<wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:d888b36e-625f-4e25-a166-b27815be357f
 		</wsa:MessageID>
 
-		<wsse:Security
-			xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-			<saml2:Assertion
-				ID="Assertion_3efbfc7917a1d3ec6e33ec70f410393d655980bb"
-				IssueInstant="2018-03-28T09:01:06.421Z" Version="2.0"
-				xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-				xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+			<saml2:Assertion ID="Assertion_3efbfc7917a1d3ec6e33ec70f410393d655980bb" IssueInstant="2018-03-28T09:01:06.421Z" Version="2.0" xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 				<saml2:Issuer>http://fed.hintest.ch/saml/2.0/epd/</saml2:Issuer>
 
 				<!-- Signature provided by the User Authentication Provider (IdP) -->
 				<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 					<ds:SignedInfo>
-						<ds:CanonicalizationMethod
-							Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-						<ds:SignatureMethod
-							Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-						<ds:Reference
-							URI="#Assertion_3efbfc7917a1d3ec6e33ec70f410393d655980bb">
+						<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+						<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+						<ds:Reference URI="#Assertion_3efbfc7917a1d3ec6e33ec70f410393d655980bb">
 							<ds:Transforms>
-								<ds:Transform
-									Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-								<ds:Transform
-									Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-									<ec:InclusiveNamespaces PrefixList="xs"
-										xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+								<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+								<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+									<ec:InclusiveNamespaces PrefixList="xs" xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#"/>
 								</ds:Transform>
 							</ds:Transforms>
-							<ds:DigestMethod
-								Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+							<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
 							<ds:DigestValue>Uo4LNDD3qibeLswkH/ZWqIqe3Wc=</ds:DigestValue>
 						</ds:Reference>
 					</ds:SignedInfo>
@@ -46,51 +34,34 @@
 
 				<!-- digital identity of the user from User Authentication Provider (IdP) -->
 				<saml2:Subject>
-					<saml2:NameID
-						Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">33111</saml2:NameID>
-					<saml2:SubjectConfirmation
-						Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-						<saml2:SubjectConfirmationData
-							InResponseTo="_59e6f0ab8fcad259789d70f3a43fd39d6bde4523f3"
-							NotOnOrAfter="2018-03-29T01:41:06.506Z"
-							Recipient="http://fed.hintest.ch_Post_aak.local"/>
+					<saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">33111</saml2:NameID>
+					<saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+						<saml2:SubjectConfirmationData InResponseTo="_59e6f0ab8fcad259789d70f3a43fd39d6bde4523f3" NotOnOrAfter="2018-03-29T01:41:06.506Z" Recipient="http://fed.hintest.ch_Post_aak.local"/>
 					</saml2:SubjectConfirmation>
 				</saml2:Subject>
 
-				<saml2:Conditions NotBefore="2018-03-28T09:01:06.421Z"
-					NotOnOrAfter="2018-03-29T01:41:06.421Z">
+				<saml2:Conditions NotBefore="2018-03-28T09:01:06.421Z" NotOnOrAfter="2018-03-29T01:41:06.421Z">
 					<saml2:AudienceRestriction>
 						<saml2:Audience>http://fed.hintest.ch_Post_aak.local
 						</saml2:Audience>
 					</saml2:AudienceRestriction>
 				</saml2:Conditions>
 
-				<saml2:AuthnStatement
-					AuthnInstant="2018-03-28T09:01:06.421Z"
-					SessionNotOnOrAfter="2018-03-28T14:34:26.421Z">
+				<saml2:AuthnStatement AuthnInstant="2018-03-28T09:01:06.421Z" SessionNotOnOrAfter="2018-03-28T14:34:26.421Z">
 					<saml2:AuthnContext>
 						<saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified
 						</saml2:AuthnContextClassRef>
 					</saml2:AuthnContext>
 				</saml2:AuthnStatement>
 
-				<!-- optional identity attributes provided by the User Authentication Provider 
-					(IdP) -->
+				<!-- optional identity attributes provided by the User Authentication Provider (IdP) -->
 				<saml2:AttributeStatement>
-					<saml2:Attribute
-						Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"
-						NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-						<saml2:AttributeValue
-							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							xsi:type="xs:string">Iris
+					<saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+						<saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Iris
 						</saml2:AttributeValue>
 					</saml2:Attribute>
-					<saml2:Attribute
-						Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"
-						NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-						<saml2:AttributeValue
-							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-							xsi:type="xs:string">Musterpatient
+					<saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+						<saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Musterpatient
 						</saml2:AttributeValue>
 					</saml2:Attribute>
 				</saml2:AttributeStatement>
@@ -100,14 +71,11 @@
 
 	<env:Body>
 
-		<wst:RequestSecurityToken
-			xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+		<wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
 			<wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue
 			</wst:RequestType>
-			<wsp:AppliesTo
-				xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
-				<wsa:EndpointReference
-					xmlns:wsa="http://www.w3.org/2005/08/addressing">
+			<wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+				<wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
 					<wsa:Address>https://localhost:17001/services/iti18</wsa:Address>
 				</wsa:EndpointReference>
 			</wsp:AppliesTo>
@@ -115,64 +83,35 @@
 			</wst:TokenType>
 
 			<!-- the attribute claims -->
-			<wst:Claims
-				Dialect="http://bag.admin.ch/epr/2017/annex/5/addendum/2">
+			<wst:Claims Dialect="http://bag.admin.ch/epr/2017/annex/5/addendum/2">
 
 				<!-- mandatory session related claims -->
-				<saml2:Attribute
-					xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-					Name="urn:oasis:names:tc:xacml:2.0:subject:role"
-					NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
+				<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="urn:oasis:names:tc:xacml:2.0:subject:role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified">
 					<saml2:AttributeValue>
-						<Role xmlns="urn:hl7-org:v3" code="PAT"
-							codeSystem="2.16.756.5.30.1.127.3.10.6"
-							codeSystemName="eHealth Suisse EPR Akteure" displayName="Patient"
-							xsi:type="CE"/>
+						<Role xmlns="urn:hl7-org:v3" code="PAT" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Patient" xsi:type="CE"/>
 					</saml2:AttributeValue>
 				</saml2:Attribute>
 
-				<saml2:Attribute
-					xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-					Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
-					<saml2:AttributeValue
-						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-						xsi:type="xs:anyType">
-						<PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM"
-							codeSystem="2.16.756.5.30.1.127.3.10.5"
-							codeSystemName="eHealth Suisse Verwendungszweck"
-							displayName="Normalzugriff" xsi:type="CE"/>
+				<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
+					<saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:anyType">
+						<PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="CE"/>
 					</saml2:AttributeValue>
 				</saml2:Attribute>
 
-				<saml2:Attribute
-					xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-					Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
-					<saml2:AttributeValue
-						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">305000^^^&amp;2.16.756.5.30.1.109.6.5.3.1.1&amp;ISO
+				<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
+					<saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">305000^^^&amp;2.16.756.5.30.1.109.6.5.3.1.1&amp;ISO
 					</saml2:AttributeValue>
 				</saml2:Attribute>
 
 				<!-- optional identity claim of the EPR-SPID -->
-				<saml2:Attribute
-					xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-					Name="urn:e-health-suisse:principal-id">
-					<saml2:AttributeValue
-						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">305000
+				<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:e-health-suisse:principal-id">
+					<saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">305000
 					</saml2:AttributeValue>
 				</saml2:Attribute>
 
 				<!-- optional identity claim of the patient name -->
-				<saml2:Attribute
-					xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
-					Name="urn:e-health-suisse:principal-name">
-					<saml2:AttributeValue
-						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Iris
-						Musterpatient
+				<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:e-health-suisse:principal-name">
+					<saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Iris Musterpatient
 					</saml2:AttributeValue>
 				</saml2:Attribute>
 

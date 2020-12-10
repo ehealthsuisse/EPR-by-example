@@ -1,0 +1,55 @@
+<AuthnRequest
+ xmlns="urn:oasis:names:tc:SAML:2.0:protocol"
+ AssertionConsumerServiceURL="https://epdtest.mycompany.local:8549/ACS"
+ IssueInstant="2020-09-24T13:19:25.208+02:00"
+ Destination="https://fed.idp.ch:443/saml/3.0/idp/"
+ ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
+ ID="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
+ Version="2.0">
+ <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
+ <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <SignedInfo>
+   <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+   <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+   <Reference URI="#SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0">
+    <Transforms>
+     <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+     <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    </Transforms>
+    <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+    <DigestValue>TdN8cZ5mvY7pOsrpOK0h+YlnvlhOOHYecaBN59yH4w0=</DigestValue>
+   </Reference>
+  </SignedInfo>
+  <SignatureValue>
+   lTEiJdZ831ViRBfQxL3j+OcEnyu0zIGbn72p8jwFugxCe8gepMxBbIrBTf9Bv5Oy
+   CzggYqXAdXP90GqetJXGjbSvm5HOlHfYsPIahwSeWb+c8e4/6d9oX+cUp2gFIKPg
+   DDntRoyPIU0foOO1OaN+9DN2wF9XO5CcYHK9N+ZnmXI=
+  </SignatureValue>
+  <KeyInfo>
+   <X509Data>
+    <X509Certificate>
+     MIIDfzCCAuigAwIBAgIBLTANBgkqhkiG9w0BAQ0FADBFMQswCQYDVQQGEwJDSDEM
+     MAoGA1UECgwDSUhFMSgwJgYDVQQDDB9laGVhbHRoc3Vpc3NlLmloZS1ldXJvcGUu
+     bmV0IENBMB4XDTE3MDkyMDEwNTMwMFoXDTI3MDkyMDEwNTMwMFowOzELMAkGA1UE
+     BhMCQ0gxHTAbBgNVBAoMFFVwdGltZSBTZXJ2aWNlcyBBLkcuMQ0wCwYDVQQDDARB
+     UlRTMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCGoG2dy0aLzQpOcMHNihW
+     h0yOQ5ap5W37ROSZ+O1xe1BOkHLEqy57NDqn98kSpdf4/kcJvceds0BH9ufPS11i
+     52jKxyzXs1JgjIBPyh9Po70ZgMnpHtxSjWk9IYhDGAgHeqRDXl0b72sCQZpkbFpR
+     XjgJ2dxMm7jGZv83nGcAmwIDAQABo4IBhzCCAYMwSgYDVR0fBEMwQTA/oD2gO4Y5
+     aHR0cHM6Ly9laGVhbHRoc3Vpc3NlLmloZS1ldXJvcGUubmV0L2dzcy9jcmwvMjIv
+     Y2FjcmwuY3JsMEgGCWCGSAGG+EIBBAQ7FjlodHRwczovL2VoZWFsdGhzdWlzc2Uu
+     aWhlLWV1cm9wZS5uZXQvZ3NzL2NybC8yMi9jYWNybC5jcmwwSAYJYIZIAYb4QgED
+     BDsWOWh0dHBzOi8vZWhlYWx0aHN1aXNzZS5paGUtZXVyb3BlLm5ldC9nc3MvY3Js
+     LzIyL2NhY3JsLmNybDAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIE8DARBglghkgB
+     hvhCAQEEBAMCBeAwHQYDVR0OBBYEFNzQc/gn4JWf5T5C91ZisYc4Y2WcMB8GA1Ud
+     IwQYMBaAFCiX793eMVhsVvKGRuIR5D44cV8vMDMGA1UdJQQsMCoGCCsGAQUFBwMC
+     BggrBgEFBQcDBAYKKwYBBAGCNxQCAgYIKwYBBQUHAwEwDQYJKoZIhvcNAQENBQAD
+     gYEACo3GhS+yMDinmiYl7A4HpYoMuym7brAtoqzuwq+Bj2AjJzIfFLJE0POC/p0Q
+     j0DPELc01+ewsXDkAWRmL05MSBPx2LaFCcS19frVOxfjrADgayY/zGgfahMeRjoC
+     AttrV4vrYsbFom6DZFDebk6ngeiJySmVKYJWco6jWFUCgo0=
+    </X509Certificate>
+   </X509Data>
+  </KeyInfo>
+ </Signature>
+ <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" AllowCreate="true"/>
+</AuthnRequest>
