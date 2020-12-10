@@ -53,6 +53,8 @@ The sequence consists of the following steps, each using assigned transaction me
 
 The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
+When the user is authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
+
 ### Message Semantics
 
 #### Request Message
@@ -103,7 +105,6 @@ The *AuthnRequest* conveys the following informantion to be set by the primary s
 ```
 
 #### Response Message
-When the user was authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. It conveys two parameter to be used by the primary system:
 - *SAMLart*: The SAML artifact to be used in the *ArtifactResolve* request (see section below).
@@ -125,14 +126,26 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 
 ## Artifact Resolve
 
-The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion. The primary system shall use the SOAP backchannel with an *ArtifactResolve* message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion.
 
+The primary system shall use the SOAP backchannel with an *ArtifactResolve* requet message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+
+The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
 ### Message Semantics
 
 #### Request Message
 
-TBD
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
+were ommitted to increase readability. The raw request file may be found
+**[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
+
+The *ArtifactResolve* conveys the following informantion to be set by the primary system:
+- *Issuer*: A ID of the primary system as URL (line 4 in the example below).
+- *SignedInfo*: Signature metadata and the digest value used for the signature.
+- *SignatureValue*: The signature of the request (line 18 in the example below).
+- *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
+- *Artifact*: The artifact as retrieved from the Authentication Request transaction (line 25 .. 27).
 
 ```
 1 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
@@ -169,7 +182,9 @@ TBD
 
 #### Response Message
 
-TBD
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
+were ommitted to increase readability. The raw request file may be found
+**[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
 
 ```
 1 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -218,6 +233,18 @@ TBD
 44     <saml2p:Status>
 45      <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
 46     </saml2p:Status>
+47     <saml2:Assertion>
+				...
+93     </saml2:Assertion>
+94    </saml2p:Response>
+95   </saml2p:ArtifactResponse>
+96  </SOAP-ENV:Body>
+97 </SOAP-ENV:Envelope>
+```
+
+The following snippet shows an example of a IdP Assertion conveyd with the response.
+
+```
 47     <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67" IssueInstant="2020-09-24T11:19:41.633Z" Version="2.0">
 48      <saml2:Issuer>fed.idp.ch</saml2:Issuer>
 49      <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -264,13 +291,8 @@ TBD
 90        <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9801000050702</saml2:AttributeValue>
 91       </saml2:Attribute>
 92      </saml2:AttributeStatement>
-93     </saml2:Assertion>
-94    </saml2p:Response>
-95   </saml2p:ArtifactResponse>
-96  </SOAP-ENV:Body>
-97 </SOAP-ENV:Envelope>
-
 ```
+
 
 ### Transport Protocol
 
