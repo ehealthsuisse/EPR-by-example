@@ -30,6 +30,10 @@ Messages are encoded as described in the **[Assertions and Protocols for the OAS
 
 *TODO*
 
+### Response Message
+
+*TODO*
+
 ## Transport Protocol
 
 *TODO*
