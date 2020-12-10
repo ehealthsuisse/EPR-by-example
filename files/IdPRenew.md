@@ -1,4 +1,4 @@
-# IdPRenew
+# IdP Renew
 
 Transaction to renew a IdP Assertion. Primary systems may use this transaction to retrieve a new IdP Assertion, without requiring the user (claimant) to authenticate, i.e., avoiding the user to enter her credentials.
 
@@ -140,11 +140,7 @@ A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conve
 
 ## Audit Log
 
-*TODO*
-
-```
-code block here    
-```
+Primary systems shall protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
 
 ## Security Requirements  
 

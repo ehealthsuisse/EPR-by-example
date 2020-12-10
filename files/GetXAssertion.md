@@ -181,7 +181,7 @@ Content-Length: nnnn
 
 ## Audit Log
 
-Primary systems should protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
+Primary systems shall protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
 
 ## Security Requirements  
 
