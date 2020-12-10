@@ -84,7 +84,7 @@ and namespaces were ommitted to increase readability. The raw request file may b
 61  </Header>
 ```
 
-A new SAML 2.0 IdP Assertion is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). Examples of Swiss EPR compliant XUA assertions may be found **[here](../XUA_samples)**.
+The SAML Assertion to be renewd shall be conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69).
 
 ```
 62  <Body Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754">
@@ -106,6 +106,8 @@ A new SAML 2.0 IdP Assertion is conveyed in the the *Body* of the SOAP envelope 
 
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
 and namespaces were ommitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_response_raw.xml)**.
+
+A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). Examples of Swiss EPR compliant XUA assertions may be found **[here](../XUA_samples)**.
 
 ```
 1 <Envelope>
