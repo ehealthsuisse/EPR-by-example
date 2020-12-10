@@ -63,7 +63,7 @@ The following snippet is taken from a sample request recorded during the EPR pro
 were ommitted to increase readability. The raw request file may be found
 **[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
 
-The *AuthnRequest* conveys the following informantion to be set by the primary system:
+The *AuthnRequest* conveys the following information to be set by the primary system:
 - *ID*: A unique ID of the request message (line 7 in the example below).
 - *Issuer*: A ID of the primary system as URL (line 9 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
@@ -128,7 +128,7 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 
 The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion.
 
-The primary system shall use the SOAP backchannel with an *ArtifactResolve* requet message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+The primary system shall use the SOAP backchannel with an *ArtifactResolve* request message as defined in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
 
 The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
@@ -140,7 +140,7 @@ The following snippet is taken from a sample request recorded during the EPR pro
 were ommitted to increase readability. The raw request file may be found
 **[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
 
-The *ArtifactResolve* conveys the following informantion to be set by the primary system:
+The *ArtifactResolve* conveys the following information to be set by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 18 in the example below).
@@ -183,10 +183,9 @@ The *ArtifactResolve* conveys the following informantion to be set by the primar
 #### Response Message
 
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw request file may be found
-**[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
+were ommitted to increase readability. The raw version may be found **[here](../Auth_samples/04_AuthnResponse_raw.xml)**.
 
-The *ArtifactResponse* conveys the following informantion which shall be evaluated by the primary system:
+The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 18 in the example below).
