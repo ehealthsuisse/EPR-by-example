@@ -23,7 +23,7 @@ Swiss EPR transactions by example.
 
 **[IdP Renew](../main/files/IdPRenew.md)** - Renew a IdP assertion
 
-**[SSO Logout](../main/files/Logout.md)** - Logout a authentciated user  
+**[SSO Logout](../main/files/SSOLogout.md)** - Logout a authentciated user  
 
 ## Authorization
 
