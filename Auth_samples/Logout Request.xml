@@ -1,0 +1,10 @@
+<samlp:LogoutRequest
+	xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+	xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+	ID="luld4d369e8k9ea16780cvaff8sa1d11a9862a1"
+	Version="2.0"
+	IssueInstant="2017-08-16T11:00:10Z"
+	Destination="https://idp.swissepd.ch/SingleLogoutService">
+	<saml:Issuer>https://sp.community.ch/epd</saml:Issuer>
+	<saml:NameID SPNameQualifier="https://sp.community.ch/epd" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persisent">O2S5XNIZEEF7LG7OKYUDGEIO7NBNWMPMST2A4T6NJZPPSH</saml:NameID>
+</samlp:LogoutRequest>

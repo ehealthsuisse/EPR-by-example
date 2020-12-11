@@ -1,74 +1,74 @@
-1 <Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-2  <Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-3   <wsse:Security
-4    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-5    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-6    soap:mustUnderstand="1"
-7    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-8    <wsu:Timestamp wsu:Id="TS-15277e04-85e0-4b9c-9692-76c3e7be17bc" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-9     <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2019-03-26T15:13:15.144Z</wsu:Created>
-10     <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2019-03-26T15:18:15.144Z</wsu:Expires>
-11    </wsu:Timestamp>
-12    <wsse:BinarySecurityToken
-13     EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary"
-14     ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
-15     wsu:Id="X509-6dfe58da-6804-48ba-ad52-e871c63455df"
-16     xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-17     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-18     MIIDPTCCAiWgAwIBAgIEPVbC1zANBgkqhkiG9w0BAQUFADBPMQswCQYDVQQGEqSqEb/3VB3ITUav3DIo2o2mRCKyfHV471QUNt4qNFmEwRxpsoGst/UYoTqW8/buv4A=
-19    </wsse:BinarySecurityToken>
-20    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="SIG-98f468bf-4022-4e31-9886-6f30f1c676bc">
-21     <ds:SignedInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-22      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-23       <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="soap"/>
-24      </ds:CanonicalizationMethod>
-25      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
-26      <ds:Reference URI="#TS-15277e04-85e0-4b9c-9692-76c3e7be17bc" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-27       <ds:Transforms xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-28        <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-29         <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="soap wsse"/>
-30        </ds:Transform>
-31       </ds:Transforms>
-32       <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
-33       <ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">LCxW9EORpApnpju2Q17b0MB1LGt8CMCuvoOqCtlhFx0=</ds:DigestValue>
-34      </ds:Reference>
-35      <ds:Reference URI="#_33c9f0c5-c7d2-4d53-ad2f-944320637754" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-36       <ds:Transforms xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-37        <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
-38       </ds:Transforms>
-39       <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
-40       <ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">TwKUz3SxOx1NaFVvy55AbbpWXbUJmfn+mreDpkNa/pg=</ds:DigestValue>
-41      </ds:Reference>
-42     </ds:SignedInfo>
-43     <ds:SignatureValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-44      <!-- signature value omitted -->
-45     </ds:SignatureValue>
-46     <ds:KeyInfo Id="KI-2c6438fa-738a-4ffb-aa52-379bd9380b1a" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-47      <wsse:SecurityTokenReference
-48       wsu:Id="STR-76ccd654-581d-446e-a00b-8ed529bcc4ab"
-49       xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-50       xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-51       <ds:X509Data xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-52        <ds:X509IssuerSerial xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-53         <ds:X509IssuerName xmlns:ds="http://www.w3.org/2000/09/xmldsig#">CN=lk,OU=lk,O=lk,L=lsn,ST=vd,C=ch</ds:X509IssuerName>
-54         <ds:X509SerialNumber xmlns:ds="http://www.w3.org/2000/09/xmldsig#">1029096151</ds:X509SerialNumber>
-55        </ds:X509IssuerSerial>
-56       </ds:X509Data>
-57      </wsse:SecurityTokenReference>
-58     </ds:KeyInfo>
-59    </ds:Signature>
-60   </wsse:Security>
-61  </soap:Header>
-62  <soap:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-63   <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
-64    <wst:RequestType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">http://docs.oasis-open.org/ws-sx/ws-trust/200512/Renew</wst:RequestType>
-65    <wst:TokenType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
-66    <wst:RenewTarget xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
-67     <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns="urn:oasis:names:tc:SAML:2.0:assertion" ID="ID_6ff2590e-8df8-4f04-9ae0-cfd16d816c49" IssueInstant="2019-03-26T15:12:13.246Z" Version="2.0">
-68      <!-- assertion omitted -->
-69     </saml:Assertion>
-70    </wst:RenewTarget>
-71    <wst:Renewing xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"/>
-72   </wst:RequestSecurityToken>
-73  </soap:Body>
-74 </Envelope>
+<Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+ <Header xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <wsse:Security
+   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+   xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+   soap:mustUnderstand="1"
+   xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <wsu:Timestamp wsu:Id="TS-15277e04-85e0-4b9c-9692-76c3e7be17bc" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2019-03-26T15:13:15.144Z</wsu:Created>
+    <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2019-03-26T15:18:15.144Z</wsu:Expires>
+   </wsu:Timestamp>
+   <wsse:BinarySecurityToken
+    EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary"
+    ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3"
+    wsu:Id="X509-6dfe58da-6804-48ba-ad52-e871c63455df"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    MIIDPTCCAiWgAwIBAgIEPVbC1zANBgkqhkiG9w0BAQUFADBPMQswCQYDVQQGEqSqEb/3VB3ITUav3DIo2o2mRCKyfHV471QUNt4qNFmEwRxpsoGst/UYoTqW8/buv4A=
+   </wsse:BinarySecurityToken>
+   <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="SIG-98f468bf-4022-4e31-9886-6f30f1c676bc">
+    <ds:SignedInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+     <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="soap"/>
+     </ds:CanonicalizationMethod>
+     <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+     <ds:Reference URI="#TS-15277e04-85e0-4b9c-9692-76c3e7be17bc" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      <ds:Transforms xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+       <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="soap wsse"/>
+       </ds:Transform>
+      </ds:Transforms>
+      <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+      <ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">LCxW9EORpApnpju2Q17b0MB1LGt8CMCuvoOqCtlhFx0=</ds:DigestValue>
+     </ds:Reference>
+     <ds:Reference URI="#_33c9f0c5-c7d2-4d53-ad2f-944320637754" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      <ds:Transforms xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+       <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+      </ds:Transforms>
+      <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"/>
+      <ds:DigestValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">TwKUz3SxOx1NaFVvy55AbbpWXbUJmfn+mreDpkNa/pg=</ds:DigestValue>
+     </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+     <!-- signature value omitted -->
+    </ds:SignatureValue>
+    <ds:KeyInfo Id="KI-2c6438fa-738a-4ffb-aa52-379bd9380b1a" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+     <wsse:SecurityTokenReference
+      wsu:Id="STR-76ccd654-581d-446e-a00b-8ed529bcc4ab"
+      xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+      xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+      <ds:X509Data xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+       <ds:X509IssuerSerial xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509IssuerName xmlns:ds="http://www.w3.org/2000/09/xmldsig#">CN=lk,OU=lk,O=lk,L=lsn,ST=vd,C=ch</ds:X509IssuerName>
+        <ds:X509SerialNumber xmlns:ds="http://www.w3.org/2000/09/xmldsig#">1029096151</ds:X509SerialNumber>
+       </ds:X509IssuerSerial>
+      </ds:X509Data>
+     </wsse:SecurityTokenReference>
+    </ds:KeyInfo>
+   </ds:Signature>
+  </wsse:Security>
+ </soap:Header>
+ <soap:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+   <wst:RequestType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">http://docs.oasis-open.org/ws-sx/ws-trust/200512/Renew</wst:RequestType>
+   <wst:TokenType xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+   <wst:RenewTarget xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
+    <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns="urn:oasis:names:tc:SAML:2.0:assertion" ID="ID_6ff2590e-8df8-4f04-9ae0-cfd16d816c49" IssueInstant="2019-03-26T15:12:13.246Z" Version="2.0">
+     <!-- assertion omitted -->
+    </saml:Assertion>
+   </wst:RenewTarget>
+   <wst:Renewing xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"/>
+  </wst:RequestSecurityToken>
+ </soap:Body>
+</Envelope>
