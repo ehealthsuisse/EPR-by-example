@@ -27,7 +27,7 @@ Messages are encoded as described in the **[Assertions and Protocols for the OAS
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
 and namespaces were ommitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_request_raw.xml)**.
 
-*TODO*
+The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in **[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** and speciifed in the **[Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf)** specification.
 
 ```
 1 <Envelope>
@@ -84,7 +84,7 @@ and namespaces were ommitted to increase readability. The raw request file may b
 61  </Header>
 ```
 
-The SAML Assertion to be renewd shall be conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69).
+The SAML Assertion to be renewed shall be conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69).
 
 ```
 62  <Body Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754">
