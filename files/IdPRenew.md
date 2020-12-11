@@ -24,6 +24,8 @@ Messages are encoded as described in the **[Assertions and Protocols for the OAS
 
 ### Request Message
 
+Primary systems shall use this transaction to renew a assertion whose lifetime is exceeded.
+
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
 and namespaces were ommitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_request_raw.xml)**.
 
@@ -104,6 +106,8 @@ Primary systems shall embed the SAML Assertion in the the *Body* of the SOAP env
 
 ### Response Message
 
+The community responds with a SAML 2.0 IdP assertion whose lifetime is updated.  
+
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
 and namespaces were ommitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_response_raw.xml)**.
 
@@ -136,7 +140,17 @@ A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conve
 
 ## Transport Protocol
 
-*TODO*
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined
+in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+
+```
+POST /RegistryStoredQueryService HTTP/1.1
+Host: company.example.org
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/soap+xml; charset="utf-8"
+Content-Length: nnnn  
+```
 
 ## Audit Log
 
@@ -144,7 +158,7 @@ Primary systems shall protocol the request and response for traceability. There 
 
 ## Security Requirements  
 
-*TODO*
+To ensure privacy the transaction must be secured using the TLS SOAP backchannel with mutual authentication by server and client certificate validation. 
 
 # Test Opportunity
 
