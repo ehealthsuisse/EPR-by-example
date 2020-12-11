@@ -84,7 +84,7 @@ The *Header* element of the SOAP envelope contains the data used to sign the req
 61  </Header>
 ```
 
-The SAML Assertion to be renewed shall be conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69).
+Primary systems shall embed the SAML Assertion in the the *Body* of the SOAP envelope (see lines 67 .. 69 in example below).
 
 ```
 62  <Body Id="_33c9f0c5-c7d2-4d53-ad2f-944320637754">
