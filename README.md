@@ -23,10 +23,10 @@ Swiss EPR transactions by example.
 
 **[IdP Renew](../main/files/IdPRenew.md)** - Renew a IdP assertion
 
-**[SSO Logout](../main/files/SSOLogout.md)** - Logout a authentciated user  
+**[SSO Logout](../main/files/SSOLogout.md)** - Logout a authenticated user  
 
 ## Authorization
 
 **[Get X-User Assertion](../main/files/GetXAssertion.md)** - Retrieve SAML 2.0 Assertions for authorization
 
-**[Provide X-User Assertion](../main/files/ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize acess
+**[Provide X-User Assertion](../main/files/ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize access
