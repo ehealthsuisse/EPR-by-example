@@ -1,6 +1,6 @@
 # IdP Renew
 
-Transaction to renew a IdP Assertion. Primary systems may use this transaction to retrieve a new IdP Assertion, without requiring the user (claimant) to authenticate, i.e., avoiding the user to enter her credentials.
+Transaction to renew a IdP Assertion. Primary systems may use this transaction to retrieve a new IdP Assertion, without requiring the user to enter her credentials.
 
 - [Overview](#overview)
 - [Transaction](#transaction)

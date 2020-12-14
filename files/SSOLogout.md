@@ -1,8 +1,7 @@
 # SSO Logout
 
-Transaction to log out a user from all session participants and the IdP. Primary systems shall perform this transaction to
-notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged ou in another relying
-party with the same session indicator.
+Transaction to log out a user from the IdP and all session participants. Primary systems shall perform this transaction to
+notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged out from another application sharing the same IdP session.
 
 - [Overview](#overview)
 - [Transaction](#transaction)
