@@ -28,9 +28,9 @@ The following snippet shows the content of a logout request, whith some elements
 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
-- *Destination*: An identifier of the IdP SSO endpoint as URL (line 7).
-- *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)** ).
-- *SessionIndex*: The unique ID of the session used to identify all systems sharing the same session. It's value shall match the Session Index provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)** ).  
+- *Destination*: An identifier of the receiver endpoint. For primary systems sending the request, this shall be the URL of IdP logout endpoint (line 7).
+- *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)**).
+- *SessionIndex*: The unique ID of the session used to identify all systems sharing the same session. It's value shall match the Session Index provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)**).  
 
 ```
 1 <samlp:LogoutRequest
@@ -70,10 +70,15 @@ The major content (lines 9..32) of the message is required for to sign the messa
 35 </samlp:LogoutRequest>
 ```
 
-
 ### Response Message
 
-The following snippet shows the content of a logout request, whith some elements ommitted to increase readability.
+The following snippet shows the content of a logout response, whith some elements ommitted to increase readability.
+
+The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
+- *ID*: A unique ID of the request message (line 4).
+- *Destination*: An identifier of the receiver endpoint as URL (line 7).
+- *InResponseTo*: The unique ID of the initial request (line 8).
+- *Status*: The return status of the request, indicating success or failure (line 34 .. 36).
 
 ```
 1 <samlp:LogoutResponse
@@ -82,9 +87,9 @@ The following snippet shows the content of a logout request, whith some elements
 4 	ID="pfxe335499f-e73b-80bd-60c4-1628984aed4f"
 5 	Version="2.0"
 6 	IssueInstant="2020-07-18T01:13:06Z"
-7 	Destination="http://sp.example.com/demo1/index.php?acs"
+7 	Destination="http://sp.example.com/LogoutService"
 8 	InResponseTo="pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1">
-9 	<saml:Issuer>http://idp.example.com/SSOLogoutService</saml:Issuer>
+9 	<saml:Issuer>http://idp.example.com/LogoutService</saml:Issuer>
 10 	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 11 		<ds:SignedInfo>
 12 			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
