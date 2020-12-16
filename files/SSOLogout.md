@@ -122,16 +122,21 @@ The major content (lines 9..32) of the message is required for to sign the messa
 
 ## Transport Protocol
 
-*TODO*
+The *LogoutRequest* may be send by primary systems to the IdP using one of the following bindings:
+- SAML 2.0 HTTP POST binding via the frontchannel (involving the browser).
+- SAML 2.0 SOAP binding via the backchannel.
 
 ## Audit Log
 
-Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in
+Primary systems shall protocol the transaction in their logs to ensure tracability. No further requirements are defined in
 the ordinances of the Swiss EPR.
 
 ## Security Requirements  
 
-*TODO*
+Communication via the SOAP backchannel shall be secured with TLS and mutual authentication, using
+client and server certificate validation. The certificates used, shall be exchanged during the client registration process.  
+
+Communication via the frontchannel (involving the browser) shall be secured with HTTPS and and mutual authentication, using server certificate validation.  
 
 # Test Opportunity
 

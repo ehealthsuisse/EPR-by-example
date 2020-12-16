@@ -335,7 +335,7 @@ client and server certificate validation. The certificates shall be exchanged du
 
 ## Audit Log
 
-Primary systems shall protocol the transaction in their logs to ensure tracability. No further are requirements defined in
+Primary systems shall protocol the transaction in their logs to ensure tracability. No further requirements are defined in
 the ordinances of the Swiss EPR.
 
 # Test Opportunity
