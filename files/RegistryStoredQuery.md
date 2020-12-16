@@ -92,6 +92,8 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 ### Response Message
 
+*TODO* add the originalProvider to the response message. 
+
 Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret.
 
