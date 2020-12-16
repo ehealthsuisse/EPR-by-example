@@ -1,0 +1,35 @@
+<samlp:LogoutRequest
+	xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+	xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+	ID="pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1"
+	Version="2.0"
+	IssueInstant="2020-07-18T01:13:06Z"
+	Destination="http://idp.example.com/SSOLogoutService">
+	<saml:Issuer>http://sp.application.com</saml:Issuer>
+	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+		<ds:SignedInfo>
+			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+			<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<ds:Reference URI="#pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1">
+				<ds:Transforms>
+					<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+				</ds:Transforms>
+				<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<ds:DigestValue>Q9PRlugQZKSBt+Ed9i6bKUGWND0=</ds:DigestValue>
+			</ds:Reference>
+		</ds:SignedInfo>
+		<ds:SignatureValue>
+			<!-- omitted for brevity -->
+		</ds:SignatureValue>
+		<ds:KeyInfo>
+			<ds:X509Data>
+				<ds:X509Certificate>
+					<!-- omitted for brevity -->
+				</ds:X509Certificate>
+			</ds:X509Data>
+		</ds:KeyInfo>
+	</ds:Signature>
+	<saml:NameID SPNameQualifier="http://sp.application.com" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">IdP_User_ID_f92cc183</saml:NameID>
+	<saml:SessionIndex>bdfe3302-3ed8-11eb-b378-0242ac130002</saml:SessionIndex>
+</samlp:LogoutRequest>

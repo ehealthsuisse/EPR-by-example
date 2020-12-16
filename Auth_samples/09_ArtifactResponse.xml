@@ -35,7 +35,7 @@
 35    </saml2p:Status>
 36    <saml2p:Response
 37     xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
-38     Destination="https://epdtest.mycompany.local:8549/ACS"
+38     Destination="https://epdtest.mycompany.com"
 39     ID="Response_ef5597568f1bc48233cac63c5a51ca3026566d59"
 40     InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
 41     IssueInstant="2020-09-24T11:19:41.634Z"
@@ -71,12 +71,12 @@
 71      <saml2:Subject>
 72       <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">pjtt31</saml2:NameID>
 73       <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-74        <saml2:SubjectConfirmationData InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0" NotOnOrAfter="2020-09-24T12:19:41.634Z" Recipient="https://epdtest.mycompany.local:8549/ACS"/>
+74        <saml2:SubjectConfirmationData InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0" NotOnOrAfter="2020-09-24T12:19:41.634Z" Recipient="https://epdtest.mycompany.com"/>
 75       </saml2:SubjectConfirmation>
 76      </saml2:Subject>
 77      <saml2:Conditions NotBefore="2020-09-24T11:19:41.633Z" NotOnOrAfter="2020-09-24T12:09:41.633Z">
 78       <saml2:AudienceRestriction>
-79        <saml2:Audience>https://epdtest.mycompany.local:8549/ACS</saml2:Audience>
+79        <saml2:Audience>https://epdtest.mycompany.com</saml2:Audience>
 80       </saml2:AudienceRestriction>
 81      </saml2:Conditions>
 82      <saml2:AuthnStatement AuthnInstant="2020-09-24T11:19:41.633Z" SessionNotOnOrAfter="2020-09-24T13:19:41.633Z">

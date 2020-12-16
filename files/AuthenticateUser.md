@@ -262,7 +262,7 @@ The primary system must keep the IdP Assertion in memory to use it to authentica
 The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the
 assertion:
 -  *NameID* : This element conveys the user ID assigned by IdP. Primary systems may use it to locally authenticate the user in the primary system.
-- *NotBefore* and *NotOnOrAfter*: The lifetime of the IdP assertion. 
+- *NotBefore* and *NotOnOrAfter*: The lifetime of the IdP assertion.
 - *AttributeStatement*: IdP may provide user attributes in the *AttributeStatement* child elements. The optional fields cover the GLN of the healthcare professional and other attributes, the primary system may use internally.
 
 ```
