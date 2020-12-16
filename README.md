@@ -3,7 +3,7 @@ Swiss EPR transactions by example.
 
 ## Patient Management
 
-**[PDQ V3](../main/files/PDQ.md)** - Search for patient data by demographics
+**[PDQ V3](../main/files/PDQ.md)** - Search for patient data using demographic data as search criteria
 
 **[PIX V3 Feed](../main/files/PIXFeed.md)** - Register patient data
 
@@ -23,7 +23,7 @@ Swiss EPR transactions by example.
 
 **[IdP Renew](../main/files/IdPRenew.md)** - Renew a IdP assertion
 
-**[SSO Logout](../main/files/SSOLogout.md)** - Logout a authenticated user  
+**[SSO Logout](../main/files/SSOLogout.md)** - Logout of authenticated user  
 
 ## Authorization
 
