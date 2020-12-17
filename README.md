@@ -1,5 +1,10 @@
 # Swiss EPR Transactions
-Swiss EPR transactions by example.
+
+Primary systems need to implement and integrate only few transactions to connect to the Swiss Electronic Patient Record (EPR), mainly for Patient and Document Mangement as well as for Authentication and Authorisation.
+
+The specification of the transactions are published in the ordinances of the law of the electronic patient dossier. There all details and options are found in the ordinances and the references documents.
+
+This pages explain the transactions by using samples recorded or adapted from transactions performed during the annual Swiss projectathon (last one in September 2020). The pages shall be used as additional material to support developer and architects of primary systems to integrate to the Swiss EPR or plan to do so in the near future.  
 
 ## Patient Management
 
