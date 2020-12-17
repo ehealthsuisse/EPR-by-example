@@ -144,7 +144,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found
-**[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
+**[here](../Auth_samples/09_ArtifactResolve_raw.xml)**.
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
@@ -189,7 +189,7 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 #### Response Message
 
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw version may be found **[here](../Auth_samples/04_AuthnResponse_raw.xml)**.
+were ommitted to increase readability. The raw version may be found **[here](../Auth_samples/09_ArtifactResponse_raw.xml)**.
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
