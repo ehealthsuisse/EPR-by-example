@@ -4,7 +4,7 @@ Primary systems need to integrate only a handful of transactions to connect to t
 
 The specification of the transactions are published in the ordinances of the law of the electronic patient dossier. There all details and options are found in the ordinances and the references documents.
 
-This pages explain the transactions by using samples recorded or adapted from transactions performed during the annual Swiss projectathon (last one in September 2020). The pages shall be used as additional material to support developer and architects of primary systems to integrate to the Swiss EPR or plan to do so in the near future.  
+This pages explain the transactions by using samples recorded or adapted from transactions performed during the annual Swiss projectathon (September 2020). The pages shall be used as additional material to support developer and architects of primary systems to integrate to the Swiss EPR or plan to do so in the near future.  
 
 ## Patient Management
 
