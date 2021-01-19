@@ -1,6 +1,6 @@
 # Swiss EPR Transactions
 
-Primary systems need to integrate only a handful of transactions to connect to the Swiss Electronic Patient Record (EPR), i.e., for Patient and Document Mangement as well as for Authentication and Authorisation.
+Primary systems need to implement only a handful of transactions to connect to the Swiss Electronic Patient Record (EPR), i.e., for Patient and Document Mangement as well as for Authentication and Authorisation.
 
 The specification of the transactions are published in the ordinances of the law of the electronic patient dossier. There all details and options are found in the ordinances and the references therein.
 
