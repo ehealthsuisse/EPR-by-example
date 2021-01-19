@@ -10,12 +10,11 @@ Transaction to authenticate a user at a identity provider certified for the Swis
 
 # Overview
 
-Primary systems shall use this transaction to retrieve an IdP assertion authenticatin the user for the access to the
+Primary systems shall use this transaction to retrieve an IdP assertion authentication the user for the access to the
 Swiss EPR.
 
 The requirements for the transaction are defined in
-**[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of
-the ordinances of the Swiss EPR.
+**[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** of the ordinances of the Swiss EPR.
 
 The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
 - **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
@@ -46,7 +45,7 @@ The transaction to authenticate a user for the access to the Swiss EPR is a mult
 The sequence consists of the following steps, each using assigned transaction messages:
 
 - [01 .. 04] The user (claimant) is redirected to the identity provider via the user agent (browser) with a SAML 2.0 *AuthnRequest* message.
-- [05] The user (claimant) authenticates at the identity provider with her authenticiation means.
+- [05] The user (claimant) authenticates at the identity provider with her authentication means.
 - [06 .. 07] The identity provider responds a SAML 2.0 artifact in a HTTP redirect to the primary system (relying party).  
 - [08] The primary system sends a *ArtifactResolve* message to resolve the SAML artifact to the SAML 2 IdP Assertion via the SOAP backchannel.
 - [09] The IdP responds the IdP Assertion in the *ArtifactResponse* message.
@@ -113,7 +112,7 @@ The *AuthnRequest* conveys the following information to be set by the primary sy
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. It conveys two parameter to be used by the primary system:
 - *SAMLart*: The SAML artifact to be used in the *ArtifactResolve* request (see section below).
-- *RelayState*: An unique identifier of the conversation, the primary system initally sent with the Authentication Request.
+- *RelayState*: A unique identifier of the conversation, the primary system initially sent with the Authentication Request.
 
 ```
 https://epdtest.mycompany.local:8549/ACS?SAMLart=AAQAAOjXNPPr%2Fr7FO5WpiZ%2B2vAl5KMFibkRaAGwIkwXh%2Bo7DgsG2LMDE58c%3D&RelayState=idp%23468
@@ -142,8 +141,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
 #### Request Message
 
-The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw request file may be found
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found
 **[here](../Auth_samples/09_ArtifactResolve_raw.xml)**.
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
@@ -188,15 +186,14 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 
 #### Response Message
 
-The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw version may be found **[here](../Auth_samples/09_ArtifactResponse_raw.xml)**.
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](../Auth_samples/09_ArtifactResponse_raw.xml)**.
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 18 in the example below) which shall be validated by the primary system.
 - *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
-- *ssertion*: The IdP assertion conveying the attributes of the authenticated user.  
+- *assertion*: The IdP assertion conveying the attributes of the authenticated user.  
 
 ```
 1 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -316,8 +313,7 @@ assertion:
 
 ### Transport Protocol
 
-The primary system shall send the request messages to the IdP of the community using the http POST binding as defined
-in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
 ```
 POST /IdPAuthenticationService HTTP/1.1
@@ -330,13 +326,11 @@ Content-Length: nnnn
 
 ### Security Requirements   
 
-The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with
-client and server certificate validation. The certificates shall be exchanged during the client registration process.  
+The Artifact Resolve transaction shall be secured by using the SOAP backchannel with TLS and mutual authentication with client and server certificate validation. The certificates shall be exchanged during the client registration process.  
 
 ## Audit Log
 
-Primary systems shall protocol the transaction in their logs to ensure tracability. No further requirements are defined in
-the ordinances of the Swiss EPR.
+Primary systems shall protocol the transaction in their logs to ensure traceability. No further requirements are defined in the ordinances of the Swiss EPR.
 
 # Test Opportunity
 

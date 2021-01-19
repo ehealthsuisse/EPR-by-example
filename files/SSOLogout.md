@@ -24,7 +24,7 @@ Messages are encoded as described in **[Assertions and Protocols for the OASIS S
 
 ### Request Message
 
-The following snippet shows the content of a logout request, whith some elements ommitted to increase readability.
+The following snippet shows the content of a logout request, with some elements omitted to increase readability.
 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
@@ -72,7 +72,7 @@ The major content (lines 9..32) of the message is required for to sign the messa
 
 ### Response Message
 
-The following snippet shows the content of a logout response, whith some elements ommitted to increase readability.
+The following snippet shows the content of a logout response, with some elements omitted to increase readability.
 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
@@ -128,7 +128,7 @@ The *LogoutRequest* may be send by primary systems to the IdP using one of the f
 
 ## Audit Log
 
-Primary systems shall protocol the transaction in their logs to ensure tracability. No further requirements are defined in
+Primary systems shall protocol the transaction in their logs to ensure traceability. No further requirements are defined in
 the ordinances of the Swiss EPR.
 
 ## Security Requirements  
@@ -136,7 +136,7 @@ the ordinances of the Swiss EPR.
 Communication via the SOAP backchannel shall be secured with TLS and mutual authentication, using
 client and server certificate validation. The certificates used, shall be exchanged during the client registration process.  
 
-Communication via the frontchannel (involving the browser) shall be secured with HTTPS and and mutual authentication, using server certificate validation.  
+Communication via the frontchannel (involving the browser) shall be secured with HTTPS and mutual authentication, using server certificate validation.  
 
 # Test Opportunity
 

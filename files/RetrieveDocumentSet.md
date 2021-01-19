@@ -28,12 +28,12 @@ The community responds the set of documents.
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abbrevations
+The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abrevations
 to increase readability. The raw request file may be found **[here](../samples/ITI-43_request_raw.xml)**.
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The
@@ -78,7 +78,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 
 ### Response Message
 
-The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abbrevations
+The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abrevations
 to increase readability. The raw request file may be found **[here](../samples/ITI-43_response_raw.xml)**.
 
 The SOAP *Header* element of the response conveys the following information:
@@ -217,8 +217,8 @@ The message is made of the following blocks:
 
 ## Security Requirements   
 
-To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates (extended
-validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates (extended
+validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
 envelope. See **[Provide X-User Assertion](./ProvideXAssertion.md)** for the implementation details.

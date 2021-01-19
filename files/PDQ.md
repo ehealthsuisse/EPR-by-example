@@ -14,9 +14,9 @@ Transaction to search for patient identities and data from a community using the
 
 # Overview
 
-Primary systems may use this transaction to search for patients which are already registred in the community, either
-because the patient opended the Swiss EPR in the community or because the patient opended the Swiss EPR in a remote
-community and was already registered by annother primary system to store documents. In the Swiss EPR the
+Primary systems may use this transaction to search for patients which are already registered in the community, either
+because the patient opened the Swiss EPR in the community or because the patient opened the Swiss EPR in a remote
+community and was already registered by another primary system to store documents. In the Swiss EPR the
 **[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for
 patients by demographic data.
 
@@ -34,7 +34,7 @@ patient data sets, as registered by other primary systems.
 
 ## Message Semantics
 
-Messages are encoded as described in the HL7 V3 standard with restictions defined in the
+Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
@@ -65,7 +65,7 @@ The SOAP *Header* element conveys the following information:
 8  </env:Header>
 ```
 
-For the patient demographic query no *Security* header element is required, since in the Swiss EPR the acces to the patient
+For the patient demographic query no *Security* header element is required, since in the Swiss EPR the access to the patient
 data is authorized for all applications, which are registered and authenticate with a client certificate
 (see section **[Security Requirements](PDQ.md#security-requirements)**).
 
@@ -162,8 +162,7 @@ see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret. The raw version of a response message may be found
-**[here](../samples/ITI-47_response_raw.xml)**. For a step by step interpretation
-of the message, see section below.
+**[here](../samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
 
 #### Message Interpretation
 
@@ -178,8 +177,8 @@ of the *controlAct* object. The *subject* child element conveys the following in
 - *asOtherIDs*: A list of 1..N IDs, the patient is registered with in the community.  
 
 Each *asOtherId* conveys the ID the patient is registered in the community and conveys the following information:
--  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with it's local ID.
-- *extension*: The master patient ID (XAD-PID), if the assiging authority in the *root* attribute is the master patient index of the community, or a local ID assigned by a primary system otherwise.    
+-  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with its local ID.
+- *extension*: The master patient ID (XAD-PID), if the assigning authority in the *root* attribute is the master patient index of the community, or a local ID assigned by a primary system otherwise.    
 
 ```
 41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
@@ -234,8 +233,8 @@ code block here
 
 ## Security Requirements  
 
-To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates
-(extended validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
+(extended validation required) and client and server side certificate validation.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.

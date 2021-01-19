@@ -32,7 +32,7 @@ The community responds with a code indicating the successful registration of the
 
 ## Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restictions defined in the IHE
+Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 ### Request Message
@@ -55,18 +55,18 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
 of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found **[here](../samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](../samples/ITI-41_request.xml)**.
+A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found **[here](../samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](../samples/ITI-41_request.xml)**.
 
 ### Message Interpretation
 
-*TODO* add the originalProvider to the request message. 
+*TODO* add the originalProvider to the request message.
 
 The request message is not very complex, but lengthy due to the genericity of the ebXML standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
 
 The SOAP *Header* element conveys the following information:
 
-- *To* element: The URL of the provide an register document set service.
+- *To* element: The URL of the provide and register document set service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 - *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
@@ -76,7 +76,7 @@ authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**
 3  <soapenv:Header>
 4   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
 5    <saml2:Assertion>
-6     <!-- ommitted for brevity -->
+6     <!-- omitted for brevity -->
 7    </saml2:Assertion>
 8   </wsse:Security>
 9   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
@@ -124,7 +124,7 @@ submission set metadata:
 equal to *urn:uuid:aa543740-bdda-424e-8c96-df4873be8500*. The value conveyed with the nodeRepresentation attribute and the
 codingScheme value must match one of the supported values in the Swiss EPR as defined in Annex 3.
 - submission author: The submission set author element, indicated by the value of the classificationScheme equal to *urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d*. The author element is optional in the EPR. If present, it shall convey the
-information on the person, which initated the request.
+information on the person, which initiated the request.
 - submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd*
 required to identify the *RegistryPackage* object as a XDS.b submission set.
 
@@ -213,9 +213,9 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 
 #### Document Metadata
 
-The request contains 1..N *ExtrinsicObject* representing the document metadata for earch document. The interpretation of
+The request contains 1..N *ExtrinsicObject* representing the document metadata for each document. The interpretation of
 the document metadata matches the document metadata interpretation, which is explained in detail in step by step example in
-the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**) for the interpretation of the document metadata.
+the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)** for the interpretation of the document metadata.
 
 #### Association
 
@@ -273,14 +273,14 @@ Content-Type: application/xop+xml; charset=utf-8; type="application/soap+xml"
 Content-Transfer-Encoding: binary
 Content-ID: <0.15b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149@apache.org>
 
-<!-- message ommittedd -->
+<!-- message omittedd -->
 
 --MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: binary
 Content-ID: <1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org>
 
-<!-- binary document data ommitted -->
+<!-- binary document data omitted -->
 
 --MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149--
 
@@ -346,7 +346,7 @@ The following snippet shows a example audit message to be written by the primary
   <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
  </ActiveParticipant>
  <ActiveParticipant UserID="mia.muster@domain.com">
-  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+  <RoleIDCode csd-code="HCP" originalText="Healthcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
  </ActiveParticipant>
  <ActiveParticipant UserID="https://service.com/repository" AlternativeUserID="0002" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
   <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
@@ -372,8 +372,8 @@ The message is made of the following blocks:
 
 ## Security Requirements   
 
-To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates (extended
-validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates (extended
+validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
 envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.

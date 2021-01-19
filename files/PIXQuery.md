@@ -31,7 +31,7 @@ the EPR-SPID.
 
 ## Message Semantics
 
-Messages are encoded as described in the HL7 V3 standard with restictions defined in the
+Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE PIX V3 Query](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
@@ -48,7 +48,7 @@ The request message is not complex in nature, but quite lengthy due to the gener
 
 The SOAP *Header* element shall convey the following information:
 
-- *To* element: The URL of the provide an register document set service.
+- *To* element: The URL of the provide and register document set service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
@@ -263,8 +263,8 @@ The message is made of the following blocks:
 
 ## Security Requirements    
 
-To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates
-(extended validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
+(extended validation required) and client and server side certificate validation.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.

@@ -20,7 +20,7 @@ Primary systems shall use this transaction to retrieve the document metadata for
 In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall
 be used to retrieve the document metadata.
 
-To retrieve the document metadata of the document stored in a patients EPR, the the primary system shall perform a
+To retrieve the document metadata of the document stored in a patients EPR, the primary system shall perform a
 **[Registry Stored Query \[ITI-18\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html)**. The
 Registry Stored Query [ITI-18] supports various query parameter as search and filter parameter. The most
 common parameter used in the Swiss EPR are the patient ID in CX format and the status information, which must be
@@ -40,7 +40,7 @@ profile and the ordinances to the Swiss EPR.
 ### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw request file may be found **[here](../samples/ITI-18_request_raw.xml)**.
+were omitted to increase readability. The raw request file may be found **[here](../samples/ITI-18_request_raw.xml)**.
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
@@ -92,7 +92,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 ### Response Message
 
-*TODO* add the originalProvider to the response message. 
+*TODO* add the originalProvider to the response message.
 
 Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret.
@@ -110,7 +110,7 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of
 the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abbrevations used in the step by step interpretation below is found
+A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found
 **[here](../samples/ITI-18_response.xml)**. The raw version of the message may
 be found **[here](../samples/ITI-18_response_raw.xml)**.
 
@@ -233,7 +233,7 @@ attribute and the *codingScheme* value must match one of the supported values in
 128      </ns2:Classification>   
 ```
 
-- Practice Setting Code: The practice setting code the document is regostered with. The value conveyed with the
+- Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
 *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
 defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
 - *Name* : The human readable display name of the practice setting code.
@@ -336,7 +336,7 @@ value must be used when retrieving documents to display (see **[Retrieve Documen
 ```
 
 - The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
-in the repository. It's value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
+in the repository. Its value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
 
 ## Transport Protocol
 
@@ -373,7 +373,7 @@ The following snippet shows a example audit message to be written by the primary
 7   <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
 8  </ActiveParticipant>
 9  <ActiveParticipant UserID="mia.muster@domain.com">
-10   <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+10   <RoleIDCode csd-code="HCP" originalText="Healthcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
 11  </ActiveParticipant>
 12  <ActiveParticipant UserID="https://service.com/registry" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
 13   <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
@@ -399,7 +399,7 @@ The message is made of the following blocks:
 # Security Requirements    
 
 To ensure privacy the transaction must be secured using https with mutual authentication, using X.509 certificates (extended
-validation required) and client and server side certifcate validation.
+validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
 envelope. See **[Provide X-User Assertion](./ProvideXAssertion.md)** for the implementation details.

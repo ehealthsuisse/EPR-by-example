@@ -18,9 +18,9 @@ Primary systems shall use this transaction to retrieve a SAML 2 assertions to be
 the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
 **[Amendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
 
-The primary system shall provide claims (e.g., user role, purpose of use) with the request as defined in **[Ammendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
+The primary system shall provide claims (e.g., user role, purpose of use) with the request as defined in **[Amendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
 
-The community verifies the claims and responds with a XUA compliant SAML 2.0 Assertion defined in **[Ammendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
+The community verifies the claims and responds with a XUA compliant SAML 2.0 Assertion defined in **[Amendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
 
 # Transaction
 
@@ -30,8 +30,7 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 
 ### Request Message
 
-The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw request file may be found **[here](../samples/GetXAssertion_request_raw.xml)**.
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found **[here](../samples/GetXAssertion_request_raw.xml)**.
 
 The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](../XUA_samples/)**.   
 
@@ -185,8 +184,7 @@ Primary systems shall protocol the request and response for traceability. There 
 
 ## Security Requirements  
 
-To ensure privacy the transaction must be secured using https with mutual authentication, using X.509 certificates (extended
-validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, using X.509 certificates (extended validation required) and client and server side certificate validation.
 
 The retrieval of a XUA assertion requires user authentication by providing the IdP assertion in the *Security* header of the SOAP envelope (see **[Message Semantics](GetXAssertion.md#message-semantics)**). The IdP assertion shall be retrieved by the primary system by using the **[Authenticate User](./AuthenticateUser.md)** transaction.  
 

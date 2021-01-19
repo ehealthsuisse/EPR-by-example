@@ -26,19 +26,19 @@ The following snippet shows an abbreviated example message with a SAML Assertion
 
 ```
 1 <?xml version="1.0" encoding="UTF-8"?>
-2 <Envelope xmlns=" !-- namespaces ommitted -- ">
+2 <Envelope xmlns=" !-- namespaces omitted -- ">
 3  <Header>
 4    <To soapenv:mustUnderstand="1"> <!-- id of transaction used in conjunction --></wsa:To>
 5    <MessageID soapenv:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
 6    <Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
 7    <Security>
 8      <saml2:Assertion>
-9			  <!-- assertion content ommitted for brevity -->
+9			  <!-- assertion content omitted for brevity -->
 10      </saml2:Assertion>
 11    <Security>
 12  </Header>
 13  <Body>
-14   <!-- body elements of transaction used in conjuction ommitted for brevity -->
+14   <!-- body elements of transaction used in conjunction omitted for brevity -->
 15  <Body>
 16 </soapenv:Envelope>    
 ```
@@ -47,7 +47,7 @@ For the details on the Assertion content, please see the step by step example in
 
 ## Audit Log
 
-This transaction does not require separate ATNA audit log messages, but adds requirements to the transactions used with, as described in section 1.6.4.3.5 of **[Ammendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
+This transaction does not require separate ATNA audit log messages, but adds requirements to the transactions used with, as described in section 1.6.4.3.5 of **[Amendment 1 to Annex 5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)**.
 
 # Test Opportunity
 

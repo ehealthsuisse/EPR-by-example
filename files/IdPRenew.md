@@ -27,9 +27,9 @@ Messages are encoded as described in **[Assertions and Protocols for the OASIS S
 Primary systems shall use this transaction to renew a assertion whose lifetime is exceeded.
 
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
-and namespaces were ommitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_request_raw.xml)**.
+and namespaces were omitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_request_raw.xml)**.
 
-The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in **[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** and speciifed in the **[Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf)** specification.
+The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in **[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** and specified in the **[Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf)** specification.
 
 ```
 1 <Envelope>
@@ -95,7 +95,7 @@ Primary systems shall embed the SAML Assertion in the the *Body* of the SOAP env
 65    <TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</TokenType>
 66    <RenewTarget>
 67     <Assertion>
-68      <!-- Assertion to be renewed ommitted for brevity -->
+68      <!-- Assertion to be renewed omitted for brevity -->
 69     </Assertion>
 70    </RenewTarget>
 71    <Renewing/>
@@ -125,7 +125,7 @@ A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conve
 9    </Lifetime>
 10    <RequestedSecurityToken>
 11     <Assertion>
-12      <!-- Assertion returned by the IdP ommitted for brevity -->
+12      <!-- Assertion returned by the IdP omitted for brevity -->
 13     </Assertion>
 14    </RequestedSecurityToken>
 15    <RequestedAttachedReference>

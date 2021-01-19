@@ -26,13 +26,13 @@ the ZAS central service, which includes the name, birthdate, gender, nationality
 Primary systems may provide other demographic data (e.g., address and other contact data).
 
 The community response includes a success confirmation, or a error code in the case an error
-occured in the community during registration. In case of success the community stores the patient data
+occurred in the community during registration. In case of success the community stores the patient data
 provided by the primary system, matches the data set to other patient data set registered by other
 primary systems and assigns the patient data set to a master patient record and the master patient ID
 (XAD-PID).
 
 To perform the PIX V3 feed fo the EPR, primary systems must retrieve the demographic data and the
-EPR-SPIDfrom the ZAS central service. While the interface to be used by the communities is specified in
+EPR-SPID from the ZAS central service. While the interface to be used by the communities is specified in
 the ordinances to the Swiss electronic patient dossier, the interface for primary systems is not, since
 communities provide simplified interfaces for primary systems to retrieve the data or included the
 interface in the registration workflow. Please contact the community you want to connect to on
@@ -42,7 +42,7 @@ implementation details.
 
 ## Message Semantics
 
-Messages are encoded as described in the HL7 V3 standard with restictions defined in the
+Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE Patient Identity Feed HL7 V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)** profile and the ordinances to the Swiss EPR.
 
 ### Request Message
@@ -59,7 +59,7 @@ The request message is not very complex, but lengthy due to the genericity of th
 
 The SOAP *Header* element shall convey the following information:
 
-- *To* element: The URL of the provide an register document set service.
+- *To* element: The URL of the provide and register document set service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
@@ -76,7 +76,7 @@ Optional elements may be included according to the specification in the **[W3C S
 9  </soap:Header>
 ```
 
-For the patient identiy feed no *Security* header element is required, since in the Swiss EPR the access to the patient
+For the patient identity feed no *Security* header element is required, since in the Swiss EPR the access to the patient
 data is authorized for all applications, which are registered in the community and authenticate with a client certificate
 (see section **[Security Requirements](PIXFeed.md#security-requirements)**).
 
@@ -109,7 +109,7 @@ Primary systems shall set the following values:
 ```
 
 *TODO*: The following example does not convey all attributes as defined in the ordinances, since some of the ZAS data
-and the EPR-SPID is missing. This seems to be Post CH specific, since the Post CH plattform resolves the AHVN13 to the ZAS data in the background. Also some fields are empty (e.g., the telecom and some qualifier attributes).   
+and the EPR-SPID is missing. This seems to be Post CH specific, since the Post CH platform resolves the AHVN13 to the ZAS data in the background. Also some fields are empty (e.g., the telecom and some qualifier attributes).   
 
 The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 
@@ -163,7 +163,7 @@ The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 76    </controlActProcess>
 ```
 
-The *subject* child element conveys the following information in it's child elements.
+The *subject* child element conveys the following information in its child elements.
 
 The *patientPerson* child element conveys the patient data including:  
 - *name*: conveying the given and the family names of the matching patient data.
@@ -264,8 +264,8 @@ The message is made of the following blocks:
 
 ## Security Requirements  
 
-To ensure privacy the transction must be secured using https with mutual authentication, with X.509 certificates
-(extended validation required) and client and server side certifcate validation.
+To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
+(extended validation required) and client and server side certificate validation.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
