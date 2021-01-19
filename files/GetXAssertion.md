@@ -127,7 +127,7 @@ were ommitted to increase readability. The raw file may be found **[here](../sam
 
 The response message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization. For primary systems, there is no need to extract information from the XUA assertion.  
 
-The XUA Assertion is omitted in the snippet below. For examples of see (**[here](../XUA_samples)**.  
+The XUA Assertion is omitted in the snippet below. For examples of see **[here](../XUA_samples)**.  
 
 ```
 1 <?xml version='1.0' encoding='utf-8'?>
