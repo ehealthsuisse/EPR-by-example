@@ -181,41 +181,52 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-<?xml version="1.0"?>
-<AuditMessage>
- <EventIdentification EventActionCode="C" EventDateTime="2020-11-17T18:40:14+01:00" EventOutcomeIndicator="0">
-  <EventID csd-code="110107" originalText="Import" codeSystemName="DCM"/>
-  <EventTypeCode csd-code="ITI-43" originalText="Retrieve Document Set" codeSystemName="IHE Transactions"/>
- </EventIdentification>
- <ActiveParticipant UserID="source_id" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="mia.muster@domain.com">
-  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://service.com/repository" AlternativeUserID="3245" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
- </ActiveParticipant>
- <AuditSourceIdentification code="2" AuditSourceID="connectathon"/>
-<ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
- <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
-</ParticipantObjectIdentification>
- <ParticipantObjectIdentification ParticipantObjectID="&lt;ihe:DocumentUniqueID&gt;" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
-  <ParticipantObjectIDTypeCode csd-code="9" originalText="Report Number" codeSystemName="RFC-3881"/>
-  <ParticipantObjectDetail type="Repository Unique Id" value="MS4xOS42LjI0LjEwOS40Mi4xLjU="/>
-  <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoxLjE5LjYuMjQuMTA5LjQyLjEuMw=="/>
- </ParticipantObjectIdentification>
-</AuditMessage>
+1 <?xml version='1.0' encoding='utf-8'?>
+2 <AuditMessage>
+3  <EventIdentification EventActionCode="C" EventDateTime="2020-06-04T10:54:39.571Z" EventOutcomeIndicator="0">
+4   <EventID csd-code="110107" codeSystemName="DCM" originalText="Import"/>
+5   <EventTypeCode csd-code="ITI-43" codeSystemName="IHE Transactions" originalText="Retrieve Document Set"/>
+6   <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normal"/>
+7  </EventIdentification>
+8  <ActiveParticipant UserID="https://primary.system.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
+9   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
+10  </ActiveParticipant>
+11  <ActiveParticipant UserID="&lt;111111111148@xua.hin.ch&gt;" UserName="&lt;111111111148@xua.hin.ch&gt;" UserIsRequestor="true">
+12   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Behandelnde(r)"/>
+13  </ActiveParticipant>
+14  <ActiveParticipant UserID="111111111148" UserName="Dr. Professional HasOneAux" UserIsRequestor="true">
+15   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Behandelnde(r)"/>
+16  </ActiveParticipant>
+17  <ActiveParticipant UserID="http://platform.service.com" AlternativeUserID="UNKNOWN" UserIsRequestor="false" NetworkAccessPointID="172.18.0.99" NetworkAccessPointTypeCode="1">
+18   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
+19  </ActiveParticipant>
+20  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.194" AuditSourceID="LE-Portal">
+21   <AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other"/>
+22  </AuditSourceIdentification>
+23  <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+24   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+25  </ParticipantObjectIdentification>
+26  <ParticipantObjectIdentification ParticipantObjectID="2.16.756.5.30.1.194.130880.1591258526941" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
+27   <ParticipantObjectIDTypeCode csd-code="9" codeSystemName="RFC-3881" originalText="Report Number"/>
+28   <ParticipantObjectDetail type="Repository Unique Id" value="Mi4xNi43NTYuNS4zMC4xLjE5NC4zLjMuMQ=="/>
+29   <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoyLjE2Ljc1Ni41LjMwLjEuMTk0"/>
+30  </ParticipantObjectIdentification>
+31  <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="4" ParticipantObjectTypeCodeRole="1">
+32   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+33  </ParticipantObjectIdentification>
+34 </AuditMessage>
 ```
 
 The message is made of the following blocks:
-- *EventIdentification*: Element with event related information including the timestamp.
-- *ActiveParticipant*: Element of information related to the primary system performing the query.
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
-- *ActiveParticipant*: Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification*: Element with request message related information.   
-
-*TODO* Update with gazelle example 
+- *EventIdentification*: Event related information including the timestamp and purpose of use (line 3 .. 7).
+- *ActiveParticipant*: Information related to the primary system performing the query (line 8 .. 10).
+- *ActiveParticipant*: Information on the user initiating the transaction (line 11 .. 13).
+- *ActiveParticipant*: Additional information on the user initiating the transaction (line 14 .. 16).
+- *ActiveParticipant*: Information on the responding service endpoint (line 17 .. 19).
+- *AuditSourceIdentification*: Information related to the primary system performing the query (line 20 .. 22).
+- *ParticipantObjectIdentification*: Additional information on the patient local ID (line 23 .. 25).
+- *ParticipantObjectIdentification*: Request message related information (line 26 .. 30).
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 31 .. 33).
 
 ## Security Requirements   
 
