@@ -1,21 +1,28 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <AuditMessage>
- <EventIdentification EventActionCode="C" EventDateTime="2020-11-15T18:09:49+02:00" EventOutcomeIndicator="0">
-  <EventID csd-code="110110" originalText="Patient Record" codeSystemName="DCM"/>
-  <EventTypeCode csd-code="ITI-44" originalText="Patient Identity Feed" codeSystemName="IHE Transactions"/>
+ <EventIdentification EventDateTime="2020-09-21T15:25:53.616+02:00" EventOutcomeIndicator="0" EventActionCode="C">
+  <EventID csd-code="110110" codeSystemName="DCM" originalText="Patient Record"/>
+  <EventTypeCode csd-code="ITI-44" codeSystemName="IHE Transactions" originalText="Patient Identity Feed"/>
+  <EventOutcomeDescription/>
  </EventIdentification>
- <ActiveParticipant UserID="source_id" AlternativeUserID="00002752" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+ <ActiveParticipant AlternativeUserID="primary.system.alt.ID" UserID="primary.system.ID" UserIsRequestor="true" NetworkAccessPointID="https://my_primary_system.com/" NetworkAccessPointTypeCode="1">
+  <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
  </ActiveParticipant>
- <ActiveParticipant UserID="mia.muster@domain.com">
-  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+ <ActiveParticipant AlternativeUserID="plattform.mpi.alt.ID" UserID="plattform.mpi.ID" UserIsRequestor="false" NetworkAccessPointID="https://platform.com/mock/patientRegister" NetworkAccessPointTypeCode="1">
+  <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/>
  </ActiveParticipant>
- <ActiveParticipant UserID="https://service.com/mpi" AlternativeUserID="pixman" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
- </ActiveParticipant>
- <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
- <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
-  <ParticipantObjectDetail type="II" value="MDAwMDI3NTI="/>
+ <AuditSourceIdentification AuditSourceID="primary.system.alt.ID" AuditEnterpriseSiteID="2.16.756.5.30.1.174.1.5.1">
+  <AuditSourceTypeCode csd-code="4" codeSystemName="DCM" originalText="Client Process"/>
+ </AuditSourceIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="11234^^^&amp;2.16.756.5.30.1.174.1.9999.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+  <ParticipantObjectDetail type="II" value="ZGVmYXVsdA=="/>
+ </ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:4d42d62d-30b7-4ad4-a9e2-c3f0dd1d50f9" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+  <ParticipantObjectIDTypeCode csd-code="ITI-44" codeSystemName="IHE Transactions" originalText="Patient Identity Feed"/>
+  <ParticipantObjectQuery>
+   <!-- omitted for brevity -->
+  </ParticipantObjectQuery>
+  <ParticipantObjectDetail type="II" value="ZGVmYXVsdA=="/>
  </ParticipantObjectIdentification>
 </AuditMessage>
