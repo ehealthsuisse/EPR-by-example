@@ -228,40 +228,44 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-<?xml version="1.0"?>
-<AuditMessage>
- <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:40:41+01:00" EventOutcomeIndicator="0">
-  <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
-  <EventTypeCode csd-code="ITI-45" originalText="PIX Query" codeSystemName="IHE Transactions"/>
- </EventIdentification>
- <ActiveParticipant UserID="source_id" AlternativeUserID="3345" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="mia.muster@domain.com">
-  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://service.com/mpi" AlternativeUserID="207" UserIsRequestor="false" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
- </ActiveParticipant>
- <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
- <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1" ParticipantObjectDataLifeCycle="6">
-  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
- </ParticipantObjectIdentification>
- <ParticipantObjectIdentification ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-  <ParticipantObjectIDTypeCode csd-code="ITI-45" originalText="PIX Query" codeSystemName="IHE Transactions"/>
-  <ParticipantObjectQuery>PHF1...!--omitted for brevity-- ...ADS=</ParticipantObjectQuery>
- </ParticipantObjectIdentification>
-</AuditMessage>   
+1 <?xml version='1.0' encoding='utf-8'?>
+2 <AuditMessage>
+3  <EventIdentification EventActionCode="E" EventDateTime="2020-09-30T19:32:55.368Z" EventOutcomeIndicator="0">
+4   <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"></EventID>
+5   <EventTypeCode csd-code="ITI-45" codeSystemName="IHE Transactions" originalText="PIX Query"></EventTypeCode>
+6  </EventIdentification>
+7  <ActiveParticipant UserID="https://my_primary_system.com/PIXConsumer" AlternativeUserID="201818" UserIsRequestor="true" NetworkAccessPointID="0045e6d09dd0" NetworkAccessPointTypeCode="1">
+8   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"></RoleIDCode>
+9  </ActiveParticipant>
+10  <ActiveParticipant UserID="_SYSTEM" UserIsRequestor="true" NetworkAccessPointID="0045e6d09dd0" NetworkAccessPointTypeCode="1">
+11   <RoleIDCode csd-code="%All" codeSystemName="HealthShare" originalText="%All"></RoleIDCode>
+12  </ActiveParticipant>
+13  <ActiveParticipant UserID="https://ehealthsuisse.ihe-europe.net/PIXManagerService" UserIsRequestor="false" NetworkAccessPointID="ehealthsuisse.ihe-europe.net" NetworkAccessPointTypeCode="1">
+14   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"></RoleIDCode>
+15  </ActiveParticipant>
+16  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.109.6.1.3.1.1" AuditSourceID="0045e6d09dd0:IRIS:BINTADAPTOR:HS.IHE.PIXv3.Consumer.Operations">
+17   <AuditSourceTypeCode csd-code="4"></AuditSourceTypeCode>
+18  </AuditSourceIdentification>
+19  <ParticipantObjectIdentification ParticipantObjectID="CHFACILITY22332^^^&amp;1.3.6.1.4.1.12559.11.25.1.19&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+20   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"></ParticipantObjectIDTypeCode>
+21   <ParticipantObjectDetail type="II" value="QkMzMjJDQjAtMDM1My0xMUVCLTk5OTQtMDI0MkFDMTQwMDAy"></ParticipantObjectDetail>
+22  </ParticipantObjectIdentification>
+23  <ParticipantObjectIdentification ParticipantObjectID="1^^^&amp;BC322C7E-0353-11EB-9994-0242AC140002&amp;ISO" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+24   <ParticipantObjectIDTypeCode csd-code="ITI-45" codeSystemName="IHE Transactions" originalText="PIX Query"></ParticipantObjectIDTypeCode>
+25   <ParticipantObjectQuery> <!-- omitted for brevity --> </ParticipantObjectQuery>
+26   <ParticipantObjectDetail type="MSH-10" value="Xl5eJkJDMzIyQ0IwLTAzNTMtMTFFQi05OTk0LTAyNDJBQzE0MDAwMiZJU08="></ParticipantObjectDetail>
+27  </ParticipantObjectIdentification>
+28 </AuditMessage>  
 ```
 
 The message is made of the following blocks:
-- *EventIdentification*: Element with event related information including the timestamp.
-- *ActiveParticipant*: Element of information related to the primary system performing the query.
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
-- *ActiveParticipant*: Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query.
-
-*TODO* Update with gazelle example
+- *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
+- *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 9).
+- *ActiveParticipant*: Information on the user initiating the transaction (line 10 .. 12).
+- *ActiveParticipant*: Information on the responding service endpoint (line 13 .. 15).
+- *AuditSourceIdentification*: Information related to the primary system performing the query (line 16 .. 18)
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 19 .. 22)
+- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 23 .. 27).
 
 ## Security Requirements    
 
