@@ -401,13 +401,13 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
-- *EventIdentification*: Element with event related information including the timestamp (line 3 .. 6).
-- *ActiveParticipant*: Element with information related to the primary system performing the query (line 7 .. 15).
-- *ActiveParticipant*: Element with information on the responding service endpoint (line 16 .. 18).
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request (line 19 .. 21).
-- *AuditSourceIdentification*: TODO (line 22 .. 24)
-- *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query (line 25 .. 31).
-- *ParticipantObjectIdentification*: TODO (line 32 .. 34)
+- *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
+- *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 15).
+- *ActiveParticipant*: Information on the responding service endpoint (line 16 .. 18).
+- *ActiveParticipant*: Information on the authenticated user initiating the request (line 19 .. 21).
+- *AuditSourceIdentification*: Information related to the primary system performing the query (line 22 .. 24)
+- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 25 .. 31).
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 32 .. 34)
 
 # Security Requirements    
 
@@ -423,4 +423,4 @@ Note:
 
 # Test Opportunity
 
-The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.
