@@ -225,11 +225,52 @@ Content-Length: nnnn
 
 ## Audit Log
 
-*TODO* Update with gazelle example
+Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
+The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=705)** and the
+**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+1.5 "Requirements on ATNA").
 
 ```
-code block here    
+1 <?xml version='1.0' encoding='utf-8'?>
+2 <AuditMessage>
+3  <EventIdentification EventActionCode="E" EventDateTime="2020-09-30T19:27:29.386Z" EventOutcomeIndicator="0">
+4   <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"></EventID>
+5   <EventTypeCode csd-code="ITI-47" codeSystemName="IHE Transactions" originalText="Patient Demographics Query"></EventTypeCode>
+6  </EventIdentification>
+7  <ActiveParticipant UserID="https://my_primary_system.com/PDQConsumer" AlternativeUserID="201809" UserIsRequestor="true" NetworkAccessPointID="0045e6d09dd0" NetworkAccessPointTypeCode="1">
+8   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"></RoleIDCode>
+9  </ActiveParticipant>
+10  <ActiveParticipant UserID="_SYSTEM" UserIsRequestor="true" NetworkAccessPointID="0045e6d09dd0" NetworkAccessPointTypeCode="1">
+11   <RoleIDCode csd-code="%All" codeSystemName="HealthShare" originalText="%All"></RoleIDCode>
+12  </ActiveParticipant>
+13  <ActiveParticipant UserID="https://ehealthsuisse.ihe-europe.net/PDQService" UserIsRequestor="false" NetworkAccessPointID="ehealthsuisse.ihe-europe.net" NetworkAccessPointTypeCode="1">
+14   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"></RoleIDCode>
+15  </ActiveParticipant>
+16  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.109.6.1.3.1.1" AuditSourceID="my.primary.system.ID">
+17   <AuditSourceTypeCode csd-code="4"></AuditSourceTypeCode>
+18  </AuditSourceIdentification>
+19  <ParticipantObjectIdentification ParticipantObjectID="CHPAM34^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+20   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"></ParticipantObjectIDTypeCode>
+21   <ParticipantObjectName>^Neil^Mellisa</ParticipantObjectName>
+22   <ParticipantObjectDetail type="II" value="RjlENjJBNjgtMDM1Mi0xMUVCLUE2RTgtMDI0MkFDMTQwMDAy"></ParticipantObjectDetail>
+23  </ParticipantObjectIdentification>
+24  <ParticipantObjectIdentification ParticipantObjectID="1^^^&amp;F9D62A4A-0352-11EB-A6E8-0242AC140002&amp;ISO" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+25   <ParticipantObjectIDTypeCode csd-code="ITI-47" codeSystemName="IHE Transactions" originalText="Patient Demographics Query"></ParticipantObjectIDTypeCode>
+26   <ParticipantObjectQuery> <!-- UUencoded copy of the query message --> </ParticipantObjectQuery>
+27   <ParticipantObjectDetail type="MSH-10" value="MV5eXiZGOUQ2MkE2OC0wMzUyLTExRUItQTZFOC0wMjQyQUMxNDAwMDImSVNP"></ParticipantObjectDetail>
+28  </ParticipantObjectIdentification>
+29 </AuditMessage>   
 ```
+
+The message is made of the following blocks:
+- *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
+- *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 9).
+- *ActiveParticipant*: Information on the user initiating the transaction (line 10 .. 12).
+- *ActiveParticipant*: Information on the responding service endpoint (line 13 .. 15).
+- *AuditSourceIdentification*: Information related to the primary system performing the query (line 16 .. 18)
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 19 .. 23)
+- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 24 .. 28).
 
 ## Security Requirements  
 

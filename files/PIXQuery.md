@@ -243,7 +243,7 @@ The following snippet shows a example audit message to be written by the primary
 13  <ActiveParticipant UserID="https://ehealthsuisse.ihe-europe.net/PIXManagerService" UserIsRequestor="false" NetworkAccessPointID="ehealthsuisse.ihe-europe.net" NetworkAccessPointTypeCode="1">
 14   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"></RoleIDCode>
 15  </ActiveParticipant>
-16  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.109.6.1.3.1.1" AuditSourceID="0045e6d09dd0:IRIS:BINTADAPTOR:HS.IHE.PIXv3.Consumer.Operations">
+16  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.109.6.1.3.1.1" AuditSourceID="my.primary.system.ID">
 17   <AuditSourceTypeCode csd-code="4"></AuditSourceTypeCode>
 18  </AuditSourceIdentification>
 19  <ParticipantObjectIdentification ParticipantObjectID="CHFACILITY22332^^^&amp;1.3.6.1.4.1.12559.11.25.1.19&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
