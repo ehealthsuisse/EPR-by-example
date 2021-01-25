@@ -225,7 +225,7 @@ Content-Length: nnnn
 
 ## Audit Log
 
-*TODO*
+*TODO* Update with gazelle example
 
 ```
 code block here    
@@ -241,4 +241,4 @@ Note:
 
 # Test Opportunity
 
-*TODO*
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.

@@ -140,4 +140,4 @@ Communication via the frontchannel (involving the browser) shall be secured with
 
 # Test Opportunity
 
-*TODO*
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 

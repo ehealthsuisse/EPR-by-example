@@ -190,4 +190,4 @@ The retrieval of a XUA assertion requires user authentication by providing the I
 
 # Test Opportunity
 
-TODO
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 

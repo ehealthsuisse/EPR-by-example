@@ -363,38 +363,51 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-0 <?xml version="1.0"?>
-1 <AuditMessage>
-2  <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:38:36+01:00" EventOutcomeIndicator="0">
-3   <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
-4   <EventTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
-5  </EventIdentification>
-6  <ActiveParticipant UserID="application" AlternativeUserID="8844" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-7   <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
-8  </ActiveParticipant>
-9  <ActiveParticipant UserID="mia.muster@domain.com">
-10   <RoleIDCode csd-code="HCP" originalText="Healthcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
-11  </ActiveParticipant>
-12  <ActiveParticipant UserID="https://service.com/registry" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-13   <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
-14  </ActiveParticipant>
-15  <AuditSourceIdentification code="1" AuditSourceID="application"/>
-16  <ParticipantObjectIdentification ParticipantObjectID="123456789" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-17   <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
-18   <ParticipantObjectQuery>PHF...!-- omitted for brevity --...yeTo==</ParticipantObjectQuery>
-19  </ParticipantObjectIdentification>
-20 </AuditMessage>    
+1 <?xml version="1.0" encoding="UTF-8"?>
+2 <AuditMessage>
+3  <EventIdentification EventActionCode="E" EventDateTime="2020-09-24T10:55:22.778+02:00" EventOutcomeIndicator="0">
+4   <EventID csd-code="110112" codeSystemName="DCM" displayName="Query" originalText="Query"/>
+5   <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
+6  </EventIdentification>
+7  <ActiveParticipant
+8   UserID="consumer.service.xy"
+9   UserIsRequestor="true"
+10   AlternativeUserID="EPD-PROJ-2020:1199"
+11   UserName="&lt;9801000050702@http://platform.com/eHealthSTS&gt;"
+12   NetworkAccessPointID="EPD-Proj-2020"
+13   NetworkAccessPointTypeCode="1">
+14   <RoleIDCode csd-code="110153" codeSystemName="DCM" displayName="Source" originalText="Source"/>
+15  </ActiveParticipant>
+16  <ActiveParticipant UserID="https://platform.com/RegistryService" UserIsRequestor="false" NetworkAccessPointID="epd-test.ith-icoserve.com" NetworkAccessPointTypeCode="1">
+17   <RoleIDCode csd-code="110152" codeSystemName="DCM" displayName="Destination" originalText="Destination"/>
+18  </ActiveParticipant>
+19  <ActiveParticipant UserID="9801000050702" UserIsRequestor="true" UserName="Rosa Sestak">
+20   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" displayName="Healthcare professional" originalText="Healthcare professional"/>
+21  </ActiveParticipant>
+22  <AuditSourceIdentification AuditSourceID="consumer.service.xy" AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.7.108">
+23   <AuditSourceTypeCode csd-code="4"/>
+24  </AuditSourceIdentification>
+25  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+26   <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
+27   <ParticipantObjectQuery>
+28    <!-- omitted for brevity -->
+29   </ParticipantObjectQuery>
+30   <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
+31  </ParticipantObjectIdentification>
+32  <ParticipantObjectIdentification ParticipantObjectID="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+33   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" displayName="Patient Number" originalText="Patient Number"/>
+34  </ParticipantObjectIdentification>
+35 </AuditMessage>   
 ```
 
 The message is made of the following blocks:
-- *EventIdentification*: Element with event related information including the timestamp.
-- *ActiveParticipant*: Element of information related to the primary system performing the query.
-- *ActiveParticipant*: Element with information on the authenticated user initiating the request.
-- *ActiveParticipant*: Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query.
-
-**TODO**:
-- use real world example  
+- *EventIdentification*: Element with event related information including the timestamp (line 3 .. 6).
+- *ActiveParticipant*: Element with information related to the primary system performing the query (line 7 .. 15).
+- *ActiveParticipant*: Element with information on the responding service endpoint (line 16 .. 18).
+- *ActiveParticipant*: Element with information on the authenticated user initiating the request (line 19 .. 21).
+- *AuditSourceIdentification*: TODO (line 22 .. 24)
+- *ParticipantObjectIdentification*: Element with request message related information including a UUencoded copy of the query (line 25 .. 31).
+- *ParticipantObjectIdentification*: TODO (line 32 .. 34)
 
 # Security Requirements    
 
@@ -410,4 +423,4 @@ Note:
 
 # Test Opportunity
 
-TODO
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 

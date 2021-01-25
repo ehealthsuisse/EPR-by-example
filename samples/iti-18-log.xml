@@ -1,21 +1,43 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <AuditMessage>
- <EventIdentification EventActionCode="E" EventDateTime="2020-11-17T18:38:36+01:00" EventOutcomeIndicator="0">
-  <EventID csd-code="110112" originalText="Query" codeSystemName="DCM"/>
-  <EventTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
+
+ <EventIdentification EventActionCode="E" EventDateTime="2020-09-24T10:55:22.778+02:00" EventOutcomeIndicator="0">
+  <EventID csd-code="110112" codeSystemName="DCM" displayName="Query" originalText="Query"/>
+  <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
  </EventIdentification>
- <ActiveParticipant UserID="application" AlternativeUserID="8844" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" originalText="Source" codeSystemName="DCM"/>
+
+ <ActiveParticipant
+  UserID="consumer.service.xy"
+  UserIsRequestor="true"
+  AlternativeUserID="EPD-PROJ-2020:1199"
+  UserName="&lt;9801000050702@http://ith-icoserve.com/eHealthSolutionsSTS&gt;"
+  NetworkAccessPointID="EPD-Proj-2020"
+  NetworkAccessPointTypeCode="1">
+  <RoleIDCode csd-code="110153" codeSystemName="DCM" displayName="Source" originalText="Source"/>
  </ActiveParticipant>
- <ActiveParticipant UserID="mia.muster@domain.com">
-  <RoleIDCode csd-code="HCP" originalText="Heathcare Professional" codeSystemName="DocumentEntry.author.authorRole"/>
+
+ <ActiveParticipant UserID="https://vendor.com/RegistryService" UserIsRequestor="false" NetworkAccessPointID="epd-test.ith-icoserve.com" NetworkAccessPointTypeCode="1">
+  <RoleIDCode csd-code="110152" codeSystemName="DCM" displayName="Destination" originalText="Destination"/>
  </ActiveParticipant>
- <ActiveParticipant UserID="https://service.com/registry" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110152" originalText="Destination" codeSystemName="DCM"/>
+
+ <ActiveParticipant UserID="9801000050702" UserIsRequestor="true" UserName="Rosa Sestak">
+  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" displayName="Healthcare professional" originalText="Healthcare professional"/>
  </ActiveParticipant>
- <AuditSourceIdentification code="1" AuditSourceID="application"/>
- <ParticipantObjectIdentification ParticipantObjectID="123456789" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-  <ParticipantObjectIDTypeCode csd-code="ITI-18" originalText="Registry Stored Query" codeSystemName="IHE Transactions"/>
-  <ParticipantObjectQuery>PHF...!-- omitted for brewety --...yeTo==</ParticipantObjectQuery>
+
+ <AuditSourceIdentification AuditSourceID="consumer.service.xy" AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.7.108">
+  <AuditSourceTypeCode csd-code="4"/>
+ </AuditSourceIdentification>
+
+ <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+  <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
+  <ParticipantObjectQuery>
+   <!-- omitted for brevity -->
+  </ParticipantObjectQuery>
+  <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
  </ParticipantObjectIdentification>
+
+ <ParticipantObjectIdentification ParticipantObjectID="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" displayName="Patient Number" originalText="Patient Number"/>
+ </ParticipantObjectIdentification>
+
 </AuditMessage>

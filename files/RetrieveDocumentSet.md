@@ -213,7 +213,9 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Element of information related to the primary system performing the query.
 - *ActiveParticipant*: Element with information on the authenticated user initiating the request.
 - *ActiveParticipant*: Element with information on the responding service endpoint.
-- *ParticipantObjectIdentification*: Element with request message related information.    
+- *ParticipantObjectIdentification*: Element with request message related information.   
+
+*TODO* Update with gazelle example 
 
 ## Security Requirements   
 
@@ -229,4 +231,4 @@ Note:
 
 # Test Opportunity
 
-TBD
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.

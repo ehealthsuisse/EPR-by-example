@@ -262,6 +262,8 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Element with information on the responding service endpoint.
 - *ParticipantObjectIdentification*: Element with request message related information.
 
+*TODO* Update with gazelle example
+
 ## Security Requirements  
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
@@ -272,4 +274,4 @@ Note:
 
 # Test Opportunity
 
-*TODO*
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.

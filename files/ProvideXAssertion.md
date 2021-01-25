@@ -51,4 +51,4 @@ This transaction does not require separate ATNA audit log messages, but adds req
 
 # Test Opportunity
 
-See section Test Opportunity in the other transactions.
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 

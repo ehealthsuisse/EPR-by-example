@@ -369,6 +369,8 @@ The message is made of the following blocks:
 - *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../files/PIXFeed.md)**).  
 - *ParticipantObjectIdentification*: Element with request message related information.  
 
+*TODO* Update with gazelle example
+
 
 ## Security Requirements   
 
@@ -384,4 +386,4 @@ Note:
 
 # Test Opportunity
 
-TBD
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.
