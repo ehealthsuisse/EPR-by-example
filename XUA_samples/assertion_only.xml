@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV='http://www.w3.org/2003/05/soap-envelope'
+ xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+ xmlns:s='http://www.w3.org/2001/XMLSchema'
+ xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd'
+ xmlns:wst='http://docs.oasis-open.org/ws-sx/ws-trust/200512'>
+ <SOAP-ENV:Body>
+  <wst:RequestSecurityTokenResponseCollection>
+   <wst:RequestSecurityTokenResponse>
+    <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
+    <wst:RequestedSecurityToken>
+     <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="Id-1E0B3B40-0E6A-11EB-BC87-001C42B2D956" IssueInstant="2020-10-14T22:10:49.830Z" Version="2.0">
+      <saml:Issuer Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">emailAddress=bintit@bint.ch,CN=Assertion Provider APP Instance,OU=BINTmed Integration,O=BINT GmbH,L=Winterthur,ST=ZH,C=CH</saml:Issuer>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="Id-1E11BFE2-0E6A-11EB-BC87-001C42B2D956">
+       <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></CanonicalizationMethod>
+        <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
+        <Reference URI="#Id-1E0B3B40-0E6A-11EB-BC87-001C42B2D956">
+         <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></Transform>
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></Transform>
+         </Transforms>
+         <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+         <DigestValue>cgd5z1JCatHZIgScNAe2RE+Kra3vW8imHRZK4QQTcbw=</DigestValue>
+        </Reference>
+       </SignedInfo>
+       <SignatureValue>PKTS4/EmLGWMS3nMHwIX+2Z2/wvIkTNGX//ms7z9C9A7YbLE4ew3F5TFX9noKHj8Ho7f9bLsJi52QeQoW028O5VgKTw9AS6J7tTTHab6SXDOkLlwMSMVzfHKaohc1TuyvkADUmTV2/x5hvSxiD50goBWO98y4YEl8SuqDYAszhoH3jEV8k5Oxw/7rpC+3vSLU9T6845zz/ZQEaWCqfsUXBFycZsDNlHsLnKfSkAGB4ZHs347h7P7XHetLDRybujTIcy7JFygbQjMHXGNFk7dQR9B1ahRGo8p/kipHiHTfsYe4wsMRkXVUhbimCVqAMVrWzVtjjfjeP4daYFQYhtVVA==</SignatureValue>
+       <KeyInfo>
+        <X509Data>
+         <X509Certificate>MIIEqTCCApECCQCjpx8gFOE5BTANBgkqhkiG9w0BAQsFADCBgTELMAkGA1UEBhMCQ0gxCzAJBgNVBAgMAlpIMRMwEQYDVQQHDApXaW50ZXJ0aHVyMRIwEAYDVQQKDAlCSU5UIEdtYkgxEDAOBgNVBAsMB0JJTlRtZWQxCzAJBgNVBAMMAkNBMR0wGwYJKoZIhvcNAQkBFg5iaW50aXRAYmludC5jaDAeFw0yMDA4MjYxNTA1MTJaFw0yMjA4MjYxNTA1MTJaMIGqMQswCQYDVQQGEwJDSDELMAkGA1UECAwCWkgxEzARBgNVBAcMCldpbnRlcnRodXIxEjAQBgNVBAoMCUJJTlQgR21iSDEcMBoGA1UECwwTQklOVG1lZCBJbnRlZ3JhdGlvbjEoMCYGA1UEAwwfQXNzZXJ0aW9uIFByb3ZpZGVyIEFQUCBJbnN0YW5jZTEdMBsGCSqGSIb3DQEJARYOYmludGl0QGJpbnQuY2gwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4OQUY6ZsTqphWEstWFzNC6bhrkDcGr0Vsd3WOCvv5WX0dZRhKVW5FbDEVCWd7h2Iet4Cy/cbz9zTyKnvQOV/CLM9vywCcXH0XgLfjzwHb9RVV2m9p0FFn+o49gnIoe04rv04vlq5Oj0CS2ZeADC9fbMplZD4IqN1XieLxpQdeAtrHVCjASW/NazjcCV1yWWcRKbcP82US5UFWXsm868eulvUNYmAu7Xe2c5Vic7XBlsCApCgYMFw37XS1Ok/tjA0dWIKcJWZd6DZ9THtTB+EYVAfClmJ/GedrzWtYBm36Snipuc5HoHTnENJtnjjMcwJUYjg8MRr5X7bdH9n4Y/FvAgMBAAEwDQYJKoZIhvcNAQELBQADggIBAIXXE444n7FyeX5SqCRWEOxlAec8WxBvMGffCVJU1fCSCs/omxEXfd5/o6+YL1a4cxjdxhu4knm+OcGYRDVkrnSZO2JzlleyA03O0gg72PFUU+2NTXaXtpYSMTaPj8zgRgYOnERjlHFqGZDoatvVIO2JCOAOxTzRI67hV/Le9pCpZZplmzMVcJwQCZKc9gri32IWOnfpLe/YTphE95Jb1tXrt3golG5jSFncVGrpL7kIcPUecLJkB2g/4TDXlQAPlGsNMoArIm8e/kowHD2Em5QjClGbzizS/6uD4uvrfxktXNHuQCiiluFyqNtP9ucs9VYAu5Qdzl3HYXiHcYzcee2QqJqHtDPpbkVSzUnGyUw7SxxW4tb76CRArpHVMN9i77jlhM6cjWi8QzfsS4R+jNgu/6PcGhYjOE7Ff60VhAnR808Ckqck7z9DKOHhGm96H0WIR7TEXiluOwf7zLmu5eZdL888xk+4waXerVdRbYSAtSdDCNrM3/6z3S+yHXP1f2+9by91lqgIsMvOzA8SasPUV8KWsCajGc4O0oajLN5GYGfKaHmkLmWMGJKU31jm5ebEdUYOCorVz1LnULCRCuZOv7LDF83oiw9dnOHtOnuBNecNt8OMal0Aa9yVL5WeazaWnXZWiooC9CXhLHO6odKSJr8KabzExk2GO0e4zxdB</X509Certificate>
+        </X509Data>
+       </KeyInfo>
+      </Signature>
+      <saml:Subject>
+       <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="urn:gs1:gln">7601002469191</saml:NameID>
+       <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"></saml:SubjectConfirmation>
+      </saml:Subject>
+      <saml:Conditions NotBefore="2020-10-14T22:10:49.831Z" NotOnOrAfter="2020-10-14T22:15:49.831582Z">
+       <saml:AudienceRestriction>
+        <saml:Audience>http://ihe.connectathon.XUA/X-ServiceProvider-IHE-Connectathon</saml:Audience>
+       </saml:AudienceRestriction>
+      </saml:Conditions>
+      <saml:AuthnStatement AuthnInstant="2020-10-14T22:05:49.831Z">
+       <saml:SubjectLocality DNSName="33848.hostserv.eu.HOSTSERV.EU"></saml:SubjectLocality>
+       <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef>
+       </saml:AuthnContext>
+      </saml:AuthnStatement>
+      <saml:AttributeStatement>
+       <saml:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:subject-id">
+        <saml:AttributeValue xsi:type="s:string">Ann Andrews</saml:AttributeValue>
+       </saml:Attribute>
+       <saml:Attribute Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
+        <saml:AttributeValue xsi:type="s:string">761337610435200998^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml:AttributeValue>
+       </saml:Attribute>
+       <saml:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
+        <saml:AttributeValue>
+         <hl7:PurposeOfUse xmlns:hl7="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="hl7:CE"></hl7:PurposeOfUse>
+        </saml:AttributeValue>
+       </saml:Attribute>
+       <saml:Attribute Name="urn:oasis:names:tc:xacml:2.0:subject:role">
+        <saml:AttributeValue>
+         <Role xmlns="urn:hl7-org:v3" xmlns:hl7="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Actors" displayName="HealthCare Professional" xsi:type="hl7:CE"></Role>
+        </saml:AttributeValue>
+       </saml:Attribute>
+       <saml:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization">
+        <saml:AttributeValue xmlns:s01="http://www.w3.org/2001/XMLSchema" xsi:type="s01:string">Auryn-Spital</saml:AttributeValue>
+       </saml:Attribute>
+       <saml:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization-id">
+        <saml:AttributeValue xmlns:s01="http://www.w3.org/2001/XMLSchema" xsi:type="s01:string">urn:oid:2.16.10.89.201</saml:AttributeValue>
+       </saml:Attribute>
+      </saml:AttributeStatement>
+     </saml:Assertion>
+    </wst:RequestedSecurityToken>
+    <wst:Lifetime></wst:Lifetime>
+    <s01:AppliesTo xmlns:s01="http://schemas.xmlsoap.org/ws/2004/09/policy">
+     <EndpointReference><Address/></EndpointReference>
+    </s01:AppliesTo>
+   </wst:RequestSecurityTokenResponse>
+  </wst:RequestSecurityTokenResponseCollection>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
