@@ -145,7 +145,7 @@ The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 58          <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
 59          <name>Spital Administration</name>
 60          <contactParty classCode="CON">
-61           <telecom value=""/>
+61           <telecom value="mailto:myHospital@test.ch"/>
 62          </contactParty>
 63         </providerOrganization>
 64        </patient>
