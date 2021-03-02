@@ -109,7 +109,7 @@ Primary systems shall set the following values:
 ```
 
 *TODO*: The following example does not convey all attributes as defined in the ordinances, since some of the ZAS data
-and the EPR-SPID is missing. This seems to be Post CH specific, since the Post CH platform resolves the AHVN13 to the ZAS data in the background. Also some fields are empty (e.g., the telecom and some qualifier attributes).   
+and the EPR-SPID is missing. This is vendor specific, since it accepts the AHVN13 to resolve to the ZAS data in the background.
 
 The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 
