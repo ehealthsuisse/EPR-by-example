@@ -43,12 +43,13 @@ implementation details.
 ## Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
-**[IHE Patient Identity Feed HL7 V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)** profile and the ordinances to the Swiss EPR.
+**[IHE Patient Identity Feed HL7 V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)** profile
+and the ordinances to the Swiss EPR.
 
 ### Request Message
 
-Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
-A raw version of a request message may be found
+Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request
+message is quite lengthy. A raw version of a request message may be found
 **[here](../samples/ITI-44_request.xml)**.
 
 For a step by step interpretation of the request message, see section below.
@@ -107,9 +108,6 @@ Primary systems shall set the following values:
 26     </device>
 27    </sender>
 ```
-
-*TODO*: The following example does not convey all attributes as defined in the ordinances, since some of the ZAS data
-and the EPR-SPID is missing. This is vendor specific, since it accepts the AHVN13 to resolve to the ZAS data in the background.
 
 The patient data are encoded in a HL7 V3 *controlAct* object as follows:
 
@@ -188,8 +186,6 @@ The *asOtherId* elements shall include the
 ```
 
 - the EPR-SPID with the OID of the ZAS in the *root* attribute, and the value in the *extension* attribute.
-
-*TODO*: EPR-SPID is missing in the above example
 
 The *custodian* element shall convey the OID of the provider organization in the *id* child element:
 
