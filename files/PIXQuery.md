@@ -38,7 +38,7 @@ Messages are encoded as described in the HL7 V3 standard with restrictions defin
 
 Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
 A raw version of a request message may be found
-**[here](../samples/ITI-45_request.xml)**.
+**[here](../samples/ITI-45_request_raw.xml)**.
 
 For a step by step interpretation of the request message, see section below.
 
