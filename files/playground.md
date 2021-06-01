@@ -20,6 +20,7 @@ For Use Case testing the EPR Playground offers the following endpoints to the EP
 | ITI-43 Retrieve Document Set| https://epdplayground.i4mi.bfh.ch:6443/Repository/services/RepositoryService|
 | ITI-20 Record Audit Event| https://epdplayground.i4mi.bfh.ch:5232|
 
+## Optional Service URLs
 In addition the EPR playground provides further endpoints for optional transactions not described in this documentation as follows:
 
 | Transaction | URL                                               |
@@ -30,6 +31,7 @@ In addition the EPR playground provides further endpoints for optional transacti
 | ITI-48 Retrieve Value Set | https://epdplayground.i4mi.bfh.ch:7443/ValueSetRepository/services/ValueSetRepositoryService|
 | ITI-60 Retrieve Multiple Value Sets | https://epdplayground.i4mi.bfh.ch:7443/ValueSetRepository/services/ValueSetReposito ryService|
 
+## Mobile Access Gateway
 The EPR Playground also can be used with the mHealth Gateway which supports the mHealth transactions planned for future releases of the Swiss EPR. The mHealth Gateway can be reached as followed:      
 
 | Component   | URL                                               |
