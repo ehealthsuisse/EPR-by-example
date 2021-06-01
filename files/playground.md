@@ -32,7 +32,7 @@ In addition the EPR playground provides further endpoints for optional transacti
 | ITI-60 Retrieve Multiple Value Sets | https://epdplayground.i4mi.bfh.ch:7443/ValueSetRepository/services/ValueSetReposito ryService|
 
 ## Mobile Access Gateway
-The EPR Playground also can be used with the mHealth Gateway which supports the mHealth transactions planned for future releases of the Swiss EPR. The mHealth Gateway can be reached as followed:      
+The EPR Playground can also be accessed via the mHealth Gateway which implements the mHealth transactions planned for future releases of the Swiss EPR. The mHealth Gateway can be reached as followed:      
 
 | Component   | URL                                               |
 |-------------|---------------------------------------------------|
