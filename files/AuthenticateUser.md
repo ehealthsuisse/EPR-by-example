@@ -334,4 +334,4 @@ Primary systems shall protocol the transaction in their logs to ensure traceabil
 
 # Test Opportunity
 
-The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 
+The transaction can be tested with the test suite of the **[EPR reference environment](../gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](../playground.md)**..
