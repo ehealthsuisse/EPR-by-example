@@ -48,4 +48,4 @@ Please see section below for details on the available public test systems.
 
 **[EPR Playground](../main/files/playground.md)** - Public available test system to test transaction messages and complex use cases.
 
-**[Gazelle EPR environment](../main/files/gazelle.md)** - Public available test system to test isolated transaction for EPR compliance.
+**[EPR Reference Environment](../main/files/gazelle.md)** - Public available test system to test isolated transaction for EPR compliance.
