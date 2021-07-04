@@ -74,6 +74,9 @@
 							<saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"/>
 							<saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization-id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"/>
 							<saml2:AttributeValue xsi:type="xsd:string"/>
+							<saml2:Attribute Name="urn:ihe:iti:xca:2010:homeCommunityId" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+								<saml2:AttributeValue xsi:type="xsd:string">urn:oid:3.3.3.1</saml2:AttributeValue>
+							</saml2:Attribute>
 						</saml2:AttributeStatement>
 					</saml2:Assertion>
 				</RequestedSecurityToken>
