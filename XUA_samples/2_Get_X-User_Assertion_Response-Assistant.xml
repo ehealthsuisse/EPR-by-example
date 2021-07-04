@@ -42,20 +42,17 @@
 						</saml2:Subject>
 						<saml2:Conditions NotBefore="2018-03-28T09:02:43.155Z" NotOnOrAfter="2018-03-28T09:32:43.155Z">
 							<saml2:AudienceRestriction>
-								<saml2:Audience>urn:e-health-suisse:token-audience:all-communities
-								</saml2:Audience>
+								<saml2:Audience>urn:e-health-suisse:token-audience:all-communities</saml2:Audience>
 							</saml2:AudienceRestriction>
 							<saml2:Condition xsi:type="del:DelegationRestrictionType">
 								<del:Delegate>
-									<saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="urn:gs1:gln">2000000090108
-									</saml2:NameID>
+									<saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="urn:gs1:gln">2000000090108</saml2:NameID>
 								</del:Delegate>
 							</saml2:Condition>
 						</saml2:Conditions>
 						<saml2:AuthnStatement AuthnInstant="2018-03-28T09:02:43.155Z" SessionNotOnOrAfter="2018-03-28T09:12:43.154Z">
 							<saml2:AuthnContext>
-								<saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified
-								</saml2:AuthnContextClassRef>
+								<saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml2:AuthnContextClassRef>
 							</saml2:AuthnContext>
 						</saml2:AuthnStatement>
 						<saml2:AttributeStatement>

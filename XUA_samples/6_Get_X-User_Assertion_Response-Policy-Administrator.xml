@@ -30,7 +30,6 @@
 						</ds:Signature>
 						<saml2:Subject>
 							<saml2:NameID NameQualifier="urn:e-health-suisse:policy-administrator-id" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">f94e868c-f849-490c-9886-77a2b65ab62f</saml2:NameID>
-							<saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"/>
 						</saml2:Subject>
 						<saml2:Conditions NotBefore="2020-10-14T22:10:49.831Z" NotOnOrAfter="2020-10-14T22:15:49.831582Z">
 							<saml2:AudienceRestriction>
