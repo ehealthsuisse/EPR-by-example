@@ -239,28 +239,6 @@ defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundh
 - *Name* : The human readable display name of the practice setting code.
 
 ```
-115      <ns2:Classification
-116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
-117       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-118       nodeRepresentation="394579002"
-119       id="urn:uuid:c06cc1de-8f54-43e0-96bc-9f6b75868edf">
-120       <ns2:Slot name="codingScheme">
-121        <ns2:ValueList>
-122         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
-123        </ns2:ValueList>
-124       </ns2:Slot>
-125       <ns2:Name>
-126        <ns2:LocalizedString value="Cardiology (qualifier value)"/>
-127       </ns2:Name>
-128      </ns2:Classification>   
-```
-
-- Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
-*nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
-defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
-- *Name* : The human readable display name of the practice setting code.
-
-```
 129      <ns2:Classification
 130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
 131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
