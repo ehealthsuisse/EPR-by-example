@@ -259,27 +259,6 @@ defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundh
 *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
 - *Name* : The human readable display name of the document type code.
 
-```
-129      <ns2:Classification
-130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
-131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-132       nodeRepresentation="773130005"
-133       id="urn:uuid:24686d21-85a4-43d9-9153-04fa469a50f4">
-134       <ns2:Slot name="codingScheme">
-135        <ns2:ValueList>
-136         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
-137        </ns2:ValueList>
-138       </ns2:Slot>
-139       <ns2:Name>
-140        <ns2:LocalizedString value="Nursing care plan (record artifact)"/>
-141       </ns2:Name>
-142      </ns2:Classification>
-```
-
-- Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
-*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
-- *Name* : The human readable display name of the document type code.
-
 As explained above, a subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
 
 ```
