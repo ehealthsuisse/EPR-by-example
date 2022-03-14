@@ -49,3 +49,11 @@ Please see section below for details on the available public test systems.
 **[EPR Playground](../main/files/playground.md)** - Public available test system to test transaction messages and complex use cases.
 
 **[EPR Reference Environment](../main/files/gazelle.md)** - Public available test system to test isolated transaction for EPR compliance.
+
+# Swiss EPR Exchange Formats
+
+Exchange formats permit the simple exchange of data between different health professionals' information technology systems without the need for any special agreement. The specifications of the exchange formats define the technical, syntactic and semantic standards required for the consistent exchange of information. The objective is to standardize data exchange in the healthcare sector, especially with regard to the Swiss Electronic Patient Record (EPR).
+
+## eMedication
+
+**[Medication Card document](../main/files/MedicationCardDocument.md)** - Complete overview about the current Medication from the patient
