@@ -10,7 +10,7 @@ The characteristics of the EPR Playground are:
 ## Endpoint URLs
 
 Forther information on the EPR Playground is available on the
-[Wiki Pages]().
+[Wiki Pages](https://epdplayground.ch/index.php?title=Main_Page).
 
 For the list of supported interfaces and their endpoint URL please checkout the
 [Endpoints and Transaction](https://epdplayground.ch/index.php?title=End_points_%26_Transactions)
