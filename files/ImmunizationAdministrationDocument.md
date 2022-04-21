@@ -48,7 +48,7 @@ In the resource "Composition", general information about the document is specifi
 * *extension:* Extension to version number (line 17 to 23).
 * *identifier:* A version-independent identifier for the Composition (line 24 to 27).
 * *status:* The status of the document - fixed Value: "*final*"; binding: *[CompositionStatus](http://hl7.org/fhir/R4/valueset-composition-status.html)* (line 28).
-* *type:* Specifies the particular kind of composition - binding: *[DocumentEntry.typeCode](http://fhir.ch/ig/ch-epr-term/ValueSet-DocumentEntry.typeCode.html)*(line 29 to 37).
+* *type:* Specifies the particular kind of composition. Fixed code (line 29 to 37).
 
 ```json
  1 "entry" : [
@@ -93,7 +93,7 @@ In the resource "Composition", general information about the document is specifi
 * *subject:* Who the composition is about. Its a reference to the resource contained as entry in the bundle (line 38 to 40).
 * *date:* The date of the composition creation (line 41).
 * *author:* Identifies who is responsible for the information in the composition (line 42 to 46).
-* *title:* The title of the document.
+* *title:* The title of the document. Fixed Value. (line 47).
 ```json
 38        "subject" : {
 39           "reference" : "Patient/TC-patient"
@@ -132,7 +132,15 @@ In the resource "Composition", general information about the document is specifi
 67        },
 ```
 
-* *section:* The root of the sections that make up the composition.
+* *section:* The root of the sections that make up the composition. There can be multiple sections (in minimum one of these sections has to be declared and an entry has to be defined):
+    * administration
+    * medicalproblems
+    * pastillnesses
+    * allergyintolerances
+    * laboratory-serology
+    * pregnancy
+    * annotation  (can be additionaly added to add more information to the document)
+
 ```json
 68        "section" : [
 69           {
@@ -366,6 +374,8 @@ The resource stores the information about the organization that create the Medic
 ```
 
 
+
+
 ## Immunization
 In the resource "Immunization" the data of the patient's medication are specified.
 
@@ -377,15 +387,16 @@ In the resource "Immunization" the data of the patient's medication are specifie
     * *[Swissmedic code for vaccine code](http://build.fhir.org/ig/hl7ch/ch-vacd/ValueSet-ch-vacd-vaccines-vs.html)*
     * *[Snomed CT for vaccine code](http://build.fhir.org/ig/hl7ch/ch-vacd/ValueSet-ch-vacd-vaccines-snomedct-vs.html)*
     * *[ATC for vaccine codes](http://build.fhir.org/ig/hl7ch/ch-vacd/ValueSet-ch-vacd-vaccines-atc-vs.html)*
-    * *[Absent or Unknown Immunization - IPS](http://hl7.org/fhir/R4/terminologies.html#required)*
+    * *[Absent or Unknown Immunization - IPS](http://hl7.org/fhir/uv/ips/STU1/ValueSet-absent-or-unknown-immunizations-uv-ips.html)*
 * *occurrenceDateTime:* The date the vaccination was done.
-* *occurrenceDateTime:*
-* *recorded:*
-* *lotNumber:*
-* *route:*
-* *performer:*
-* *protocolApplied:*
-* *targetDisease:*
+* *recorded:* The date the vaccination was entered in the record.
+* *lotNumber:* The lot number of the vaccination applied to the patient.
+* *route:* The route of administration - binding: *[Route of Administration for Immunization](https://fhir.ch/ig/ch-vacd/ValueSet-ch-vacd-route-of-administration-vs.html)*
+* *performer*
+    * *actor:* The health care professional who applied the vaccination to the patient.
+* *protocolApplied*
+    * *targetDisease:* The diseases the vaccination was given against. See mapping table [VaccineCode To TargetDisease Mapping](https://fhir.ch/ig/ch-vacd/ConceptMap-ch-vacd-vaccines-targetdiseases-cm.html)
+
 
 ```json
     {
