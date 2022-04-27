@@ -132,14 +132,8 @@ In the resource "Composition", general information about the document is specifi
 67        },
 ```
 
-* *section:* The root of the sections that make up the composition. There can be multiple sections (in minimum one of these sections has to be declared and an entry has to be defined):
-    * administration
-    * medicalproblems
-    * pastillnesses
-    * allergyintolerances
-    * laboratory-serology
-    * pregnancy
-    * annotation  (can be additionaly added to add more information to the document)
+* *section:* The root of the sections that make up the composition. There can be multiple sections (in minimum one of these sections has to be declared and an entry has to be defined) - See [Immunization Administration Sections](ImmunizationAdministrationSections.md):
+
 
 ```json
 68        "section" : [
