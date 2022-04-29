@@ -13,7 +13,7 @@ In the resource "Bundle", all resources are collected in a container.
 * *identifier:* Unique identifier for the bundle - fixed Value: "*urn:ietf:rfc:3986*" (line 9 to 12).
 * *type:* Indicates the purpose of this bundle - fixed Value: "*document*"; binding: *[BundleType](http://hl7.org/fhir/R4/valueset-bundle-type.html)* (line 13).
 * *timestamp:* The date/time the bundle was composed (line 14).
-* *entry:" The list to add all rsources belonging to the document (line 15-17).
+* *entry:" The list to add all resources belonging to the document (line 15-17).
 ```
  1 {
  2   "resourceType" : "Bundle",
@@ -31,7 +31,7 @@ In the resource "Bundle", all resources are collected in a container.
 14   "timestamp" : "2021-06-15T00:00:00.390+02:00",
 15   "entry" : [
 16     ....
-     ]
+17   ]
    }
 ```
 
@@ -46,9 +46,9 @@ In the resource "Composition", general information about the document is specifi
 * *language:* Specifies the language of the document - binding: *[CommonLanguages](http://hl7.org/fhir/R4/valueset-languages.html)* (line 12).
 * *text:* Presents the narrative text of the resource (line 13 to 16).
 * *extension:* Extension to version number (line 17 to 23).
-* *identifier:* A version-independent identifier for the Composition (line 24 to 27).
+* *identifier:* A version-independent identifier for the Composition with a fixed system value "urn:ietf:rfc:3986" (line 24 to 27).
 * *status:* The status of the document - fixed Value: "*final*"; binding: *[CompositionStatus](http://hl7.org/fhir/R4/valueset-composition-status.html)* (line 28).
-* *type:* Specifies the particular kind of composition. Fixed code (line 29 to 37).
+* *type:* Specifies the particular kind of composition. Fixed coding value  (line 29 to 37).
 
 ```json
  1 "entry" : [
@@ -107,7 +107,7 @@ In the resource "Composition", general information about the document is specifi
 47        "title" : "Immunization Administration",
 ```
 
-* *confidentiality:* Level of confidentiality of the Composition - binding: *[v3.ConfidentialityClassification (2014-03-26)](http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html)*. (line 48 to 64).
+* *confidentiality:* Level of confidentiality of the Composition - binding: *[v3.ConfidentialityClassification (2014-03-26)](http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html)* and an extension *[EPR Confidentiality Code](http://fhir.ch/ig/ch-core/StructureDefinition-ch-ext-epr-confidentialitycode.html)* with binding to *[DocumentEntry.confidentialityCode](http://fhir.ch/ig/ch-epr-term/ValueSet-DocumentEntry.confidentialityCode.html)* (line 48 to 64).
 * *custodian:* Organization who is responsible for the document and access.
 ```json
 48        "confidentiality" : "N",
@@ -227,9 +227,9 @@ In the "Patient" resource, the demographic and administrative data of a patient 
 
 ## Information about the practitioner
 
-The resource Practitioner indicates which practitioner has prescribed a medication.
+The resource Practitioner indicates which practitioner has given a vaccination.
 
-[Profile information](http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr.html)
+[Profile information](https://fhir.ch/ig/ch-core/StructureDefinition-ch-core-practitioner-epr.html)
 
 ```json
 {
@@ -304,11 +304,11 @@ The resource Practitioner indicates which practitioner has prescribed a medicati
 
 ## Information about the organization
 
-The resource stores the information about the organization that create the Medication Card document.
+The resource stores the information about the organization that creates the Immunization Administration Document
 
-[Profile information](http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr.html)
+[Profile information](http://fhir.ch/ig/ch-core/StructureDefinition-ch-core-organization-epr.html)
 
-```json
+```json{r, attr.source='.numberLines startFrom="1"'}
 {
       "fullUrl" : "http://test.fhir.ch/r4/Organization/TC-ORG1",
       "resource" : {
@@ -371,7 +371,7 @@ The resource stores the information about the organization that create the Medic
 
 
 ## Immunization
-In the resource "Immunization" the data of the patient's medication are specified.
+In the resource "Immunization" the data of the patientes vaccination is defined.
 
 [Profile information](http://build.fhir.org/ig/hl7ch/ch-vacd/StructureDefinition-ch-vacd-immunization.html)
 
@@ -392,7 +392,7 @@ In the resource "Immunization" the data of the patient's medication are specifie
     * *targetDisease:* The diseases the vaccination was given against. See mapping table [VaccineCode To TargetDisease Mapping](https://fhir.ch/ig/ch-vacd/ConceptMap-ch-vacd-vaccines-targetdiseases-cm.html)
 
 
-```json
+```json{r, attr.source='.numberLines startFrom="1"'}
     {
       "fullUrl" : "http://test.fhir.ch/r4/Immunization/TCA01-IMMUN2-HCP1-ORG1-ROLE",
       "resource" : {
