@@ -56,4 +56,10 @@ Exchange formats permit the simple exchange of data between different health pro
 
 ## eMedication
 
-**[Medication Card document](../main/files/MedicationCardDocument.md)** - Complete overview about the current Medication from the patient
+**[Medication Card document](../main/files/MedicationCardDocument.md)** - Complete overview about the current Medication from the patient.
+
+## eVaccination
+
+**[Immunization Administration Document](../main/files/ImmunizationAdministrationDocument.md)** - Primary systems can use this Exchange Format to generate a Immunization Administration document.
+
+**[Immunization Administration Sections](../main/files/ImmunizationAdministrationSections.md)** - A Immunization Administration document contains a compositions with different possible sections inside.
