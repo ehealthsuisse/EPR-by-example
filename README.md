@@ -61,5 +61,3 @@ Exchange formats permit the simple exchange of data between different health pro
 ## eVaccination
 
 **[Immunization Administration Document](../main/files/ImmunizationAdministrationDocument.md)** - Contains information on applied immunizations.
-
-**[Immunization Administration Sections](../main/files/ImmunizationAdministrationSections.md)** - Contains a compositions with different possible sections inside.
