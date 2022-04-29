@@ -13,8 +13,8 @@ In the resource "Bundle", all resources are collected in a container.
 * *identifier:* Unique identifier for the bundle - fixed Value: "*urn:ietf:rfc:3986*" (line 9 to 12).
 * *type:* Indicates the purpose of this bundle - fixed Value: "*document*"; binding: *[BundleType](http://hl7.org/fhir/R4/valueset-bundle-type.html)* (line 13).
 * *timestamp:* The date/time the bundle was composed (line 14).
-* *entry:" The list to add all resources belonging to the document (line 15-17).
-```
+* *entry:* The list to add all resources belonging to the document (line 15-17).
+```json
  1 {
  2   "resourceType" : "Bundle",
  3   "id" : "A-D2-HCP1-C1",
@@ -32,7 +32,7 @@ In the resource "Bundle", all resources are collected in a container.
 15   "entry" : [
 16     ....
 17   ]
-   }
+18 }
 ```
 
 ## Composition
