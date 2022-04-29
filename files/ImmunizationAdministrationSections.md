@@ -179,7 +179,7 @@ The following sections can be defined:
      "text": {},
      "entry" : [
        {
-         "reference" : "Condition/<id>"
+         "reference" : "Observation/<id>"
        }
      ]
   }
