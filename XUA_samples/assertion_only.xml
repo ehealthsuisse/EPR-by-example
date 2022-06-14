@@ -38,7 +38,7 @@
       </saml:Subject>
       <saml:Conditions NotBefore="2020-10-14T22:10:49.831Z" NotOnOrAfter="2020-10-14T22:15:49.831582Z">
        <saml:AudienceRestriction>
-        <saml:Audience>http://ihe.connectathon.XUA/X-ServiceProvider-IHE-Connectathon</saml:Audience>
+        <saml:Audience>urn:e-health-suisse:token-audience:all-communities</saml:Audience>
        </saml:AudienceRestriction>
       </saml:Conditions>
       <saml:AuthnStatement AuthnInstant="2020-10-14T22:05:49.831Z">
