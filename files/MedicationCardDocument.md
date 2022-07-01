@@ -12,6 +12,7 @@ In the resource "Bundle", all resources are collected in a container.
 * *identifier:* Unique identifier for the bundle - fixed Value: "*urn:ietf:rfc:3986*" (line 10 to 13).
 * *type:* Indicates the purpose of this bundle - fixed Value: "*document*"; binding: *[BundleType](http://hl7.org/fhir/R4/valueset-bundle-type.html)* (line 14).
 * *timestamp:* The date/time the bundle was composed (line 15).
+* *entry:* The list to add all resources belonging to the document (line 16-18).
 
 ```json
   1  {
@@ -89,9 +90,11 @@ In the resource "Composition", general information about the document is specifi
  38         },
 ```
 
-* *subject:* Who the composition is about (line 39 to 44).
+* *subject:* Who the composition is about. Its a reference to the resource contained as entry in the bundle (line 39 to 44).
+* *date* The date of the composition creation (line 42).
 * *author:* Identifies who is responsible for the information in the composition (line 43 to 56).
 * *extension:* Extension to EPR Time (line 45 to 50).
+
 ```json
  39       "subject": {
  40          "reference": "Patient/MonikaWegmueller"
@@ -117,6 +120,7 @@ In the resource "Composition", general information about the document is specifi
  57        "title": "Medikationsplan",
 ```
 * *confidentiality:* Level of confidentiality of the Composition - binding: *[v3.ConfidentialityClassification (2014-03-26)](http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html)*.
+* extension *[EPR Confidentiality Code](http://fhir.ch/ig/ch-core/StructureDefinition-ch-ext-epr-confidentialitycode.html)*
 ```json
  58        "confidentiality": "N",
  59        "_confidentiality": {
