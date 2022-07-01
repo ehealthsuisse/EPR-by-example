@@ -13,7 +13,7 @@ In the resource "Bundle", all resources are collected in a container.
 * *type:* Indicates the purpose of this bundle - fixed Value: "*document*"; binding: *[BundleType](http://hl7.org/fhir/R4/valueset-bundle-type.html)* (line 14).
 * *timestamp:* The date/time the bundle was composed (line 15).
 
-```
+```json
   1  {
   2    "resourceType" : "Bundle",
   3    "id" : "2-7-MedicationCard",
@@ -48,7 +48,7 @@ In the resource "Composition", general information about the document is specifi
 * *status:* The status of the document - fixed Value: "*final*"; binding: *[CompositionStatus](http://hl7.org/fhir/R4/valueset-composition-status.html)* (line 24).
 * *type:* Specifies the particular kind of composition - binding: *[DocumentEntry.typeCode](http://fhir.ch/ig/ch-epr-term/ValueSet-DocumentEntry.typeCode.html)*(line 25 to 38).
 
-``` 
+```json 
   1  "entry" : [
   2    {
   3      "fullUrl" : "http://test.fhir.ch/r4/Composition/2-7-MedicationCard",  
@@ -92,7 +92,7 @@ In the resource "Composition", general information about the document is specifi
 * *subject:* Who the composition is about (line 39 to 44).
 * *author:* Identifies who is responsible for the information in the composition (line 43 to 56).
 * *extension:* Extension to EPR Time (line 45 to 50).
-```
+```json
  39       "subject": {
  40          "reference": "Patient/MonikaWegmueller"
  41        },
@@ -113,11 +113,11 @@ In the resource "Composition", general information about the document is specifi
  56        ],
 ```
 * *title:* Human readable label for the composition.
-```
+```json
  57        "title": "Medikationsplan",
 ```
 * *confidentiality:* Level of confidentiality of the Composition - binding: *[v3.ConfidentialityClassification (2014-03-26)](http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html)*.
-```
+```json
  58        "confidentiality": "N",
  59        "_confidentiality": {
  60          "extension": [
@@ -137,13 +137,13 @@ In the resource "Composition", general information about the document is specifi
  74        },
 ```
 * *custodian:* Organization who is responsible for the document and access.
-```
+```json
  75        "custodian": {
  76          "reference": "Organization/Custodian"
  77        },
 ```
 * *section:* The root of the sections that make up the composition.
-```
+```json
  78        "section": [
  79          {
  80            "title": "Medikamentenliste",
@@ -214,7 +214,7 @@ In the "Patient" resource, the demographic and administrative data of a patient 
 [Profile information](http://fhir.ch/ig/ch-core/StructureDefinition-ch-core-patient-epr.html)
 
 
-```
+```json
   1  "resource": {
   2      "resourceType": "Patient",
   3      "id": "MonikaWegmueller",
@@ -266,7 +266,7 @@ The resource Practitioner indicates which practitioner has prescribed a medicati
 
 [Profile information](http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-practitionerrole.html)
 
-```
+```json
   1 "resource" : {
   2      "resourceType" : "Practitioner",
   3      "id" : "FamilienHausarzt",
@@ -307,7 +307,7 @@ The resource stores the information about the organization that create the Medic
 
 [Profile information](http://fhir.ch/ig/ch-core/StructureDefinition-ch-core-organization-epr.html)
 
-```
+```json
   1 "resource" : {
   2      "resourceType" : "Organization",
   3      "id" : "Hausarzt",
@@ -352,7 +352,7 @@ In the resource "MedicationStatement" the data of the patient's medication are s
 * *ingredient:*  Particular ingredient of a medication (line 44 to 71).
 * *strength:* A relationship of two Quantity values - expressed as a numerator and a denominator (line 56 to 69).
 
-```
+```json
   1 "resourceType": "MedicationStatement",
   2        "id": "2-7-MedStatBeloczok",
   3        "text": {
@@ -429,7 +429,7 @@ In the resource "MedicationStatement" the data of the patient's medication are s
 ```
 * *indentifier:* Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate -fixed Value "*urn:ietf:rfc:3986*".
 
-```
+```json
   1 "identifier": [
   2        {
   3          "system": "urn:ietf:rfc:3986",
@@ -439,12 +439,12 @@ In the resource "MedicationStatement" the data of the patient's medication are s
 ```
 * *status:* A code representing the status of the use of the medication - fixed Value: "*completed*"; binding: *[Medication Status Codes](http://hl7.org/fhir/R4/valueset-medication-statement-status.html)*.
 
-```
+```json
   1 "status": "completed",
 ```
 * *subject:* The person who is taking the medication.
 
-```
+```json
   1 "subject": {
   2                    "reference": "Patient/69d661eb-e3ed-4e86-b34c-b5e747c13021"
   3                },
@@ -452,14 +452,14 @@ In the resource "MedicationStatement" the data of the patient's medication are s
 
 * *reasonCode:* A reason for why the medication is taken - binding: *[Condition/Problem/DiagnosisCodes ](http://hl7.org/fhir/R4/valueset-condition-code.html)*.
 
-```
+```json
   1 "reasonCode": [{
   2                        "text": "Bluthochdruck/Herz"
   3                    }
 ```
 * *note:* Provides extra information about the medication statement that is not conveyed by the other attributes.
 
-```
+```json
   1 "note": [
   2         {
   3           "text": "-"
@@ -480,7 +480,7 @@ Example normal Dosing (incl. Dosage Non-Structured):
 
 [Profile information (Dosage Non-Structured)](http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-nonstructured.html)
 
-```
+```json
   1 "dosage" : [
   2    {
   3      "text" : "Morgens und abends je 1 Tablette einnehmen"
@@ -529,7 +529,7 @@ Example split Dosing (incl. Dosage Non-Structured):
 [Profile information (split Dosing)](http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-structured-split.html)
 
 [Profile information (Dosage Non-Structured)](http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-nonstructured.html)
-```
+```json
   1 "dosage": [
   2          {
   3            "text": "Morgens 1 und abends 1/2 Tablette nehmen"
@@ -605,7 +605,7 @@ Example split Dosing (incl. Dosage Non-Structured):
 
 The resource "Binary" represents the original representation of the Medication Card document.
 
-```
+```json
   1 "resource": {
   2                "resourceType": "Binary",
   3                "id": "2-7-pdf",
