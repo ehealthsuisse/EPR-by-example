@@ -310,7 +310,7 @@ assertion:
 93           <saml2:AttributeStatement>
 94             <!-- other vendor specific attributes omitted for brevity -->
 95             <saml2:Attribute Name="GLN" NameFormat="urn:oasis:names:tc:ebcore:partyid-type:DataUniversalNumberingSystem:0060">
-96              <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9801000050702</saml2:AttributeValue>
+96              <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:token">9801000050702</saml2:AttributeValue>
 97             </saml2:Attribute>
 98             <saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
 99               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Martina</saml2:AttributeValue>
@@ -319,10 +319,10 @@ assertion:
 102               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Musterarzt</saml2:AttributeValue>
 103             </saml2:Attribute>
 104             <saml2:Attribute Name="gender" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-105               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">F</saml2:AttributeValue>
+105               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:token">F</saml2:AttributeValue>
 106             </saml2:Attribute>
 107             <saml2:Attribute Name="dateofbirth" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-108               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">1990-09-06</saml2:AttributeValue>
+108               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:date">1990-09-06</saml2:AttributeValue>
 109             </saml2:Attribute>
 110           </saml2:AttributeStatement>
 111         </saml2:Assertion>
