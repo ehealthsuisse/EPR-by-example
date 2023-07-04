@@ -107,7 +107,7 @@ The structure of the result set is as follows (see example below):
 The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**.
 
 The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in
-**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)** of
+**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** of
 the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found
@@ -148,7 +148,7 @@ The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
 
 - *mimeType* attribute: The document mime type. It's value must match a mime type supported by the Swiss EPR as defined in
-**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - *status* attribute: The status of the document, which should be *Approved*.  
 
 As explained above, a subset of the relevant metadata are defined in ebXML *slot* elements. These are:   
@@ -162,7 +162,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *slot
 ```
 
 - *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss
-EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
 ```
 35      <ns2:Slot name="repositoryUniqueId">
@@ -213,7 +213,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *Clas
 
 - Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to
 *urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *nodeRepresentation*
-attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - *Name* : The human readable display name of the document class.
 
 ```
@@ -235,7 +235,7 @@ attribute and the *codingScheme* value must match one of the supported values in
 
 - Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
 *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
-defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - *Name* : The human readable display name of the practice setting code.
 
 ```
@@ -256,7 +256,7 @@ defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundh
 ```
 
 - Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
-*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - *Name* : The human readable display name of the document type code.
 
 As explained above, a subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
@@ -314,7 +314,7 @@ Content-Length: nnnn
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
 specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=697)** and the
-**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:

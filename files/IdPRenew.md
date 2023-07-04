@@ -29,7 +29,7 @@ Primary systems shall use this transaction to renew a assertion whose lifetime i
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
 and namespaces were omitted to increase readability. The raw request file may be found **[here](../Auth_samples/Renew_request_raw.xml)**.
 
-The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in **[Annex 8](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/Anhang%208%20Ausgabe%202.pdf.download.pdf/DE_EPDV-EDI_Anhang_8_Ausgabe2.pdf)** and specified in the **[Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf)** specification.
+The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in **[Annex 8](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** and specified in the **[Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf)** specification.
 
 ```
 1 <Envelope>

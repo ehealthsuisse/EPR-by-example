@@ -166,7 +166,7 @@ The *subject* child element conveys the following information in its child eleme
 The *patientPerson* child element conveys the patient data including:  
 - *name*: conveying the given and the family names of the matching patient data.
 - *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
-**[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.  
+**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.  
 - *birthTime*: the data of birth of the matching patient data.
 - *addr* : The address data of the patient.
 - *asOtherIDs*: The assigned patient ID's.   
@@ -222,7 +222,7 @@ Content-Length: nnn
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
 specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=701)** and the
-**[Extension 1 to Annex5](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/gesetze/anhang_5_ergaenzung_1_epdv_edi_20200415.PDF.download.PDF/Ergaenzung_1_Anhang_5_EPDV-EDI_20200415.pdf.PDF)** in the ordinances of the Swiss electronic patient record (see Section
+**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:
