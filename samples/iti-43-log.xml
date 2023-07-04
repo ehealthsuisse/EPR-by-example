@@ -28,7 +28,4 @@
   <ParticipantObjectDetail type="Repository Unique Id" value="Mi4xNi43NTYuNS4zMC4xLjE5NC4zLjMuMQ=="/>
   <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoyLjE2Ljc1Ni41LjMwLjEuMTk0"/>
  </ParticipantObjectIdentification>
- <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="4" ParticipantObjectTypeCodeRole="1">
-  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
- </ParticipantObjectIdentification>
 </AuditMessage>
