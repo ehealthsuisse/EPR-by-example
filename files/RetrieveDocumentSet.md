@@ -191,7 +191,7 @@ The following snippet shows a example audit message to be written by the primary
 8  <ActiveParticipant UserID="https://primary.system.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
 9   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
 10  </ActiveParticipant>
-11  <ActiveParticipant UserID="&lt;111111111148@xua.hin.ch&gt;" UserName="&lt;111111111148@xua.hin.ch&gt;">
+11  <ActiveParticipant UserID="111111111148" UserName="&lt;111111111148@xua.hin.ch&gt;">
 12   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Behandelnde(r)"/>
 13  </ActiveParticipant>
 14  <ActiveParticipant UserID="111111111148" UserName="Dr. Professional HasOneAux">
