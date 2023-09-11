@@ -320,48 +320,41 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-1 <?xml version="1.0" encoding="UTF-8"?>
-2 <AuditMessage>
-3  <EventIdentification EventActionCode="E" EventDateTime="2020-09-24T10:55:22.778+02:00" EventOutcomeIndicator="0">
-4   <EventID csd-code="110112" codeSystemName="DCM" displayName="Query" originalText="Query"/>
-5   <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
-6  </EventIdentification>
-7  <ActiveParticipant
-8   UserID="consumer.service.xy"
-9   UserIsRequestor="true"
-10   AlternativeUserID="EPD-PROJ-2020:1199"
-11   UserName="&lt;9801000050702@http://platform.com/eHealthSTS&gt;"
-12   NetworkAccessPointID="EPD-Proj-2020"
-13   NetworkAccessPointTypeCode="1">
-14   <RoleIDCode csd-code="110153" codeSystemName="DCM" displayName="Source" originalText="Source"/>
-15  </ActiveParticipant>
-16  <ActiveParticipant UserID="https://platform.com/RegistryService" UserIsRequestor="false" NetworkAccessPointID="epd-test.ith-icoserve.com" NetworkAccessPointTypeCode="1">
-17   <RoleIDCode csd-code="110152" codeSystemName="DCM" displayName="Destination" originalText="Destination"/>
-18  </ActiveParticipant>
-19  <ActiveParticipant UserID="9801000050702" UserIsRequestor="true" UserName="Rosa Sestak">
-20   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" displayName="Healthcare professional" originalText="Healthcare professional"/>
-21  </ActiveParticipant>
-22  <AuditSourceIdentification AuditSourceID="consumer.service.xy" AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.7.108">
-23   <AuditSourceTypeCode csd-code="4"/>
-24  </AuditSourceIdentification>
-25  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-26   <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" displayName="Registry Stored Query" originalText="Registry Stored Query"/>
-27   <ParticipantObjectQuery>
-28    <!-- omitted for brevity -->
-29   </ParticipantObjectQuery>
-30   <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
-31  </ParticipantObjectIdentification>
-32  <ParticipantObjectIdentification ParticipantObjectID="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-33   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" displayName="Patient Number" originalText="Patient Number"/>
-34  </ParticipantObjectIdentification>
-35 </AuditMessage>   
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage>
+<EventIdentification EventActionCode="E" EventDateTime="2023-03-07T10:41:38.739-06:00" EventOutcomeIndicator="0">
+ <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"/>
+ <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
+</EventIdentification>
+<ActiveParticipant UserID="http://WSAReplyTo" AlternativeUserID="56051@nb-mwe5.main" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
+ <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
+</ActiveParticipant>
+<ActiveParticipant UserID="pma@gnt.com" UserName="John Doe<pma@gnt.com>" UserIsRequestor="true">
+ <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
+</ActiveParticipant>
+<ActiveParticipant UserID="http://registryEndpoint" UserIsRequestor="false" NetworkAccessPointID="hostname" NetworkAccessPointTypeCode="1">
+ <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/>
+</ActiveParticipant>
+<AuditSourceIdentification AuditEnterpriseSiteID="1.2.3.4" AuditSourceID="1.2.3.4.5">
+ <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)"/>
+</AuditSourceIdentification>
+<ParticipantObjectIdentification ParticipantObjectID="123123^^^&amp;1.2.3.4&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+ <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+</ParticipantObjectIdentification>
+<ParticipantObjectIdentification ParticipantObjectID="urn:uuid:80a87693-e6e8-465b-8b85-179c11fba3fe" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+ <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
+ <ParticipantObjectQuery>bGFsYWZpc2g=</ParticipantObjectQuery>
+ <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
+ <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4yLjMuNA=="/>
+ </ParticipantObjectIdentification>
+</AuditMessage>  
 ```
 
 The message is made of the following blocks:
-- *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
-- *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 15).
-- *ActiveParticipant*: Information on the responding service endpoint (line 16 .. 18).
-- *ActiveParticipant*: Information on the authenticated user initiating the request (line 19 .. 21).
+- *EventIdentification*: Event related information including the timestamp.
+- *ActiveParticipant*: Information related to the primary system performing the query.
+- *ActiveParticipant*: Information on the responding service endpoint.
+- *ActiveParticipant*: Information on the authenticated user initiating the request.
 - *AuditSourceIdentification*: Information related to the primary system performing the query (line 22 .. 24)
 - *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 25 .. 31).
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 32 .. 34)
