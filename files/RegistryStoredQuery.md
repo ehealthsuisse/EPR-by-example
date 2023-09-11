@@ -329,7 +329,9 @@ The following snippet shows a example audit message to be written by the primary
 <ActiveParticipant UserID="http://WSAReplyTo" AlternativeUserID="56051@nb-mwe5.main" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
  <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
 </ActiveParticipant>
-<ActiveParticipant UserID="pma@gnt.com" UserName="John Doe<pma@gnt.com>" UserIsRequestor="true">
+<ActiveParticipant UserID="pma@gnt.com" UserName="JD<pma@gnt.com>">
+</ActiveParticipant>
+<ActiveParticipant UserID="pma@gnt.com" UserName="John Doe" UserIsRequestor="true">
  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
 </ActiveParticipant>
 <ActiveParticipant UserID="http://registryEndpoint" UserIsRequestor="false" NetworkAccessPointID="hostname" NetworkAccessPointTypeCode="1">
@@ -347,17 +349,18 @@ The following snippet shows a example audit message to be written by the primary
  <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
  <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4yLjMuNA=="/>
  </ParticipantObjectIdentification>
-</AuditMessage>  
+</AuditMessage> 
 ```
 
 The message is made of the following blocks:
 - *EventIdentification*: Event related information including the timestamp.
 - *ActiveParticipant*: Information related to the primary system performing the query.
+- *ActiveParticipant*: Information on the authenticated user as required by IHE XUA profile.
+- *ActiveParticipant*: Information on the authenticated user including the user name who initiated the request.
 - *ActiveParticipant*: Information on the responding service endpoint.
-- *ActiveParticipant*: Information on the authenticated user initiating the request.
-- *AuditSourceIdentification*: Information related to the primary system performing the query (line 22 .. 24)
-- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 25 .. 31).
-- *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 32 .. 34)
+- *AuditSourceIdentification*: Information related to the primary system performing the query.
+- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query.
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed.
 
 # Security Requirements    
 
