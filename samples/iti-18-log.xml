@@ -16,7 +16,7 @@
 <AuditSourceIdentification AuditEnterpriseSiteID="1.2.3.4" AuditSourceID="1.2.3.4.5">
  <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)"/>
 </AuditSourceIdentification>
-<ParticipantObjectIdentification ParticipantObjectID="123123^^^&1.2.3.4&ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+<ParticipantObjectIdentification ParticipantObjectID="123123^^^&amp;1.2.3.4&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
 </ParticipantObjectIdentification>
 <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:80a87693-e6e8-465b-8b85-179c11fba3fe" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
