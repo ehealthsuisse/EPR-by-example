@@ -1,30 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <AuditMessage>
-<EventIdentification EventActionCode="E" EventDateTime="2023-03-07T10:41:38.739-06:00" EventOutcomeIndicator="0">
- <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"/>
- <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
-</EventIdentification>
-<ActiveParticipant UserID="http://WSAReplyTo" AlternativeUserID="56051@nb-mwe5.main" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
- <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
-</ActiveParticipant>
-<ActiveParticipant UserID="pma@gnt.com" UserName="JD<pma@gnt.com>">
-</ActiveParticipant>
-<ActiveParticipant UserID="pma@gnt.com" UserName="John Doe" UserIsRequestor="true">
- <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
-</ActiveParticipant>
-<ActiveParticipant UserID="http://registryEndpoint" UserIsRequestor="false" NetworkAccessPointID="hostname" NetworkAccessPointTypeCode="1">
- <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/>
-</ActiveParticipant>
-<AuditSourceIdentification AuditEnterpriseSiteID="1.2.3.4" AuditSourceID="1.2.3.4.5">
- <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)"/>
-</AuditSourceIdentification>
-<ParticipantObjectIdentification ParticipantObjectID="123123^^^&amp;1.2.3.4&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
- <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
-</ParticipantObjectIdentification>
-<ParticipantObjectIdentification ParticipantObjectID="urn:uuid:80a87693-e6e8-465b-8b85-179c11fba3fe" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
- <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
- <ParticipantObjectQuery>bGFsYWZpc2g=</ParticipantObjectQuery>
- <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
- <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4yLjMuNA=="/>
- </ParticipantObjectIdentification>
+  <EventIdentification EventActionCode="E" EventDateTime="2023-09-11T14:18:27.579+02:00" EventOutcomeIndicator="0">
+    <EventID csd-code="110112" codeSystemName="DCM" originalText="Query" />
+    <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
+    <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normaler Zugriff" />
+  </EventIdentification>
+  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" AlternativeUserID="20559@epd-test.ith-icoserve.com.ForkJoinPool-5-worker-3" UserIsRequestor="true" NetworkAccessPointID="81.223.215.43" NetworkAccessPointTypeCode="2">
+    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="761337610410035724" AlternativeUserID="Andreas Friederich TANNER-WELTI" UserName="&lt;761337610410035724@http://ith-icoserve.com/eHealthSolutionsSTS&gt;" UserIsRequestor="true">
+    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="761337610410035724" UserName="Andreas Friederich TANNER-WELTI" UserIsRequestor="true">
+    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="https://localhost:7443/Registry/services/RegistryService" UserIsRequestor="false" NetworkAccessPointID="localhost" NetworkAccessPointTypeCode="1">
+    <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
+  </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.6.19" AuditSourceID="1.3.6.1.4.1.12559.11.20.1">
+    <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)" />
+  </AuditSourceIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="d5e42fed-5962-4bb9-b8b6-5d9e8afb0f2a^^^&amp;1.3.6.1.4.1.21367.2017.2.5.93&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number" />
+  </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:10b545ea-725c-446d-9b95-8aeb444eddf3" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
+    <ParticipantObjectQuery>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxBZGhvY1F1ZXJ5UmVxdWVzdCB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6cXVlcnk6My4wIiB4bWxuczpuczY9InVybjpvYXNpczpuYW1lczp0YzplYnhtbC1yZWdyZXA6eHNkOmxjbTozLjAiIHhtbG5zOm5zNT0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6cnM6My4wIiB4bWxuczpuczc9InVybjppaGU6aXRpOnJtZDoyMDE3IiB4bWxuczpuczI9InVybjppaGU6aXRpOnhkcy1iOjIwMDciIHhtbG5zOm5zND0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6cmltOjMuMCIgeG1sbnM6bnMzPSJ1cm46aWhlOnJhZDp4ZHNpLWI6MjAwOSI+PFJlc3BvbnNlT3B0aW9uIHJldHVyblR5cGU9IkxlYWZDbGFzcyIgcmV0dXJuQ29tcG9zZWRPYmplY3RzPSJ0cnVlIi8+PG5zNDpBZGhvY1F1ZXJ5IGlkPSJ1cm46dXVpZDoxMGI1NDVlYS03MjVjLTQ0NmQtOWI5NS04YWViNDQ0ZWRkZjMiPjxuczQ6U2xvdCBuYW1lPSIkcGF0aWVudElkIj48bnM0OlZhbHVlTGlzdD48bnM0OlZhbHVlPidkNWU0MmZlZC01OTYyLTRiYjktYjhiNi01ZDllOGFmYjBmMmFeXl4mYW1wOzEuMy42LjEuNC4xLjIxMzY3LjIwMTcuMi41LjkzJmFtcDtJU08nPC9uczQ6VmFsdWU+PC9uczQ6VmFsdWVMaXN0PjwvbnM0OlNsb3Q+PG5zNDpTbG90IG5hbWU9IiRYRFNEb2N1bWVudEVudHJ5U3RhdHVzIj48bnM0OlZhbHVlTGlzdD48bnM0OlZhbHVlPigndXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDpTdGF0dXNUeXBlOkFwcHJvdmVkJyk8L25zNDpWYWx1ZT48bnM0OlZhbHVlPigndXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDpTdGF0dXNUeXBlOkRlcHJlY2F0ZWQnKTwvbnM0OlZhbHVlPjwvbnM0OlZhbHVlTGlzdD48L25zNDpTbG90PjxuczQ6U2xvdCBuYW1lPSIkWERTRm9sZGVyU3RhdHVzIj48bnM0OlZhbHVlTGlzdD48bnM0OlZhbHVlPigndXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDpTdGF0dXNUeXBlOkFwcHJvdmVkJyk8L25zNDpWYWx1ZT48L25zNDpWYWx1ZUxpc3Q+PC9uczQ6U2xvdD48bnM0OlNsb3QgbmFtZT0iJFhEU1N1Ym1pc3Npb25TZXRTdGF0dXMiPjxuczQ6VmFsdWVMaXN0PjxuczQ6VmFsdWU+KCd1cm46b2FzaXM6bmFtZXM6dGM6ZWJ4bWwtcmVncmVwOlN0YXR1c1R5cGU6QXBwcm92ZWQnKTwvbnM0OlZhbHVlPjwvbnM0OlZhbHVlTGlzdD48L25zNDpTbG90PjxuczQ6U2xvdCBuYW1lPSIkWERTRG9jdW1lbnRFbnRyeVR5cGUiPjxuczQ6VmFsdWVMaXN0PjxuczQ6VmFsdWU+KCd1cm46dXVpZDozNDI2OGU0Ny1mZGY1LTQxYTYtYmEzMy04MjEzM2M0NjUyNDgnKTwvbnM0OlZhbHVlPjxuczQ6VmFsdWU+KCd1cm46dXVpZDo3ZWRjYTgyZi0wNTRkLTQ3ZjItYTAzMi05YjJhNWI1MTg2YzEnKTwvbnM0OlZhbHVlPjwvbnM0OlZhbHVlTGlzdD48L25zNDpTbG90PjwvbnM0OkFkaG9jUXVlcnk+PC9BZGhvY1F1ZXJ5UmVxdWVzdD4=</ParticipantObjectQuery>
+    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg=" />
+    <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4zLjYuMS40LjEuMjEzNjcuMjAxNy4yLjYuMTk=" />
+  </ParticipantObjectIdentification>
 </AuditMessage>
