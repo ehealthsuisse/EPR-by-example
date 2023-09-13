@@ -320,47 +320,48 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
 <AuditMessage>
-<EventIdentification EventActionCode="E" EventDateTime="2023-03-07T10:41:38.739-06:00" EventOutcomeIndicator="0">
- <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"/>
- <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
-</EventIdentification>
-<ActiveParticipant UserID="http://WSAReplyTo" AlternativeUserID="56051@nb-mwe5.main" UserIsRequestor="true" NetworkAccessPointID="127.0.0.1" NetworkAccessPointTypeCode="2">
- <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
-</ActiveParticipant>
-<ActiveParticipant UserID="pma@gnt.com" UserName="JD<pma@gnt.com>">
-</ActiveParticipant>
-<ActiveParticipant UserID="pma@gnt.com" UserName="John Doe" UserIsRequestor="true">
- <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
-</ActiveParticipant>
-<ActiveParticipant UserID="http://registryEndpoint" UserIsRequestor="false" NetworkAccessPointID="hostname" NetworkAccessPointTypeCode="1">
- <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/>
-</ActiveParticipant>
-<AuditSourceIdentification AuditEnterpriseSiteID="1.2.3.4" AuditSourceID="1.2.3.4.5">
- <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)"/>
-</AuditSourceIdentification>
-<ParticipantObjectIdentification ParticipantObjectID="123123^^^&amp;1.2.3.4&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
- <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
-</ParticipantObjectIdentification>
-<ParticipantObjectIdentification ParticipantObjectID="urn:uuid:80a87693-e6e8-465b-8b85-179c11fba3fe" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
- <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query"/>
- <ParticipantObjectQuery>bGFsYWZpc2g=</ParticipantObjectQuery>
- <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg="/>
- <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4yLjMuNA=="/>
- </ParticipantObjectIdentification>
-</AuditMessage> 
+  <EventIdentification EventActionCode="E" EventDateTime="2023-09-11T14:18:27.579+02:00" EventOutcomeIndicator="0">
+    <EventID csd-code="110112" codeSystemName="DCM" originalText="Query" />
+    <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
+    <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normaler Zugriff" />
+  </EventIdentification>
+  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" AlternativeUserID="20559@epd-test.ith-icoserve.com.ForkJoinPool-5-worker-3" UserIsRequestor="true" NetworkAccessPointID="81.223.215.43" NetworkAccessPointTypeCode="2">
+    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="761337610410035724" AlternativeUserID="Andreas Friederich TANNER-WELTI" UserName="&lt;761337610410035724@http://ith-icoserve.com/eHealthSolutionsSTS&gt;" UserIsRequestor="true">
+    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="761337610410035724" UserName="Andreas Friederich TANNER-WELTI" UserIsRequestor="true">
+    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="https://localhost:7443/Registry/services/RegistryService" UserIsRequestor="false" NetworkAccessPointID="localhost" NetworkAccessPointTypeCode="1">
+    <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
+  </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.6.19" AuditSourceID="1.3.6.1.4.1.12559.11.20.1">
+    <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)" />
+  </AuditSourceIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="d5e42fed-5962-4bb9-b8b6-5d9e8afb0f2a^^^&amp;1.3.6.1.4.1.21367.2017.2.5.93&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number" />
+  </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:10b545ea-725c-446d-9b95-8aeb444eddf3" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
+    <ParticipantObjectQuery>PD94bWwgdmV...</ParticipantObjectQuery>
+    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg=" />
+    <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4zLjYuMS40LjEuMjEzNjcuMjAxNy4yLjYuMTk=" />
+  </ParticipantObjectIdentification>
+</AuditMessage>
 ```
 
 The message is made of the following blocks:
 - *EventIdentification*: Event related information including the timestamp.
-- *ActiveParticipant*: Information related to the primary system performing the query.
+- *ActiveParticipant*: Information related to the portal or primary system performing the query.
 - *ActiveParticipant*: Information on the authenticated user as required by IHE XUA profile.
 - *ActiveParticipant*: Information on the authenticated user including the user name who initiated the request.
 - *ActiveParticipant*: Information on the responding service endpoint.
 - *AuditSourceIdentification*: Information related to the primary system performing the query.
 - *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query.
-- *ParticipantObjectIdentification*: Information on the patients EPR accessed.
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed and the base64 encoded query (ommitted for brevity).
 
 # Security Requirements    
 
