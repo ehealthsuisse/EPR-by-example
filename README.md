@@ -62,5 +62,5 @@ Exchange formats permit the simple exchange of data between different health pro
 
 **[Immunization Administration Document](../main/files/ImmunizationAdministrationDocument.md)** - Contains information on applied immunizations.
 
-## Creating a FHIR Questionnaire
+## FHIR Questionnaire
 **[How to build a FHIR-Questionnaire](../main/files/Questionnaire.md)** - Contains information on how a FHIR Questionnaire can be built and displayed for an user to fill out.
