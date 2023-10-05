@@ -67,14 +67,14 @@ The SOAP *Header* element shall convey the following information:
 Optional elements may be included according to the specification in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.
 
 ```
-2  <soap:Header>
-3   <Action xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201301UV02</Action>
-4   <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:7a180388-6ba7-4cbc-bffe-dfcdc4e602b7</MessageID>
-5   <To xmlns="http://www.w3.org/2005/08/addressing">http://epd-core.int.adswissnet.healthcare/mpi/pixmanager</To>
-6   <ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
-7    <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
-8   </ReplyTo>
-9  </soap:Header>
+<soap:Header>
+  	<Action xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201301UV02</Action>
+	<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:7a180388-6ba7-4cbc-bffe-dfcdc4e602b7</MessageID>
+	<To xmlns="http://www.w3.org/2005/08/addressing">http://epd-core.int.adswissnet.healthcare/mpi/pixmanager</To>
+	<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+	    <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+	</ReplyTo>
+</soap:Header>
 ```
 
 For the patient identity feed no *Security* header element is required, since in the Swiss EPR the access to the patient
@@ -87,117 +87,111 @@ Primary systems shall set the following values:
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
+ 
+```
+1 <PRPA_IN201301UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+2   <id extension="1694431245655" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
+3   <creationTime value="20230911115902"/>
+4   <interactionId extension="PRPA_IN201301UV02" root="2.16.840.1.113883.1.18"/>
+5   <processingCode code="T"/>
+6   <processingModeCode code="T"/>
+7   <acceptAckCode code="AL"/>
+8   <receiver typeCode="RCV">
+9     <device classCode="DEV" determinerCode="INSTANCE">
+10       <id root="1.3.6.1.4.1.21367.2017.2.4.136"/>
+11     </device>
+12   </receiver>
+13   <sender typeCode="SND">
+14     <device classCode="DEV" determinerCode="INSTANCE">
+15       <id root="1.3.6.1.4.1.21367.2017.2.2.140"/>
+16     </device>
+17   </sender>
+```
+
+The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 
 ```
-10  <soap:Body>
-11   <PRPA_IN201301UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
-12    <id root="647aee99-56e7-46f5-ac26-bb691834204a"/>
-13    <creationTime value="20200923113348"/>
-14    <interactionId root="2.16.840.1.113883.1.6" extension="PRPA_IN201301UV02"/>
-15    <processingCode code="P"/>
-16    <processingModeCode code="T"/>
-17    <acceptAckCode code="AL"/>
-18    <receiver typeCode="RCV">
-19     <device classCode="DEV" determinerCode="INSTANCE">
-20      <id root="1.3.6.1.4.1.21367.2017.2.4.98"/>
-21     </device>
-22    </receiver>
-23    <sender typeCode="SND">
-24     <device classCode="DEV" determinerCode="INSTANCE">
-25      <id root="1.3.6.1.4.1.21367.2017.2.2.100"/>
-26     </device>
-27    </sender>
-```
-
-The patient data are encoded in a HL7 V3 *controlAct* object as follows:
-
-```
-30     <subject typeCode="SUBJ" contextConductionInd="false">
-31      <registrationEvent classCode="REG" moodCode="EVN">
-32       <id nullFlavor="NA"/>
-33       <statusCode code="active"/>
-34       <subject1 typeCode="SBJ">
-35        <patient classCode="PAT">
-36         <id root="1.3.6.1.4.1.21367.2017.2.5.75" extension="T944"/>
-37         <statusCode code="active"/>
-38         <patientPerson classCode="PSN" determinerCode="INSTANCE">
-39          <name>
-40           <given>OVIE</given>
-41           <family qualifier="">BERGAN</family>
-42          </name>
-43          <administrativeGenderCode code="1" codeSystem="2.16.840.1.113883.5.1"/>
-44          <birthTime value="20020329"/>
-45          <addr>
-46           <streetAddressLine>KONIZBERGSTRASSE</streetAddressLine>
-47           <city>Bern</city>
-48           <postalCode>3018</postalCode>
-49          </addr>
-50          <asOtherIDs classCode="ACCESS">
-51           <id root="2.16.756.5.30.1.127.3.10.3" extension="761338420435200768"/>
-52           <scopingOrganization classCode="ORG" determinerCode="INSTANCE">
-53            <id root="2.16.756.5.30.1.127.3.10.3"/>
-54           </scopingOrganization>
-55          </asOtherIDs>
-56         </patientPerson>
-57         <providerOrganization classCode="ORG" determinerCode="INSTANCE">
-58          <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
-59          <name>Spital Administration</name>
-60          <contactParty classCode="CON">
-61           <telecom value="mailto:myHospital@test.ch"/>
-62          </contactParty>
-63         </providerOrganization>
-64        </patient>
-65       </subject1>
-66       <custodian typeCode="CST">
-67        <assignedEntity classCode="ASSIGNED">
-68         <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
-69         <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-70          <name>Spital Administration</name>
-71         </assignedOrganization>
-72        </assignedEntity>
-73       </custodian>
-74      </registrationEvent>
-75     </subject>
-76    </controlActProcess>
+18 <controlActProcess classCode="CACT" moodCode="EVN">
+19     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.18"/>
+20     <subject contextConductionInd="false" typeCode="SUBJ">
+21       <registrationEvent classCode="REG" moodCode="EVN">
+22         <statusCode code="active"/>
+23         <subject1 typeCode="SBJ">
+24           <patient classCode="PAT">
+25             <id assigningAuthorityName="MyPrimarySystem" extension="TestSystemId" root="1.3.6.1.4.1.21367.2017.2.5.89"/>
+26             <id assigningAuthorityName="ZAS" extension="761337610435201235" root="2.16.756.5.30.1.127.3.10.3"/>
+27             <statusCode code="active"/>
+28             <patientPerson classCode="PSN" determinerCode="INSTANCE">
+29               <name>
+30                 <family>Muster</family>
+31                 <given>Maja</given>
+32               </name>
+33               <name>
+34                 <family qualifier="BR">Tauxe</family>
+35                 <given>Maja</given>
+36               </name>
+37               <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.12.1" displayName="Female"/>
+38               <birthTime value="19600618"/>
+39               <addr>
+40                 <city>Wettingen</city>
+41                 <country>CH</country>
+42                 <postalCode>5430</postalCode>
+43                 <streetAddressLine>Imfeldstrasse 24b</streetAddressLine>
+44               </addr>
+45             </patientPerson>
+46             <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+47               <id root="1.3.6.1.4.1.21367.2017.2.5.89"/>
+48               <id root="2.16.756.5.30.1.127.3.10.3"/>
+49               <name>MyCompany</name>
+50               <contactParty classCode="CON">
+51                 <contactPerson classCode="PSN" determinerCode="INSTANCE">
+52                   <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PN">
+53                     <family>Administrator</family>
+54                     <given>Max</given>
+55                   </name>
+56                 </contactPerson>
+57               </contactParty>
+58             </providerOrganization>
+59           </patient>
+60         </subject1>
+61         <custodian typeCode="CST">
+62           <assignedEntity classCode="ASSIGNED">
+63             <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
+64             <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+65               <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
+66             </assignedOrganization>
+67           </assignedEntity>
+68         </custodian>
+69       </registrationEvent>
+70     </subject>
+71   </controlActProcess>
 ```
 
 The *subject* child element conveys the following information in its child elements.
 
-The *patientPerson* child element conveys the patient data including:  
-- *name*: conveying the given and the family names of the matching patient data.
+The *patient* child element conveys the patients identifiers and patient demographics: 
+- *id*: the local ID of the patient in the primary system (line 25) with the OID of the primary system in the *root* attribute. 
+- *id*: the EPR-SPID of the patient provided by the ZAS (line 26) with the OID of the ZAS in the *root* attribute.  
+
+The patients demographic data are conveyed in the *patientPerson* child element:  
+- *name*: conveying the given and the family name of the patient.
 - *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
 **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.  
 - *birthTime*: the data of birth of the matching patient data.
 - *addr* : The address data of the patient.
-- *asOtherIDs*: The assigned patient ID's.   
 - *custodian*: Information on the provider organization.
-
-The *asOtherId* elements shall include the
-
-- local ID the patient is registered in the primary system, with the OID of the primary system in the *root* attribute, and the ID value in the *extension* attribute.
-
-```
-50          <asOtherIDs classCode="ACCESS">
-51           <id root="2.16.756.5.30.1.127.3.10.3" extension="761338420435200768"/>
-52           <scopingOrganization classCode="ORG" determinerCode="INSTANCE">
-53            <id root="2.16.756.5.30.1.127.3.10.3"/>
-54           </scopingOrganization>
-55          </asOtherIDs>
-```
-
-- the EPR-SPID with the OID of the ZAS in the *root* attribute, and the value in the *extension* attribute.
 
 The *custodian* element shall convey the OID of the provider organization in the *id* child element:
 
 ```
-66       <custodian typeCode="CST">
-67        <assignedEntity classCode="ASSIGNED">
-68         <id root="1.3.6.1.4.1.21367.2017.2.5.75"/>
-69         <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-70          <name>Spital Administration</name>
-71         </assignedOrganization>
-72        </assignedEntity>
-73       </custodian>
+61	<custodian typeCode="CST">
+62  	<assignedEntity classCode="ASSIGNED">
+63    <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
+64    <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+65    	<name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
+66    </assignedOrganization>
+67    </assignedEntity>
+68  </custodian>
 ```
 
 ### Response Message

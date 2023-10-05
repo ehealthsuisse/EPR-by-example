@@ -10,46 +10,50 @@
 10   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing" env:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201309UV02</wsa:Action>
 11  </env:Header>
 12  <env:Body>
-13   <PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ITSVersion="XML_1.0">
-14    <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
-15    <creationTime value="20200921170501.122"/>
-16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.6"/>
-17    <processingCode code="P"/>
+13   <PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+14    <id extension="1694523036420" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
+15    <creationTime value="20230912131951"/>
+16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.18"/>
+17    <processingCode code="T"/>
 18    <processingModeCode code="T"/>
 19    <acceptAckCode code="AL"/>
 20    <receiver typeCode="RCV">
 21     <device classCode="DEV" determinerCode="INSTANCE">
-22      <id root="1.3.6.1.4.1.21367.2017.2.4.105"/>
+22      <id root="1.3.6.1.4.1.21367.2017.2.4.136"/>
 23     </device>
 24    </receiver>
 25    <sender typeCode="SND">
 26     <device classCode="DEV" determinerCode="INSTANCE">
-27      <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+27      <id root="1.3.6.1.4.1.21367.2017.2.2.140"/>
 28     </device>
 29    </sender>
 30    <controlActProcess classCode="CACT" moodCode="EVN">
-31     <code code="PRPA_TE201309UV02" codeSystem="2.16.840.1.113883.1.6"/>
+31     <code code="PRPA_TE201309UV02" displayName="2.16.840.1.113883.1.18"/>
 32     <authorOrPerformer typeCode="AUT">
 33      <assignedPerson classCode="ASSIGNED">
-34       <id extension="synedra" root="1.3.6.1.4.1.24930"/>
+34       <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
 35      </assignedPerson>
 36     </authorOrPerformer>
 37     <queryByParameter>
-38      <queryId root="4ecd362e-8d17-4abe-b991-3793bc2e1399"/>
+38      <queryId extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
 39      <statusCode code="new"/>
 40      <responsePriorityCode code="I"/>
 41      <parameterList>
 42       <dataSource>
-43        <value root="1.3.6.1.4.1.21367.2017.2.5.45"/>
+43        <value root="1.3.6.1.4.1.21367.2017.2.5.93"/>
 44        <semanticsText>DataSource.id</semanticsText>
 45       </dataSource>
-46       <patientIdentifier>
-47        <value extension="CHFACILITY9810" root="1.3.6.1.4.1.12559.11.25.1.19"/>
-48        <semanticsText>Patient.Id</semanticsText>
-49       </patientIdentifier>
-50      </parameterList>
-51     </queryByParameter>
-52    </controlActProcess>
-53   </PRPA_IN201309UV02>
-54  </env:Body>
-55 </env:Envelope>
+46       <dataSource>
+47        <value root="2.16.756.5.30.1.127.3.10.3"/>
+48        <semanticsText>DataSource.id</semanticsText>
+49       </dataSource>
+50       <patientIdentifier>
+51        <value extension="900010" root="1.3.6.1.4.1.21367.2017.2.5.103"/>
+52        <semanticsText>Patient.id</semanticsText>
+53       </patientIdentifier>
+54      </parameterList>
+55     </queryByParameter>
+56    </controlActProcess>
+57   </PRPA_IN201309UV02>
+58  </env:Body>
+59 </env:Envelope>

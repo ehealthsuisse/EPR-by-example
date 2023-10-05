@@ -55,9 +55,10 @@ The SOAP *Header* element shall convey the following information:
 Optional elements may be included according to the specification in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.
 
 ```
+1 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
 2  <env:Header>
 3   <wsa:To xmlns:wsa="http://www.w3.org/2005/08/addressing">
-4    https://epd-test.ith-icoserve.com:7443/PIXPDQ/services/PIXV3Service
+4    https://epd-test.ith-icoserve.com:7443/PIXPDQ/services/PIXPDQV3ManagerService
 5   </wsa:To>
 6   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:c12e1f14-c2c9-4a94-ba27-6411e8c90b75</wsa:MessageID>
 7   <wsa:ReplyTo xmlns:wsa="http://www.w3.org/2005/08/addressing">
@@ -79,24 +80,24 @@ Primary systems shall set the following values:
 - *receiver*: The OID of the receiver application which shall respond to the request.
 
 ```
-12  <env:Body>
-13   <PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ITSVersion="XML_1.0">
-14    <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
-15    <creationTime value="20200921170501.122"/>
-16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.6"/>
-17    <processingCode code="P"/>
+2  <env:Body>
+13   <PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
+14    <id extension="1694523036420" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
+15    <creationTime value="20230912131951"/>
+16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.18"/>
+17    <processingCode code="T"/>
 18    <processingModeCode code="T"/>
 19    <acceptAckCode code="AL"/>
 20    <receiver typeCode="RCV">
 21     <device classCode="DEV" determinerCode="INSTANCE">
-22      <id root="1.3.6.1.4.1.21367.2017.2.4.105"/>
+22      <id root="1.3.6.1.4.1.21367.2017.2.4.136"/>
 23     </device>
 24    </receiver>
 25    <sender typeCode="SND">
 26     <device classCode="DEV" determinerCode="INSTANCE">
-27      <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
+27      <id root="1.3.6.1.4.1.21367.2017.2.2.140"/>
 28     </device>
-29    </sender>  
+29    </sender>
 ```
 
 The query parameter are encoded in a HL7 V3 *controlActProcess* element of the message. Primary systems shall set the following query attributes:
@@ -105,10 +106,10 @@ The query parameter are encoded in a HL7 V3 *controlActProcess* element of the m
 
 ```
 30    <controlActProcess classCode="CACT" moodCode="EVN">
-31     <code code="PRPA_TE201309UV02" codeSystem="2.16.840.1.113883.1.6"/>
+31     <code code="PRPA_TE201309UV02" displayName="2.16.840.1.113883.1.18"/>
 32     <authorOrPerformer typeCode="AUT">
 33      <assignedPerson classCode="ASSIGNED">
-34       <id extension="client application" root="1.3.6.1.4.1.24930"/>
+34       <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
 35      </assignedPerson>
 36     </authorOrPerformer>
 ```
@@ -116,29 +117,31 @@ The query parameter are encoded in a HL7 V3 *controlActProcess* element of the m
 The query parameter are conveyed in the *queryByParameter* child element:
 
 - *queryId*: A unique ID of the query.
-- *dataSource*: The OID of the assigning authority of the community, or the OID of the assigning authority of the EPR-SPID.
+- *dataSource*: The OID of the assigning authority of the community (line 43). 
+- *dataSource*: The OID of the assigning authority of the EPR-SPID (line 46).
 - *patientIdentifier*: The ID of the patient data in the primary system, with the OID of the primary system in the *root* element and the local ID in the *extension* element.
 
 ```
 37     <queryByParameter>
-38      <queryId root="4ecd362e-8d17-4abe-b991-3793bc2e1399"/>
+38      <queryId extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
 39      <statusCode code="new"/>
 40      <responsePriorityCode code="I"/>
 41      <parameterList>
 42       <dataSource>
-43        <value root="1.3.6.1.4.1.21367.2017.2.5.45"/>
+43        <value root="1.3.6.1.4.1.21367.2017.2.5.93"/>
 44        <semanticsText>DataSource.id</semanticsText>
 45       </dataSource>
-46       <patientIdentifier>
-47        <value extension="CHFACILITY9810" root="1.3.6.1.4.1.12559.11.25.1.19"/>
-48        <semanticsText>Patient.Id</semanticsText>
-49       </patientIdentifier>
-50      </parameterList>
-51     </queryByParameter>
-52    </controlActProcess>
+46       <dataSource>
+47        <value root="2.16.756.5.30.1.127.3.10.3"/>
+48        <semanticsText>DataSource.id</semanticsText>
+49       </dataSource>
+50       <patientIdentifier>
+51        <value extension="900010" root="1.3.6.1.4.1.21367.2017.2.5.103"/>
+52        <semanticsText>Patient.id</semanticsText>
+53       </patientIdentifier>
+54      </parameterList>
+55     </queryByParameter>
 ```
-
-**TODO**: Adapt to the update of the ordinances planned for April 2021.
 
 ### Response Message
 
@@ -155,10 +158,11 @@ The SOAP *Header* element shall conveys the following information:
 - *RelatesTo* element: A copy of the unique ID of the query request.
 
 ```
-<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
- <wsa:Action xmlns:mustUnderstand="http://www.w3.org/2003/05/soap-envelope" mustUnderstand:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201310UV02</wsa:Action>
- <wsa:RelatesTo>urn:uuid:c12e1f14-c2c9-4a94-ba27-6411e8c90b75</wsa:RelatesTo>
-</soapenv:Header>  
+1 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+2   <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+3     <wsa:Action xmlns:mustUnderstand="http://www.w3.org/2003/05/soap-envelope" mustUnderstand:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201310UV02</wsa:Action>
+4     <wsa:RelatesTo>urn:uuid:c12e1f14-c2c9-4a94-ba27-6411e8c90b75</wsa:RelatesTo>
+5   </soapenv:Header>
 ```
 
 The SOAP *Body* element conveys the administrative information required for a PRPA_IN201310UV02 message in HL7 V3 syntax
@@ -167,41 +171,40 @@ and the query result encoded in the *controlActProcess* element.
 The *controlActProcess* element conveys the following information for the primary system in the *subject* child element:
 
 The *patient* child element conveys the master patient ID (XAD-SPID) and the EPR-SPID as follows:
-- *id* : The master patient ID (XAD-SPID), with the community OID as the assigning authority in the *root* and the ID in the *extension* attribute (line 39 in the example below).
-- *asOtherIDs*: The EPR-SPID, with the ZAS OID as assigning authority in the *root* and the ID in the *extension* attribute (line 44 in the example below).
-
-**TODO**: adapt to the update of the ordinances planned to April 2021.  
+- *id* : The master patient ID (XAD-SPID), with the community OID as the assigning authority in the *root* and the ID in the *extension* attribute (line 49).
+- *id* : The EPR-SPID, with the OID of the ZAS as assigning authority in the *root* and the ID in the *extension* attribute (line 50).
 
 ```
-38        <ns1:patient classCode="PAT">
-39         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45" extension="799b00ee-2f2a-4444-8f93-c91730578af4" assigningAuthorityName="XDS Affinity Domain"/>
-40         <ns1:statusCode code="active"/>
-41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
-42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN" nullFlavor="NA"/>
-43          <ns1:asOtherIDs classCode="ROL">
-44           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3" extension="761337610435209810" assigningAuthorityName="SPID"/>
-45           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
-46            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3"/>
-47           </ns1:scopingOrganization>
-48          </ns1:asOtherIDs>
-49         </ns1:patientPerson>
-50        </ns1:patient>
+44           <ns1:registrationEvent classCode="REG" moodCode="EVN">
+45             <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nullFlavor="NA" xsi:type="ns1:II"/>
+46             <ns1:statusCode code="active"/>
+47             <ns1:subject1 typeCode="SBJ">
+48               <ns1:patient classCode="PAT">
+49                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" assigningAuthorityName="XDS Affinity Domain" extension="7f2e05e6-673e-44b6-8b76-e17ac58ea80f" root="1.3.6.1.4.1.21367.2017.2.5.93" xsi:type="ns1:II"/>
+50                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" assigningAuthorityName="SPID" extension="761337610435209810" root="2.16.756.5.30.1.127.3.10.3" xsi:type="ns1:II"/>
+51                 <ns1:statusCode code="active"/>
+52                 <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
+53                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" nullFlavor="NA" xsi:type="ns1:PN"/>
+54                 </ns1:patientPerson>
+55               </ns1:patient>
+56             </ns1:subject1>
 ```
 
 The *custodian* child element conveys information on the responding system as follows:
 
 ```
-52       <ns1:custodian typeCode="CST">
-53        <ns1:assignedEntity classCode="ASSIGNED">
-54         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
-55         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2010.1.2.600" extension="xxx"/>
-56         <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-57          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
-58           <ns1:given>org</ns1:given>
-59          </ns1:name>
-60         </ns1:assignedOrganization>
-61        </ns1:assignedEntity>
-62       </ns1:custodian>
+57             <ns1:custodian typeCode="CST">
+58               <ns1:assignedEntity classCode="ASSIGNED">
+59                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
+60                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
+61                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+62                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+63                     <ns1:given>org</ns1:given>
+64                   </ns1:name>
+65                 </ns1:assignedOrganization>
+66               </ns1:assignedEntity>
+67             </ns1:custodian>
+68           </ns1:registrationEvent>
 ```
 
 ## Transport Protocol
