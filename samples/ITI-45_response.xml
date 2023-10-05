@@ -56,42 +56,41 @@
 56             </ns1:subject1>
 57             <ns1:custodian typeCode="CST">
 58               <ns1:assignedEntity classCode="ASSIGNED">
-59                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
-60                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
-61                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-62                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
-63                     <ns1:given>org</ns1:given>
-64                   </ns1:name>
-65                 </ns1:assignedOrganization>
-66               </ns1:assignedEntity>
-67             </ns1:custodian>
-68           </ns1:registrationEvent>
-69         </ns1:subject>
-70         <ns1:queryAck>
-71           <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141" xsi:type="ns1:II"/>
-72           <ns1:statusCode code="deliveredResponse"/>
-73           <ns1:queryResponseCode code="OK"/>
-74         </ns1:queryAck>
-75         <ns1:queryByParameter>
-76           <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141" xsi:type="ns1:II"/>
-77           <ns1:statusCode code="new"/>
-78           <ns1:responsePriorityCode code="I"/>
-79           <ns1:parameterList>
-80             <ns1:dataSource>
-81               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" root="1.3.6.1.4.1.21367.2017.2.5.93" xsi:type="ns1:II"/>
-82               <ns1:semanticsText>DataSource.id</ns1:semanticsText>
-83             </ns1:dataSource>
-84             <ns1:dataSource>
-85               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" root="2.16.756.5.30.1.127.3.10.3" xsi:type="ns1:II"/>
-86               <ns1:semanticsText>DataSource.id</ns1:semanticsText>
-87             </ns1:dataSource>
-88             <ns1:patientIdentifier>
-89               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="900010" root="1.3.6.1.4.1.21367.2017.2.5.103" xsi:type="ns1:II"/>
-90               <ns1:semanticsText>Patient.id</ns1:semanticsText>
-91             </ns1:patientIdentifier>
-92           </ns1:parameterList>
-93         </ns1:queryByParameter>
-94       </ns1:controlActProcess>
-95     </ns1:PRPA_IN201310UV02>
-96   </soapenv:Body>
-97 </soapenv:Envelope>
+59                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="MyOrgID" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
+60                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+61                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+62                     <ns1:given>MyOrganisation</ns1:given>
+63                   </ns1:name>
+64                 </ns1:assignedOrganization>
+65               </ns1:assignedEntity>
+66             </ns1:custodian>
+67           </ns1:registrationEvent>
+68         </ns1:subject>
+69         <ns1:queryAck>
+70           <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141" xsi:type="ns1:II"/>
+71           <ns1:statusCode code="deliveredResponse"/>
+72           <ns1:queryResponseCode code="OK"/>
+73         </ns1:queryAck>
+74         <ns1:queryByParameter>
+75           <ns1:queryId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="1694523036421" root="1.3.6.1.4.1.21367.2017.2.7.141" xsi:type="ns1:II"/>
+76           <ns1:statusCode code="new"/>
+77           <ns1:responsePriorityCode code="I"/>
+78           <ns1:parameterList>
+79             <ns1:dataSource>
+80               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" root="1.3.6.1.4.1.21367.2017.2.5.93" xsi:type="ns1:II"/>
+81               <ns1:semanticsText>DataSource.id</ns1:semanticsText>
+82             </ns1:dataSource>
+83             <ns1:dataSource>
+84               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" root="2.16.756.5.30.1.127.3.10.3" xsi:type="ns1:II"/>
+85               <ns1:semanticsText>DataSource.id</ns1:semanticsText>
+86             </ns1:dataSource>
+87             <ns1:patientIdentifier>
+88               <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="900010" root="1.3.6.1.4.1.21367.2017.2.5.103" xsi:type="ns1:II"/>
+89               <ns1:semanticsText>Patient.id</ns1:semanticsText>
+90             </ns1:patientIdentifier>
+91           </ns1:parameterList>
+92         </ns1:queryByParameter>
+93       </ns1:controlActProcess>
+94     </ns1:PRPA_IN201310UV02>
+95   </soapenv:Body>
+96 </soapenv:Envelope>

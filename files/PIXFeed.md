@@ -154,17 +154,6 @@ The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 58             </providerOrganization>
 59           </patient>
 60         </subject1>
-61         <custodian typeCode="CST">
-62           <assignedEntity classCode="ASSIGNED">
-63             <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
-64             <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-65               <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
-66             </assignedOrganization>
-67           </assignedEntity>
-68         </custodian>
-69       </registrationEvent>
-70     </subject>
-71   </controlActProcess>
 ```
 
 The *subject* child element conveys the following information in its child elements.
@@ -184,14 +173,17 @@ The patients demographic data are conveyed in the *patientPerson* child element:
 The *custodian* element shall convey the OID of the provider organization in the *id* child element:
 
 ```
-61	<custodian typeCode="CST">
-62  	<assignedEntity classCode="ASSIGNED">
-63    <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
-64    <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-65    	<name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
-66    </assignedOrganization>
-67    </assignedEntity>
-68  </custodian>
+61         <custodian typeCode="CST">
+62           <assignedEntity classCode="ASSIGNED">
+63             <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
+64             <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+65               <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
+66             </assignedOrganization>
+67           </assignedEntity>
+68         </custodian>
+69       </registrationEvent>
+70     </subject>
+71   </controlActProcess>
 ```
 
 ### Response Message

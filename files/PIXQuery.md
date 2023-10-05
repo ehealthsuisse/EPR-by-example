@@ -190,21 +190,19 @@ The *patient* child element conveys the master patient ID (XAD-SPID) and the EPR
 56             </ns1:subject1>
 ```
 
-The *custodian* child element conveys information on the responding system as follows:
+The *custodian* child element conveys information on the responding system with the the OID of the provider organization in the *id* child element as follows:
 
 ```
 57             <ns1:custodian typeCode="CST">
 58               <ns1:assignedEntity classCode="ASSIGNED">
-59                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
-60                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
-61                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-62                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
-63                     <ns1:given>org</ns1:given>
-64                   </ns1:name>
-65                 </ns1:assignedOrganization>
-66               </ns1:assignedEntity>
-67             </ns1:custodian>
-68           </ns1:registrationEvent>
+59                 <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="MyOrgID" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
+60                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
+61                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
+62                     <ns1:given>MyOrganisation</ns1:given>
+63                   </ns1:name>
+64                 </ns1:assignedOrganization>
+65               </ns1:assignedEntity>
+66             </ns1:custodian>
 ```
 
 ## Transport Protocol

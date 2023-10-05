@@ -56,11 +56,10 @@
             </ns1:subject1>
             <ns1:custodian typeCode="CST">
               <ns1:assignedEntity classCode="ASSIGNED">
-                <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
-                <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="xxx" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
+                <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" extension="MyOrgID" root="1.3.6.1.4.1.21367.2010.1.2.600" xsi:type="ns1:II"/>
                 <ns1:assignedOrganization classCode="ORG" determinerCode="INSTANCE">
                   <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:EN">
-                    <ns1:given>org</ns1:given>
+                    <ns1:given>MyOrganisation</ns1:given>
                   </ns1:name>
                 </ns1:assignedOrganization>
               </ns1:assignedEntity>
