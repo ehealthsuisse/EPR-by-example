@@ -56,13 +56,15 @@ The SOAP *Header* element conveys the following information:
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
 ```
-2  <env:Header>
-3   <wsa:To xmlns:wsa="http://www.w3.org/2005/08/addressing">
-4    https://epd-service.com:7443/PIXPDQ/services/PDQV3Service
-5   </wsa:To>
-6   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:cf11d39c-8a2e-4683-bbe6-9f2b6f63f8c0</wsa:MessageID>
-7   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing" env:mustUnderstand="1">urn:hl7-org:v3:PRPA_IN201305UV02</wsa:Action>
-8  </env:Header>
+2  <soap:Header>
+3   <Action soap:mustUnderstand="true"
+4    xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201305UV02</Action>
+5   <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:9fe7246b-8fab-4dd7-976e-c81bc1955575</MessageID>
+6   <To xmlns="http://www.w3.org/2005/08/addressing">https://epd-test.ith-icoserve.com:7443/PIXPDQ/services/PIXPDQV3ManagerService</To>
+7   <ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+8    <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+9   </ReplyTo>
+10  </soap:Header>
 ```
 
 For the patient demographic query no *Security* header element is required, since in the Swiss EPR the access to the patient
@@ -76,83 +78,79 @@ which primary systems must set the following values:
 - *receiver*: The OID of the receiver application which shall respond to the request.
 
 ```
-11    <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
-12    <creationTime value="20200922105735.304"/>
-13    <interactionId extension="PRPA_IN201305UV02" root="2.16.840.1.113883.1.6"/>
-14    <processingCode code="P"/>
-15    <processingModeCode code="T"/>
-16    <acceptAckCode code="AL"/>
-17    <receiver typeCode="RCV">
-18     <device classCode="DEV" determinerCode="INSTANCE">
-19      <id root="1.3.6.1.4.1.21367.2017.2.4.105"/>
-20     </device>
-21    </receiver>
-22    <sender typeCode="SND">
-23     <device classCode="DEV" determinerCode="INSTANCE">
-24      <id root="1.3.6.1.4.1.21367.2017.2.5.55"/>
-25     </device>
-26    </sender>
+13    <id root="1.2.3.4"/>
+14    <creationTime value="20230911143411"/>
+15    <interactionId extension="PRPA_IN201305UV02" root="2.16.840.1.113883.1.6"/>
+16    <processingCode code="P"/>
+17    <processingModeCode code="T"/>
+18    <acceptAckCode code="AL"/>
+19    <receiver typeCode="RCV">
+20     <device classCode="DEV" determinerCode="INSTANCE">
+21      <id root="1.3.6.1.4.1.21367.2017.2.5.97"/>
+22      <asAgent classCode="AGNT">
+23       <representedOrganization classCode="ORG" determinerCode="INSTANCE">
+24        <id root="1.3.6.1.4.1.21367.2017.2.7.127"/>
+25       </representedOrganization>
+26      </asAgent>
+27     </device>
+28    </receiver>
+29    <sender typeCode="SND">
+30     <device classCode="DEV" determinerCode="INSTANCE">
+31      <id root="1.2.3.4"/>
+32     </device>
+33    </sender>
 ```
 
 The query is encoded in a HL7 V3 *controlAct* object as follows:
 
 ```
-27    <controlActProcess classCode="CACT" moodCode="EVN">
-28     <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.6"/>
-29     <authorOrPerformer typeCode="AUT">
-30      <assignedPerson classCode="ASSIGNED">
-31       <id extension="client_application" root="1.3.6.1.4.1.24930"/>
-32      </assignedPerson>
-33     </authorOrPerformer>
-34     <queryByParameter>
-35      <queryId root="32adda44-a2a6-457f-84da-6982aa1ae921"/>
-36      <statusCode code="new"/>
-37      <responseModalityCode code="R"/>
-38      <responsePriorityCode code="I"/>
-39      <initialQuantity value="200"/>
-40      <parameterList>
-41       <livingSubjectName>
-42        <value>
-43         <family>Maiden</family>
-44        </value>
-45        <semanticsText>LivingSubject.name</semanticsText>
-46       </livingSubjectName>
-47       <patientAddress>
-48        <value>
-49         <streetAddressLine>Ruelle de la Tour</streetAddressLine>
-50        </value>
-51        <semanticsText>Patient.addr</semanticsText>
-52       </patientAddress>
-53      </parameterList>
-54     </queryByParameter>
-55    </controlActProcess>
+34    <controlActProcess classCode="CACT" moodCode="EVN">
+35     <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.18"/>
+36     <queryByParameter>
+37      <queryId extension="16944356511831" root="1.2.840.114350.1.13.28.1.18.5.999"/>
+38      <statusCode code="new"/>
+39      <responseModalityCode code="R"/>
+40      <responsePriorityCode code="I"/>
+41      <parameterList>
+42       <livingSubjectId>
+43        <value extension="08242eb8-dd47-4298-8d2f-25d60114f137" root="1.1.1.2.2"/>
+44        <semanticsText>LivingSubject.id</semanticsText>
+45       </livingSubjectId>
+46       <otherIDsScopingOrganization>
+47        <value root="1.3.6.1.4.1.21367.2017.2.5.93"/>
+48        <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+49       </otherIDsScopingOrganization>
+50       <otherIDsScopingOrganization>
+51        <value root="2.16.756.5.30.1.127.3.10.3"/>
+52        <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+53       </otherIDsScopingOrganization>
+54      </parameterList>
+55     </queryByParameter>
+56    </controlActProcess>
 ```
 
 The HL7 *controlAct* object conveys the query search parameter in a HL7 V3 *parameterList* element.
 
-In the above example these are the *livingSubjectName* conveying the name of the patient to search for,  
+In the above example these are 
+- the *livingSubjectId* conveying the local ID in the primary system of the patient data to search for,
+- the *otherIDsScopingOrganization* to match with the registered patient data,  
 
 ```
-41       <livingSubjectName>
-42        <value>
-43         <family>Maiden</family>
-44        </value>
-45        <semanticsText>LivingSubject.name</semanticsText>
-46       </livingSubjectName>
-```
-
-and the *streetAddressLine* to match:
-
-```
-47       <patientAddress>
-48        <value>
-49         <streetAddressLine>Ruelle de la Tour</streetAddressLine>
-50        </value>
-51        <semanticsText>Patient.addr</semanticsText>
-52       </patientAddress>
-53      </parameterList>
-54     </queryByParameter>
-55    </controlActProcess>
+41      <parameterList>
+42       <livingSubjectId>
+43        <value extension="08242eb8-dd47-4298-8d2f-25d60114f137" root="1.1.1.2.2"/>
+44        <semanticsText>LivingSubject.id</semanticsText>
+45       </livingSubjectId>
+46       <otherIDsScopingOrganization>
+47        <value root="1.3.6.1.4.1.21367.2017.2.5.93"/>
+48        <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+49       </otherIDsScopingOrganization>
+50       <otherIDsScopingOrganization>
+51        <value root="2.16.756.5.30.1.127.3.10.3"/>
+52        <semanticsText>OtherIDs.scopingOrganization.id</semanticsText>
+53       </otherIDsScopingOrganization>
+54      </parameterList>
+55     </queryByParameter>
 ```
 
 The query supports many more search options and filter parameter. For a documentation of the options
@@ -169,45 +167,42 @@ background information to interpret. The raw version of a response message may b
 The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element
 of the *controlAct* object. The *subject* child element conveys the following information:
 
-- *name*: conveying the given and the family names of the matching patient data.
-- *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
+- *id*: the XAD PID, which identifies the patient in the community (line 50)  and the EPR-SPID (line 51).
+- *name*: conveying the given and the family names of the matching patient data (line 54).
+- *administrativeGenderCode*: conveying the coded value of patient gender (line 58), taken from the value sets defined in
 **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.  
-- *birthTime*: the data of birth of the matching patient data.
-- *addr* : The address data of the patient.
-- *asOtherIDs*: A list of 1..N IDs, the patient is registered with in the community.  
-
-Each *asOtherId* conveys the ID the patient is registered in the community and conveys the following information:
--  *scopingOrganization*: the assigning authority, which may be the master patient index of the community, or a primary system, which had registered the patient data with its local ID.
-- *extension*: The master patient ID (XAD-PID), if the assigning authority in the *root* attribute is the master patient index of the community, or a local ID assigned by a primary system otherwise.    
+- *birthTime*: the data of birth of the matching patient data (line 59).
+- *addr*: The address data of the patient (line 60).     
 
 ```
-41         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
-42          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN">
-43           <ns1:given>Alice</ns1:given>
-44           <ns1:family>Maiden</ns1:family>
-45          </ns1:name>
-46          <ns1:administrativeGenderCode code="F"/>
-47          <ns1:birthTime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:TS" value="19880101"/>
-48          <ns1:addr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:AD" use="HP">
-49           <ns1:city>Pontarlier</ns1:city>
-50           <ns1:postalCode>25300</ns1:postalCode>
-51           <ns1:streetName>Ruelle de la Tour</ns1:streetName>
-52          </ns1:addr>
-53          <ns1:asOtherIDs classCode="PAT">
-54           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45" extension="069dc839-8fdf-4908-88d8-a985c1a42779" assigningAuthorityName="XDS Affinity Domain"/>
-55           <ns1:statusCode code="active"/>
-56           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
-57            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.45"/>
-58           </ns1:scopingOrganization>
-59          </ns1:asOtherIDs>
-60          <ns1:asOtherIDs classCode="PAT">
-61           <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.65" extension="TIE4873" assigningAuthorityName="ISO"/>
-62           <ns1:statusCode code="active"/>
-63           <ns1:scopingOrganization classCode="ORG" determinerCode="INSTANCE">
-64            <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.65"/>
-65           </ns1:scopingOrganization>
-66          </ns1:asOtherIDs>
-67         </ns1:patientPerson>
+49        <ns1:patient classCode="PAT">
+50         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.2017.2.5.93" extension="25f98b34-0e01-48b7-a06c-f706eb4c485f" assigningAuthorityName="XDS Affinity Domain"/>
+51         <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="2.16.756.5.30.1.127.3.10.3" extension="761337610411353650" assigningAuthorityName="SPID"/>
+52         <ns1:statusCode code="active"/>
+53         <ns1:patientPerson classCode="PSN" determinerCode="INSTANCE">
+54          <ns1:name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:PN">
+55           <ns1:given>Dylan Jose</ns1:given>
+56           <ns1:family>Dell</ns1:family>
+57          </ns1:name>
+58          <ns1:administrativeGenderCode code="F"/>
+59          <ns1:birthTime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:TS" value="19890622"/>
+60          <ns1:addr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:AD" use="HP">
+61           <ns1:city>Pontarlier</ns1:city>
+62           <ns1:postalCode>25300</ns1:postalCode>
+63           <ns1:streetName>Ruelle de la Tour</ns1:streetName>
+64          </ns1:addr>
+65         </ns1:patientPerson>
+66         <ns1:providerOrganization classCode="ORG" determinerCode="INSTANCE">
+67          <ns1:id xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:II" root="1.3.6.1.4.1.21367.13.20.2000"/>
+68          <ns1:contactParty classCode="CON"/>
+69         </ns1:providerOrganization>
+70         <ns1:subjectOf1>
+71          <ns1:queryMatchObservation classCode="COND" moodCode="EVN">
+72           <ns1:code xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:CD" code="IHE_PDQ"/>
+73           <ns1:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:INT" value="100"/>
+74          </ns1:queryMatchObservation>
+75         </ns1:subjectOf1>
+76        </ns1:patient>
 ```
 
 ## Transport Protocol

@@ -5,7 +5,7 @@ async function processLineByLine() {
 
   var i = 1;
 
-  const fileStream = fs.createReadStream('../samples/ITI-45_response_raw.xml');
+  const fileStream = fs.createReadStream('../samples/ITI-47_response_raw.xml');
 
   const rl = readline.createInterface({
     input: fileStream,
