@@ -32,7 +32,7 @@
     </device>
    </sender>
    <controlActProcess classCode="CACT" moodCode="EVN">
-    <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.18"/>
+    <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.6"/>
     <queryByParameter>
      <queryId extension="16944356511831" root="1.2.840.114350.1.13.28.1.18.5.999"/>
      <statusCode code="new"/>

@@ -84,7 +84,7 @@ Primary systems shall set the following values:
 13   <PRPA_IN201309UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
 14    <id extension="1694523036420" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
 15    <creationTime value="20230912131951"/>
-16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.18"/>
+16    <interactionId extension="PRPA_IN201309UV02" root="2.16.840.1.113883.1.6"/>
 17    <processingCode code="T"/>
 18    <processingModeCode code="T"/>
 19    <acceptAckCode code="AL"/>
@@ -106,7 +106,7 @@ The query parameter are encoded in a HL7 V3 *controlActProcess* element of the m
 
 ```
 30    <controlActProcess classCode="CACT" moodCode="EVN">
-31     <code code="PRPA_TE201309UV02" displayName="2.16.840.1.113883.1.18"/>
+31     <code code="PRPA_TE201309UV02" displayName="2.16.840.1.113883.1.6"/>
 32     <authorOrPerformer typeCode="AUT">
 33      <assignedPerson classCode="ASSIGNED">
 34       <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
