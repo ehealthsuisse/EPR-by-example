@@ -18,7 +18,7 @@ Your are free to set whatever fields you want inside your `Questionnaire` resour
 - `description` the description as a markdown string
 - `item` the array that contains the questions
 
-```json
+```json title="Minimal example" linenums="1"
 {
   "resourceType": "Questionnaire",
   "status": "draft",
@@ -69,7 +69,7 @@ For details, please see [the official documentation for enableWhen](https://hl7.
 
 For choice questions, you can specify the potential answer options in the answerOptions field. Usually, it makes the most sense to use the valueCoding type here, but in this documentation we chose valueString for keeping it simpler.
 
-```json
+```json title="Choice question" linenums="1"
 {
   "linkId": "Q4",
   "type": "choice",
@@ -96,7 +96,7 @@ The `repeats` field declares if a choice question can have multiple answers or n
 
 As an alternative to `answerOptions`, you can link to a ValueSet in the `answerValueSet` field with an `#` and the id of the contained value-set. The valueSet resource must be in the `contained` of the Questionnaire, external ValueSets are not supported as of now.
 
-```json
+```json title="Linking a ValueSet" linenums="1"
 {
   ...,
   "answerValueSet": "#ORGAN-DONATION-LIST-ValueSet"
@@ -107,7 +107,7 @@ As an alternative to `answerOptions`, you can link to a ValueSet in the `answerV
 
 In a FHIR questionnaire, it is possible to have subquestions for a question. Just add the subquestion in the `item` field of the parent question. Of course, a parent item can have multiple subquestions, and the subquestions themselves can have subquestions again. This is rendered in a hierarchical way by the questionnaire renderer. If you want to display the subquestions depending from the answer given to the parent question, you have to declare them as depending questions (see next chapter).
 
-```json
+```json title="Sub-question" linenums="1"
 {
   "linkId": "parent",
   "type": "boolean",
@@ -126,7 +126,7 @@ In a FHIR questionnaire, it is possible to have subquestions for a question. Jus
 
 You can also dynamically enable or not some questions, depending on the status of other questions.
 
-```json
+```json title="Depending question" linenums="1"
 {
   "linkId": "Q3",
   "type": "date",
@@ -145,7 +145,7 @@ You can also dynamically enable or not some questions, depending on the status o
 
 You can also define an initial answer, that is preset to a question and can be changed by the user.
 
-```json
+```json title="Initial value" linenums="1"
 {
   "linkId": "initial",
   "type": "boolean",
@@ -172,7 +172,7 @@ If you want to add explanatory/help text to a question, you can do so by adding 
 
 The help element will take the form of an icon with a question mark which will display the text when hovering over it on a computer or pressing it on a mobile device.
 
-```json
+```json title="Help button" linenums="1"
 {
   "linkId": "Q1-with-help",
   "text": "Where did you put your advanced directives?",
@@ -208,7 +208,7 @@ If you want to add prompt/placeholder to an input question, you can do so by add
 
 The prompt element will take the form of a text inside an input to give information about what should be entered.
 
-```json
+```json title="Prompt" linenums="1"
 {
   "extension": [
     {
@@ -237,7 +237,7 @@ If you want to add unit to an input question, you can do so by adding an item wi
 
 The unit element will be displayed at the end of the input field as an indication of the unit of what the user should enter. Please not that the unit is only cosmetic, if you want to have an answer corresponding to an input with its unit, you should use a quantity item, but its not supported by this project.
 
-```json
+```json title="Unit" linenums="1"
 {
   "extension": [
     {
@@ -264,7 +264,7 @@ The unit element will be displayed at the end of the input field as an indicatio
 
 If you want to render `choice` question with checkbox control, you can do so by adding the `check-box` [code](http://hl7.org/fhir/questionnaire-item-control) and `questionnaire-itemControl` [extension](http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl) as described below.
 
-```json
+```json title="Checkbox" linenums="1"
 {
   "extension": [
     {
@@ -294,7 +294,7 @@ If you want to render `choice` question with checkbox control, you can do so by 
 
 If you want to render `choice` question with radio control, you can do so by adding the `radio-button` [code](http://hl7.org/fhir/questionnaire-item-control) and `questionnaire-itemControl` [extension](http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl) as described below.
 
-```json
+```json title="Radio button" linenums="1"
 {
       "extension": [
         {
@@ -324,7 +324,8 @@ If you want to render `choice` question with radio control, you can do so by add
 To add internationalisation to a questionnaire, use the FHIR extension [translation](http://hl7.org/fhir/StructureDefinition/translation). The following is applicable for most text elements of a questionnaire (`text`, `title`, `description`, ...).
 Please note, that for choice questions with answerOptions, internationalisation is not supported. In this case, you need to use an [answerValueSet with designation](https://www.hl7.org/fhir/valueset-definitions.html#ValueSet.compose.include.concept.designation).
 
-```json
+```json title="Internationalisation" linenums="1"
+{
   "title": "Digital Organ Donation Card",
   "_title": {
     "extension": [
@@ -369,6 +370,7 @@ Please note, that for choice questions with answerOptions, internationalisation 
       }
     ]
   }
+}
 ```
 
 The `@i4mi/fhir_questionnaire` library will process the extension, see the [documentation](https://www.npmjs.com/package/@i4mi/fhir_questionnaire) for more information.
@@ -379,7 +381,7 @@ Besides the initial value (see above), it is also possible to prepopulate the an
 
 For this, you have to have the initialExpression extension in every item that should be prepopulated, with the FHIRPath expression that extracts the wanted value from the passed resource.
 
-```json
+```json title="Prepopulation" linenums="1"
 {
   "linkId": "populateExample",
   "text": "Birthdate",
@@ -398,7 +400,7 @@ For this, you have to have the initialExpression extension in every item that sh
 
 Of course, you also have to pass the resource containing the information to the QuestionnaireData library. You can do this like this:
 
-```typescript
+```typescript title="QuestionnaireData library" linenums="1"
 const fhirQuestionnaire = new QuestionnaireData(myQuestionnaire, languages); // fhirQuestionnaire is the instance of your QuestionnaireData
 fhirQuestionnaire.populate(
   [myPatientResource], // the resources containing the needed information; you can only provide one resource of every ResourceType (e.g. Patient)
@@ -412,7 +414,7 @@ More information on prepopulating are found on the [@i4mi/fhir-questionnaire REA
 
 This is a detailled example using many of the concepts explained above. It is based on the organ donation questionnaire used in this app, however some redundancies are stripped out for better readability.
 
-```json
+```json title="Detailed example" linenums="1"
 {
   "resourceType": "Questionnaire",
   "url": "https://github.com/mHealth-Prototyp/Questionnaires/blob/main/resources/Questionnaire/organ-donation.json",
