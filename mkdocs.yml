@@ -20,7 +20,7 @@ extra:
 extra_css:
   - media/ehealthsuisse.css
 nav:
-  - index.md
+  - "Home": index.md
   - "Patient Management":
       - PDQ.md
       - PIXFeed.md
@@ -39,6 +39,10 @@ nav:
   - "Public Test Systems":
       - playground.md
       - gazelle.md
+  - "Swiss EPR Exchange Formats":
+      - MedicationCardDocument.md
+      - ImmunizationAdministrationDocument.md
+      - Questionnaire.md
 markdown_extensions:
   - toc:
       toc_depth: 5
