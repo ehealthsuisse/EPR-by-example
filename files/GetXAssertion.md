@@ -6,11 +6,11 @@ Transaction to retrieve a SAML 2.0 assertion for authorization of transactions i
 Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with the
 **[Provide X-User Assertion](ProvideXAssertion.md)** with XDS.b transactions as defined in
 the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
-**[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+**[Amendment 1 to Annex 5][annexes]**.
 
-The primary system shall provide claims (e.g., user role, purpose of use) with the request as defined in **[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+The primary system shall provide claims (e.g., user role, purpose of use) with the request as defined in **[Amendment 1 to Annex 5][annexes]**.
 
-The community verifies the claims and responds with a XUA compliant SAML 2.0 Assertion defined in **[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+The community verifies the claims and responds with a XUA compliant SAML 2.0 Assertion defined in **[Amendment 1 to Annex 5][annexes]**.
 
 ## Transaction
 
@@ -22,14 +22,14 @@ Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/GetXAssertion_request_raw.xml)**.
 
-The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples](https://github.com/ehealthsuisse/EPD-by-example/tree/main/XUA_samples)**.   
+The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at **[XUA examples][XUA_samples]**.   
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
 
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element must contain the IdP Assertion taken from user authentication (see **[Authenticate User](AuthenticateUser.md)**).  
+- *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element must contain the IdP Assertion taken from user authentication (see **[Authenticate User](AuthenticateUser.md)**).  
 
 ```
 1 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
@@ -116,7 +116,7 @@ were ommitted to increase readability. The raw file may be found **[here](https:
 
 The response message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization. For primary systems, there is no need to extract information from the XUA assertion.  
 
-The XUA Assertion is omitted in the snippet below. For examples of see **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/XUA_samples)**.  
+The XUA Assertion is omitted in the snippet below. For examples of see **[here][XUA_samples]**.  
 
 ```
 1 <?xml version='1.0' encoding='utf-8'?>
@@ -157,7 +157,7 @@ The XUA Assertion is omitted in the snippet below. For examples of see **[here](
 ### Transport Protocol
 
 The primary system shall send the request messages to the X-Assertion Provider of the community using the http
-POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
 ```
 POST /RegistryStoredQueryService HTTP/1.1

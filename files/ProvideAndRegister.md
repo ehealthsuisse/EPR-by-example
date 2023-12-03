@@ -20,12 +20,12 @@ The community responds with a code indicating the successful registration of the
 
 ### Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
+Messages are encoded as described in the **[ebXML][ebxml]** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 #### Request Message
 
-Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the request message is quite lengthy and needs some
+Since the **[ebXML][ebxml]** standard is very generic, the request message is quite lengthy and needs some
 background information to interpret.
 
 The structure of the result set is as follows (see example below):
@@ -40,7 +40,7 @@ The table of the identifier used to indicate the metadata attributes is defined 
 **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)** .
 
 The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in
-**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
+**[Annex 3][annexes]**
 of the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**.
@@ -55,7 +55,7 @@ The SOAP *Header* element conveys the following information:
 - *To* element: The URL of the provide and register document set service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
+- *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element conveys the XUA Assertion used for
 authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
 ```
@@ -243,7 +243,7 @@ The raw version of a response message may be found **[here](https://github.com/e
 ### Transport Protocol
 
 The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
-binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
+binding as specified in the SOAP **[MTOM specification][mtom]** of the W3C.
 
 The request in MTOM format may look as follows:
 
@@ -273,7 +273,7 @@ Content-ID: <1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org>
 ```
 
 The provide and register service sends the response message in the MIME Multipart/Related binding as specified in the SOAP
-**[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
+**[MTOM specification][mtom]** of the W3C.
 
 The response in MTOM format may look as follows:
 
@@ -314,9 +314,9 @@ Content-ID: <root.message@cxf.apache.org>
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=700)** and the
-**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
+specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=700)** and the
+**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:

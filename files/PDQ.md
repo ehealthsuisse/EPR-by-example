@@ -29,7 +29,7 @@ Messages are encoded as described in the HL7 V3 standard with restrictions defin
 
 #### Request Message
 
-Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the request message is quite lengthy and needs some
+Since the **[HL7 V3][hl7]** standard is very generic, the request message is quite lengthy and needs some
 background information to interpret. The raw version of a request message may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_request_raw.xml)**. For a step by step interpretation
 of the request message, see section below.
@@ -84,7 +84,7 @@ see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
 
 #### Response Message
 
-Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
+Since the **[HL7 V3][hl7]** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret. The raw version of a response message may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
 
@@ -96,7 +96,7 @@ of the *controlAct* object. The *subject* child element conveys the following in
 - *id*: the XAD PID, which identifies the patient in the community (line 50)  and the EPR-SPID (line 51).
 - *name*: conveying the given and the family names of the matching patient data (line 54).
 - *administrativeGenderCode*: conveying the coded value of patient gender (line 58), taken from the value sets defined in
-**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.  
+**[Annex 3][annexes]**.  
 - *birthTime*: the data of birth of the matching patient data (line 59).
 - *addr*: The address data of the patient (line 60).     
 
@@ -106,7 +106,7 @@ of the *controlAct* object. The *subject* child element conveys the following in
 
 ### Transport Protocol
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
 ```http linenums="1"
 POST /PDQV3Service HTTP/1.1
@@ -120,9 +120,9 @@ Content-Length: nnnn
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=703)** and the
-**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
+specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=703)** and the
+**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").
 
 ```xml title="iti-47-log.xml" linenums="1"

@@ -38,7 +38,7 @@ and the ordinances to the Swiss EPR.
 
 #### Request Message
 
-Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request
+Due to the genericity of the underlying **[HL7 V3][hl7]** standard, the request
 message is quite lengthy. A raw version of a request message may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-44_request_raw.xml)**.
 
@@ -54,7 +54,7 @@ The SOAP *Header* element shall convey the following information:
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
-Optional elements may be included according to the specification in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.
+Optional elements may be included according to the specification in the **[W3C SOAP specification][soap]**.
 
 ```xml title="SOAP header" linenums="1" hl_lines="3-5"
 <soap:Header>
@@ -97,7 +97,7 @@ The *patient* child element conveys the patients identifiers and patient demogra
 The patients demographic data are conveyed in the *patientPerson* child element:  
 - *name*: conveying the given and the family name of the patient.
 - *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
-**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.  
+**[Annex 3][annexes]**.  
 - *birthTime*: the data of birth of the matching patient data.
 - *addr* : The address data of the patient.
 - *custodian*: Information on the provider organization.
@@ -114,7 +114,7 @@ The PIX V3 Feed service responds with a message indicating the success of the tr
 
 ### Transport Protocol
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
 ```http linenums="1"
 POST /PIXV3FeedService HTTP/1.1
@@ -128,9 +128,9 @@ Content-Length: nnn
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=701)** and the
-**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
+specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=701)** and the
+**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:

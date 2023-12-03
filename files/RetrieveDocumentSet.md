@@ -16,7 +16,7 @@ The community responds the set of documents.
 
 ### Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
+Messages are encoded as described in the **[ebXML][ebxml]** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 #### Request Message
@@ -30,7 +30,7 @@ SOAP *Header* element conveys the following information:
 - *To* element: The URL of the repository service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
+- *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element conveys the XUA Assertion used for
 authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
 
@@ -109,10 +109,10 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which co
 ### Transport Protocol
 
 The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
-binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
+binding as specified in the SOAP **[MTOM specification][mtom]** of the W3C.
 
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP
-**[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C. A full message may look like:
+**[MTOM specification][mtom]** of the W3C. A full message may look like:
 
 ```
 DefaultHttpResponse(chunked: false)
@@ -161,9 +161,9 @@ content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706)** and the
-**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
+specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=706)** and the
+**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:

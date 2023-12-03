@@ -14,14 +14,14 @@ common parameter used in the Swiss EPR are the patient ID in CX format and the s
 *Approved*.
 
 The community responds with the metadata sets of all documents registered in the patient's EPR, which match the search
-and filter parameter of the query. The profile is based upon the **[ebXML](http://www.ebxml.org)** standard. Due to the
+and filter parameter of the query. The profile is based upon the **[ebXML][ebxml]** standard. Due to the
 genericity of the ebXML standard, the response is not human readable and needs without background information given below.
 
 ## Transaction
 
 ### Message Semantics
 
-Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
+Messages are encoded as described in the **[ebXML][ebxml]** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 #### Request Message
@@ -35,7 +35,7 @@ The SOAP *Header* element conveys the following information:
 - *To* element: The URL of the registry stored query service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
+- *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element conveys the XUA Assertion used for authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the following information:
@@ -81,7 +81,7 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 
 *TODO* add the originalProvider to the response message.
 
-Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the response message is quite lengthy and needs some
+Since the **[ebXML][ebxml]** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret.
 
 The structure of the result set is as follows (see example below):
@@ -94,7 +94,7 @@ The structure of the result set is as follows (see example below):
 The table of the identifier used to indicate the metadata attributes is defined by the metadata model used by IHE XDS.b in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**.
 
 The corresponding interpretation of the metadata attributes in the Swiss EPR and the supported value sets may be found in
-**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** of
+**[Annex 3][annexes]** of
 the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found
@@ -131,7 +131,7 @@ The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
 
 - *mimeType* attribute: The document mime type. It's value must match a mime type supported by the Swiss EPR as defined in
-**[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+**[Annex 3][annexes]**.
 - *status* attribute: The status of the document, which should be *Approved*.  
 
 As explained above, a subset of the relevant metadata are defined in ebXML *slot* elements. These are:   
@@ -190,7 +190,7 @@ As explained above, a subset of the relevant metadata are defined in ebXML *slot
 ```
 
 - *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss
-EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+EPR as defined in **[Annex 3][annexes]**.
 
 ```
 44      <Slot name="sourcePatientId"
@@ -281,7 +281,7 @@ A subset of the relevant metadata are defined in ebXML *Classification* elements
 
 - Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to
 *urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *nodeRepresentation*
-attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3][annexes]**.
 - *Name* : The human readable display name of the document class.
 
 ```
@@ -327,7 +327,7 @@ defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
 
 - Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
 *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
-defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+defined in **[Annex 3][annexes]**.
 - *Name* : The human readable display name of the practice setting code.
 
 ```
@@ -349,7 +349,7 @@ defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
 ```
 
 - Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
-*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3][annexes]**.
 - *Name* : The human readable display name of the document type code.
 
 ```
@@ -410,7 +410,7 @@ value must be used when retrieving documents to display (see **[Retrieve Documen
 ### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined
-in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+in the **[W3C SOAP specification][soap]**. It may look like:  
 
 ```
 POST /RegistryStoredQueryService HTTP/1.1
@@ -424,9 +424,9 @@ Content-Length: nnnn
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=697)** and the
-**[Extension 1 to Annex5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
+specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=697)** and the
+**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:

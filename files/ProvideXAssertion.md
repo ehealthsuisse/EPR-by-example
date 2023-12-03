@@ -4,7 +4,7 @@ Method to provide a SAML 2.0 assertion in the Web Service Security header to aut
 ## Overview
 Primary systems shall use this transaction to provide SAML 2 assertions retrieved by the
 **[Get X-User Assertion ](GetXAssertion.md)** with XDS.b transactions as defined in the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  
-**[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.   
+**[Amendment 1 to Annex 5][annexes]**.   
 
 ## Transaction
 This transaction is not used standalone and shall be used in conjunction with other transactions which require authorization. These are:
@@ -41,7 +41,7 @@ For the details on the Assertion content, please see the step by step example in
 
 ### Audit Log
 
-This transaction does not require separate ATNA audit log messages, but adds requirements to the transactions used with, as described in section 1.6.4.3.5 of **[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+This transaction does not require separate ATNA audit log messages, but adds requirements to the transactions used with, as described in section 1.6.4.3.5 of **[Amendment 1 to Annex 5][annexes]**.
 
 ## Test Opportunity
 

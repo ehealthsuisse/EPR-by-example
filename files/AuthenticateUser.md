@@ -7,11 +7,11 @@ Primary systems shall use this transaction to retrieve an IdP assertion authenti
 Swiss EPR.
 
 The requirements for the transaction are defined in
-**[Annex 8](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)** of the ordinances of the Swiss EPR.
+**[Annex 8][annexes]** of the ordinances of the Swiss EPR.
 
 The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
-- **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
-- **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
+- **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
+- **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings]**.
 - **[Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)**.
 
 Primary systems do need implement all the bindings and profiles supported by the SAML 2.0 specification family.
@@ -47,10 +47,10 @@ The sequence consists of the following steps, each using assigned transaction me
 
 The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall
 redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in
-**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
 
 When the user is authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary
-system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf)**.
+system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings]**.
 
 #### Message Semantics
 
@@ -126,7 +126,7 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion.
 
 The primary system shall use the SOAP backchannel with an *ArtifactResolve* request message as defined in
-**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**.
+**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
 
 The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
@@ -323,7 +323,7 @@ assertion:
 
 #### Transport Protocol
 
-The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
+The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
 ```
 POST /IdPAuthenticationService HTTP/1.1

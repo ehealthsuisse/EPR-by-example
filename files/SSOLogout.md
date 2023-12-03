@@ -10,13 +10,13 @@ Primary systems shall perform this transaction to notify the IdP, when a user lo
 ## Transaction
 
 ### Message Semantics
-Messages are encoded as described in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)** and the ordinances to the Swiss EPR.
+Messages are encoded as described in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]** and the ordinances to the Swiss EPR.
 
 #### Request Message
 
 The following snippet shows the content of a logout request, with some elements omitted to increase readability.
 
-The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
+The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification][saml-core]**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
 - *Destination*: An identifier of the receiver endpoint. For primary systems sending the request, this shall be the URL of IdP logout endpoint (line 7).
 - *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).
@@ -64,7 +64,7 @@ The major content (lines 9..32) of the message is required for to sign the messa
 
 The following snippet shows the content of a logout response, with some elements omitted to increase readability.
 
-The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
+The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification][saml-core]**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
 - *Destination*: An identifier of the receiver endpoint as URL (line 7).
 - *InResponseTo*: The unique ID of the initial request (line 8).
@@ -130,4 +130,4 @@ Communication via the frontchannel (involving the browser) shall be secured with
 
 ## Test Opportunity
 
-The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 
+The transaction can be tested with the Gazelle test suite of the **[EPR reference environment][ref-env]**, or test systems of the EPR communities. 
