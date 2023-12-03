@@ -1,7 +1,7 @@
 # Retrieve Document Set
 Transaction to retrieve one or more documents from a community. Primary systems shall use this transaction to read documents from the EPR and integrate to the primary system or to display the document in the UI.   
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
@@ -12,14 +12,14 @@ the Swiss EPR currently only supports the synchronous exchange option is support
 
 The community responds the set of documents.
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abrevations
 to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_request_raw.xml)**.
@@ -64,7 +64,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 19 </soapenv:Envelope>    
 ```
 
-### Response Message
+#### Response Message
 
 The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abrevations
 to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_response_raw.xml)**.
@@ -106,7 +106,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which co
 - *DocumentUniqueId*: Unique ID of the document.
 - *Document* element (line 14 to 16): It's *Include* element conveys the *content-id* reference of the attached document in the MTOM response (see below).
 
-## Transport Protocol
+### Transport Protocol
 
 The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
 binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
@@ -158,7 +158,7 @@ content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 --MIMEBoundary4A7AE55984E7438034--
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
@@ -211,7 +211,7 @@ The message is made of the following blocks:
 - *ParticipantObjectIdentification*: Request message related information (line 26 .. 30).
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 31 .. 33).
 
-## Security Requirements   
+### Security Requirements   
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates (extended
 validation required) and client and server side certificate validation.
@@ -223,6 +223,6 @@ Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

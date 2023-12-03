@@ -14,7 +14,7 @@ The EPR Playground is a public available installation of the EPR core infrastruc
 
 Please see section below for details on the available public test systems.
 
-## Patient Management
+### Patient Management
 
 **[PDQ V3](PDQ.md)** - Search for patient data using demographic data as search criteria
 
@@ -22,7 +22,7 @@ Please see section below for details on the available public test systems.
 
 **[PIX V3 Query](PIXQuery.md)** - Query the master patient ID and EPR-SPID for patients
 
-## Document Management
+### Document Management
 
 **[Registry Stored Query](RegistryStoredQuery.md)** - Get and display document metadata
 
@@ -30,7 +30,7 @@ Please see section below for details on the available public test systems.
 
 **[Provide and Register Document Set](ProvideAndRegister.md)** - Store documents in the EPR
 
-## Authentication
+### Authentication
 
 **[Authenticate User](AuthenticateUser.md)** - Authenticate a user
 
@@ -38,29 +38,29 @@ Please see section below for details on the available public test systems.
 
 **[SSO Logout](SSOLogout.md)** - Logout of authenticated user
 
-## Authorization
+### Authorization
 
 **[Get X-User Assertion](GetXAssertion.md)** - Retrieve SAML 2.0 Assertions for authorization
 
 **[Provide X-User Assertion](ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize access
 
-## Public Test Systems
+### Public Test Systems
 
 **[EPR Playground](playground.md)** - Public available test system to test transaction messages and complex use cases.
 
 **[EPR Reference Environment](gazelle.md)** - Public available test system to test isolated transaction for EPR compliance.
 
-# Swiss EPR Exchange Formats
+## Swiss EPR Exchange Formats
 
 Exchange formats permit the simple exchange of data between different health professionals' information technology systems without the need for any special agreement. The specifications of the exchange formats define the technical, syntactic and semantic standards required for the consistent exchange of information. The objective is to standardize data exchange in the healthcare sector, especially with regard to the Swiss Electronic Patient Record (EPR).
 
-## eMedication
+### eMedication
 
 **[Medication Card document](MedicationCardDocument.md)** - Complete overview about the current Medication from the patient.
 
-## eVaccination
+### eVaccination
 
 **[Immunization Administration Document](ImmunizationAdministrationDocument.md)** - Contains information on applied immunizations.
 
-## FHIR Questionnaire
+### FHIR Questionnaire
 **[How to build a FHIR-Questionnaire](Questionnaire.md)** - Contains information on how a FHIR Questionnaire can be built and displayed for an user to fill out.

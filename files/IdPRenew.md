@@ -2,17 +2,17 @@
 
 Transaction to renew a IdP Assertion. Primary systems may use this transaction to retrieve a new IdP Assertion, without requiring the user to enter her credentials.
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction retrieve a new IdP Assertion by sending an assertion retrieved beforehand.   
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)** and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 Primary systems shall use this transaction to renew a assertion whose lifetime is exceeded.
 
@@ -94,7 +94,7 @@ Primary systems shall embed the SAML Assertion in the the *Body* of the SOAP env
 74 </Envelope>
 ```
 
-### Response Message
+#### Response Message
 
 The community responds with a SAML 2.0 IdP assertion whose lifetime is updated.  
 
@@ -128,7 +128,7 @@ A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conve
 22 </Envelope>
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined
 in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
@@ -142,14 +142,14 @@ Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn  
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
 
-## Security Requirements  
+### Security Requirements  
 
 To ensure privacy the transaction must be secured using the TLS SOAP backchannel with mutual authentication by server and client certificate validation.
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities.

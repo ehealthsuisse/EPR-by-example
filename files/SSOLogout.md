@@ -3,16 +3,16 @@
 Transaction to log out a user from the IdP and all session participants. Primary systems shall perform this transaction to
 notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged out from another application sharing the same IdP session.
 
-# Overview
+## Overview
 
 Primary systems shall perform this transaction to notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged from another relying party sharing the same session.
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 Messages are encoded as described in **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)** and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 The following snippet shows the content of a logout request, with some elements omitted to increase readability.
 
@@ -60,7 +60,7 @@ The major content (lines 9..32) of the message is required for to sign the messa
 35 </samlp:LogoutRequest>
 ```
 
-### Response Message
+#### Response Message
 
 The following snippet shows the content of a logout response, with some elements omitted to increase readability.
 
@@ -110,24 +110,24 @@ The major content (lines 9..32) of the message is required for to sign the messa
 37 </samlp:LogoutResponse>
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 The *LogoutRequest* may be send by primary systems to the IdP using one of the following bindings:
 - SAML 2.0 HTTP POST binding via the frontchannel (involving the browser).
 - SAML 2.0 SOAP binding via the backchannel.
 
-## Audit Log
+### Audit Log
 
 Primary systems shall protocol the transaction in their logs to ensure traceability. No further requirements are defined in
 the ordinances of the Swiss EPR.
 
-## Security Requirements  
+### Security Requirements  
 
 Communication via the SOAP backchannel shall be secured with TLS and mutual authentication, using
 client and server certificate validation. The certificates used, shall be exchanged during the client registration process.  
 
 Communication via the frontchannel (involving the browser) shall be secured with HTTPS and mutual authentication, using server certificate validation.  
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the Gazelle test suite of the **[EPR reference environment](https://ehealthsuisse.ihe-europe.net)**, or test systems of the EPR communities. 

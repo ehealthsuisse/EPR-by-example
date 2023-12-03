@@ -1,7 +1,7 @@
 # PIX Query
 Transaction to get the master patient ID of a patient in a community using the local ID.
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction to retrieve the master patient ID (XAD-SPID) for patients the primary
 systems wants to retrieve or provide documents for. In the Swiss EPR the
@@ -17,14 +17,14 @@ ID the primary system registered the patient with (see **[PIX Feed](PIXFeed.md)*
 If the patient is registered in the community, the community sends a response with the master patient ID (XAD-PID) and
 the EPR-SPID.
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE PIX V3 Query](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)** profile and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
 A raw version of a request message may be found
@@ -32,7 +32,7 @@ A raw version of a request message may be found
 
 For a step by step interpretation of the request message, see section below.
 
-#### Message Interpretation
+##### Message Interpretation
 
 The request message is not complex in nature, but quite lengthy due to the genericity of the HL7 V3 standard.
 
@@ -133,7 +133,7 @@ The query parameter are conveyed in the *queryByParameter* child element:
 55     </queryByParameter>
 ```
 
-### Response Message
+#### Response Message
 
 The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EPR-SPID, the patient is registered with in
 the community.
@@ -141,7 +141,7 @@ the community.
 The request message is not very complex, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
 of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_response.xml)**.
 
-#### Message Interpretation
+##### Message Interpretation
 
 The SOAP *Header* element shall conveys the following information:
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
@@ -195,7 +195,7 @@ The *custodian* child element conveys information on the responding system with 
 66             </ns1:custodian>
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:
 
@@ -208,7 +208,7 @@ Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn    
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
@@ -258,7 +258,7 @@ The message is made of the following blocks:
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 19 .. 22)
 - *ParticipantObjectIdentification*: Request message related information including a BASE-64 encoded copy of the query (line 23 .. 27).
 
-## Security Requirements    
+### Security Requirements    
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certificate validation.
@@ -266,6 +266,6 @@ To ensure privacy the transaction must be secured using https with mutual authen
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

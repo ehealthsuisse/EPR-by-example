@@ -1,7 +1,7 @@
 # Get X-User Assertion
 Transaction to retrieve a SAML 2.0 assertion for authorization of transactions in the Swiss EPR. Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with EPR transactions, which require authorization.  
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with the
 **[Provide X-User Assertion](ProvideXAssertion.md)** with XDS.b transactions as defined in
@@ -12,13 +12,13 @@ The primary system shall provide claims (e.g., user role, purpose of use) with t
 
 The community verifies the claims and responds with a XUA compliant SAML 2.0 Assertion defined in **[Amendment 1 to Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
-# Transaction
+## Transaction
 
-## Message Semantics  
+### Message Semantics  
 
 Messages are encoded as described in the **[WS Trust](http://docs.oasis-open.org/ws-sx/ws-trust/v1.4/ws-trust.html)** standard, with restrictions defined in the IHE profile and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/GetXAssertion_request_raw.xml)**.
 
@@ -109,7 +109,7 @@ of the ordinances of the Swiss electronic patient dossier.
 30      </saml2:AttributeValue>
 ```
 
-### Response Message
+#### Response Message
 
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/GetXAssertion_response_raw.xml)**.
@@ -154,7 +154,7 @@ The XUA Assertion is omitted in the snippet below. For examples of see **[here](
 33 </soapenv:Envelope>  
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 The primary system shall send the request messages to the X-Assertion Provider of the community using the http
 POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
@@ -168,16 +168,16 @@ Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn  
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall protocol the request and response for traceability. There are no further requirements on protocols defined in the ordinances of the Swiss EPR.  
 
-## Security Requirements  
+### Security Requirements  
 
 To ensure privacy the transaction must be secured using https with mutual authentication, using X.509 certificates (extended validation required) and client and server side certificate validation.
 
 The retrieval of a XUA assertion requires user authentication by providing the IdP assertion in the *Security* header of the SOAP envelope (see **[Message Semantics](GetXAssertion.md#message-semantics)**). The IdP assertion shall be retrieved by the primary system by using the **[Authenticate User](AuthenticateUser.md)** transaction.  
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)** or the test systems of the EPR communities.

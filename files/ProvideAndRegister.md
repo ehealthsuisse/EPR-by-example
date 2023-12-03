@@ -2,7 +2,7 @@
 Transaction to store one or more documents to a community. Primary systems shall use this transaction to export documents
 and the to a community repository to add it to a patients EPR.  
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR.
 In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall
@@ -16,14 +16,14 @@ binary data of the document.
 
 The community responds with a code indicating the successful registration of the document.
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in the **[ebXML](http://www.ebxml.org)** standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 Since the **[ebXML](http://www.ebxml.org)** standard is very generic, the request message is quite lengthy and needs some
 background information to interpret.
@@ -45,7 +45,7 @@ of the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**.
 
-### Message Interpretation
+#### Message Interpretation
 
 The request message is not very complex, but lengthy due to the genericity of the ebXML standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
@@ -78,7 +78,7 @@ The SOAP *Body* element conveys the following objects in ebXML syntax:
 
 We will explain the *RegistryRegistryPackage* object defining the submission set first. For the other elements, see below.  
 
-#### Submission Set
+##### Submission Set
 
 The structure of the *RegistryPackage* object defining the submission set is as follows (see example below):
 - The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
@@ -197,13 +197,13 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 95      </rim:RegistryPackage>
 ```
 
-#### Document Metadata
+##### Document Metadata
 
 The request contains 1..N *ExtrinsicObject* representing the document metadata for each document. The interpretation of
 the document metadata matches the document metadata interpretation, which is explained in detail in step by step example in
 the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](RegistryStoredQuery.md#response-message)** for the interpretation of the document metadata.
 
-#### Association
+##### Association
 
 The request contains one *Association* object linking the document and document metadata to a submission set defined in the
 *RegistryPackage* (see **[Submission Set](ProvideAndRegister.md#submission-set)**).
@@ -228,7 +228,7 @@ In addition the *Association* object conveys a status indicator, which must take
 287      </rim:Association>   
 ```
 
-### Response Message
+#### Response Message
 
 The provide and register service responds with a message indicating the success of the transaction. The outcome indicator is
 encoded in the *Body* element of the SOAP envelope as follows:
@@ -240,7 +240,7 @@ encoded in the *Body* element of the SOAP envelope as follows:
 The raw version of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_response.xml)**.
 
 
-## Transport Protocol
+### Transport Protocol
 
 The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
 binding as specified in the SOAP **[MTOM specification](https://www.w3.org/TR/soap12-mtom/)** of the W3C.
@@ -311,7 +311,7 @@ Content-ID: <root.message@cxf.apache.org>
 ```
 
 
-## Audit Log
+### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
@@ -360,7 +360,7 @@ The message is made of the following blocks:
 *TODO* Update with gazelle example
 
 
-## Security Requirements   
+### Security Requirements   
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates (extended
 validation required) and client and server side certificate validation.
@@ -372,6 +372,6 @@ Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

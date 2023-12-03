@@ -3,7 +3,7 @@
 Transaction to register a patient in a community. Primary systems shall use this transaction to register
 patient data to be able to provide and retrieve documents to the patients EPR.
 
-# Overview
+## Overview
 
 Primary systems shall use this transaction to register patient data with the local ID, the patient is
 registered in the primary system. In the Swiss EPR the **[IHE PIX V3](https://profiles.ihe.net/ITI/TF/Volume1/ch-23.html)**
@@ -28,15 +28,15 @@ communities provide simplified interfaces for primary systems to retrieve the da
 interface in the registration workflow. Please contact the community you want to connect to on
 implementation details.   
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE Patient Identity Feed HL7 V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-44.html)** profile
 and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request
 message is quite lengthy. A raw version of a request message may be found
@@ -44,7 +44,7 @@ message is quite lengthy. A raw version of a request message may be found
 
 For a step by step interpretation of the request message, see section below.
 
-#### Message Interpretation
+##### Message Interpretation
 
 The request message is not very complex, but lengthy due to the genericity of the HL7 V3 standard.
 
@@ -176,11 +176,11 @@ The *custodian* element shall convey the OID of the provider organization in the
 71   </controlActProcess>
 ```
 
-### Response Message
+#### Response Message
 
 The PIX V3 Feed service responds with a message indicating the success of the transaction. A raw version of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-44_response.xml)**.
 
-## Transport Protocol
+### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
@@ -193,7 +193,7 @@ Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnn  
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
@@ -242,7 +242,7 @@ The message is made of the following blocks:
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 17 .. 20)
 - *ParticipantObjectIdentification*: Request message related information including a BASE-64 encoded copy of the query (line 21 .. 27).
 
-## Security Requirements  
+### Security Requirements  
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certificate validation.
@@ -250,6 +250,6 @@ To ensure privacy the transaction must be secured using https with mutual authen
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

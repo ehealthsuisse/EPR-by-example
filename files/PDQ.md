@@ -2,7 +2,7 @@
 
 Transaction to search for patient identities and data from a community using the patient demographic data as search criteria. Primary systems may use this transaction to verify if a patient uses a Swiss EPR and is already registered in the community.  
 
-# Overview
+## Overview
 
 Primary systems may use this transaction to search for patients which are already registered in the community, either
 because the patient opened the Swiss EPR in the community or because the patient opened the Swiss EPR in a remote
@@ -20,21 +20,21 @@ The community sends a response with all patient data sets matching the search cr
 known demographic data, the EPR-SPID and the assigned ID. The response contains the master data set as well as all known
 patient data sets, as registered by other primary systems.    
 
-# Transaction
+## Transaction
 
-## Message Semantics
+### Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
 **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)** profile and the ordinances to the Swiss EPR.
 
-### Request Message
+#### Request Message
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the request message is quite lengthy and needs some
 background information to interpret. The raw version of a request message may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_request_raw.xml)**. For a step by step interpretation
 of the request message, see section below.
 
-#### Message Interpretation
+##### Message Interpretation
 
 The request message is not very complex, but lengthy due to the genericity of the HL7 V3 standard.
 Therefore the following step by step interpretation may be of help to interpret the response.
@@ -146,13 +146,13 @@ In the above example these are
 The query supports many more search options and filter parameter. For a documentation of the options
 see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
 
-### Response Message
+#### Response Message
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret. The raw version of a response message may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
 
-#### Message Interpretation
+##### Message Interpretation
 
 The PDQV3 service responds with a list of patient data which match the search parameter in a HL7 V3 *subject* child element
 of the *controlAct* object. The *subject* child element conveys the following information:
@@ -195,7 +195,7 @@ of the *controlAct* object. The *subject* child element conveys the following in
 76        </ns1:patient>
 ```
 
-## Transport Protocol
+### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
@@ -208,7 +208,7 @@ Content-Type: application/soap+xml; charset="utf-8"
 Content-Length: nnnn  
 ```
 
-## Audit Log
+### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881](https://tools.ietf.org/html/rfc3881)** with restrictions
@@ -257,7 +257,7 @@ The message is made of the following blocks:
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 19 .. 23)
 - *ParticipantObjectIdentification*: Request message related information including a UBASE-64 encoded copy of the query (line 24 .. 28).
 
-## Security Requirements  
+### Security Requirements  
 
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certificate validation.
@@ -265,6 +265,6 @@ To ensure privacy the transaction must be secured using https with mutual authen
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
-# Test Opportunity
+## Test Opportunity
 
 The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
