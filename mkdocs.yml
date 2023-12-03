@@ -67,3 +67,5 @@ plugins:
       minify_css: true
       htmlmin_opts:
         remove_comments: true
+hooks:
+  - helper/external_links_md_extension.py
