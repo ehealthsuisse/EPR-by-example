@@ -44,37 +44,8 @@ The SOAP *Body* element conveys the *AdhocQuery* (lines 15 to 26 below) with the
 - *Slot* element with name *$XDSDocumentEntryPatientId*: The master patient ID (XAD-PID) of the patient in CX format
 (see **[PIX Feed](PIXFeed.md)**) (line 23).
 
-```
-0 <?xml version="1.0" encoding="UTF-8"?>
-1 <soapenv:Envelope xmlns="!-- namespaces omitted -->">
-2  <soapenv:Header>
-3   <wsa:To soapenv:mustUnderstand="1">https://epd-test.com/Registry/services/RegistryService</wsa:To>
-4   <wsa:MessageID soapenv:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
-5   <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
-6   <wsse:Security>
-7    <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
-8     <!-- CH:XUA Assertion -->
-9    </saml2:Assertion>
-10   </wsse:Security>
-11  </soapenv:Header>
-12  <soapenv:Body>
-13   <ns0:AdhocQueryRequest>
-14    <ns0:ResponseOption returnType="ObjectRef" returnComposedObjects="true"/>
-15    <rim:AdhocQuery id="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d">
-16     <rim:Slot name="$XDSDocumentEntryStatus">
-17      <rim:ValueList>
-18       <rim:Value>('urn:oasis:names:tc:ebxml-regrep:StatusType:Approved')</rim:Value>
-19      </rim:ValueList>
-20     </rim:Slot>
-21     <rim:Slot name="$XDSDocumentEntryPatientId">
-22      <rim:ValueList>
-23       <rim:Value>'7e1c6e78-58f1-4a43-ae88-0d5a5c4ab43e^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO'</rim:Value>
-24      </rim:ValueList>
-25     </rim:Slot>
-26    </rim:AdhocQuery>
-27   </ns0:AdhocQueryRequest>
-28  </soapenv:Body>
-29 </soapenv:Envelope>
+```xml title="ITI-18_request.xml" linenums="1" hl_lines="18 23"
+--8<-- "samples/ITI-18_request.xml"
 ```
 
 #### Response Message
@@ -112,21 +83,14 @@ The SOAP *Header* element conveys the following information:
 - *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: The *messageID* of the query request (see above).
 
-```
-2  <S:Header>
-3   <wsa:Action s:mustUnderstand="1"
-4    xmlns:s="http://www.w3.org/2003/05/soap-envelope"
-5    xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
-6   <wsa:RelatesTo xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:a8313b99-aad5-4880-94d2-4b02197cb650</wsa:RelatesTo>
-7  </S:Header>  
+```xml title="ITI-18_request.xml" linenums="1" hl_lines="18 23"
+--8<-- "samples/ITI-18_request.xml"
 ```
 
 The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying the metadata of a single document.
 
-```
-12  <ExtrinsicObject mimeType="application/fhir+json" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" id="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" lid="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" home="urn:oid:1.1.4567334.1.6"
-...
-193     </ExtrinsicObject>
+```xml linenums="13"
+--8<-- "samples/ITI-18_response.xml:13:19"
 ```
 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
@@ -188,38 +152,27 @@ As explained above, a subset of the relevant metadata are defined in ebXML *slot
 41        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">en</Value>
 42       </ValueList>
 43      </Slot>
+```xml linenums="25"
+--8<-- "samples/ITI-18_response.xml:25:29"
 ```
 
 - *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss
 EPR as defined in **[Annex 3][annexes]**.
 
-```
-44      <Slot name="sourcePatientId"
-45       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-46       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-47        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO</Value>
-48       </ValueList>
-49      </Slot>
+```xml linenums="35"
+--8<-- "samples/ITI-18_response.xml:35:39"
 ```
 
 - *sourcePatientId*: The local ID of the patient in the document source system which uploaded the document.
 
-```
-50      <Slot name="urn:e-health-suisse:2020:originalProviderRole"
-51       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-52       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-53        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
-54       </ValueList>
-55      </Slot>
+```xml linenums="45"
+--8<-- "samples/ITI-18_response.xml:45:49"
 ```
 
 - *urn:e-health-suisse:2020:originalProviderRole*: The Role of original uploader who uploaded the initial version of the document as defined in Attachment 1 to **[Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**. This attribute is used to track the initial uploader role which shall never be modified by metadat update transactions.
 
-```
-56      <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-57       <LocalizedString charset="UTF-8" value="Vaccination - FSME-Immun 0.25 ml Junior"
-58        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-59      </Name>
+```xml linenums="55"
+--8<-- "samples/ITI-18_response.xml:55:57"
 ```
 
 - *Name*: The document name to display in the UI.
@@ -262,22 +215,8 @@ A subset of the relevant metadata are defined in ebXML *Classification* elements
 - authorRole: The Role of the author of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - authorSpeciality: The author speciality of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
-```
-85      <Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="184216000" id="urn:uuid:b6a1074e-c92e-4648-9f08-f011b6453689"
-86       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-87       <Slot name="codingScheme"
-88        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-89        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-90         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
-91        </ValueList>
-92       </Slot>
-93       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-94        <LocalizedString charset="UTF-8" value="Patient record type (record artifact)"
-95         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-96       </Name>
-97       <VersionInfo versionName="-1"
-98        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-99      </Classification> 
+```xml linenums="59"
+--8<-- "samples/ITI-18_response.xml:59:72"
 ```
 
 - Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to
@@ -285,45 +224,8 @@ A subset of the relevant metadata are defined in ebXML *Classification* elements
 attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3][annexes]**.
 - *Name* : The human readable display name of the document class.
 
-```
-115      <Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="43741000" id="urn:uuid:84594dc4-814a-495f-94d7-08ee5741bbe3"
-116       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-117       <Slot name="codingScheme"
-118        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-119        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-120         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
-121        </ValueList>
-122       </Slot>
-123       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-124        <LocalizedString charset="UTF-8" value="Site of Care (environment)"
-125         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-126       </Name>
-127       <VersionInfo versionName="-1"
-128        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-129      </Classification>
-```
-
-- Healthcare Facility Type Code: The type of the healthcare facility from which the document was registered. The value conveyed with the
-*nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
-defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
-- *Name* : The human readable display name of the healthcare facility type code.
-
-```
-130      <Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="394802001" id="urn:uuid:56fd7e42-192f-4c6b-a2ca-ad0cb9f93e42"
-131       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-132       <Slot name="codingScheme"
-133        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-134        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-135         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
-136        </ValueList>
-137       </Slot>
-138       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-139        <LocalizedString charset="UTF-8" value="General medicine (qualifier value)"
-140         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-141       </Name>
-142       <VersionInfo versionName="-1"
-143        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-144      </Classification> 
+```xml linenums="115"
+--8<-- "samples/ITI-18_response.xml:115:128"
 ```
 
 - Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
@@ -331,22 +233,8 @@ defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
 defined in **[Annex 3][annexes]**.
 - *Name* : The human readable display name of the practice setting code.
 
-```
-145      <Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="41000179103" id="urn:uuid:bb58016b-ec14-498f-9969-a9a8e6b1ab03"
-146       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-147       <Slot name="codingScheme"
-148        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-149        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-150         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
-151        </ValueList>
-152       </Slot>
-153       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-154        <LocalizedString charset="UTF-8" value="Immunization Record (record artifact)"
-155         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-156       </Name>
-157       <VersionInfo versionName="-1"
-158        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-159      </Classification>
+```xml linenums="129"
+--8<-- "samples/ITI-18_response.xml:129:142"
 ```
 
 - Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
@@ -378,42 +266,26 @@ defined in **[Annex 3][annexes]**.
 
 A subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
 
-```
-175      <ExternalIdentifier registryObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" value="CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO" id="urn:uuid:a019bc95-f172-42cf-af20-38406d848c5b"
-176       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-177       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-178        <LocalizedString value="XDSDocumentEntry.patientId"
-179         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-180       </Name>
-181       <VersionInfo versionName="-1"
-182        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-183      </ExternalIdentifier>
-```
-
-- The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
-in the repository. Its value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
-
-```
-184      <ExternalIdentifier registryObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" value="2.25.306443472873218838784535217290635593269" id="urn:uuid:b37c4f57-e554-43fb-ab34-8f74dfc5376a"
-185       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-186       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-187        <LocalizedString value="XDSDocumentEntry.uniqueId"
-188         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-189       </Name>
-190       <VersionInfo versionName="-1"
-191        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-192      </ExternalIdentifier>
+```xml linenums="143"
+--8<-- "samples/ITI-18_response.xml:143:153"
 ```
 
 - The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
 value must be used when retrieving documents to display (see **[Retrieve Document Set](RetrieveDocumentSet.md)**).
+
+```xml linenums="154"
+--8<-- "samples/ITI-18_response.xml:154:164"
+```
+
+- The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
+in the repository. Its value must be used when retrieving documents to display (see **[Retrieve Document Set](RetrieveDocumentSet.md)**).
 
 ### Transport Protocol
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined
 in the **[W3C SOAP specification][soap]**. It may look like:  
 
-```
+```http linenums="1"
 POST /RegistryStoredQueryService HTTP/1.1
 Host: company.example.org
 Accept-Encoding: gzip, deflate
@@ -432,36 +304,8 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 
 The following snippet shows a example audit message to be written by the primary system:
 
-```
-<AuditMessage>
-  <EventIdentification EventActionCode="E" EventDateTime="2023-09-11T14:18:27.579+02:00" EventOutcomeIndicator="0">
-    <EventID csd-code="110112" codeSystemName="DCM" originalText="Query" />
-    <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
-    <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normaler Zugriff" />
-  </EventIdentification>
-  <ActiveParticipant UserID="761337610410035724" UserName="&lt;761337610410035724@http://ith-icoserve.com/eHealthSolutionsSTS&gt;"/>
-  <ActiveParticipant UserID="761337610410035724" UserName="Andreas Friederich TANNER-WELTI" UserIsRequestor="true">
-    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
-  </ActiveParticipant>
-  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" AlternativeUserID="20559@epd-test.ith-icoserve.com.ForkJoinPool-5-worker-3" UserIsRequestor="true" NetworkAccessPointID="81.223.215.43" NetworkAccessPointTypeCode="2">
-    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
-  </ActiveParticipant>
-  <ActiveParticipant UserID="https://localhost:7443/Registry/services/RegistryService" UserIsRequestor="false" NetworkAccessPointID="localhost" NetworkAccessPointTypeCode="1">
-    <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
-  </ActiveParticipant>
-  <AuditSourceIdentification AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.6.19" AuditSourceID="1.3.6.1.4.1.12559.11.20.1">
-    <AuditSourceTypeCode csd-code="4" codeSystemName="1.3.6.1.4.1.9784.999200" originalText="ITH icoserve information technology for healthcare sense (tm)" />
-  </AuditSourceIdentification>
-  <ParticipantObjectIdentification ParticipantObjectID="d5e42fed-5962-4bb9-b8b6-5d9e8afb0f2a^^^&amp;1.3.6.1.4.1.21367.2017.2.5.93&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-    <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number" />
-  </ParticipantObjectIdentification>
-  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:10b545ea-725c-446d-9b95-8aeb444eddf3" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-    <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
-    <ParticipantObjectQuery>PD94bWwgdmV ... zdD4=</ParticipantObjectQuery>
-    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg=" />
-    <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4zLjYuMS40LjEuMjEzNjcuMjAxNy4yLjYuMTk=" />
-  </ParticipantObjectIdentification>
-</AuditMessage>
+```xml title="iti-18-log.xml" linenums="55"
+--8<-- "samples/iti-18-log.xml"
 ```
 
 The message is made of the following blocks:
