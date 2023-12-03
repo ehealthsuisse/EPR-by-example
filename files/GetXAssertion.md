@@ -31,82 +31,37 @@ The SOAP *Header* element conveys the following information:
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
 - *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element must contain the IdP Assertion taken from user authentication (see **[Authenticate User](AuthenticateUser.md)**).  
 
-```
-1 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-2  <env:Header>
-3   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
-4   <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:MessageID>
-5   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-6    <saml2:Assertion>
-7      <!-- IdP Assertion content ommitted for brevity -->
-8    </saml2:Assertion>
-9   </wsse:Security>
-10  </env:Header>
-11  <env:Body>
-12   <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
-13    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
-14     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
-15      <wsa:Address>https://sp.community.ch</wsa:Address>
-16     </wsa:EndpointReference>
-17    </wsp:AppliesTo>
-18    <wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2">
-19     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
-20      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:token">761337610411353650^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue>
-21     </saml2:Attribute>
-22     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
-23      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-24       <PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="CE"/>
-25      </saml2:AttributeValue>
-26     </saml2:Attribute>
-27     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role">
-28      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-29       <Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Behandelnde(r)" xsi:type="CE"/>
-30      </saml2:AttributeValue>
-31     </saml2:Attribute>
-32    </wst:Claims>
-33    <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
-34    <wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</wst:RequestType>
-35   </wst:RequestSecurityToken>
-36  </env:Body>
-37 </env:Envelope>    
+```xml title="SOAP header" linenums="1"
+--8<-- "samples/GetXAssertion_request_raw.xml::6"
+   <!-- IdP Assertion omitted -->
+--8<-- "samples/GetXAssertion_request_raw.xml:51:53"
 ```
 
 The SOAP *Body* element contains the *RequestSecurityToken* element with the following claims to be set by the primary system. It's child element read:
 
 **AppliesTo** the URL of the community endpoint the XUA assertion shall be used for authorization, whose value is set in the *Address* child element.
 
-```
-13    <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
-14     <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
-15      <wsa:Address>https://sp.community.ch</wsa:Address>
-16     </wsa:EndpointReference>
-17    </wsp:AppliesTo>
+```xml linenums="56"
+--8<-- "samples/GetXAssertion_request_raw.xml:56:60"
 ```
 
 **resourceID** conveying the EPR-SPID of the patient EPR to access in CX format (see see **[PIXFeed](PIXFeed.md)**)
 
-```
-19     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
-20      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:token">761337610411353650^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue>
-21     </saml2:Attribute>
+```xml linenums="62"
+--8<-- "samples/GetXAssertion_request_raw.xml:62:64"
 ```
 
-**purposeOfUse** conveying the purpose of use of the request, which must be taken from the EPR value set defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**
+**purposeOfUse** conveying the purpose of use of the request, which must be taken from the EPR value set defined in **[Annex 3][annex3]**
 of the ordinances of the Swiss electronic patient dossier.
 
-```
-23      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-24       <PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="CE"/>
-25      </saml2:AttributeValue>
+```xml linenums="65"
+--8<-- "samples/GetXAssertion_request_raw.xml:65:69"
 ```
 
-**role** conveying the EPR role of the user, which must be taken from the EPR value set defined in **[Annex 3](https://www.bag.admin.ch/dam/bag/de/dokumente/nat-gesundheitsstrategien/strategie-ehealth/gesetzgebung-elektronisches-patientendossier/dokumente/04-epdv-edi-anhang-3-de.pdf.download.pdf/04_EPDV-EDI%20Anhang%203_DE.pdf)**.
+**role** conveying the EPR role of the user, which must be taken from the EPR value set defined in **[Annex 3][annex3]**.
 
-```
-27     <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role">
-28      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-29       <Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Behandelnde(r)" xsi:type="CE"/>
-30      </saml2:AttributeValue>
+```xml linenums="70"
+--8<-- "samples/GetXAssertion_request_raw.xml:70:74"
 ```
 
 #### Response Message
@@ -118,40 +73,8 @@ The response message is a XML SOAP envelope with the XUA Assertion embedded in t
 
 The XUA Assertion is omitted in the snippet below. For examples of see **[here][XUA_samples]**.  
 
-```
-1 <?xml version='1.0' encoding='utf-8'?>
-2 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
-3  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
-4   <wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal</wsa:Action>
-5   <wsa:RelatesTo>urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:RelatesTo>
-6  </soapenv:Header>
-7  <soapenv:Body>
-8   <wst:RequestSecurityTokenResponseCollection xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
-9    <wst:RequestSecurityTokenResponse>
-10     <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
-11     <wst:Lifetime>
-12      <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2020-09-21T13:39:23.200Z</wsu:Created>
-13      <wsu:Expires xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2020-09-21T13:54:23.200Z</wsu:Expires>
-14     </wst:Lifetime>
-15     <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
-16      <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
-17       <wsa:Address>https://sp.communilty.ch</wsa:Address>
-18      </wsa:EndpointReference>
-19     </wsp:AppliesTo>
-20     <wst:RequestedSecurityToken>
-21      <saml2:Assertion>
-22       <!-- assertion content omitted for brevity -->
-23      </saml2:Assertion>
-24     </wst:RequestedSecurityToken>
-25     <wst:RequestedAttachedReference>
-26      <wsse:SecurityTokenReference xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-27       <wsse:Reference URI="_96189571-c72c-4a10-8f1c-6d5b27efa797" ValueType="http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0"/>
-28      </wsse:SecurityTokenReference>
-29     </wst:RequestedAttachedReference>
-30    </wst:RequestSecurityTokenResponse>
-31   </wst:RequestSecurityTokenResponseCollection>
-32  </soapenv:Body>
-33 </soapenv:Envelope>  
+```xml title="GetXAssertion_response.xml" linenums="1"
+--8<-- "samples/GetXAssertion_response.xml"
 ```
 
 ### Transport Protocol
@@ -159,7 +82,7 @@ The XUA Assertion is omitted in the snippet below. For examples of see **[here][
 The primary system shall send the request messages to the X-Assertion Provider of the community using the http
 POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
-```
+```http linenums="1"
 POST /RegistryStoredQueryService HTTP/1.1
 Host: company.example.org
 Accept-Encoding: gzip, deflate
