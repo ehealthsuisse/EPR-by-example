@@ -59,16 +59,8 @@ The SOAP *Header* element conveys the following information:
 - *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element conveys the XUA Assertion used for
 authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
-```
-3  <soapenv:Header>
-4   <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
-5    <saml2:Assertion>
-6     <!-- omitted for brevity -->
-7    </saml2:Assertion>
-8   </wsse:Security>
-9   <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
-10  <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID>
-11  </soapenv:Header>    
+```xml title="SOAP header" linenums="3"
+--8<-- "samples/ITI-41_request.xml:3:11"
 ```
 
 The SOAP *Body* element conveys the following objects in ebXML syntax:
@@ -92,17 +84,8 @@ The *RegistryRegistryPackage* object defining the submission set has one *Slot* 
 which conveys the request timestamp, and a *Name* element to convey the display name of the submission set (see lines 17 to
 	25 below).
 
-```
-17      <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
-18       <rim:Slot name="submissionTime">
-19        <rim:ValueList>
-20         <rim:Value>20200924174309</rim:Value>
-21        </rim:ValueList>
-22       </rim:Slot>
-23       <rim:Name>
-24        <rim:LocalizedString value="DocumentSet"/>
-25       </rim:Name>
-
+```xml title="RegistryRegistryPackage element" linenums="17"
+--8<-- "samples/ITI-41_request.xml:17:25"
 ```
 
 The *RegistryRegistryPackage* object defining the submission set has three *Classification* child elements conveying the
@@ -116,46 +99,8 @@ information on the person, which initiated the request.
 - submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd*
 required to identify the *RegistryPackage* object as a XDS.b submission set.
 
-```
-26       <rim:Classification
-27        classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500"
-28        classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-29        id="517159EC-2731-F908-83DC-B90251B0E9AF"
-30        nodeRepresentation="424975005">
-31        <rim:Slot name="codingScheme">
-32         <rim:ValueList>
-33          <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-34         </rim:ValueList>
-35        </rim:Slot>
-36        <rim:Name>
-37         <rim:LocalizedString value="Other EPD-document type"/>
-38        </rim:Name>
-39       </rim:Classification>
-40       <rim:Classification
-41        classificationScheme="urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d"
-42        classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-43        id="58089FCD-E400-D25A-73C2-2F6B5DCBBE2E"
-44        nodeRepresentation=""
-45        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-46        <rim:Slot name="authorPerson">
-47         <rim:ValueList>
-48          <rim:Value>^Schulz^Max^^^</rim:Value>
-49         </rim:ValueList>
-50        </rim:Slot>
-51        <rim:Slot name="authorRole">
-52         <rim:ValueList>
-53          <rim:Value>Healthcare professional</rim:Value>
-54         </rim:ValueList>
-55        </rim:Slot>
-56        <rim:Name>
-57         <rim:LocalizedString value="XDSSubmissionSet.author"/>
-58        </rim:Name>
-59       </rim:Classification>
-60       <rim:Classification
-61        classificationNode="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd"
-62        classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-63        id="B6E18810-CD5B-3DCB-1B07-E510FE593365"
-64        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"/>
+```xml title="RegistryRegistryPackage element" linenums="26"
+--8<-- "samples/ITI-41_request.xml:26:64"
 ```
 
 The *RegistryRegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements:
@@ -165,38 +110,8 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 - *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format
 (see **[PIX Feed](PIXFeed.md)**).
 
-```
-65       <rim:ExternalIdentifier
-66        id="013AD74B-3180-8B49-9D51-440F3C9B16B8"
-67        identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832"
-68        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-69        registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-70        value="1.3.6.1.4.1.21367.2017.2.5.45">
-71        <rim:Name>
-72         <rim:LocalizedString value="XDSSubmissionSet.sourceId"/>
-73        </rim:Name>
-74       </rim:ExternalIdentifier>
-75       <rim:ExternalIdentifier
-76        id="1AF2498A-C98E-5123-970E-F28AC2BCC536"
-77        identificationScheme="urn:uuid:96fdda7c-d067-4183-912e-bf5ee74998a8"
-78        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-79        registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-80        value="1.42.1.2018072257142615.7000">
-81        <rim:Name>
-82         <rim:LocalizedString value="XDSSubmissionSet.uniqueId"/>
-83        </rim:Name>
-84       </rim:ExternalIdentifier>
-85       <rim:ExternalIdentifier
-86        id="2A8B3E1A-203C-5313-1FAA-EA2577C235B6"
-87        identificationScheme="urn:uuid:6b5aea1a-874d-4603-a4bc-96a0a7b38446"
-88        objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-89        registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-90        value="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO">
-91        <rim:Name>
-92         <rim:LocalizedString value="XDSSubmissionSet.patientId"/>
-93        </rim:Name>
-94       </rim:ExternalIdentifier>
-95      </rim:RegistryPackage>
+```xml title="RegistryRegistryPackage element" linenums="65"
+--8<-- "samples/ITI-41_request.xml:65:95"
 ```
 
 ##### Document Metadata
@@ -217,18 +132,8 @@ The *Association* object thus conveys two parameter to link the objects:
 
 In addition the *Association* object conveys a status indicator, which must take the value *Original* (see snippet below).
 
-```
-277      <rim:Association
-278       associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember"
-279       id="5A36769E-DE9B-3A3F-9F37-CD6B962BAFB6"
-280       sourceObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-281       targetObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546">
-282       <rim:Slot name="SubmissionSetStatus">
-283        <rim:ValueList>
-284         <rim:Value>Original</rim:Value>
-285        </rim:ValueList>
-286       </rim:Slot>
-287      </rim:Association>   
+```xml title="Association element" linenums="277"
+--8<-- "samples/ITI-41_request.xml:277:287"
 ```
 
 #### Response Message
@@ -236,7 +141,7 @@ In addition the *Association* object conveys a status indicator, which must take
 The provide and register service responds with a message indicating the success of the transaction. The outcome indicator is
 encoded in the *Body* element of the SOAP envelope as follows:
 
-```
+```xml linenums="9"
   <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>.
 ```
 
@@ -250,7 +155,7 @@ binding as specified in the SOAP **[MTOM specification][mtom]** of the W3C.
 
 The request in MTOM format may look as follows:
 
-```
+```http linenums="1"
 POST /XDSDocumentRepositoryService HTTP/1.1
 Host: 10.2.101.10:11076
 Content-Type: multipart/related; boundary="MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149"; type="application/xop+xml"; start="<0.15b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149@apache.org>"; start-info="application/soap+xml"; action="urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b"
@@ -280,7 +185,7 @@ The provide and register service sends the response message in the MIME Multipar
 
 The response in MTOM format may look as follows:
 
-```
+```http linenums="1"
 DefaultHttpResponse(chunked: false)
 HTTP/1.1 200 OK
 Connection: keep-alive
@@ -324,31 +229,8 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 
 The following snippet shows a example audit message to be written by the primary system:
 
-```
-<<?xml version="1.0"?>
-<AuditMessage>
- <EventIdentification EventActionCode="R" EventDateTime="2020-11-17T18:39:39+01:00" EventOutcomeIndicator="0">
-  <EventID csd-code="110106" originalText="Export" codeSystemName="DCM"/>
-  <EventTypeCode csd-code="ITI-41" originalText="Provide and Register Document Set-b" codeSystemName="IHE Transactions"/>
- </EventIdentification>
- <ActiveParticipant UserID="pma@gnt.com" UserName="JD&lt;pma@gnt.com&gt;"/>
- <ActiveParticipant UserID="2000000090108" UserName="Dr. med. John Doe" UserIsRequestor="true">
-  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://repositoryService.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://primarySystem.com" AlternativeUserID="UNKNOWN" UserIsRequestor="true" NetworkAccessPointID="hcohcdemo01-app06-icwpxs01.net.swisscom-health.it" NetworkAccessPointTypeCode="1">
-  <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
- </ActiveParticipant>
- <AuditSourceIdentification code="1" AuditSourceID="connectathon"/>
- <ParticipantObjectIdentification ParticipantObjectID="752343^^^&amp;2.16.840.1.113883.3.37.4.1.1.2.1.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-  <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number" codeSystemName="RFC-3881"/>
- </ParticipantObjectIdentification>
- <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:6b948daf-ab4a-4d51-a1a4-e9f4b2e05ff7" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="20">
-  <ParticipantObjectIDTypeCode csd-code="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" originalText="submission set classificationNode" codeSystemName="IHE XDS Metadata"/>
- </ParticipantObjectIdentification>
-</AuditMessage> 
+```xml title="iti-41-log.xml" linenums="1"
+--8<-- "samples/iti-41-log.xml"
 ```
 
 The message is made of the following blocks:
@@ -372,10 +254,9 @@ validation required) and client and server side certificate validation.
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
 envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
-Note:
-
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
-- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.
+!!! note
+    - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
+    - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.
 
 ## Test Opportunity
 
