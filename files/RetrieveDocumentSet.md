@@ -162,7 +162,7 @@ content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
 The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
-specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=706)** and the
+specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706)** and the
 **[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
