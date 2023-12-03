@@ -67,38 +67,8 @@ The *AuthnRequest* conveys the following information to be set by the primary sy
 - *SignatureValue*: The signature of the request (line 23 in the example below).
 - *X509Certificate*: The X509 certificate used to sign the request (line 26 in the example below).
 
-```
-1 <AuthnRequest
-2  xmlns="urn:oasis:names:tc:SAML:2.0:protocol"
-3  AssertionConsumerServiceURL="https://epdtest.mycompany.local:8549/ACS"
-4  IssueInstant="2020-09-24T13:19:25.208+02:00"
-5  Destination="https://fed.idp.ch:443/saml/3.0/idp/"
-6  ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
-7  ID="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
-8  Version="2.0">
-9  <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
-10  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-11   <SignedInfo>
-12    <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-13    <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-14    <Reference URI="#SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0">
-15     <Transforms>
-16      <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-17      <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-18     </Transforms>
-19     <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-20     <DigestValue>TdN8cZ5mvY7pOsrpOK0h+YlnvlhOOHYecaBN59yH4w0=</DigestValue>
-21    </Reference>
-22   </SignedInfo>
-23   <SignatureValue><!-- omitted for brevity --></SignatureValue>
-24   <KeyInfo>
-25    <X509Data>
-26     <X509Certificate><!-- omitted for brevity --></X509Certificate>
-27    </X509Data>
-28   </KeyInfo>
-29  </Signature>
-30  <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" AllowCreate="true"/>
-31 </AuthnRequest>  
+``` xml title="04_AuthnRequest.xml" linenums="1" hl_lines="7 9 23 26"
+--8<-- "Auth_samples/04_AuthnRequest.xml"
 ```
 
 ##### Response Message
@@ -107,9 +77,8 @@ The following snippet is taken from a sample request recorded during the EPR pro
 - *SAMLart*: The SAML artifact to be used in the *ArtifactResolve* request (see section below).
 - *RelayState*: A unique identifier of the conversation, the primary system initially sent with the Authentication Request.
 
-```
+```urlencoded
 https://epdtest.mycompany.local:8549/ACS?SAMLart=AAQAAOjXNPPr%2Fr7FO5WpiZ%2B2vAl5KMFibkRaAGwIkwXh%2Bo7DgsG2LMDE58c%3D&RelayState=idp%23468
-
 ```
 
 #### Transport Protocol
@@ -142,39 +111,10 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 18 in the example below).
 - *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
-- *Artifact*: The artifact as retrieved from the Authentication Request transaction (line 25 .. 27).
+- *Artifact*: The artifact as retrieved from the Authentication Request transaction (line 25).
 
-```
-1 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
-2  <Body>
-3   <ArtifactResolve xmlns="urn:oasis:names:tc:SAML:2.0:protocol" ID="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF" Version="2.0" IssueInstant="2020-09-24T13:19:41.822+02:00" Destination="https://fed.idp.ch/nevisauth/services/artifactresolution">
-4    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
-5    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-6     <SignedInfo>
-7      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-8      <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-9      <Reference URI="#SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF">
-10       <Transforms>
-11        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-12        <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-13       </Transforms>
-14       <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-15       <DigestValue>R+bMs3semvJBgae/3wnNVZp0eTpIhQQK4+S2KqRj1bM=</DigestValue>
-16      </Reference>
-17     </SignedInfo>s
-18     <SignatureValue> <!-- omitted for brevity --> </SignatureValue>
-19     <KeyInfo>
-20      <X509Data>
-21       <X509Certificate> <!-- omitted for brevity --> </X509Certificate>
-22      </X509Data>
-23     </KeyInfo>
-24    </Signature>
-25    <Artifact>
-26     AAQAAOjXNPPr/r7FO5WpiZ+2vAl5KMFibkRaAGwIkwXh+o7DgsG2LMDE58c=
-27    </Artifact>
-28   </ArtifactResolve>
-29  </Body>
-30 </Envelope>   
+```xml title="08_ArtifactResolve_raw.xml" linenums="1" hl_lines="4 18 21 25"
+--8<-- "Auth_samples/08_ArtifactResolve_raw.xml"
 ```
 
 ##### Response Message
@@ -182,66 +122,15 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml)**.
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
-- *Issuer*: A ID of the primary system as URL (line 4 in the example below).
+- *Issuer*: A ID of the primary system as URL (line 6 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
-- *SignatureValue*: The signature of the request (line 18 in the example below) which shall be validated by the primary system.
-- *X509Certificate*: The X509 certificate used to sign the request (line 21 in the example below).
+- *SignatureValue*: The signature of the request (line 26 in the example below) which shall be validated by the 
+  primary system.
+- *X509Certificate*: The X509 certificate used to sign the request (line 29 in the example below).
 - *assertion*: The IdP assertion conveying the attributes of the authenticated user.  
 
-```
-1 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
-2  <SOAP-ENV:Body>
-3   <saml2p:ArtifactResponse
-4    xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
-5    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-6    ID="ArtifactResponse_bf738b81c935d2c2f47604e01388553c2407ac40"
-7    InResponseTo="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF"
-8    IssueInstant="2020-09-24T11:19:42.030Z"
-9    Version="2.0">
-10    <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">fed.idp.ch</saml2:Issuer>
-11    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-12     <ds:SignedInfo>
-13      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-14      <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-15      <ds:Reference URI="#ArtifactResponse_bf738b81c935d2c2f47604e01388553c2407ac40">
-16       <ds:Transforms>
-17        <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-18        <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-19         <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/>
-20        </ds:Transform>
-21       </ds:Transforms>
-22       <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-23       <ds:DigestValue>1RZPbh508clAQoKhxnQZEenNFyg=</ds:DigestValue>
-24      </ds:Reference>
-25     </ds:SignedInfo>
-26     <ds:SignatureValue> <!-- omitted for brevity --> </ds:SignatureValue>
-27     <ds:KeyInfo>
-28      <ds:X509Data>
-29       <ds:X509SKI>gYMVdgdR5LG/983GRTJIch0a+zU=</ds:X509SKI>
-30      </ds:X509Data>
-31     </ds:KeyInfo>
-32    </ds:Signature>
-33    <saml2p:Status>
-34     <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
-35    </saml2p:Status>
-36    <saml2p:Response
-37     xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
-38     Destination="https://epdtest.mycompany.local:8549/ACS"
-39     ID="Response_ef5597568f1bc48233cac63c5a51ca3026566d59"
-40     InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0"
-41     IssueInstant="2020-09-24T11:19:41.634Z"
-42     Version="2.0">
-43     <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">fed.idp.ch</saml2:Issuer>
-44     <saml2p:Status>
-45      <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
-46     </saml2p:Status>
-47     <saml2:Assertion>
-				...
-111     </saml2:Assertion>
-112    </saml2p:Response>
-113   </saml2p:ArtifactResponse>
-114  </SOAP-ENV:Body>
-115 </SOAP-ENV:Envelope>
+```xml title="09_ArtifactResponse_raw.xml" linenums="1" hl_lines="4 18 21"
+--8<-- "Auth_samples/09_ArtifactResponse.xml::47"
 ```
 
 The following snippet shows an example of a IdP Assertion conveyed with the response.
@@ -255,77 +144,15 @@ assertion:
 - *NotBefore* and *NotOnOrAfter*: The lifetime of the IdP assertion.
 - *AttributeStatement*: IdP shall provide user attributes in the *AttributeStatement* child elements. At least the *givenname*, *surname*, *gender* and *dateofbirth* must be provided. Optional fileds may be provided. The optional fields cover the GLN of the healthcare professional and other attributes, the primary system may use internally to identify the authenticated user.
 
-```
-49         <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67" IssueInstant="2020-09-24T11:19:41.633Z" Version="2.0">
-50           <saml2:Issuer>fed.idp.ch</saml2:Issuer>
-51           <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-52             <ds:SignedInfo>
-53               <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-54               <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-55               <ds:Reference URI="#Assertion_4f962f0ff6d14c9ea77726da3c2c88bb76fcae67">
-56                 <ds:Transforms>
-57                   <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-58                   <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-59                     <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/>
-60                   </ds:Transform>
-61                 </ds:Transforms>
-62                 <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-63                 <ds:DigestValue>P/I9Ym+p/Zzs0ANXHmAjqZcuBp2FJ75j6oCM6Gd0bVg=</ds:DigestValue>
-64               </ds:Reference>
-65             </ds:SignedInfo>
-66             <ds:SignatureValue>
-67               <!-- omitted for brevity -->
-68             </ds:SignatureValue>
-69             <ds:KeyInfo>
-70               <ds:X509Data>
-71                 <ds:X509Certificate>
-72                   <!-- omitted for brevity -->
-73                 </ds:X509Certificate>
-74               </ds:X509Data>
-75             </ds:KeyInfo>
-76           </ds:Signature>
-77           <saml2:Subject>
-78             <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">pjtt31</saml2:NameID>
-79             <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-80               <saml2:SubjectConfirmationData InResponseTo="SAML-CD88202A-FE57-11EA-800A-ACB5C93CFFF0" NotOnOrAfter="2020-09-24T12:19:41.634Z" Recipient="https://epdtest.mycompany.com"/>
-81             </saml2:SubjectConfirmation>
-82           </saml2:Subject>
-83           <saml2:Conditions NotBefore="2020-09-24T11:19:41.633Z" NotOnOrAfter="2020-09-24T12:09:41.633Z">
-84             <saml2:AudienceRestriction>
-85               <saml2:Audience>https://epdtest.mycompany.com</saml2:Audience>
-86             </saml2:AudienceRestriction>
-87           </saml2:Conditions>
-88           <saml2:AuthnStatement AuthnInstant="2020-09-24T11:19:41.633Z" SessionNotOnOrAfter="2020-09-24T13:19:41.633Z">
-89             <saml2:AuthnContext>
-90               <saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml2:AuthnContextClassRef>
-91             </saml2:AuthnContext>
-92           </saml2:AuthnStatement>
-93           <saml2:AttributeStatement>
-94             <!-- other vendor specific attributes omitted for brevity -->
-95             <saml2:Attribute Name="GLN" NameFormat="urn:oasis:names:tc:ebcore:partyid-type:DataUniversalNumberingSystem:0060">
-96              <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:token">9801000050702</saml2:AttributeValue>
-97             </saml2:Attribute>
-98             <saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-99               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Martina</saml2:AttributeValue>
-100             </saml2:Attribute>
-101             <saml2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-102               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Musterarzt</saml2:AttributeValue>
-103             </saml2:Attribute>
-104             <saml2:Attribute Name="gender" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-105               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:token">F</saml2:AttributeValue>
-106             </saml2:Attribute>
-107             <saml2:Attribute Name="dateofbirth" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
-108               <saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:date">1990-09-06</saml2:AttributeValue>
-109             </saml2:Attribute>
-110           </saml2:AttributeStatement>
-111         </saml2:Assertion>
+```xml linenums="47"
+--8<-- "Auth_samples/09_ArtifactResponse.xml:47:105"
 ```
 
 #### Transport Protocol
 
 The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
 
-```
+```http linenums="1"
 POST /IdPAuthenticationService HTTP/1.1
 Host: idp.example.org
 Accept-Encoding: gzip, deflate

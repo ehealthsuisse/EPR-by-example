@@ -23,9 +23,7 @@
             <ds:DigestValue>1RZPbh508clAQoKhxnQZEenNFyg=</ds:DigestValue>
           </ds:Reference>
         </ds:SignedInfo>
-        <ds:SignatureValue>
-          <!-- omitted for brevity -->
-        </ds:SignatureValue>
+        <ds:SignatureValue><!-- omitted for brevity --></ds:SignatureValue>
         <ds:KeyInfo>
           <ds:X509Data>
             <ds:X509SKI>gYMVdgdR5LG/983GRTJIch0a+zU=</ds:X509SKI>
@@ -63,14 +61,10 @@
                 <ds:DigestValue>P/I9Ym+p/Zzs0ANXHmAjqZcuBp2FJ75j6oCM6Gd0bVg=</ds:DigestValue>
               </ds:Reference>
             </ds:SignedInfo>
-            <ds:SignatureValue>
-              <!-- omitted for brevity -->
-            </ds:SignatureValue>
+            <ds:SignatureValue><!-- omitted for brevity --></ds:SignatureValue>
             <ds:KeyInfo>
               <ds:X509Data>
-                <ds:X509Certificate>
-                  <!-- omitted for brevity -->
-                </ds:X509Certificate>
+                <ds:X509Certificate><!-- omitted for brevity --></ds:X509Certificate>
               </ds:X509Data>
             </ds:KeyInfo>
           </ds:Signature>
