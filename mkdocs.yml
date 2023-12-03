@@ -7,7 +7,7 @@ copyright: '<a href="https://www.e-health-suisse.ch/">eHealth Suisse</a> | <a hr
 docs_dir: files
 theme:
   name: material
-  favicon:
+  favicon: media/favicon.png
   palette:
     primary: custom
     accent: custom
