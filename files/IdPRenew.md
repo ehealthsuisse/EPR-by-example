@@ -2,16 +2,6 @@
 
 Transaction to renew a IdP Assertion. Primary systems may use this transaction to retrieve a new IdP Assertion, without requiring the user to enter her credentials.
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems shall use this transaction retrieve a new IdP Assertion by sending an assertion retrieved beforehand.   

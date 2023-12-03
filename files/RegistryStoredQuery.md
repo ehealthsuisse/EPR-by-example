@@ -1,19 +1,6 @@
 # Registry Stored Query
 Transaction to lookup the document metadata for the documents stored in a patient's EPR. Primary systems shall use this transaction to view the metadata of the available documents for to display the data in the UI.   
 
-**CONTENTS**
-
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-		- [Message Interpretation](#message-interpretation)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)  
-
 # Overview
 
 Primary systems shall use this transaction to retrieve the document metadata for the documents stored in a patients EPR.

@@ -2,18 +2,6 @@
 Transaction to store one or more documents to a community. Primary systems shall use this transaction to export documents
 and the to a community repository to add it to a patients EPR.  
 
-**CONTENTS**
-
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)  
-
 # Overview
 
 Primary systems shall use this transaction to provide documents and the related document metadata to a patient EPR.

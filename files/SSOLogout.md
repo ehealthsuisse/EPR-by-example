@@ -3,16 +3,6 @@
 Transaction to log out a user from the IdP and all session participants. Primary systems shall perform this transaction to
 notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged out from another application sharing the same IdP session.
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems shall perform this transaction to notify the IdP, when a user logs out, or to receive a notification from the IdP, when the user logged from another relying party sharing the same session.

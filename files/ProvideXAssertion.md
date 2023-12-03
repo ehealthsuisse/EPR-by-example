@@ -1,12 +1,6 @@
 # Provide X-User Assertion
 Method to provide a SAML 2.0 assertion in the Web Service Security header to authorize transactions. Primary systems shall use this transaction to provide a SAML Assertion to authorize transactions.
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-	* [Audit Log](#audit-log)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 Primary systems shall use this transaction to provide SAML 2 assertions retrieved by the
 **[Get X-User Assertion ](GetXAssertion.md)** with XDS.b transactions as defined in the **[IHE XUA profile](https://profiles.ihe.net/ITI/TF/Volume1/ch-13.html)** with Swiss specific extensions defined in  

@@ -1,16 +1,6 @@
 # Get X-User Assertion
 Transaction to retrieve a SAML 2.0 assertion for authorization of transactions in the Swiss EPR. Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with EPR transactions, which require authorization.  
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Adit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems shall use this transaction to retrieve a SAML 2 assertions to be used with the

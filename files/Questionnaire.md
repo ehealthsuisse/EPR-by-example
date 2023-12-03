@@ -2,25 +2,6 @@
 
 This guide aims to explain how to build a FHIR Questionnaire, and in particular how to use the extensions necessary to make full use of the `@i4mi/fhir-questionnaire-renderer` library. You can use the [Questionnaire Prototype](https://github.com/mHealth-Prototyp/Questionnaire) from the [mHealth prototype project](https://github.com/mHealth-Prototyp) to render the questionnaire.
 
-## Contents
-- [Useful Links](#useful-links)
-- [Minimal Example](#minimal-example)
-- [Adding a Question](#adding-a-question)
-  - [Required Questions](#required-questions)
-  - [Answer Options for Choice Questions](#answer-options-for-choice-questions)
-  - [Subquestions](#subquestions)
-  - [Depending Questions](#depending-questions)
-  - [Initial Values](#initial-values)
-- [Questionnaire Item UI Control Codes](#questionnaire-item-ui-control-codes)
-  - [Help Button](#help-button)
-  - [Prompt](#prompt)
-  - [Unit](#unit)
-  - [Check-Box](#unit)
-  - [Radio Button](#radio-button)
-- [Internationalisation](#internationalisation)
-- [Prepopulation](#prepopulation)
-- [Detailed Example with Comments](#detailed-example-with-comments)
-
 ## Useful Links
 
 - [FHIR Resource Questionnaire](https://hl7.org/fhir/r4b/questionnaire.html): Official documentation for FHIR Questionnaire

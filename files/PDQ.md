@@ -2,16 +2,6 @@
 
 Transaction to search for patient identities and data from a community using the patient demographic data as search criteria. Primary systems may use this transaction to verify if a patient uses a Swiss EPR and is already registered in the community.  
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems may use this transaction to search for patients which are already registered in the community, either

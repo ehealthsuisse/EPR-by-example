@@ -1,16 +1,6 @@
 # PIX Query
 Transaction to get the master patient ID of a patient in a community using the local ID.
 
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems shall use this transaction to retrieve the master patient ID (XAD-SPID) for patients the primary

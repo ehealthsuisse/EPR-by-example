@@ -1,18 +1,6 @@
 # Retrieve Document Set
 Transaction to retrieve one or more documents from a community. Primary systems shall use this transaction to read documents from the EPR and integrate to the primary system or to display the document in the UI.   
 
-**CONTENTS**
-
-- [Overview](#overview)
-- [Transaction](#transaction)
-	* [Message Semantics](#message-semantics)
-		- [Request Message](#request-message)
-		- [Response Message](#response-message)
-	* [Transport Protocol](#transport-protocol)
-	* [Audit Log](#audit-log)
-- [Security Requirements](#security-requirements)
-- [Test Opportunity](#test-opportunity)  
-
 # Overview
 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.

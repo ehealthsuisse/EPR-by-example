@@ -1,13 +1,6 @@
 # Authenticate User
 Transaction to authenticate a user at a identity provider certified for the Swiss EPR. Primary systems shall use this transaction to retrieve a IdP assertion. The IdP assertion is required to retrieve the XUA Assertion to be used with EPR transactions.
 
-- [Overview](#overview)
-- [Transactions](#transactions)
-	* [Authentication Request](#authentication-request)
-	* [Artifact Resolve](#artifact-resolve)
-	* [Adit Log](#audit-log)
-- [Test Opportunity](#test-opportunity)
-
 # Overview
 
 Primary systems shall use this transaction to retrieve an IdP assertion authentication the user for the access to the
