@@ -8,6 +8,7 @@ docs_dir: files
 theme:
   name: material
   favicon: media/favicon.png
+  logo: media/logo.svg
   palette:
     primary: custom
     accent: custom
