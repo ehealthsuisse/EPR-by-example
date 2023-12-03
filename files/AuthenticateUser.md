@@ -135,7 +135,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 ##### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResolve_raw.xml)**.
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml)**.
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
