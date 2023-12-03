@@ -55,6 +55,7 @@ data is authorized for all applications, which are registered in the community a
 The SOAP *Body* element conveys the administrative information required for a HL7 V3 PRPA_IN201310UV02 message in HL7 V3 syntax.
 
 Primary systems shall set the following values:
+
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
@@ -93,6 +94,7 @@ of a response message may be found **[here](https://github.com/ehealthsuisse/EPD
 ##### Message Interpretation
 
 The SOAP *Header* element shall conveys the following information:
+
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: A copy of the unique ID of the query request.
 
@@ -106,6 +108,7 @@ and the query result encoded in the *controlActProcess* element.
 The *controlActProcess* element conveys the following information for the primary system in the *subject* child element:
 
 The *patient* child element conveys the master patient ID (XAD-SPID) and the EPR-SPID as follows:
+
 - *id* : The master patient ID (XAD-SPID), with the community OID as the assigning authority in the *root* and the ID in the *extension* attribute (line 49).
 - *id* : The EPR-SPID, with the OID of the ZAS as assigning authority in the *root* and the ID in the *extension* attribute (line 50).
 
@@ -147,6 +150,7 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
 - *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 9).
 - *ActiveParticipant*: Information on the user initiating the transaction (line 10 .. 12).

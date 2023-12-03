@@ -48,6 +48,7 @@ The following sections can be defined:
 ```
 
 ### Medical Problems
+
 * *title:* 'Liste der Medizinischen Problemen' in german or 'Liste Vaccin administré' in french or 'Lista Vaccinazione somministrata' in italian or 'List Immunization Administration' in english or titles in other languages are also allowed
 * *reference:* 
 
@@ -105,6 +106,7 @@ The following sections can be defined:
 ```
 
 ### Allergies and Intolerences
+
 * *title:* 'Allergien' in german or 'Les allergies' in french or 'Allergie' in italian or 'Allergies' in english or titles in other languages are also allowed                                                                                                                                                                                                                                                                  
 * *reference:* A list of AllergyIntolerance resources defining the allergies and intolerances - see [CH VACD AllergyIntolerance Profile](http://build.fhir.org/ig/hl7ch/ch-vacd/StructureDefinition-ch-vacd-allergyintolerances.html)
 
@@ -132,6 +134,7 @@ The following sections can be defined:
 ```
 
 ### Other Relevant Observatons
+
 * *title:* 'Weiter relevante Beobachtungen' in german or 'Autres observations pertinentes' in french or 'Altre osservazioni rilevanti' in italian or 'Other Relevant Observations' in english or titles in other languages are also allowed
 * *reference:* The Condition resource defining the gestational age - see [CH VACD Other Relevant Observations](http://build.fhir.org/ig/hl7ch/ch-vacd/StructureDefinition-ch-vacd-other-observations.html)
                                                                                                                                                                                      
@@ -159,6 +162,7 @@ The following sections can be defined:
 ```
 
 ### Laboratory-Serology
+
 * *title:* 'Laborbefund - Serologie' in german or 'Résultats de laboratoire - Sérologie' in french or 'Risultati di laboratorio - Sierologia' in italian or 'Laboratory findings - Serology' in english or titles in other languages are also allowed
 * *reference:* A list of Condition resources defining the lab results - see [CH VACD Laboratory And Serology Profile](http://build.fhir.org/ig/hl7ch/ch-vacd/StructureDefinition-ch-vacd-laboratory-serology.html)
 
@@ -186,6 +190,7 @@ The following sections can be defined:
 ```
 
 ### Pregnancy
+
 * *title:* 'Schwangerschaft' in german or 'Grossesse' in french or 'Gravidanza' in italian or 'Pregnancy' in english or titles in other languages are also allowed
 * *reference:* the Condition resource for pregnancy - see [CH VACD Pregnancy Profile](http://build.fhir.org/ig/hl7ch/ch-vacd/StructureDefinition-ch-vacd-pregnancy.html)
 
@@ -213,6 +218,7 @@ The following sections can be defined:
 ```
 
 ### Annotation
+
 * *title:* 'Kommentar' in german or 'Commentaire' in french or 'Osservazione' in italian or 'Comment' in english or titles in other languages are also allowed
 * *text:* The annotation comment can be added here as narrative.
 
@@ -235,6 +241,7 @@ The following sections can be defined:
 ```
 
 ### Original representation
+
 * *title:* Original representation
 * *reference:* Binary resource containing the original representation of the content as PDF.
 

@@ -115,12 +115,16 @@ In the resource "Composition", general information about the document is specifi
  55          }
  56        ],
 ```
+
 * *title:* Human readable label for the composition.
+
 ```json
  57        "title": "Medikationsplan",
 ```
+
 * *confidentiality:* Level of confidentiality of the Composition - binding: *[v3.ConfidentialityClassification (2014-03-26)](http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html)*.
 * extension *[EPR Confidentiality Code](http://fhir.ch/ig/ch-core/StructureDefinition-ch-ext-epr-confidentialitycode.html)*
+
 ```json
  58        "confidentiality": "N",
  59        "_confidentiality": {
@@ -140,13 +144,17 @@ In the resource "Composition", general information about the document is specifi
  73          ]
  74        },
 ```
+
 * *custodian:* Organization who is responsible for the document and access.
+
 ```json
  75        "custodian": {
  76          "reference": "Organization/Custodian"
  77        },
 ```
+
 * *section:* The root of the sections that make up the composition.
+
 ```json
  78        "section": [
  79          {
@@ -346,6 +354,7 @@ In the resource "MedicationStatement" the data of the patient's medication are s
 [Profile information](http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationstatement-card.html)
 
 ### Medication information
+
 * *id:* Local id of the resource (line 2).
 * *text:* Presents the narrative text of the resource (line 3, 19, 54).
 * *contained:* The resource cannot be identified independently and therefore cannot exist independently apart from the resource it contains (line 7 to 73).
@@ -431,6 +440,7 @@ In the resource "MedicationStatement" the data of the patient's medication are s
  72          }
  73        ],
 ```
+
 * *indentifier:* Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate -fixed Value "*urn:ietf:rfc:3986*".
 
 ```json
@@ -441,11 +451,13 @@ In the resource "MedicationStatement" the data of the patient's medication are s
   5        }
   6      ],
 ```
+
 * *status:* A code representing the status of the use of the medication - fixed Value: "*completed*"; binding: *[Medication Status Codes](http://hl7.org/fhir/R4/valueset-medication-statement-status.html)*.
 
 ```json
   1 "status": "completed",
 ```
+
 * *subject:* The person who is taking the medication.
 
 ```json
@@ -461,6 +473,7 @@ In the resource "MedicationStatement" the data of the patient's medication are s
   2                        "text": "Bluthochdruck/Herz"
   3                    }
 ```
+
 * *note:* Provides extra information about the medication statement that is not conveyed by the other attributes.
 
 ```json
@@ -523,6 +536,7 @@ Example normal Dosing (incl. Dosage Non-Structured):
  36     }
  37   ]
 ```
+
 * *text:* Non-structured dosage element (line 3).
 * *timing:* when the medication should be taken (line 7 to 16).
 * *route:* Indicates the route of administration - binding: *[SNOMEDCTRouteCodes](http://hl7.org/fhir/R4/valueset-route-codes.html)*; *[EDQM - RouteOfAdministration](http://fhir.ch/ig/ch-emed/ValueSet-edqm-routeofadministration.html)* (line 17 to 25).

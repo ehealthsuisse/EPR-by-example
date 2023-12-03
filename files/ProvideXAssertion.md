@@ -8,6 +8,7 @@ Primary systems shall use this transaction to provide SAML 2 assertions retrieve
 
 ## Transaction
 This transaction is not used standalone and shall be used in conjunction with other transactions which require authorization. These are:
+
 - **[Registry Stored Query](RegistryStoredQuery.md)** - get and display document metadata
 - **[Retrieve Document Set](RetrieveDocumentSet.md)** - get and display documents
 - **[Provide and Register Document Set](ProvideAndRegister.md)** - store documents in the EPR  

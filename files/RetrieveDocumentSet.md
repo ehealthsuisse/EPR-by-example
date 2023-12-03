@@ -201,6 +201,7 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Event related information including the timestamp and purpose of use (line 3 .. 7).
 - *ActiveParticipant*: Information related to the primary system performing the query (line 8 .. 10).
 - *ActiveParticipant*: Information on the user initiating the transaction (line 11 .. 13).
@@ -220,6 +221,7 @@ To enable authorization, the transaction must convey the XUA Assertion for autho
 envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
 Note:
+
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 

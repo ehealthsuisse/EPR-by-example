@@ -74,6 +74,7 @@ data is authorized for all applications, which are registered in the community a
 The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax.
 
 Primary systems shall set the following values:
+
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
@@ -91,10 +92,12 @@ The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 The *subject* child element conveys the following information in its child elements.
 
 The *patient* child element conveys the patients identifiers and patient demographics: 
+
 - *id*: the local ID of the patient in the primary system (line 25) with the OID of the primary system in the *root* attribute. 
 - *id*: the EPR-SPID of the patient provided by the ZAS (line 26) with the OID of the ZAS in the *root* attribute.  
 
-The patients demographic data are conveyed in the *patientPerson* child element:  
+The patients demographic data are conveyed in the *patientPerson* child element:
+
 - *name*: conveying the given and the family name of the patient.
 - *administrativeGenderCode*: conveying the coded value of patient gender, taken from the value sets defined in
 **[Annex 3][annexes]**.  
@@ -140,6 +143,7 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Event related information including the timestamp (line 3 .. 7).
 - *ActiveParticipant*: Information related to the primary system performing the query (line 8 .. 10).
 - *ActiveParticipant*: Information on the responding service endpoint (line 11 .. 13).

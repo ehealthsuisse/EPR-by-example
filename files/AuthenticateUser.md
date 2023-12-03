@@ -10,6 +10,7 @@ The requirements for the transaction are defined in
 **[Annex 8][annexes]** of the ordinances of the Swiss EPR.
 
 The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
+
 - **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
 - **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings]**.
 - **[Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)**.
@@ -17,11 +18,13 @@ The EPR requires primary systems to implement authentication as described in the
 Primary systems do need implement all the bindings and profiles supported by the SAML 2.0 specification family.
 
 In the Swiss EPR the following bindings are required:
+
 - HTTP POST Binding.
 - HTTP Artifact Binding.
 - SAML SOAP Binding.    
 
 In the Swiss EPR the following profiles are required:
+
 - Web Browser SSO Profile.
 - Single Logout Profile.
 
@@ -61,6 +64,7 @@ were ommitted to increase readability. The raw request file may be found
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml)**.
 
 The *AuthnRequest* conveys the following information to be set by the primary system:
+
 - *ID*: A unique ID of the request message (line 7 in the example below).
 - *Issuer*: A ID of the primary system as URL (line 9 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
@@ -74,6 +78,7 @@ The *AuthnRequest* conveys the following information to be set by the primary sy
 ##### Response Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. It conveys two parameter to be used by the primary system:
+
 - *SAMLart*: The SAML artifact to be used in the *ArtifactResolve* request (see section below).
 - *RelayState*: A unique identifier of the conversation, the primary system initially sent with the Authentication Request.
 
@@ -107,6 +112,7 @@ The following snippet is taken from a sample request recorded during the EPR pro
 **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml)**.
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
+
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 18 in the example below).
@@ -122,6 +128,7 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml)**.
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
+
 - *Issuer*: A ID of the primary system as URL (line 6 in the example below).
 - *SignedInfo*: Signature metadata and the digest value used for the signature.
 - *SignatureValue*: The signature of the request (line 26 in the example below) which shall be validated by the 
@@ -140,7 +147,8 @@ The primary system must keep the IdP Assertion in memory to use it to authentica
 
 The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the
 assertion:
--  *NameID* : This element conveys the user ID assigned by IdP. Primary systems may use it to locally authenticate the user in the primary system.
+
+- *NameID* : This element conveys the user ID assigned by IdP. Primary systems may use it to locally authenticate the user in the primary system.
 - *NotBefore* and *NotOnOrAfter*: The lifetime of the IdP assertion.
 - *AttributeStatement*: IdP shall provide user attributes in the *AttributeStatement* child elements. At least the *givenname*, *surname*, *gender* and *dateofbirth* must be provided. Optional fileds may be provided. The optional fields cover the GLN of the healthcare professional and other attributes, the primary system may use internally to identify the authenticated user.
 

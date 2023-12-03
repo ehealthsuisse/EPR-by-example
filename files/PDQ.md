@@ -55,6 +55,7 @@ data is authorized for all applications, which are registered and authenticate w
 
 The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
 which primary systems must set the following values:
+
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
@@ -72,6 +73,7 @@ The query is encoded in a HL7 V3 *controlAct* object as follows:
 The HL7 *controlAct* object conveys the query search parameter in a HL7 V3 *parameterList* element.
 
 In the above example these are 
+
 - the *livingSubjectId* conveying the local ID in the primary system of the patient data to search for,
 - the *otherIDsScopingOrganization* to match with the registered patient data,  
 
@@ -130,6 +132,7 @@ specified in the **[IHE ITI TF](ref-env/gss/audit-messages/view.seam?id=703)** a
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Event related information including the timestamp (line 3 .. 6).
 - *ActiveParticipant*: Information related to the primary system performing the query (line 7 .. 9).
 - *ActiveParticipant*: Information on the user initiating the transaction (line 10 .. 12).

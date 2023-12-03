@@ -17,6 +17,7 @@ Messages are encoded as described in **[Assertions and Protocols for the OASIS S
 The following snippet shows the content of a logout request, with some elements omitted to increase readability.
 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification][saml-core]**. Apart from that, the message conveys the following information:
+
 - *ID*: A unique ID of the request message (line 4).
 - *Destination*: An identifier of the receiver endpoint. For primary systems sending the request, this shall be the URL of IdP logout endpoint (line 7).
 - *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).
@@ -65,6 +66,7 @@ The major content (lines 9..32) of the message is required for to sign the messa
 The following snippet shows the content of a logout response, with some elements omitted to increase readability.
 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification][saml-core]**. Apart from that, the message conveys the following information:
+
 - *ID*: A unique ID of the request message (line 4).
 - *Destination*: An identifier of the receiver endpoint as URL (line 7).
 - *InResponseTo*: The unique ID of the initial request (line 8).
@@ -113,6 +115,7 @@ The major content (lines 9..32) of the message is required for to sign the messa
 ### Transport Protocol
 
 The *LogoutRequest* may be send by primary systems to the IdP using one of the following bindings:
+
 - SAML 2.0 HTTP POST binding via the frontchannel (involving the browser).
 - SAML 2.0 SOAP binding via the backchannel.
 

@@ -85,6 +85,7 @@ Since the **[ebXML][ebxml]** standard is very generic, the response message is q
 background information to interpret.
 
 The structure of the result set is as follows (see example below):
+
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
 - The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
 - Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute.
@@ -464,6 +465,7 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Event related information including the timestamp.
 - *ActiveParticipant*: Information related to the portal or primary system performing the query.
 - *ActiveParticipant*: Information on the authenticated user as required by IHE XUA profile.
@@ -482,6 +484,7 @@ To enable authorization, the transaction must convey the XUA Assertion for autho
 envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
 Note:
+
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 

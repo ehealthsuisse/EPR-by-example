@@ -29,6 +29,7 @@ Since the **[ebXML][ebxml]** standard is very generic, the request message is qu
 background information to interpret.
 
 The structure of the result set is as follows (see example below):
+
 - The metadata of the individual documents are bundled in a *ExtrinsicObject* element.
 - The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
 - Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute.
@@ -81,6 +82,7 @@ We will explain the *RegistryRegistryPackage* object defining the submission set
 ##### Submission Set
 
 The structure of the *RegistryPackage* object defining the submission set is as follows (see example below):
+
 - The metadata attributes are encoded as *Slot*, as *Classification* or as *ExternalIdentifier* elements.
 - Metadata attributes encoded as *Slots* can be identified and interpreted by the slot's *name* attribute.
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
@@ -209,6 +211,7 @@ The request contains one *Association* object linking the document and document 
 *RegistryPackage* (see **[Submission Set](ProvideAndRegister.md#submission-set)**).
 
 The *Association* object thus conveys two parameter to link the objects:
+
 - *sourceObject*: The attribute value must match the *id* attribute of the submission set *RegistryPackage*.
 - *targetObject*: The attribute value must match the *id* attribute value of the document metadata *ExtrinsicObject*.  
 
@@ -349,6 +352,7 @@ The following snippet shows a example audit message to be written by the primary
 ```
 
 The message is made of the following blocks:
+
 - *EventIdentification*: Element with event related information including the timestamp.
 - *ActiveParticipant*: Information related to the community repository which is the source of the documents.
 - *ActiveParticipant*: Information on the user as required by the IHE XUA profile.
@@ -369,6 +373,7 @@ To enable authorization, the transaction must convey the XUA Assertion for autho
 envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
 Note:
+
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.
 
