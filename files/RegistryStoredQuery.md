@@ -483,10 +483,9 @@ validation required) and client and server side certificate validation.
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
 envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
-Note:
-
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
-- Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
+!!! note
+    - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
+    - Some test environments may also drop authorization for testing purposes. Please contact your test system provider on the details.  
 
 ## Test Opportunity
 

@@ -164,8 +164,8 @@ The message is made of the following blocks:
 To ensure privacy the transaction must be secured using https with mutual authentication, with X.509 certificates
 (extended validation required) and client and server side certificate validation.
 
-Note:
-- Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
+!!! note
+    - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
 
 ## Test Opportunity
 
