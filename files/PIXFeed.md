@@ -56,7 +56,7 @@ The SOAP *Header* element shall convey the following information:
 
 Optional elements may be included according to the specification in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**.
 
-```
+```xml title="SOAP header" linenums="1" hl_lines="3-5"
 <soap:Header>
   	<Action xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201301UV02</Action>
 	<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:7a180388-6ba7-4cbc-bffe-dfcdc4e602b7</MessageID>
@@ -77,73 +77,15 @@ Primary systems shall set the following values:
 - *creationTime*: A timestamp in unix time format.
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
- 
-```
-1 <PRPA_IN201301UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
-2   <id extension="1694431245655" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
-3   <creationTime value="20230911115902"/>
-4   <interactionId extension="PRPA_IN201301UV02" root="2.16.840.1.113883.1.6"/>
-5   <processingCode code="T"/>
-6   <processingModeCode code="T"/>
-7   <acceptAckCode code="AL"/>
-8   <receiver typeCode="RCV">
-9     <device classCode="DEV" determinerCode="INSTANCE">
-10       <id root="1.3.6.1.4.1.21367.2017.2.4.136"/>
-11     </device>
-12   </receiver>
-13   <sender typeCode="SND">
-14     <device classCode="DEV" determinerCode="INSTANCE">
-15       <id root="1.3.6.1.4.1.21367.2017.2.2.140"/>
-16     </device>
-17   </sender>
+
+```xml title="PRPA_IN201301UV02 message" linenums="2"
+--8<-- "samples/ITI-44_request_raw.xml:2:17"
 ```
 
 The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 
-```
-18 <controlActProcess classCode="CACT" moodCode="EVN">
-19     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.6"/>
-20     <subject contextConductionInd="false" typeCode="SUBJ">
-21       <registrationEvent classCode="REG" moodCode="EVN">
-22         <statusCode code="active"/>
-23         <subject1 typeCode="SBJ">
-24           <patient classCode="PAT">
-25             <id assigningAuthorityName="MyPrimarySystem" extension="TestSystemId" root="1.3.6.1.4.1.21367.2017.2.5.89"/>
-26             <id assigningAuthorityName="ZAS" extension="761337610435201235" root="2.16.756.5.30.1.127.3.10.3"/>
-27             <statusCode code="active"/>
-28             <patientPerson classCode="PSN" determinerCode="INSTANCE">
-29               <name>
-30                 <family>Muster</family>
-31                 <given>Maja</given>
-32               </name>
-33               <name>
-34                 <family qualifier="BR">Tauxe</family>
-35                 <given>Maja</given>
-36               </name>
-37               <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.12.1" displayName="Female"/>
-38               <birthTime value="19600618"/>
-39               <addr>
-40                 <city>Wettingen</city>
-41                 <country>CH</country>
-42                 <postalCode>5430</postalCode>
-43                 <streetAddressLine>Imfeldstrasse 24b</streetAddressLine>
-44               </addr>
-45             </patientPerson>
-46             <providerOrganization classCode="ORG" determinerCode="INSTANCE">
-47               <id root="1.3.6.1.4.1.21367.2017.2.5.89"/>
-48               <id root="2.16.756.5.30.1.127.3.10.3"/>
-49               <name>MyCompany</name>
-50               <contactParty classCode="CON">
-51                 <contactPerson classCode="PSN" determinerCode="INSTANCE">
-52                   <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PN">
-53                     <family>Administrator</family>
-54                     <given>Max</given>
-55                   </name>
-56                 </contactPerson>
-57               </contactParty>
-58             </providerOrganization>
-59           </patient>
-60         </subject1>
+```xml title="controlActProcess element" linenums="18"
+--8<-- "samples/ITI-44_request_raw.xml:18:60"
 ```
 
 The *subject* child element conveys the following information in its child elements.
@@ -162,18 +104,8 @@ The patients demographic data are conveyed in the *patientPerson* child element:
 
 The *custodian* element shall convey the OID of the provider organization in the *id* child element:
 
-```
-61         <custodian typeCode="CST">
-62           <assignedEntity classCode="ASSIGNED">
-63             <id root="1.3.6.1.4.1.21367.2017.2.5.108"/>
-64             <assignedOrganization classCode="ORG" determinerCode="INSTANCE">
-65               <name xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ON">MyCompany</name>
-66             </assignedOrganization>
-67           </assignedEntity>
-68         </custodian>
-69       </registrationEvent>
-70     </subject>
-71   </controlActProcess>
+```xml title="custodian element" linenums="61"
+--8<-- "samples/ITI-44_request_raw.xml:61:71"
 ```
 
 #### Response Message
@@ -184,7 +116,7 @@ The PIX V3 Feed service responds with a message indicating the success of the tr
 
 The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification](https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866)**. It may look like:  
 
-```
+```http linenums="1"
 POST /PIXV3FeedService HTTP/1.1
 Host: company.example.org
 Accept-Encoding: gzip, deflate
@@ -203,35 +135,8 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 
 The following snippet shows a example audit message to be written by the primary system:
 
-```
-1 <?xml version='1.0' encoding='utf-8'?>
-2 <AuditMessage>
-3  <EventIdentification EventDateTime="2020-09-21T15:25:53.616+02:00" EventOutcomeIndicator="0" EventActionCode="C">
-4   <EventID csd-code="110110" codeSystemName="DCM" originalText="Patient Record"/>
-5   <EventTypeCode csd-code="ITI-44" codeSystemName="IHE Transactions" originalText="Patient Identity Feed"/>
-6   <EventOutcomeDescription/>
-7  </EventIdentification>
-8  <ActiveParticipant AlternativeUserID="primary.system.alt.ID" UserID="primary.system.ID" UserIsRequestor="true" NetworkAccessPointID="https://my_primary_system.com/" NetworkAccessPointTypeCode="1">
-9   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source"/>
-10  </ActiveParticipant>
-11  <ActiveParticipant AlternativeUserID="plattform.mpi.alt.ID" UserID="plattform.mpi.ID" UserIsRequestor="false" NetworkAccessPointID="https://platform.com/mock/patientRegister" NetworkAccessPointTypeCode="1">
-12   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination"/>
-13  </ActiveParticipant>
-14  <AuditSourceIdentification AuditSourceID="primary.system.alt.ID" AuditEnterpriseSiteID="2.16.756.5.30.1.174.1.5.1">
-15   <AuditSourceTypeCode csd-code="4" codeSystemName="DCM" originalText="Client Process"/>
-16  </AuditSourceIdentification>
-17  <ParticipantObjectIdentification ParticipantObjectID="11234^^^&amp;2.16.756.5.30.1.174.1.9999.1&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-18   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
-19   <ParticipantObjectDetail type="II" value="ZGVmYXVsdA=="/>
-20  </ParticipantObjectIdentification>
-21  <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:4d42d62d-30b7-4ad4-a9e2-c3f0dd1d50f9" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
-22   <ParticipantObjectIDTypeCode csd-code="ITI-44" codeSystemName="IHE Transactions" originalText="Patient Identity Feed"/>
-23   <ParticipantObjectQuery>
-24    <!-- omitted for brevity -->
-25   </ParticipantObjectQuery>
-26   <ParticipantObjectDetail type="II" value="ZGVmYXVsdA=="/>
-27  </ParticipantObjectIdentification>
-28 </AuditMessage>
+```xml title="iti-44-log.xml" linenums="1"
+--8<-- "samples/iti-44-log.xml"
 ```
 
 The message is made of the following blocks:
