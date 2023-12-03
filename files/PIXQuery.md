@@ -5,14 +5,14 @@ Transaction to get the master patient ID of a patient in a community using the l
 
 Primary systems shall use this transaction to retrieve the master patient ID (XAD-SPID) for patients the primary
 systems wants to retrieve or provide documents for. In the Swiss EPR the
-**[IHE PIX V3](https://profiles.ihe.net/ITI/TF/Volume1/ch-23.html)** profile and transactions shall be used to retrieve
+[IHE PIX V3](https://profiles.ihe.net/ITI/TF/Volume1/ch-23.html) profile and transactions shall be used to retrieve
 the master patient ID.  
 
 To retrieve the master patient ID for the patient to access the patients EPR, the the primary system shall perform a
-**[Patient V3 Query \[ITI-45\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)**. Within the query request the
+[Patient V3 Query \[ITI-45\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html). Within the query request the
 primary system shall provide the local ID of the patient in the primary system, as well as the *data source* parameter
 of the assigning authority of the community and the the assigning authority EPR-SPID. The local ID must match the local
-ID the primary system registered the patient with (see **[PIX Feed](PIXFeed.md)**).  
+ID the primary system registered the patient with (see [PIX Feed](PIXFeed.md)).  
 
 If the patient is registered in the community, the community sends a response with the master patient ID (XAD-PID) and
 the EPR-SPID.
@@ -22,13 +22,13 @@ the EPR-SPID.
 ### Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
-**[IHE PIX V3 Query](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)** profile and the ordinances to the Swiss EPR.
+[IHE PIX V3 Query](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html) profile and the ordinances to the Swiss EPR.
 
 #### Request Message
 
-Due to the genericity of the underlying **[HL7 V3][hl7]** standard, the request message is quite lengthy.
+Due to the genericity of the underlying [HL7 V3][hl7] standard, the request message is quite lengthy.
 A raw version of a request message may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_request_raw.xml)**.
+[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_request_raw.xml).
 
 For a step by step interpretation of the request message, see section below.
 
@@ -42,7 +42,7 @@ The SOAP *Header* element shall convey the following information:
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 
-Optional elements may be included according to the specification in the **[W3C SOAP specification][soap]**.
+Optional elements may be included according to the specification in the [W3C SOAP specification][soap].
 
 ```xml title="SOAP header" linenums="1" hl_lines="3-5"
 --8<-- "samples/ITI-45_request_raw.xml::11"
@@ -50,7 +50,7 @@ Optional elements may be included according to the specification in the **[W3C S
 
 For the PIX query no *Security* header element is required, since in the Swiss EPR the access to the patient
 data is authorized for all applications, which are registered in the community and authenticate with a client certificate
-(see section **[Security Requirements](PIXFeed.md#security-requirements)**).
+(see section [Security Requirements](PIXFeed.md#security-requirements)).
 
 The SOAP *Body* element conveys the administrative information required for a HL7 V3 PRPA_IN201310UV02 message in HL7 V3 syntax.
 
@@ -89,7 +89,7 @@ The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EP
 the community.
 
 The request message is not very complex, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
-of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_response.xml)**.
+of a response message may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_response.xml).
 
 ##### Message Interpretation
 
@@ -124,7 +124,7 @@ The *custodian* child element conveys information on the responding system with 
 
 ### Transport Protocol
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the [W3C SOAP specification][soap]. It may look like:
 
 ```http linenums="1"
 POST /PIXV3QueryService HTTP/1.1
@@ -138,9 +138,9 @@ Content-Length: nnnn
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=705)** and the
-**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in [RFC 3881][rfc3881] with restrictions
+specified in the [IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=705) and the
+[Extension 1 to Annex5][annexes] in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:
@@ -169,4 +169,4 @@ To ensure privacy the transaction must be secured using https with mutual authen
 
 ## Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
+The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md), test systems of the EPR communities or the [EPR Playground](playground.md).

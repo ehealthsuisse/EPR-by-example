@@ -3,11 +3,11 @@ Transaction to retrieve one or more documents from a community. Primary systems 
 
 ## Overview
 
-Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
+Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the [IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) profile and transactions shall be used.
 
-To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall
-provide the master patient ID as retrieved from the **[PIX Query](PIXQuery.md)**, and the repository as well as
-the documents unique IDs taken from the response of the **[Registry Stored Query](RegistryStoredQuery.md)**. In
+To retrieve the document metadata of the document, the the primary system shall perform a [Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html) transaction. Within the request, the primary systems shall
+provide the master patient ID as retrieved from the [PIX Query](PIXQuery.md), and the repository as well as
+the documents unique IDs taken from the response of the [Registry Stored Query](RegistryStoredQuery.md). In
 the Swiss EPR currently only supports the synchronous exchange option is supported.    
 
 The community responds the set of documents.
@@ -16,13 +16,13 @@ The community responds the set of documents.
 
 ### Message Semantics
 
-Messages are encoded as described in the **[ebXML][ebxml]** standard with restrictions defined in the IHE
+Messages are encoded as described in the [ebXML][ebxml] standard with restrictions defined in the IHE
 profile and the ordinances to the Swiss EPR.
 
 #### Request Message
 
 The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abrevations
-to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_request_raw.xml)**.
+to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_request_raw.xml).
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The
 SOAP *Header* element conveys the following information:
@@ -30,15 +30,15 @@ SOAP *Header* element conveys the following information:
 - *To* element: The URL of the repository service.
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
-- *Security* element: The Web Service Security header as defined in the **[WS Security][wss]** specification. This element conveys the XUA Assertion used for
-authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
+- *Security* element: The Web Service Security header as defined in the [WS Security][wss] specification. This element conveys the XUA Assertion used for
+authorization (see [Provide X-User Assertion](ProvideXAssertion.md)).  
 
 
 The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements
 (lines 12 to 16 below) with the following information:
 
 - *HomeCommunityId* : Unique ID of the community.
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](RegistryStoredQuery.md)** response.
+- *RepositoryUniqueId*: Unique ID of repository taken from a [Registry Stored Query](RegistryStoredQuery.md) response.
 - *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
 
 ```xml title="ITI-43_request.xml" linenums="1" hl_lines="13-15"
@@ -48,7 +48,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 #### Response Message
 
 The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abrevations
-to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_response_raw.xml)**.
+to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_response_raw.xml).
 
 The SOAP *Header* element of the response conveys the following information:
 
@@ -70,10 +70,10 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which co
 ### Transport Protocol
 
 The system shall send the request messages to the repository service of the community using the MIME Multipart/Related
-binding as specified in the SOAP **[MTOM specification][mtom]** of the W3C.
+binding as specified in the SOAP [MTOM specification][mtom] of the W3C.
 
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP
-**[MTOM specification][mtom]** of the W3C. A full message may look like:
+[MTOM specification][mtom] of the W3C. A full message may look like:
 
 ```http linenums="1"
 DefaultHttpResponse(chunked: false)
@@ -122,9 +122,9 @@ content-id: <72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org>
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706)** and the
-**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in [RFC 3881][rfc3881] with restrictions
+specified in the [IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=706) and the
+[Extension 1 to Annex5][annexes] in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
 The following snippet shows a example audit message to be written by the primary system:
@@ -151,7 +151,7 @@ To ensure privacy the transaction must be secured using https with mutual authen
 validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
-envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
+envelope. See [Provide X-User Assertion](ProvideXAssertion.md) for the implementation details.
 
 !!! note
     - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
@@ -159,4 +159,4 @@ envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the imple
 
 ## Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
+The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md), test systems of the EPR communities or the [EPR Playground](playground.md).

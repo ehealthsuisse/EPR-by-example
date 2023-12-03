@@ -7,13 +7,13 @@ Primary systems shall use this transaction to retrieve an IdP assertion authenti
 Swiss EPR.
 
 The requirements for the transaction are defined in
-**[Annex 8][annexes]** of the ordinances of the Swiss EPR.
+[Annex 8][annexes] of the ordinances of the Swiss EPR.
 
 The EPR requires primary systems to implement authentication as described in the SAML 2.0 specification family, i.e.,
 
-- **[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
-- **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings]**.
-- **[Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf)**.
+- [Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core].
+- [Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings].
+- [Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-profiles-2.0-os.pdf).
 
 Primary systems do need implement all the bindings and profiles supported by the SAML 2.0 specification family.
 
@@ -50,10 +50,10 @@ The sequence consists of the following steps, each using assigned transaction me
 
 The transaction shall be performed by the primary system when the user aims to access the EPR. The primary system shall
 redirect the user agent (browser) to the IdP authentication endpoint with a *AuthnRequest* message as defined in
-**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
+[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core].
 
 When the user is authenticated by the IdP, the IdP responds with a HTTP redirect to the registered endpoint of the primary
-system as specified in **[Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings]**.
+system as specified in [Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-bindings].
 
 #### Message Semantics
 
@@ -61,7 +61,7 @@ system as specified in **[Bindings for the OASIS Security Assertion Markup Langu
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml)**.
+[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml).
 
 The *AuthnRequest* conveys the following information to be set by the primary system:
 
@@ -100,7 +100,7 @@ The transactions shall use TLS secured transports (HTTPS) to ensure data privacy
 The transaction shall be performed by the primary system to exchange the artifact to a SAML 2.0 IdP Assertion.
 
 The primary system shall use the SOAP backchannel with an *ArtifactResolve* request message as defined in
-**[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core]**.
+[Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0][saml-core].
 
 The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 
@@ -109,7 +109,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 ##### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml)**.
+[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml).
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
 
@@ -125,7 +125,7 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 
 ##### Response Message
 
-The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml)**.
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml).
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 
@@ -143,7 +143,7 @@ The *ArtifactResponse* conveys the following information which shall be evaluate
 The following snippet shows an example of a IdP Assertion conveyed with the response.
 
 The primary system must keep the IdP Assertion in memory to use it to authenticate the
-**[Get X-User Assertion](GetXAssertion.md)** transaction.
+[Get X-User Assertion](GetXAssertion.md) transaction.
 
 The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the
 assertion:
@@ -158,7 +158,7 @@ assertion:
 
 #### Transport Protocol
 
-The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
+The primary system shall send the request messages to the IdP of the community using the http POST binding as defined in the [W3C SOAP specification][soap]. It may look like:  
 
 ```http linenums="1"
 POST /IdPAuthenticationService HTTP/1.1
@@ -179,4 +179,4 @@ Primary systems shall protocol the transaction in their logs to ensure traceabil
 
 ## Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
+The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md), test systems of the EPR communities or the [EPR Playground](playground.md).

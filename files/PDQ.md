@@ -7,11 +7,11 @@ Transaction to search for patient identities and data from a community using the
 Primary systems may use this transaction to search for patients which are already registered in the community, either
 because the patient opened the Swiss EPR in the community or because the patient opened the Swiss EPR in a remote
 community and was already registered by another primary system to store documents. In the Swiss EPR the
-**[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html)** profile and transactions shall be used to search for
+[IHE PDQV3](https://profiles.ihe.net/ITI/TF/Volume1/ch-24.html) profile and transactions shall be used to search for
 patients by demographic data.
 
 To search for patients the primary system shall perform a
-**[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)**. Within the query request
+[Patient Demographic Query \[ITI-47\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html). Within the query request
 the primary system shall provide the demographic data as search criteria. In the Swiss EPR each community must support the
 name, birthdate, gender and nationality. Individual communities may support other demographic data (e.g., address and other
 contact data).  
@@ -25,13 +25,13 @@ patient data sets, as registered by other primary systems.
 ### Message Semantics
 
 Messages are encoded as described in the HL7 V3 standard with restrictions defined in the
-**[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html)** profile and the ordinances to the Swiss EPR.
+[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html) profile and the ordinances to the Swiss EPR.
 
 #### Request Message
 
-Since the **[HL7 V3][hl7]** standard is very generic, the request message is quite lengthy and needs some
+Since the [HL7 V3][hl7] standard is very generic, the request message is quite lengthy and needs some
 background information to interpret. The raw version of a request message may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_request_raw.xml)**. For a step by step interpretation
+[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_request_raw.xml). For a step by step interpretation
 of the request message, see section below.
 
 ##### Message Interpretation
@@ -51,7 +51,7 @@ The SOAP *Header* element conveys the following information:
 
 For the patient demographic query no *Security* header element is required, since in the Swiss EPR the access to the patient
 data is authorized for all applications, which are registered and authenticate with a client certificate
-(see section **[Security Requirements](PDQ.md#security-requirements)**).
+(see section [Security Requirements](PDQ.md#security-requirements)).
 
 The SOAP *Body* element conveys the administrative information required for a PRPA_IN201305UV02 message in HL7 V3 syntax in
 which primary systems must set the following values:
@@ -82,13 +82,13 @@ In the above example these are
 ```
 
 The query supports many more search options and filter parameter. For a documentation of the options
-see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
+see [IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47).
 
 #### Response Message
 
-Since the **[HL7 V3][hl7]** standard is very generic, the response message is quite lengthy and needs some
+Since the [HL7 V3][hl7] standard is very generic, the response message is quite lengthy and needs some
 background information to interpret. The raw version of a response message may be found
-**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
+[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_response_raw.xml). For a step by step interpretation of the message, see section below.
 
 ##### Message Interpretation
 
@@ -98,7 +98,7 @@ of the *controlAct* object. The *subject* child element conveys the following in
 - *id*: the XAD PID, which identifies the patient in the community (line 50)  and the EPR-SPID (line 51).
 - *name*: conveying the given and the family names of the matching patient data (line 54).
 - *administrativeGenderCode*: conveying the coded value of patient gender (line 58), taken from the value sets defined in
-**[Annex 3][annexes]**.  
+[Annex 3][annexes].  
 - *birthTime*: the data of birth of the matching patient data (line 59).
 - *addr*: The address data of the patient (line 60).     
 
@@ -108,7 +108,7 @@ of the *controlAct* object. The *subject* child element conveys the following in
 
 ### Transport Protocol
 
-The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the **[W3C SOAP specification][soap]**. It may look like:  
+The primary system shall send the request messages to the registry of the community using the http POST binding as defined in the [W3C SOAP specification][soap]. It may look like:  
 
 ```http linenums="1"
 POST /PDQV3Service HTTP/1.1
@@ -122,9 +122,9 @@ Content-Length: nnnn
 ### Audit Log
 
 Primary systems shall store syslog messages to the audit record repository of the community using TLS transport protocol.
-The audit message uses XML formatting as specified in **[RFC 3881][rfc3881]** with restrictions
-specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=703)** and the
-**[Extension 1 to Annex5][annexes]** in the ordinances of the Swiss electronic patient record (see Section
+The audit message uses XML formatting as specified in [RFC 3881][rfc3881] with restrictions
+specified in the [IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-messages/view.seam?id=703) and the
+[Extension 1 to Annex5][annexes] in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").
 
 ```xml title="iti-47-log.xml" linenums="1"
@@ -151,4 +151,4 @@ To ensure privacy the transaction must be secured using https with mutual authen
 
 ## Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
+The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md), test systems of the EPR communities or the [EPR Playground](playground.md).

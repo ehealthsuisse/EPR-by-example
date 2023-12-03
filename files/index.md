@@ -16,39 +16,39 @@ Please see section below for details on the available public test systems.
 
 ### Patient Management
 
-**[PDQ V3](PDQ.md)** - Search for patient data using demographic data as search criteria
+[PDQ V3](PDQ.md) - Search for patient data using demographic data as search criteria
 
-**[PIX V3 Feed](PIXFeed.md)** - Register patient data
+[PIX V3 Feed](PIXFeed.md) - Register patient data
 
-**[PIX V3 Query](PIXQuery.md)** - Query the master patient ID and EPR-SPID for patients
+[PIX V3 Query](PIXQuery.md) - Query the master patient ID and EPR-SPID for patients
 
 ### Document Management
 
-**[Registry Stored Query](RegistryStoredQuery.md)** - Get and display document metadata
+[Registry Stored Query](RegistryStoredQuery.md) - Get and display document metadata
 
-**[Retrieve Document Set](RetrieveDocumentSet.md)** - Get and display documents
+[Retrieve Document Set](RetrieveDocumentSet.md) - Get and display documents
 
-**[Provide and Register Document Set](ProvideAndRegister.md)** - Store documents in the EPR
+[Provide and Register Document Set](ProvideAndRegister.md) - Store documents in the EPR
 
 ### Authentication
 
-**[Authenticate User](AuthenticateUser.md)** - Authenticate a user
+[Authenticate User](AuthenticateUser.md) - Authenticate a user
 
-**[IdP Renew](IdPRenew.md)** - Renew a IdP assertion
+[IdP Renew](IdPRenew.md) - Renew a IdP assertion
 
-**[SSO Logout](SSOLogout.md)** - Logout of authenticated user
+[SSO Logout](SSOLogout.md) - Logout of authenticated user
 
 ### Authorization
 
-**[Get X-User Assertion](GetXAssertion.md)** - Retrieve SAML 2.0 Assertions for authorization
+[Get X-User Assertion](GetXAssertion.md) - Retrieve SAML 2.0 Assertions for authorization
 
-**[Provide X-User Assertion](ProvideXAssertion.md)** - Use SAML 2.0 Assertion in transactions to authorize access
+[Provide X-User Assertion](ProvideXAssertion.md) - Use SAML 2.0 Assertion in transactions to authorize access
 
 ### Public Test Systems
 
-**[EPR Playground](playground.md)** - Public available test system to test transaction messages and complex use cases.
+[EPR Playground](playground.md) - Public available test system to test transaction messages and complex use cases.
 
-**[EPR Reference Environment](gazelle.md)** - Public available test system to test isolated transaction for EPR compliance.
+[EPR Reference Environment](gazelle.md) - Public available test system to test isolated transaction for EPR compliance.
 
 ## Swiss EPR Exchange Formats
 
@@ -56,11 +56,11 @@ Exchange formats permit the simple exchange of data between different health pro
 
 ### eMedication
 
-**[Medication Card document](MedicationCardDocument.md)** - Complete overview about the current Medication from the patient.
+[Medication Card document](MedicationCardDocument.md) - Complete overview about the current Medication from the patient.
 
 ### eVaccination
 
-**[Immunization Administration Document](ImmunizationAdministrationDocument.md)** - Contains information on applied immunizations.
+[Immunization Administration Document](ImmunizationAdministrationDocument.md) - Contains information on applied immunizations.
 
 ### FHIR Questionnaire
-**[How to build a FHIR-Questionnaire](Questionnaire.md)** - Contains information on how a FHIR Questionnaire can be built and displayed for an user to fill out.
+[How to build a FHIR-Questionnaire](Questionnaire.md) - Contains information on how a FHIR Questionnaire can be built and displayed for an user to fill out.
