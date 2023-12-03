@@ -23,42 +23,8 @@ The major content (lines 9..32) of the message is required for to sign the messa
 - *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).
 - *SessionIndex*: The unique ID of the session used to identify all systems sharing the same session. It's value shall match the Session Index provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).  
 
-```
-1 <samlp:LogoutRequest
-2 	xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
-3 	xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-4 	ID="pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1"
-5 	Version="2.0"
-6 	IssueInstant="2020-07-18T01:13:06Z"
-7 	Destination="http://idp.example.com/SSOLogoutService">
-8 	<saml:Issuer>http://sp.application.com</saml:Issuer>
-9 	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-10 		<ds:SignedInfo>
-11 			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-12 			<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-13 			<ds:Reference URI="#pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1">
-14 				<ds:Transforms>
-15 					<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-16 					<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-17 				</ds:Transforms>
-18 				<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-19 				<ds:DigestValue>Q9PRlugQZKSBt+Ed9i6bKUGWND0=</ds:DigestValue>
-20 			</ds:Reference>
-21 		</ds:SignedInfo>
-22 		<ds:SignatureValue>
-23 			<!-- omitted for brevity -->
-24 		</ds:SignatureValue>
-25 		<ds:KeyInfo>
-26 			<ds:X509Data>
-27 				<ds:X509Certificate>
-28 					<!-- omitted for brevity -->
-29 				</ds:X509Certificate>
-30 			</ds:X509Data>
-31 		</ds:KeyInfo>
-32 	</ds:Signature>
-33 	<saml:NameID SPNameQualifier="http://sp.application.com" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">IdP_User_ID_f92cc183</saml:NameID>
-34 	<saml:SessionIndex>bdfe3302-3ed8-11eb-b378-0242ac130002</saml:SessionIndex>
-35 </samlp:LogoutRequest>
+```xml title="2_Logout Request.xml" linenums="1" hl_lines="4 7 33 34"
+--8<-- "Auth_samples/2_Logout Request.xml"
 ```
 
 #### Response Message
@@ -72,44 +38,8 @@ The major content (lines 9..32) of the message is required for to sign the messa
 - *InResponseTo*: The unique ID of the initial request (line 8).
 - *Status*: The return status of the request, indicating success or failure (line 34 .. 36).
 
-```
-1 <samlp:LogoutResponse
-2 	xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
-3 	xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-4 	ID="pfxe335499f-e73b-80bd-60c4-1628984aed4f"
-5 	Version="2.0"
-6 	IssueInstant="2020-07-18T01:13:06Z"
-7 	Destination="http://sp.example.com/LogoutService"
-8 	InResponseTo="pfxd4d369e8-9ea1-780c-aff8-a1d11a9862a1">
-9 	<saml:Issuer>http://idp.example.com/LogoutService</saml:Issuer>
-10 	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-11 		<ds:SignedInfo>
-12 			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-13 			<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-14 			<ds:Reference URI="#pfxe335499f-e73b-80bd-60c4-1628984aed4f">
-15 				<ds:Transforms>
-16 					<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-17 					<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-18 				</ds:Transforms>
-19 				<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-20 				<ds:DigestValue>PusFPAn+RUZV+fBvwPffNMOENwE=</ds:DigestValue>
-21 			</ds:Reference>
-22 		</ds:SignedInfo>
-23 		<ds:SignatureValue>
-24 			<!-- omitted for brevity -->
-25 		</ds:SignatureValue>
-26 		<ds:KeyInfo>
-27 			<ds:X509Data>
-28 				<ds:X509Certificate>
-29 					<!-- omitted for brevity -->
-30 				</ds:X509Certificate>
-31 			</ds:X509Data>
-32 		</ds:KeyInfo>
-33 	</ds:Signature>
-34 	<samlp:Status>
-35 		<samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
-36 	</samlp:Status>
-37 </samlp:LogoutResponse>
+```xml title="2_Logout Response.xml" linenums="1" hl_lines="4 7 8 34-36"
+--8<-- "Auth_samples/2_Logout Response.xml"
 ```
 
 ### Transport Protocol
