@@ -41,27 +41,8 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 - *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](RegistryStoredQuery.md)** response.
 - *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
 
-```
-0 <?xml version="1.0" encoding="UTF-8"?>
-1 <soapenv:Envelope xmlns=" !-- namespaces omitted -- ">
-2   <soapenv:Header>
-3     <wsa:To soapenv:mustUnderstand="1">https://epd-test.com/Repository/services/RepositoryService</wsa:To>
-4     <wsa:MessageID soapenv:mustUnderstand="1">urn:uuid:1EB10F67-6562-46D5-9B6B-5DC42EB2B4A6</wsa:MessageID>
-5     <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RetrieveDocumentSet</wsa:Action>
-6     <wsse:Security>
-7       <saml2:Assertion> <!-- XUA assertion omitted --></saml2:Assertion>
-8     </wsse:Security>
-9   </soapenv:Header>
-10   <soapenv:Body>
-11     <xsdb:RetrieveDocumentSetRequest>
-12       <xsdb:DocumentRequest>
-13         <xsdb:HomeCommunityId>urn:oid:1.3.6.1.4.1.21367.2017.2.6.19</xsdb:HomeCommunityId>
-14         <xsdb:RepositoryUniqueId>1.3.6.1.4.1.21367.2017.2.3.54</xsdb:RepositoryUniqueId>
-15         <xsdb:DocumentUniqueId>1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623</xsdb:DocumentUniqueId>
-16       </xsdb:DocumentRequest>
-17     </xsdb:RetrieveDocumentSetRequest>
-18   </soapenv:Body>
-19 </soapenv:Envelope>    
+```xml title="ITI-43_request.xml" linenums="1" hl_lines="13-15"
+--8<-- "samples/ITI-43_request.xml:1"
 ```
 
 #### Response Message
@@ -74,28 +55,8 @@ The SOAP *Header* element of the response conveys the following information:
 - *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: The *messageID* of the request (see above).  
 
-```
-0 <?xml version='1.0' encoding='utf-8'?>
-1 <soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
-2   <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
-3     <wsa:Action>urn:ihe:iti:2007:RetrieveDocumentSetResponse</wsa:Action>
-4     <wsa:RelatesTo>urn:uuid:1EB10F67-6562-46D5-9B6B-5DC42EB2B4A6</wsa:RelatesTo>
-5   </soapenv:Header>
-6   <soapenv:Body>
-7     <ns3:RetrieveDocumentSetResponse xmlns=" !-- namespaces omitted -- ">
-8       <ns6:RegistryResponse status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>
-9       <ns3:DocumentResponse>
-10         <ns3:HomeCommunityId>urn:oid:1.3.6.1.4.1.21367.2017.2.6.19</ns3:HomeCommunityId>
-11         <ns3:RepositoryUniqueId>1.3.6.1.4.1.21367.2017.2.3.54</ns3:RepositoryUniqueId>
-12         <ns3:DocumentUniqueId>1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623</ns3:DocumentUniqueId>
-13         <ns3:mimeType>application/pdf</ns3:mimeType>
-14         <ns3:Document xmlns:xop="http://www.w3.org/2004/08/xop/include">
-15           <xop:Include href="cid:72f7c587daaacb8b81212de4e80e442e5f43394482e12edd@apache.org"/>
-16         </ns3:Document>
-17       </ns3:DocumentResponse>
-18     </ns3:RetrieveDocumentSetResponse>
-19   </soapenv:Body>
-20 </soapenv:Envelope>   
+```xml title="ITI-43_response.xml" linenums="1"
+--8<-- "samples/ITI-43_response.xml:1"
 ```
 
 The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetResponse* which conveys 1..N *DocumentResponse* elements
@@ -114,7 +75,7 @@ binding as specified in the SOAP **[MTOM specification][mtom]** of the W3C.
 The repository responds the documents using the MIME Multipart/Related binding as specified in the SOAP
 **[MTOM specification][mtom]** of the W3C. A full message may look like:
 
-```
+```http linenums="1"
 DefaultHttpResponse(chunked: false)
 HTTP/1.1 200 OK
 Connection: Keep-Alive
@@ -168,36 +129,8 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 
 The following snippet shows a example audit message to be written by the primary system:
 
-```
-<?xml version='1.0' encoding='utf-8'?>
-<AuditMessage>
- <EventIdentification EventActionCode="C" EventDateTime="2020-06-04T10:54:39.571Z" EventOutcomeIndicator="0">
-  <EventID csd-code="110107" codeSystemName="DCM" originalText="Import"/>
-  <EventTypeCode csd-code="ITI-43" codeSystemName="IHE Transactions" originalText="Retrieve Document Set"/>
-  <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normal"/>
- </EventIdentification>
- <ActiveParticipant UserID="pma@gnt.com" UserName="JD&lt;pma@gnt.com&gt;"/>
- <ActiveParticipant UserID="2000000090108" UserName="Dr. med. John Doe" UserIsRequestor="true">
-  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://repositoryService.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
-  <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="https://primarySystem.com" AlternativeUserID="UNKNOWN" UserIsRequestor="true" NetworkAccessPointID="hcohcdemo01-app06-icwpxs01.net.swisscom-health.it" NetworkAccessPointTypeCode="1">
-  <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
- </ActiveParticipant>
- <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.194" AuditSourceID="LE-Portal">
-  <AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other"/>
- </AuditSourceIdentification>
- <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
- </ParticipantObjectIdentification>
- <ParticipantObjectIdentification ParticipantObjectID="2.16.756.5.30.1.194.130880.1591258526941" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
-  <ParticipantObjectIDTypeCode csd-code="9" codeSystemName="RFC-3881" originalText="Report Number"/>
-  <ParticipantObjectDetail type="Repository Unique Id" value="Mi4xNi43NTYuNS4zMC4xLjE5NC4zLjMuMQ=="/>
-  <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoyLjE2Ljc1Ni41LjMwLjEuMTk0"/>
- </ParticipantObjectIdentification>
-</AuditMessage>
+```xml title="iti-43-log.xml" linenums="1"
+--8<-- "samples/iti-43-log.xml"
 ```
 
 The message is made of the following blocks:
