@@ -29,8 +29,8 @@ The following snippet shows the content of a logout request, with some elements 
 The major content (lines 9..32) of the message is required for to sign the message compliant with the **[SAML 2.0 specification](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)**. Apart from that, the message conveys the following information:
 - *ID*: A unique ID of the request message (line 4).
 - *Destination*: An identifier of the receiver endpoint. For primary systems sending the request, this shall be the URL of IdP logout endpoint (line 7).
-- *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)**).
-- *SessionIndex*: The unique ID of the session used to identify all systems sharing the same session. It's value shall match the Session Index provided in the IdP Assertion (see **[Authenticate User](./AuthenticateUser.md)**).  
+- *NameID*: The electronic ID used to authenticate the user (line 33). It's value shall match the value provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).
+- *SessionIndex*: The unique ID of the session used to identify all systems sharing the same session. It's value shall match the Session Index provided in the IdP Assertion (see **[Authenticate User](AuthenticateUser.md)**).  
 
 ```
 1 <samlp:LogoutRequest

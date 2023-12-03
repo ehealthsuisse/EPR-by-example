@@ -22,7 +22,7 @@ To retrieve the master patient ID for the patient to access the patients EPR, th
 **[Patient V3 Query \[ITI-45\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-45.html)**. Within the query request the
 primary system shall provide the local ID of the patient in the primary system, as well as the *data source* parameter
 of the assigning authority of the community and the the assigning authority EPR-SPID. The local ID must match the local
-ID the primary system registered the patient with (see **[PIX Feed](./PIXFeed.md)**).  
+ID the primary system registered the patient with (see **[PIX Feed](PIXFeed.md)**).  
 
 If the patient is registered in the community, the community sends a response with the master patient ID (XAD-PID) and
 the EPR-SPID.
@@ -38,7 +38,7 @@ Messages are encoded as described in the HL7 V3 standard with restrictions defin
 
 Due to the genericity of the underlying **[HL7 V3](http://www.hl7.org)** standard, the request message is quite lengthy.
 A raw version of a request message may be found
-**[here](../samples/ITI-45_request_raw.xml)**.
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_request_raw.xml)**.
 
 For a step by step interpretation of the request message, see section below.
 
@@ -149,7 +149,7 @@ The PIX V3 Feed service responds with the master patient ID (XAD-PID) and the EP
 the community.
 
 The request message is not very complex, but quite lengthy due to the genericity of the HL7 V3 standard. A raw version
-of a response message may be found **[here](../samples/ITI-45_response.xml)**.
+of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-45_response.xml)**.
 
 #### Message Interpretation
 
@@ -278,4 +278,4 @@ Note:
 
 # Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](./gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](./playground.md)**.
+The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

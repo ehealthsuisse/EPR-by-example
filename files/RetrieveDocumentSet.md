@@ -18,8 +18,8 @@ Transaction to retrieve one or more documents from a community. Primary systems 
 Primary systems shall use this transaction to retrieve documents from a patients EPR. In the Swiss EPR the **[IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html)** profile and transactions shall be used.
 
 To retrieve the document metadata of the document, the the primary system shall perform a **[Retrieve Document Set \[ITI-43\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-43.html)** transaction. Within the request, the primary systems shall
-provide the master patient ID as retrieved from the **[PIX Query](./PIXQuery.md)**, and the repository as well as
-the documents unique IDs taken from the response of the **[Registry Stored Query](./RegistryStoredQuery.md)**. In
+provide the master patient ID as retrieved from the **[PIX Query](PIXQuery.md)**, and the repository as well as
+the documents unique IDs taken from the response of the **[Registry Stored Query](RegistryStoredQuery.md)**. In
 the Swiss EPR currently only supports the synchronous exchange option is supported.    
 
 The community responds the set of documents.
@@ -34,7 +34,7 @@ profile and the ordinances to the Swiss EPR.
 ### Request Message
 
 The following snippet displays a sample request recorded during the EPR projectathon in September 2020, with abrevations
-to increase readability. The raw request file may be found **[here](../samples/ITI-43_request_raw.xml)**.
+to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_request_raw.xml)**.
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope. The
 SOAP *Header* element conveys the following information:
@@ -43,14 +43,14 @@ SOAP *Header* element conveys the following information:
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the query as defined in the IHE ITI Technical Framework.
 - *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
-authorization (see **[Provide X-User Assertion](./ProvideXAssertion.md)**).  
+authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
 
 The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which shall convey 1..N *DocumentRequest* elements
 (lines 12 to 16 below) with the following information:
 
 - *HomeCommunityId* : Unique ID of the community.
-- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](./RegistryStoredQuery.md)** response.
+- *RepositoryUniqueId*: Unique ID of repository taken from a **[Registry Stored Query](RegistryStoredQuery.md)** response.
 - *DocumentUniqueId*: Unique ID of the document taken from a Registry Stored Query response.
 
 ```
@@ -79,7 +79,7 @@ The SOAP *Body* element conveys the ebXML *RetrieveDocumentSetRequest* which sha
 ### Response Message
 
 The following snippet displays a sample response recorded during the EPR projectathon in September 2020, with abrevations
-to increase readability. The raw request file may be found **[here](../samples/ITI-43_response_raw.xml)**.
+to increase readability. The raw request file may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-43_response_raw.xml)**.
 
 The SOAP *Header* element of the response conveys the following information:
 
@@ -229,7 +229,7 @@ To ensure privacy the transaction must be secured using https with mutual authen
 validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
-envelope. See **[Provide X-User Assertion](./ProvideXAssertion.md)** for the implementation details.
+envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
@@ -237,4 +237,4 @@ Note:
 
 # Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](./gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](./playground.md)**.
+The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

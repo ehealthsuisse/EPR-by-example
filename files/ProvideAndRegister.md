@@ -23,7 +23,7 @@ be used.
 To store the document metadata of the document, the the primary system shall perform a
 **[Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html)** transaction.
 Within the request, the primary systems shall provide the master patient ID as retrieved from the
-**[PIX Query](./PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the
+**[PIX Query](PIXQuery.md)**, the document metadata as defined in the ordinances of the Swiss EPR and the
 binary data of the document.  
 
 The community responds with a code indicating the successful registration of the document.
@@ -55,7 +55,7 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
 of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found **[here](../samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](../samples/ITI-41_request.xml)**.
+A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**. The raw version of the request message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml)**.
 
 ### Message Interpretation
 
@@ -68,7 +68,7 @@ The SOAP *Header* element conveys the following information:
 - *MessageID* element: a UUID of the message.
 - *Action* element: The SOAP action identifier of the request as defined in the IHE ITI Technical Framework.
 - *Security* element: The Web Service Security header as defined in the **[WS Security](http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html)** specification. This element conveys the XUA Assertion used for
-authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**).  
+authorization (see **[Provide X-User Assertion](ProvideXAssertion.md)**).  
 
 ```
 3  <soapenv:Header>
@@ -85,7 +85,7 @@ authorization (see **[Provide X-User Assertion](../files/ProvideXAssertion.md)**
 The SOAP *Body* element conveys the following objects in ebXML syntax:
 
 - *RegistryRegistryPackage* defining the submission set and it's metadata.
-- *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)**).
+- *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in **[Registry Stored Query](RegistryStoredQuery.md#response-message)**).
 - *Association* linking the document metadata to the submission set.  
 
 We will explain the *RegistryRegistryPackage* object defining the submission set first. For the other elements, see below.  
@@ -173,7 +173,7 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 - *XDSSubmissionSet.sourceId*: Conveys the OID of the primary system performing the request.
 - *XDSSubmissionSet.uniqueId*: Conveys a UUID of the submission set.
 - *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format
-(see **[PIX Feed](../files/PIXFeed.md)**).
+(see **[PIX Feed](PIXFeed.md)**).
 
 ```
 65       <rim:ExternalIdentifier
@@ -213,12 +213,12 @@ The *RegistryRegistryPackage* object defining the submission set has three *Exte
 
 The request contains 1..N *ExtrinsicObject* representing the document metadata for each document. The interpretation of
 the document metadata matches the document metadata interpretation, which is explained in detail in step by step example in
-the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](../files/RegistryStoredQuery.md#response-message)** for the interpretation of the document metadata.
+the Registry Stored Query page and will not be reproduced here. Please see **[Registry Stored Query](RegistryStoredQuery.md#response-message)** for the interpretation of the document metadata.
 
 #### Association
 
 The request contains one *Association* object linking the document and document metadata to a submission set defined in the
-*RegistryPackage* (see **[Submission Set](../files/ProvideAndRegister.md#submission-set)**).
+*RegistryPackage* (see **[Submission Set](ProvideAndRegister.md#submission-set)**).
 
 The *Association* object thus conveys two parameter to link the objects:
 - *sourceObject*: The attribute value must match the *id* attribute of the submission set *RegistryPackage*.
@@ -249,7 +249,7 @@ encoded in the *Body* element of the SOAP envelope as follows:
   <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>.
 ```
 
-The raw version of a response message may be found **[here](../samples/ITI-41_response.xml)**.
+The raw version of a response message may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_response.xml)**.
 
 
 ## Transport Protocol
@@ -366,7 +366,7 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Information on the user as required by the IHE XUA profile.
 - *ActiveParticipant*: Element with information on the authenticated user initiating the request.
 - *ActiveParticipant*: Element with information on the primary system performing which is the destination of the documents.
-- *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](../files/PIXFeed.md)**).  
+- *ParticipantObjectIdentification*: Element conveying the master patient ID (XAD-PID) in CX format (see **[PIX Feed](PIXFeed.md)**).  
 - *ParticipantObjectIdentification*: Element with request message related information.  
 
 *TODO* Update with gazelle example
@@ -378,7 +378,7 @@ To ensure privacy the transaction must be secured using https with mutual authen
 validation required) and client and server side certificate validation.
 
 To enable authorization, the transaction must convey the XUA Assertion for authorization in the security header of the SOAP
-envelope. See **[Provide X-User Assertion](../files/ProvideXAssertion.md)** for the implementation details.
+envelope. See **[Provide X-User Assertion](ProvideXAssertion.md)** for the implementation details.
 
 Note:
 - Some test environments dropped the mutual authentication or TLS for testing purposes. Please contact your test system provider on the details.
@@ -386,4 +386,4 @@ Note:
 
 # Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](./gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](./playground.md)**.
+The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

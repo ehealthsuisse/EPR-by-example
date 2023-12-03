@@ -41,7 +41,7 @@ Messages are encoded as described in the HL7 V3 standard with restrictions defin
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the request message is quite lengthy and needs some
 background information to interpret. The raw version of a request message may be found
-**[here](../samples/ITI-47_request_raw.xml)**. For a step by step interpretation
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_request_raw.xml)**. For a step by step interpretation
 of the request message, see section below.
 
 #### Message Interpretation
@@ -160,7 +160,7 @@ see **[IHE PDQ V3](https://profiles.ihe.net/ITI/TF/Volume2/ITI-47.html#3.47)**.
 
 Since the **[HL7 V3](http://www.hl7.org)** standard is very generic, the response message is quite lengthy and needs some
 background information to interpret. The raw version of a response message may be found
-**[here](../samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-47_response_raw.xml)**. For a step by step interpretation of the message, see section below.
 
 #### Message Interpretation
 
@@ -277,4 +277,4 @@ Note:
 
 # Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](./gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](./playground.md)**.
+The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.

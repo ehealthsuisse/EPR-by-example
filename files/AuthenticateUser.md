@@ -38,7 +38,7 @@ The usage of the profiles and binding used to authenticate user for the Swiss EP
 
 The transaction to authenticate a user for the access to the Swiss EPR is a multi-step flow consisting of HTTP Post and SOAP Web Service calls, as displayed in the following figure:
 
-![Authentication Sequence](../media/SAML-Artifact-flow.png)
+![Authentication Sequence](media/SAML-Artifact-flow.png)
 
 **Figure 1: Authentication Sequence Diagram**
 
@@ -65,7 +65,7 @@ system as specified in **[Bindings for the OASIS Security Assertion Markup Langu
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found
-**[here](../Auth_samples/04_AuthnRequest_raw.xml)**.
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml)**.
 
 The *AuthnRequest* conveys the following information to be set by the primary system:
 - *ID*: A unique ID of the request message (line 7 in the example below).
@@ -142,7 +142,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 #### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found
-**[here](../Auth_samples/09_ArtifactResolve_raw.xml)**.
+**[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResolve_raw.xml)**.
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
@@ -186,7 +186,7 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 
 #### Response Message
 
-The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](../Auth_samples/09_ArtifactResponse_raw.xml)**.
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found **[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml)**.
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 - *Issuer*: A ID of the primary system as URL (line 4 in the example below).
@@ -254,7 +254,7 @@ The *ArtifactResponse* conveys the following information which shall be evaluate
 The following snippet shows an example of a IdP Assertion conveyed with the response.
 
 The primary system must keep the IdP Assertion in memory to use it to authenticate the
-**[Get X-User Assertion](./GetXAssertion.md)** transaction.
+**[Get X-User Assertion](GetXAssertion.md)** transaction.
 
 The primary system is not required to analyze the IdP Assertion further, but may extract the following information from the
 assertion:
@@ -351,4 +351,4 @@ Primary systems shall protocol the transaction in their logs to ensure traceabil
 
 # Test Opportunity
 
-The transaction can be tested with the test suite of the **[EPR reference environment](./gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](./playground.md)**.
+The transaction can be tested with the test suite of the **[EPR reference environment](gazelle.md)**, test systems of the EPR communities or the **[EPR Playground](playground.md)**.
