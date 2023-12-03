@@ -19,23 +19,23 @@ Primary systems shall use a **[Get X-User Assertion ](GetXAssertion.md)** transa
 
 The following snippet shows an abbreviated example message with a SAML Assertion:  
 
-```
-1 <?xml version="1.0" encoding="UTF-8"?>
-2 <Envelope xmlns=" !-- namespaces omitted -- ">
-3  <Header>
-4    <To soapenv:mustUnderstand="1"> <!-- id of transaction used in conjunction --></wsa:To>
-5    <MessageID soapenv:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
-6    <Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
-7    <Security>
-8      <saml2:Assertion>
-9			  <!-- assertion content omitted for brevity -->
-10      </saml2:Assertion>
-11    <Security>
-12  </Header>
-13  <Body>
-14   <!-- body elements of transaction used in conjunction omitted for brevity -->
-15  <Body>
-16 </soapenv:Envelope>    
+```xml linenums="1"
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns=" !-- namespaces omitted -- ">
+ <soap:Header>
+   <wsa:To soap:mustUnderstand="1"> <!-- id of transaction used in conjunction --></wsa:To>
+   <wsa:MessageID soap:mustUnderstand="1">urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:MessageID>
+   <wsa:Action soap:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQuery</wsa:Action>
+   <wsse:Security>
+     <saml2:Assertion>
+       <!-- assertion content omitted for brevity -->
+     </saml2:Assertion>
+   </wsse:Security>
+ </soap:Header>
+ <soap:Body>
+  <!-- body elements of transaction used in conjunction omitted for brevity -->
+ </soap:Body>
+</soap:Envelope>
 ```
 
 For the details on the Assertion content, please see the step by step example in **[Get X-User Assertion ](GetXAssertion.md)**.
