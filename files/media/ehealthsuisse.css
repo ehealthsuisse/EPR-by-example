@@ -55,3 +55,7 @@
 .md-nav__item--section>.md-nav__link[for] {
     color: #455b6d;
 }
+.md-typeset ol li,
+.md-typeset ul li {
+    margin-bottom: .2em;
+}
