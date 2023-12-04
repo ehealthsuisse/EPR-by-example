@@ -16,6 +16,9 @@ theme:
     - content.code.copy
     - search.suggest
     - search.highlight
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
 extra:
   homepage: https://www.e-health-suisse.ch/
 extra_css:
