@@ -92,7 +92,7 @@ Primary systems shall set the following values:
 1 <PRPA_IN201301UV02 xmlns="urn:hl7-org:v3" ITSVersion="XML_1.0">
 2   <id extension="1694431245655" root="1.3.6.1.4.1.21367.2017.2.7.141"/>
 3   <creationTime value="20230911115902"/>
-4   <interactionId extension="PRPA_IN201301UV02" root="2.16.840.1.113883.1.18"/>
+4   <interactionId extension="PRPA_IN201301UV02" root="2.16.840.1.113883.1.6"/>
 5   <processingCode code="T"/>
 6   <processingModeCode code="T"/>
 7   <acceptAckCode code="AL"/>
@@ -112,7 +112,7 @@ The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 
 ```
 18 <controlActProcess classCode="CACT" moodCode="EVN">
-19     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.18"/>
+19     <code code="PRPA_TE201301UV02" codeSystem="2.16.840.1.113883.1.6"/>
 20     <subject contextConductionInd="false" typeCode="SUBJ">
 21       <registrationEvent classCode="REG" moodCode="EVN">
 22         <statusCode code="active"/>

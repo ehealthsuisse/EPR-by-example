@@ -105,7 +105,7 @@ The query is encoded in a HL7 V3 *controlAct* object as follows:
 
 ```
 34    <controlActProcess classCode="CACT" moodCode="EVN">
-35     <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.18"/>
+35     <code code="PRPA_TE201305UV02" codeSystem="2.16.840.1.113883.1.6"/>
 36     <queryByParameter>
 37      <queryId extension="16944356511831" root="1.2.840.114350.1.13.28.1.18.5.999"/>
 38      <statusCode code="new"/>
