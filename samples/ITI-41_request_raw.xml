@@ -24,7 +24,31 @@ Content-Type: application/xop+xml; charset=utf-8; type="application/soap+xml"
 Content-Transfer-Encoding: binary
 Content-ID: <0.15b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149@apache.org>
 
-<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope"><soapenv:Header><wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"><saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="_73dc2647-739f-4e7d-b7a6-e219aad186c4" IssueInstant="2020-09-24T15:43:06.966Z" Version="2.0"><saml2:Issuer>http://ith-icoserve.com/eHealthSolutionsSTS</saml2:Issuer><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><ds:Reference URI="#_73dc2647-739f-4e7d-b7a6-e219aad186c4"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"><ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xsd"/></ds:Transform></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>mKxDkq41+L2zQrs7LZh+kZFwTOZT6gCRlKxPsV9D8qM=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>Iof2ntBB2HpHWl2AEeS4KOGjjRlEywzvEKYk/fbGuacqovmqrnh3ym3JXAzTXsfFyWlXWWlynJEU54a2JHlBL6FeMoDnxcBm8mFidkACkcNoK5FpqI6Skcs+oD/05+t9VIAxO2n8ODn1NN54/oX2jxw8aUO160Tl63QJUlhr2jiZKGAvFWAtXsHNXMiDX9A1b6crBJRwPVYV2Ged7IRGkVCqtRJkyP1pOM+TSCi4iR/YffeGYCFnmBk4xQ3zUZ6J7Y2ozytyTy/qyRNHhya/Vj27e8wPzvyaWlL71k1zJ/+CZOwlWbU4Gv8Sq4grmlqmYOLOjWZjt+aqfqDYIfz0VQ==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIID5jCCA0+gAwIBAgICANYwDQYJKoZIhvcNAQENBQAwRTELMAkGA1UEBhMCQ0gxDDAKBgNVBAoM
+<?xml version='1.0' encoding='utf-8'?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+<soapenv:Header>
+<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
+<saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="_73dc2647-739f-4e7d-b7a6-e219aad186c4" IssueInstant="2020-09-24T15:43:06.966Z" Version="2.0">
+<saml2:Issuer>http://ith-icoserve.com/eHealthSolutionsSTS
+</saml2:Issuer>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference URI="#_73dc2647-739f-4e7d-b7a6-e219aad186c4">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+<ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xsd"/>
+</ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>mKxDkq41+L2zQrs7LZh+kZFwTOZT6gCRlKxPsV9D8qM=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>Iof2ntBB2HpHWl2AEeS4KOGjjRlEywzvEKYk/fbGuacqovmqrnh3ym3JXAzTXsfFyWlXWWlynJEU54a2JHlBL6FeMoDnxcBm8mFidkACkcNoK5FpqI6Skcs+oD/05+t9VIAxO2n8ODn1NN54/oX2jxw8aUO160Tl63QJUlhr2jiZKGAvFWAtXsHNXMiDX9A1b6crBJRwPVYV2Ged7IRGkVCqtRJkyP1pOM+TSCi4iR/YffeGYCFnmBk4xQ3zUZ6J7Y2ozytyTy/qyRNHhya/Vj27e8wPzvyaWlL71k1zJ/+CZOwlWbU4Gv8Sq4grmlqmYOLOjWZjt+aqfqDYIfz0VQ==</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>MIID5jCCA0+gAwIBAgICANYwDQYJKoZIhvcNAQENBQAwRTELMAkGA1UEBhMCQ0gxDDAKBgNVBAoM
 A0lIRTEoMCYGA1UEAwwfZWhlYWx0aHN1aXNzZS5paGUtZXVyb3BlLm5ldCBDQTAeFw0xOTExMTkw
 NjE3MDBaFw0yOTExMTkwNjE3MDBaMDIxCzAJBgNVBAYTAkFUMRUwEwYDVQQKDAxJVEggaWNvc2Vy
 dmUxDDAKBgNVBAMMA1NUUzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANc8txP/o03W
@@ -41,7 +65,49 @@ BBgwFoAUKJfv3d4xWGxW8oZG4hHkPjhxXy8wDgYDVR0PAQH/BAQDAgTwMBEGCWCGSAGG+EIBAQQE
 AwIF4DAzBgNVHSUELDAqBggrBgEFBQcDAgYIKwYBBQUHAwQGCisGAQQBgjcUAgIGCCsGAQUFBwMB
 MA0GCSqGSIb3DQEBDQUAA4GBAIVAG7X24vwje17fcDshobEQ6SOV43JYYTUx5bfB6PRbiJOb8Kv9
 2Ijs9o9JAuol1tisQ0LZX/ddEqZ02i3gw4HsC5PSX3pTvndbhRxC6qL9fGu8x2FJ2W3Os/au5WNP
-VnLkX60dKe+2aMydlWxKAJiGZE10ppMXOV9GlVIiHysp</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature><saml2:Subject><saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="urn:gs1:gln">9801000050702</saml2:NameID><saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><saml2:SubjectConfirmationData InResponseTo="Assertion_e2c58be04f4df2f80e9f3c0d1454878ee744aa3f" NotOnOrAfter="2020-09-24T15:58:06.966Z" Recipient="https://dev.avintis.com:9444/commonauth"/></saml2:SubjectConfirmation></saml2:Subject><saml2:Conditions NotBefore="2020-09-24T15:43:05.966Z" NotOnOrAfter="2020-09-24T15:58:06.966Z"><saml2:AudienceRestriction><saml2:Audience>urn:e-health-suisse:token-audience:all-communities</saml2:Audience></saml2:AudienceRestriction></saml2:Conditions><saml2:AuthnStatement AuthnInstant="2020-09-24T15:43:06.966Z"><saml2:AuthnContext><saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml2:AuthnContextClassRef></saml2:AuthnContext></saml2:AuthnStatement><saml2:AttributeStatement><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization"><saml2:AttributeValue xsi:type="xsd:string">Post CH AG</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization-id"><saml2:AttributeValue xsi:type="xsd:anyURI">urn:oid:1.3.6.1.4.1.21367.2017.2.6.19.100.2</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:subject-id"><saml2:AttributeValue xsi:type="xsd:string">Rosa Sestak</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:subject:role"><saml2:AttributeValue><Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Actors" displayName="Healthcare professional" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse"><saml2:AttributeValue><PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal Access" xsi:type="CE"/></saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id"><saml2:AttributeValue xsi:type="xsd:token">761337610410035724^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue></saml2:Attribute><saml2:Attribute Name="urn:ihe:iti:xca:2010:homeCommunityId" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><saml2:AttributeValue xsi:type="xsd:anyURI">urn:oid:1.3.6.1.4.1.21367.2017.2.6.19</saml2:AttributeValue></saml2:Attribute></saml2:AttributeStatement></saml2:Assertion></wsse:Security><wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action><wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID></soapenv:Header><soapenv:Body><xdsb:ProvideAndRegisterDocumentSetRequest xmlns:xdsb="urn:ihe:iti:xds-b:2007" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0">
+VnLkX60dKe+2aMydlWxKAJiGZE10ppMXOV9GlVIiHysp</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature>
+<saml2:Subject>
+<saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="urn:gs1:gln">9801000050702</saml2:NameID>
+<saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+<saml2:SubjectConfirmationData InResponseTo="Assertion_e2c58be04f4df2f80e9f3c0d1454878ee744aa3f" NotOnOrAfter="2020-09-24T15:58:06.966Z" Recipient="https://dev.avintis.com:9444/commonauth"/>
+</saml2:SubjectConfirmation>
+</saml2:Subject>
+<saml2:Conditions NotBefore="2020-09-24T15:43:05.966Z" NotOnOrAfter="2020-09-24T15:58:06.966Z"><saml2:AudienceRestriction>
+<saml2:Audience>urn:e-health-suisse:token-audience:all-communities</saml2:Audience>
+</saml2:AudienceRestriction>
+</saml2:Conditions>
+<saml2:AuthnStatement AuthnInstant="2020-09-24T15:43:06.966Z"><saml2:AuthnContext>
+<saml2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml2:AuthnContextClassRef>
+</saml2:AuthnContext>
+</saml2:AuthnStatement>
+<saml2:AttributeStatement><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization">
+<saml2:AttributeValue xsi:type="xsd:string">Post CH AG</saml2:AttributeValue>
+</saml2:Attribute>
+<saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:organization-id"><saml2:AttributeValue xsi:type="xsd:anyURI">urn:oid:1.3.6.1.4.1.21367.2017.2.6.19.100.2</saml2:AttributeValue>
+</saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:subject-id">
+<saml2:AttributeValue xsi:type="xsd:string">Rosa Sestak</saml2:AttributeValue>
+</saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:subject:role"><saml2:AttributeValue>
+<Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Actors" displayName="Healthcare professional" xsi:type="CE"/></saml2:AttributeValue>
+</saml2:Attribute>
+<saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
+<saml2:AttributeValue>
+<PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normal Access" xsi:type="CE"/></saml2:AttributeValue>
+</saml2:Attribute><saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
+<saml2:AttributeValue xsi:type="xsd:token">761337610410035724^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue>
+</saml2:Attribute><saml2:Attribute Name="urn:ihe:iti:xca:2010:homeCommunityId" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+<saml2:AttributeValue xsi:type="xsd:anyURI">urn:oid:1.3.6.1.4.1.21367.2017.2.6.19</saml2:AttributeValue>
+</saml2:Attribute>
+</saml2:AttributeStatement>
+</saml2:Assertion>
+</wsse:Security>
+<wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
+<wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID>
+</soapenv:Header>
+<soapenv:Body>
+<xdsb:ProvideAndRegisterDocumentSetRequest xmlns:xdsb="urn:ihe:iti:xds-b:2007" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0">
   <lcm:SubmitObjectsRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0">
     <rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
       <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
@@ -99,7 +165,6 @@ VnLkX60dKe+2aMydlWxKAJiGZE10ppMXOV9GlVIiHysp</ds:X509Certificate></ds:X509Data><
         <rim:Name>
           <rim:LocalizedString value="Test document"/>
         </rim:Name>
-        >
         <rim:Slot name="languageCode">
           <rim:ValueList>
             <rim:Value>de-CH</rim:Value>
