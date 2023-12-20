@@ -252,7 +252,7 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 23  </ParticipantObjectIdentification>
 24  <ParticipantObjectIdentification ParticipantObjectID="1^^^&amp;F9D62A4A-0352-11EB-A6E8-0242AC140002&amp;ISO" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
 25   <ParticipantObjectIDTypeCode csd-code="ITI-47" codeSystemName="IHE Transactions" originalText="Patient Demographics Query"></ParticipantObjectIDTypeCode>
-26   <ParticipantObjectQuery> <!-- UUencoded copy of the query message --> </ParticipantObjectQuery>
+26   <ParticipantObjectQuery> <!-- BASE-64 encoded copy of the query message --> </ParticipantObjectQuery>
 27   <ParticipantObjectDetail type="MSH-10" value="MV5eXiZGOUQ2MkE2OC0wMzUyLTExRUItQTZFOC0wMjQyQUMxNDAwMDImSVNP"></ParticipantObjectDetail>
 28  </ParticipantObjectIdentification>
 29 </AuditMessage>   
@@ -265,7 +265,7 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Information on the responding service endpoint (line 13 .. 15).
 - *AuditSourceIdentification*: Information related to the primary system performing the query (line 16 .. 18)
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 19 .. 23)
-- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 24 .. 28).
+- *ParticipantObjectIdentification*: Request message related information including a UBASE-64 encoded copy of the query (line 24 .. 28).
 
 ## Security Requirements  
 

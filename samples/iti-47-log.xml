@@ -23,7 +23,7 @@
  </ParticipantObjectIdentification>
  <ParticipantObjectIdentification ParticipantObjectID="1^^^&amp;F9D62A4A-0352-11EB-A6E8-0242AC140002&amp;ISO" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
   <ParticipantObjectIDTypeCode csd-code="ITI-47" codeSystemName="IHE Transactions" originalText="Patient Demographics Query"></ParticipantObjectIDTypeCode>
-  <ParticipantObjectQuery> <!-- UUencoded copy of the query message --> </ParticipantObjectQuery>
+  <ParticipantObjectQuery> <!-- BASE-64 encoded copy of the query message --> </ParticipantObjectQuery>
   <ParticipantObjectDetail type="MSH-10" value="MV5eXiZGOUQ2MkE2OC0wMzUyLTExRUItQTZFOC0wMjQyQUMxNDAwMDImSVNP"></ParticipantObjectDetail>
  </ParticipantObjectIdentification>
 </AuditMessage>

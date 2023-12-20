@@ -483,8 +483,8 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Information on the authenticated user including the user name who initiated the request.
 - *ActiveParticipant*: Information on the responding service endpoint.
 - *AuditSourceIdentification*: Information related to the primary system performing the query.
-- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query.
-- *ParticipantObjectIdentification*: Information on the patients EPR accessed and the base64 encoded query (ommitted for brevity).
+- *ParticipantObjectIdentification*: Request message related information including a BASE-64 encoded copy of the query.
+- *ParticipantObjectIdentification*: Information on the patients EPR accessed.
 
 # Security Requirements    
 
