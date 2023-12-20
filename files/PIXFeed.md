@@ -250,7 +250,7 @@ The message is made of the following blocks:
 - *ActiveParticipant*: Information on the responding service endpoint (line 11 .. 13).
 - *AuditSourceIdentification*: Information related to the primary system performing the query (line 14 .. 16)
 - *ParticipantObjectIdentification*: Information on the patients EPR accessed (line 17 .. 20)
-- *ParticipantObjectIdentification*: Request message related information including a UUencoded copy of the query (line 21 .. 27).
+- *ParticipantObjectIdentification*: Request message related information including a BASE-64 encoded copy of the query (line 21 .. 27).
 
 ## Security Requirements  
 
