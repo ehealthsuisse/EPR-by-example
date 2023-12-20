@@ -181,40 +181,35 @@ specified in the **[IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-m
 The following snippet shows a example audit message to be written by the primary system:
 
 ```
-1 <?xml version='1.0' encoding='utf-8'?>
-2 <AuditMessage>
-3  <EventIdentification EventActionCode="C" EventDateTime="2020-06-04T10:54:39.571Z" EventOutcomeIndicator="0">
-4   <EventID csd-code="110107" codeSystemName="DCM" originalText="Import"/>
-5   <EventTypeCode csd-code="ITI-43" codeSystemName="IHE Transactions" originalText="Retrieve Document Set"/>
-6   <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normal"/>
-7  </EventIdentification>
-8  <ActiveParticipant UserID="https://primary.system.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
-9   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
-10  </ActiveParticipant>
-11  <ActiveParticipant UserID="111111111148" UserName="&lt;111111111148@xua.hin.ch&gt;">
-12   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Behandelnde(r)"/>
-13  </ActiveParticipant>
-14  <ActiveParticipant UserID="111111111148" UserName="Dr. Professional HasOneAux">
-15   <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Behandelnde(r)"/>
-16  </ActiveParticipant>
-17  <ActiveParticipant UserID="http://platform.service.com" AlternativeUserID="UNKNOWN" UserIsRequestor="false" NetworkAccessPointID="172.18.0.99" NetworkAccessPointTypeCode="1">
-18   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
-19  </ActiveParticipant>
-20  <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.194" AuditSourceID="LE-Portal">
-21   <AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other"/>
-22  </AuditSourceIdentification>
-23  <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
-24   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
-25  </ParticipantObjectIdentification>
-26  <ParticipantObjectIdentification ParticipantObjectID="2.16.756.5.30.1.194.130880.1591258526941" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
-27   <ParticipantObjectIDTypeCode csd-code="9" codeSystemName="RFC-3881" originalText="Report Number"/>
-28   <ParticipantObjectDetail type="Repository Unique Id" value="Mi4xNi43NTYuNS4zMC4xLjE5NC4zLjMuMQ=="/>
-29   <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoyLjE2Ljc1Ni41LjMwLjEuMTk0"/>
-30  </ParticipantObjectIdentification>
-31  <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="4" ParticipantObjectTypeCodeRole="1">
-32   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
-33  </ParticipantObjectIdentification>
-34 </AuditMessage>
+<?xml version='1.0' encoding='utf-8'?>
+<AuditMessage>
+ <EventIdentification EventActionCode="C" EventDateTime="2020-06-04T10:54:39.571Z" EventOutcomeIndicator="0">
+  <EventID csd-code="110107" codeSystemName="DCM" originalText="Import"/>
+  <EventTypeCode csd-code="ITI-43" codeSystemName="IHE Transactions" originalText="Retrieve Document Set"/>
+  <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normal"/>
+ </EventIdentification>
+ <ActiveParticipant UserID="pma@gnt.com" UserName="JD&lt;pma@gnt.com&gt;"/>
+ <ActiveParticipant UserID="2000000090108" UserName="Dr. med. John Doe" UserIsRequestor="true">
+  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://repositoryService.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
+  <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
+ </ActiveParticipant>
+ <ActiveParticipant UserID="https://primarySystem.com" AlternativeUserID="UNKNOWN" UserIsRequestor="true" NetworkAccessPointID="hcohcdemo01-app06-icwpxs01.net.swisscom-health.it" NetworkAccessPointTypeCode="1">
+  <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
+ </ActiveParticipant>
+ <AuditSourceIdentification AuditEnterpriseSiteID="2.16.756.5.30.1.194" AuditSourceID="LE-Portal">
+  <AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other"/>
+ </AuditSourceIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="761337615343338300^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+  <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number"/>
+ </ParticipantObjectIdentification>
+ <ParticipantObjectIdentification ParticipantObjectID="2.16.756.5.30.1.194.130880.1591258526941" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="3">
+  <ParticipantObjectIDTypeCode csd-code="9" codeSystemName="RFC-3881" originalText="Report Number"/>
+  <ParticipantObjectDetail type="Repository Unique Id" value="Mi4xNi43NTYuNS4zMC4xLjE5NC4zLjMuMQ=="/>
+  <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoyLjE2Ljc1Ni41LjMwLjEuMTk0"/>
+ </ParticipantObjectIdentification>
+</AuditMessage>
 ```
 
 The message is made of the following blocks:

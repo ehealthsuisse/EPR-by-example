@@ -125,24 +125,20 @@ The SOAP *Header* element conveys the following information:
 - *RelatesTo* element: The *messageID* of the query request (see above).
 
 ```
-2  <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
-3   <wsa:Action soapenv:mustUnderstand="1">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
-4   <wsa:RelatesTo>urn:uuid:31D7E4B5-C117-481E-9EE1-F32849E81BF8</wsa:RelatesTo>
-5  </soapenv:Header>    
+2  <S:Header>
+3   <wsa:Action s:mustUnderstand="1"
+4    xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+5    xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:RegistryStoredQueryResponse</wsa:Action>
+6   <wsa:RelatesTo xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:a8313b99-aad5-4880-94d2-4b02197cb650</wsa:RelatesTo>
+7  </S:Header>  
 ```
 
 The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying the metadata of a single document.
 
 ```
-13     <ns2:ExtrinsicObject
-14      mimeType="application/pdf"
-15      lid="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-16      objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1"
-17      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved"
-18      id="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-19      home="urn:oid:1.3.6.1.4.1.21367.2017.2.6.19">
+12  <ExtrinsicObject mimeType="application/fhir+json" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" id="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" lid="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved" home="urn:oid:1.1.4567334.1.6"
 ...
-165    </ns2:ExtrinsicObject>   
+193     </ExtrinsicObject>
 ```
 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
@@ -154,61 +150,146 @@ The element has fixed attributes defined in the IHE ITI Technical Framework. Bey
 As explained above, a subset of the relevant metadata are defined in ebXML *slot* elements. These are:   
 
 ```
-25      <ns2:Slot name="languageCode">
-26       <ns2:ValueList>
-27        <ns2:Value>de-CH</ns2:Value>
-28       </ns2:ValueList>
-29      </ns2:Slot>    
+14      <Slot name="repositoryUniqueId"
+15       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+16       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+17        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">1.1.4567332.1.75</Value>
+18       </ValueList>
+19      </Slot> 
+```
+
+- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
+
+```
+20      <Slot name="hash"
+21       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+22       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+23        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">a72f1824ea1d57af00faf5dd5ccb9aea0b0ce390</Value>
+24       </ValueList>
+25      </Slot>
+```
+
+- *hash*: The hash value of the binary.
+
+```
+26      <Slot name="size"
+27       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+28       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+29        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">5375</Value>
+30       </ValueList>
+31      </Slot>
+```
+
+- *hash*: The size of the binary.
+
+```
+32      <Slot name="creationTime"
+33       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+34       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+35        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">20231219095121</Value>
+36       </ValueList>
+37      </Slot>
+```
+
+- *creationTime*: The timestamp the document was uploaded to the patient EPR (or last modified).
+
+```
+38      <Slot name="languageCode"
+39       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+40       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+41        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">en</Value>
+42       </ValueList>
+43      </Slot>
 ```
 
 - *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss
 EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
 ```
-35      <ns2:Slot name="repositoryUniqueId">
-36       <ns2:ValueList>
-37        <ns2:Value>1.3.6.1.4.1.21367.2017.2.3.54</ns2:Value>
-38       </ns2:ValueList>
-39      </ns2:Slot>   
+44      <Slot name="sourcePatientId"
+45       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+46       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+47        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO</Value>
+48       </ValueList>
+49      </Slot>
 ```
 
-- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
+- *sourcePatientId*: The local ID of the patient in the document source system which uploaded the document.
 
 ```
-45      <ns2:Slot name="creationTime">
-46       <ns2:ValueList>
-47        <ns2:Value>20200921112949</ns2:Value>
-48       </ns2:ValueList>
-49      </ns2:Slot>
+50      <Slot name="urn:e-health-suisse:2020:originalProviderRole"
+51       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+52       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+53        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
+54       </ValueList>
+55      </Slot>
 ```
 
-- *creationTime*: The timestamp the document was uploaded to the patient EPR (or last modified).
+- *urn:e-health-suisse:2020:originalProviderRole*: The Role of original uploader who uploaded the initial version of the document as defined in Attachment 1 to **[Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**. This attribute is used to track the initial uploader role which shall never be modified by metadat update transactions.
 
 ```
-55      <ns2:Name>
-56       <ns2:LocalizedString value="TestdokumentWHO"/>
-57      </ns2:Name>
+56      <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+57       <LocalizedString charset="UTF-8" value="Vaccination - FSME-Immun 0.25 ml Junior"
+58        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+59      </Name>
 ```
 
 - *Name*: The document name to display in the UI.
 
-As explained above, a subset of the relevant metadata are defined in ebXML *Classification* elements. These are:  
+```
+60      <VersionInfo versionName="1"
+61       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+```
+
+- the version info to track upadated by metadata update transactions and document replacements. 
+
+
+A subset of the relevant metadata are defined in ebXML *Classification* elements. These are:  
+
+62      <Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="" id="urn:uuid:e0fcf0a2-f44c-46c5-bc4a-26ac0743f193"
+63       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+64       <Slot name="authorPerson"
+65        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+66        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+67         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">^Max^Mustermann^^^Dr.Med</Value>
+68        </ValueList>
+69       </Slot>
+70       <Slot name="authorRole"
+71        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+72        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+73         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
+74        </ValueList>
+75       </Slot>
+76       <Slot name="authorSpecialty"
+77        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+78        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+79         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">1050^^^&amp;2.16.756.5.30.1.127.3.5&amp;ISO</Value>
+80        </ValueList>
+81       </Slot>
+82       <VersionInfo versionName="-1"
+83        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+84      </Classification>
+
+- authorPerson: The Name of the author of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)**. 
+- authorRole: The Role of the author of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+- authorSpeciality: The author speciality of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
 ```
-59      <ns2:Classification
-60       classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a"
-61       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-62       nodeRepresentation="734163000"
-63       id="urn:uuid:27952372-8ea3-4502-9730-3aaf50f49970">
-64       <ns2:Slot name="codingScheme">
-65        <ns2:ValueList>
-66         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
-67        </ns2:ValueList>
-68       </ns2:Slot>
-69       <ns2:Name>
-70        <ns2:LocalizedString value="Care Plan (record artifact)"/>
-71       </ns2:Name>
-72      </ns2:Classification>   
+85      <Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="184216000" id="urn:uuid:b6a1074e-c92e-4648-9f08-f011b6453689"
+86       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+87       <Slot name="codingScheme"
+88        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+89        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+90         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
+91        </ValueList>
+92       </Slot>
+93       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+94        <LocalizedString charset="UTF-8" value="Patient record type (record artifact)"
+95         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+96       </Name>
+97       <VersionInfo versionName="-1"
+98        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+99      </Classification> 
 ```
 
 - Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to
@@ -217,20 +298,44 @@ attribute and the *codingScheme* value must match one of the supported values in
 - *Name* : The human readable display name of the document class.
 
 ```
-115      <ns2:Classification
-116       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
-117       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-118       nodeRepresentation="394579002"
-119       id="urn:uuid:c06cc1de-8f54-43e0-96bc-9f6b75868edf">
-120       <ns2:Slot name="codingScheme">
-121        <ns2:ValueList>
-122         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
-123        </ns2:ValueList>
-124       </ns2:Slot>
-125       <ns2:Name>
-126        <ns2:LocalizedString value="Cardiology (qualifier value)"/>
-127       </ns2:Name>
-128      </ns2:Classification>   
+115      <Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="43741000" id="urn:uuid:84594dc4-814a-495f-94d7-08ee5741bbe3"
+116       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+117       <Slot name="codingScheme"
+118        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+119        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+120         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
+121        </ValueList>
+122       </Slot>
+123       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+124        <LocalizedString charset="UTF-8" value="Site of Care (environment)"
+125         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+126       </Name>
+127       <VersionInfo versionName="-1"
+128        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+129      </Classification>
+```
+
+- Healthcare Facility Type Code: The type of the healthcare facility from which the document was registered. The value conveyed with the
+*nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
+defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+- *Name* : The human readable display name of the healthcare facility type code.
+
+```
+130      <Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="394802001" id="urn:uuid:56fd7e42-192f-4c6b-a2ca-ad0cb9f93e42"
+131       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+132       <Slot name="codingScheme"
+133        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+134        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+135         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
+136        </ValueList>
+137       </Slot>
+138       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+139        <LocalizedString charset="UTF-8" value="General medicine (qualifier value)"
+140         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+141       </Name>
+142       <VersionInfo versionName="-1"
+143        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+144      </Classification> 
 ```
 
 - Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
@@ -239,61 +344,81 @@ defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**
 - *Name* : The human readable display name of the practice setting code.
 
 ```
-129      <ns2:Classification
-130       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
-131       classifiedObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-132       nodeRepresentation="773130005"
-133       id="urn:uuid:24686d21-85a4-43d9-9153-04fa469a50f4">
-134       <ns2:Slot name="codingScheme">
-135        <ns2:ValueList>
-136         <ns2:Value>2.16.840.1.113883.6.96</ns2:Value>
-137        </ns2:ValueList>
-138       </ns2:Slot>
-139       <ns2:Name>
-140        <ns2:LocalizedString value="Nursing care plan (record artifact)"/>
-141       </ns2:Name>
-142      </ns2:Classification>
+145      <Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="41000179103" id="urn:uuid:bb58016b-ec14-498f-9969-a9a8e6b1ab03"
+146       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+147       <Slot name="codingScheme"
+148        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+149        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+150         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
+151        </ValueList>
+152       </Slot>
+153       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+154        <LocalizedString charset="UTF-8" value="Immunization Record (record artifact)"
+155         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+156       </Name>
+157       <VersionInfo versionName="-1"
+158        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+159      </Classification>
 ```
 
 - Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
 *codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - *Name* : The human readable display name of the document type code.
 
-As explained above, a subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
+```
+160      <Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="17621005" id="urn:uuid:4819ee10-581a-49f0-b144-6f85be87b38b"
+161       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+162       <Slot name="codingScheme"
+163        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+164        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+165         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
+166        </ValueList>
+167       </Slot>
+168       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+169        <LocalizedString xml:lang="en-US" charset="UTF-8" value="Normal"
+170         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+171       </Name>
+172       <VersionInfo versionName="-1"
+173        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+174      </Classification>
+```
+
+- confidentiality code: The confidentiality of the the document. The value conveyed with the *nodeRepresentation* attribute and the
+*codingScheme* value must match one of the supported values in the Swiss EPR as defined in **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
+- *Name* : The human readable display name of the document confidentiality.
+
+
+A subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
 
 ```
-143      <ns2:ExternalIdentifier
-144       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-145       identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab"
-146       value="1.3.6.1.4.1.21367.2017.2.1.75.20200922130227623"
-147       lid="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d"
-148       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-149       id="urn:uuid:8514c34f-1d54-4b94-9a28-a54f7b88b60d">
-150       <ns2:Name>
-151        <ns2:LocalizedString value="XDSDocumentEntry.uniqueId"/>
-152       </ns2:Name>
-153      </ns2:ExternalIdentifier>
-```
-
-- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
-value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
-
-```
-154      <ns2:ExternalIdentifier
-155       registryObject="urn:uuid:c03c96ca-33a1-44bd-8b8f-b52d8cf69e65"
-156       identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427"
-157       value="7e1c6e78-58f1-4a43-ae88-0d5a5c4ab43e^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO"
-158       lid="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95"
-159       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-160       id="urn:uuid:c38c7f5f-02f2-4eca-841f-5b9eea0b7a95">
-161       <ns2:Name>
-162        <ns2:LocalizedString value="XDSDocumentEntry.patientId"/>
-163       </ns2:Name>
-164      </ns2:ExternalIdentifier>
+175      <ExternalIdentifier registryObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" value="CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO" id="urn:uuid:a019bc95-f172-42cf-af20-38406d848c5b"
+176       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+177       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+178        <LocalizedString value="XDSDocumentEntry.patientId"
+179         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+180       </Name>
+181       <VersionInfo versionName="-1"
+182        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+183      </ExternalIdentifier>
 ```
 
 - The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
 in the repository. Its value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
+
+```
+184      <ExternalIdentifier registryObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" value="2.25.306443472873218838784535217290635593269" id="urn:uuid:b37c4f57-e554-43fb-ab34-8f74dfc5376a"
+185       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+186       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+187        <LocalizedString value="XDSDocumentEntry.uniqueId"
+188         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+189       </Name>
+190       <VersionInfo versionName="-1"
+191        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+192      </ExternalIdentifier>
+```
+
+- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in **[IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2)**. The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
+value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
 
 ## Transport Protocol
 
@@ -326,14 +451,12 @@ The following snippet shows a example audit message to be written by the primary
     <EventTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
     <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normaler Zugriff" />
   </EventIdentification>
-  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" AlternativeUserID="20559@epd-test.ith-icoserve.com.ForkJoinPool-5-worker-3" UserIsRequestor="true" NetworkAccessPointID="81.223.215.43" NetworkAccessPointTypeCode="2">
-    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
-  </ActiveParticipant>
-  <ActiveParticipant UserID="761337610410035724" AlternativeUserID="Andreas Friederich TANNER-WELTI" UserName="&lt;761337610410035724@http://ith-icoserve.com/eHealthSolutionsSTS&gt;" UserIsRequestor="true">
-    <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
-  </ActiveParticipant>
+  <ActiveParticipant UserID="761337610410035724" UserName="&lt;761337610410035724@http://ith-icoserve.com/eHealthSolutionsSTS&gt;"/>
   <ActiveParticipant UserID="761337610410035724" UserName="Andreas Friederich TANNER-WELTI" UserIsRequestor="true">
     <RoleIDCode csd-code="PAT" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Patient" />
+  </ActiveParticipant>
+  <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous" AlternativeUserID="20559@epd-test.ith-icoserve.com.ForkJoinPool-5-worker-3" UserIsRequestor="true" NetworkAccessPointID="81.223.215.43" NetworkAccessPointTypeCode="2">
+    <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source" />
   </ActiveParticipant>
   <ActiveParticipant UserID="https://localhost:7443/Registry/services/RegistryService" UserIsRequestor="false" NetworkAccessPointID="localhost" NetworkAccessPointTypeCode="1">
     <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination" />
@@ -346,7 +469,7 @@ The following snippet shows a example audit message to be written by the primary
   </ParticipantObjectIdentification>
   <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:10b545ea-725c-446d-9b95-8aeb444eddf3" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
     <ParticipantObjectIDTypeCode csd-code="ITI-18" codeSystemName="IHE Transactions" originalText="Registry Stored Query" />
-    <ParticipantObjectQuery>PD94bWwgdmV...</ParticipantObjectQuery>
+    <ParticipantObjectQuery>PD94bWwgdmV ... zdD4=</ParticipantObjectQuery>
     <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg=" />
     <ParticipantObjectDetail type="urn:ihe:iti:xca:2010:homeCommunityId" value="MS4zLjYuMS40LjEuMjEzNjcuMjAxNy4yLjYuMTk=" />
   </ParticipantObjectIdentification>

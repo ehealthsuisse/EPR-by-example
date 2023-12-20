@@ -1,294 +1,239 @@
-<?xml version='1.0' encoding='utf-8'?>
-<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
- <soapenv:Header>
-  <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true">
-   <saml2:Assertion>
-    <!-- ommitted for brevity -->
-   </saml2:Assertion>
-  </wsse:Security>
-  <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</wsa:Action>
-  <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">d22ebb69-8368-4eb6-929b-b382f1b37c72</wsa:MessageID>
- </soapenv:Header>
- <soapenv:Body>
-  <xdsb:ProvideAndRegisterDocumentSetRequest xmlns=" !--namespaces omitted -- ">
-   <lcm:SubmitObjectsRequest xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0">
-    <rim:RegistryObjectList xmlns:rim="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-     <!-- submission set definition -->
-     <rim:RegistryPackage id="6BCBAF38-3D23-CC4C-80F3-30779B1174E3" objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:RegistryPackage">
-      <rim:Slot name="submissionTime">
-       <rim:ValueList>
-        <rim:Value>20200924174309</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Name>
-       <rim:LocalizedString value="DocumentSet"/>
-      </rim:Name>
-      <rim:Classification
-       classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500"
-       classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       id="517159EC-2731-F908-83DC-B90251B0E9AF"
-       nodeRepresentation="424975005">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="Other EPD-document type"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d"
-       classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       id="58089FCD-E400-D25A-73C2-2F6B5DCBBE2E"
-       nodeRepresentation=""
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="authorPerson">
-        <rim:ValueList>
-         <rim:Value>^Schulz^Max^^^</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Slot name="authorRole">
-        <rim:ValueList>
-         <rim:Value>Healthcare professional</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="XDSSubmissionSet.author"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationNode="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd"
-       classifiedObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       id="B6E18810-CD5B-3DCB-1B07-E510FE593365"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification"/>
-      <rim:ExternalIdentifier
-       id="013AD74B-3180-8B49-9D51-440F3C9B16B8"
-       identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-       registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       value="1.3.6.1.4.1.21367.2017.2.5.45">
-       <rim:Name>
-        <rim:LocalizedString value="XDSSubmissionSet.sourceId"/>
-       </rim:Name>
-      </rim:ExternalIdentifier>
-      <rim:ExternalIdentifier
-       id="1AF2498A-C98E-5123-970E-F28AC2BCC536"
-       identificationScheme="urn:uuid:96fdda7c-d067-4183-912e-bf5ee74998a8"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-       registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       value="1.42.1.2018072257142615.7000">
-       <rim:Name>
-        <rim:LocalizedString value="XDSSubmissionSet.uniqueId"/>
-       </rim:Name>
-      </rim:ExternalIdentifier>
-      <rim:ExternalIdentifier
-       id="2A8B3E1A-203C-5313-1FAA-EA2577C235B6"
-       identificationScheme="urn:uuid:6b5aea1a-874d-4603-a4bc-96a0a7b38446"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-       registryObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-       value="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO">
-       <rim:Name>
-        <rim:LocalizedString value="XDSSubmissionSet.patientId"/>
-       </rim:Name>
-      </rim:ExternalIdentifier>
-     </rim:RegistryPackage>
-     <!-- document metadata -->
-     <rim:ExtrinsicObject
-      id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-      mimeType="application/pdf"
-      objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1"
-      status="urn:oasis:names:tc:ebxml-regrep:StatusType:Approved">
-      <rim:Name>
-       <rim:LocalizedString value="Test document"/>
-      </rim:Name>
-      <rim:Slot name="languageCode">
-       <rim:ValueList>
-        <rim:Value>de-CH</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="creationTime">
-       <rim:ValueList>
-        <rim:Value>20200924174309</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="repositoryUniqueId">
-       <rim:ValueList>
-        <rim:Value>1.3.6.1.4.1.21367.2017.2.3.57</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="serviceStartTime">
-       <rim:ValueList>
-        <rim:Value>20180521</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="serviceStopTime">
-       <rim:ValueList>
-        <rim:Value>20180606</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="sourcePatientInfo">
-       <rim:ValueList>
-        <rim:Value>PID-8|male</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Slot name="sourcePatientId">
-       <rim:ValueList>
-        <rim:Value>0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-      <rim:Classification
-       classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="E0C43B15-229A-D665-6B45-A340E6C02AED"
-       nodeRepresentation="417319006"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="Record of health event (record artifact)"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="BFB4DF4A-B868-43CF-B4A4-1CFC4C849EDE"
-       nodeRepresentation="17621005"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="Technical user"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="C4F066D3-EEE7-A18E-E324-642621B4A1E6"
-       nodeRepresentation="urn:che:epr:EPR_Unstructured_Document"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.756.5.30.1.127.3.10.10</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString charset="UTF-8" value="Unstructured EPR document"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="D83981AD-CA1E-8D30-2D47-7C95CCA35C87"
-       nodeRepresentation="22232009"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="Hospital (environment)"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="22B7D0FC-8BEF-CA02-CE91-8D51501034E3"
-       nodeRepresentation="394802001"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="General medicine (qualifier value)"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="6C4198FD-FA36-BE2C-A60A-B41A641BAE99"
-       nodeRepresentation="721912009"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="codingScheme">
-        <rim:ValueList>
-         <rim:Value>2.16.840.1.113883.6.96</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString charset="UTF-8" value="Medication summary document (record artifact)"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:Classification
-       classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d"
-       classifiedObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       id="F0410AF2-D25F-A2C3-5FCB-FDEAA7276858"
-       nodeRepresentation=""
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:Classification">
-       <rim:Slot name="authorPerson">
-        <rim:ValueList>
-         <rim:Value>^Schulz^Max^^^</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Slot name="authorRole">
-        <rim:ValueList>
-         <rim:Value>HCP</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Slot name="authorSpecialty">
-        <rim:ValueList>
-         <rim:Value>General Internal Medicine</rim:Value>
-        </rim:ValueList>
-       </rim:Slot>
-       <rim:Name>
-        <rim:LocalizedString value="XDSDocumentEntry.author"/>
-       </rim:Name>
-      </rim:Classification>
-      <rim:ExternalIdentifier
-       id="BD35CAC2-F290-7938-61FD-E90BE04AABEE"
-       identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-       registryObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       value="1.3.6.1.4.1.21367.2017.2.1.99.1.42.1.20112312375405215170610.8012">
-       <rim:Name>
-        <rim:LocalizedString value="XDSDocumentEntry.uniqueId"/>
-       </rim:Name>
-      </rim:ExternalIdentifier>
-      <rim:ExternalIdentifier
-       id="7DF56AE8-3673-2224-4E47-5C0838D8EC8B"
-       identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427"
-       objectType="urn:oasis:names:tc:ebxml-regrep:ObjectType:RegistryObject:ExternalIdentifier"
-       registryObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"
-       value="0936c240-486e-4839-a322-793de7185f99^^^&amp;1.3.6.1.4.1.21367.2017.2.5.45&amp;ISO">
-       <rim:Name>
-        <rim:LocalizedString value="XDSDocumentEntry.patientId"/>
-       </rim:Name>
-      </rim:ExternalIdentifier>
-     </rim:ExtrinsicObject>
-     <!-- link the document metadata to the submission set -->
-     <rim:Association
-      associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember"
-      id="5A36769E-DE9B-3A3F-9F37-CD6B962BAFB6"
-      sourceObject="6BCBAF38-3D23-CC4C-80F3-30779B1174E3"
-      targetObject="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546">
-      <rim:Slot name="SubmissionSetStatus">
-       <rim:ValueList>
-        <rim:Value>Original</rim:Value>
-       </rim:ValueList>
-      </rim:Slot>
-     </rim:Association>
+1 DefaultHttpRequest(chunked: false)
+2 POST /PegIHE/tf7/services/XDSDocumentRepository?pServiceId=RepStandalone HTTP/1.1
+3 requestType: ITI41
+4 Access-Control-Allow-Origin: https://dev.avintis.com/ehgw/api
+5 Access-Control-Allow-Methods: OPTION, GET, POST, DELETE, PATCH, PUT, HEAD
+6 frameworkMessageId: b2275987-6393-4938-a5c9-a3ad12d5b297
+7 frameworkMessageId_old: 2292d845-2ef3-4cf1-b55c-40bdba6f8c14
+8 Access-Control-Allow-Headers: Authorization,Access-Control-Allow-Origin,Content-Type,Content-Length, X-Requested-With
+9 Cache-Control: private
+10 Access-Control-Allow-Credentials: true
+11 frameworkContext: PostProcessing^WSO2^WSO2^PostProcessing_aInterface
+12 OData-Version: 4.0
+13 Expires: Thu, 01 Jan 1970 01:00:00 CET
+14 frameworkTransactionId: 4798062b-3d14-4bd5-a76e-71f22a28bf27
+15 CHARACTER_SET_ENCODING: utf-8
+16 Content-Type: multipart/related; boundary="MIMEBoundary_05b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149"; type="application/xop+xml"; start="<0.15b39a33e8effeb90c1ccb1c58c4b93b5af2935a13853149@apache.org>"; start-info="application/soap+xml"; action="urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b"
+17 Host: 10.2.101.10:11076
+18 Connection: Keep-Alive
+19 User-Agent: Synapse-PT-HttpComponents-NIO
+20 Content-Length: 181931
+21 
+22 --uuid:df997b05-d075-415b-9cc8-0f68c74cd993
+23 Content-Type: application/xop+xml; charset=UTF-8; type="application/soap+xml"
+24 Content-Transfer-Encoding: binary
+25 Content-ID: <root.message@cxf.apache.org>
+26 
+27  <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+28   <soap:Header>
+29    <Action soap:mustUnderstand="true"
+30 xmlns="http://www.w3.org/2005/08/addressing">urn:ihe:iti:2007:ProvideAndRegisterDocumentSet-b</Action>
+31    <MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:073be420-d838-47c9-b35f-c59af5b147a2</MessageID>
+32    <To xmlns="http://www.w3.org/2005/08/addressing">http://ehealthsuisse.ihe-europe.net:8280/xdstools7/sim/epr-testing__for_init_gw_testing/rep/prb</To>
+33    <ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
+34     <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
+35    </ReplyTo>
+36    <wsse:Security>
+37     <!-- omitted for brevity -->
+38    </wsse:Security>
+39   </soap:Header>
+40   <soap:Body>
+41    <xds:ProvideAndRegisterDocumentSetRequest xmlns:rmd="urn:ihe:iti:rmd:2017"
+42 xmlns:lcm="urn:oasis:names:tc:ebxml-regrep:xsd:lcm:3.0"
+43 xmlns:query="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"
+44 xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"
+45 xmlns:xds="urn:ihe:iti:xds-b:2007"
+46 xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0">
+47     <lcm:SubmitObjectsRequest>
+48      <rs:RequestSlotList/>
+49      <RegistryObjectList>
 
-    </rim:RegistryObjectList>
-   </lcm:SubmitObjectsRequest>
-   <xdsb:Document id="A4E2E0D2-0C34-19F4-9B0B-3ED15D71A546"><xop:Include href="cid:1.c5b39a33e8effeb94a97121c58c4b93b53d2935a13853149@apache.org"/></xdsb:Document>
-  </xdsb:ProvideAndRegisterDocumentSetRequest>
- </soapenv:Body>
-</soapenv:Envelope>
+50       <ExtrinsicObject mimeType="application/fhir+json" objectType="urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1" id="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d">
+51        <Slot name="creationTime">
+52         <ValueList>
+53          <Value>20231219102116</Value>
+54         </ValueList>
+55        </Slot>
+56        <Slot name="languageCode">
+57         <ValueList>
+58          <Value>en</Value>
+59         </ValueList>
+60        </Slot>
+61        <Slot name="sourcePatientId">
+62         <ValueList>
+63          <Value>CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO</Value>
+64         </ValueList>
+65        </Slot>
+66        <Slot name="urn:e-health-suisse:2020:originalProviderRole">
+67         <ValueList>
+68          <Value>HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
+69         </ValueList>
+70        </Slot>
+71        <Name>
+72         <LocalizedString charset="UTF-8" value="Vaccination - FSME-Immun 0.25 ml Junior"/>
+73        </Name>
+74        <Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="" id="urn:uuid:1012a5ae-21b8-41d4-895a-a14f6303d23a">
+75         <Slot name="authorPerson">
+76          <ValueList>
+77           <Value>^Max^Mustermann^^^Dr.Med</Value>
+78          </ValueList>
+79         </Slot>
+80         <Slot name="authorRole">
+81          <ValueList>
+82           <Value>HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
+83          </ValueList>
+84         </Slot>
+85         <Slot name="authorSpecialty">
+86          <ValueList>
+87           <Value>1050^^^&amp;2.16.756.5.30.1.127.3.5&amp;ISO</Value>
+88          </ValueList>
+89         </Slot>
+90        </Classification>
+91        <Classification classificationScheme="urn:uuid:41a5887f-8865-4c09-adf7-e362475b143a" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="184216000" id="urn:uuid:98e9bd8c-6d85-4608-a158-792b41b35911">
+92         <Slot name="codingScheme">
+93          <ValueList>
+94           <Value>2.16.840.1.113883.6.96</Value>
+95          </ValueList>
+96         </Slot>
+97         <Name>
+98          <LocalizedString charset="UTF-8" value="Patient record type (record artifact)"/>
+99         </Name>
+100        </Classification>
+101        <Classification classificationScheme="urn:uuid:a09d5840-386c-46f2-b5ad-9c3699a4309d" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="urn:che:epr:ch-vacd:immunization-administration:2022" id="urn:uuid:d1ee8ef0-201d-4701-88d1-0178d53889c5">
+102         <Slot name="codingScheme">
+103          <ValueList>
+104           <Value>2.16.756.5.30.1.127.3.10.10</Value>
+105          </ValueList>
+106         </Slot>
+107         <Name>
+108          <LocalizedString charset="UTF-8" value="CH VACD Immunization Administration"/>
+109         </Name>
+110        </Classification>
+111        <Classification classificationScheme="urn:uuid:f33fb8ac-18af-42cc-ae0e-ed0b0bdb91e1" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="43741000" id="urn:uuid:108141b6-ea5f-44cc-934e-0452b237c779">
+112         <Slot name="codingScheme">
+113          <ValueList>
+114           <Value>2.16.840.1.113883.6.96</Value>
+115          </ValueList>
+116         </Slot>
+117         <Name>
+118          <LocalizedString charset="UTF-8" value="Site of Care (environment)"/>
+119         </Name>
+120        </Classification>
+121        <Classification classificationScheme="urn:uuid:cccf5598-8b07-4b77-a05e-ae952c785ead" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="394802001" id="urn:uuid:d249f9c3-2f03-485c-9c22-06cebf52119e">
+122         <Slot name="codingScheme">
+123          <ValueList>
+124           <Value>2.16.840.1.113883.6.96</Value>
+125          </ValueList>
+126         </Slot>
+127         <Name>
+128          <LocalizedString charset="UTF-8" value="General medicine (qualifier value)"/>
+129         </Name>
+130        </Classification>
+131        <Classification classificationScheme="urn:uuid:f0306f51-975f-434e-a61c-c59651d33983" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="41000179103" id="urn:uuid:25eb7a31-89d8-435b-824c-86435c34feac">
+132         <Slot name="codingScheme">
+133          <ValueList>
+134           <Value>2.16.840.1.113883.6.96</Value>
+135          </ValueList>
+136         </Slot>
+137         <Name>
+138          <LocalizedString charset="UTF-8" value="Immunization Record (record artifact)"/>
+139         </Name>
+140        </Classification>
+141        <Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" nodeRepresentation="17621005" id="urn:uuid:73c2ed0f-b3ce-4a32-9790-d7f9e26aceba">
+142         <Slot name="codingScheme">
+143          <ValueList>
+144           <Value>2.16.840.1.113883.6.96</Value>
+145          </ValueList>
+146         </Slot>
+147         <Name>
+148          <LocalizedString xml:lang="en-US" charset="UTF-8" value="Normal"/>
+149         </Name>
+150        </Classification>
+151        <ExternalIdentifier registryObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" identificationScheme="urn:uuid:58a6f841-87b3-4a3e-92fd-a8ffeff98427" value="CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO" id="urn:uuid:3dbba224-a981-47a9-9da5-6979d16bfe91">
+152         <Name>
+153          <LocalizedString value="XDSDocumentEntry.patientId"/>
+154         </Name>
+155        </ExternalIdentifier>
+156        <ExternalIdentifier registryObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" identificationScheme="urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab" value="2.25.267241352778226683619515102048382761723" id="urn:uuid:40e565f5-bd4b-4e8a-bb08-72d2257e8762">
+157         <Name>
+158          <LocalizedString value="XDSDocumentEntry.uniqueId"/>
+159         </Name>
+160        </ExternalIdentifier>
+161       </ExtrinsicObject>
+
+162       <RegistryPackage id="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168">
+163        <Slot name="submissionTime">
+164         <ValueList>
+165          <Value>20231219102116</Value>
+166         </ValueList>
+167        </Slot>
+168        <Classification classificationScheme="urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d" classifiedObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" nodeRepresentation="" id="urn:uuid:6c2e8937-3650-4f7b-a98d-b1739c0798e1">
+169         <Slot name="authorPerson">
+170          <ValueList>
+171           <Value>^Max^Mustermann^^^Dr.Med</Value>
+172          </ValueList>
+173         </Slot>
+174         <Slot name="authorRole">
+175          <ValueList>
+176           <Value>HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
+177          </ValueList>
+178         </Slot>
+179         <Slot name="authorSpecialty">
+180          <ValueList>
+181           <Value>1050^^^&amp;2.16.756.5.30.1.127.3.5&amp;ISO</Value>
+182          </ValueList>
+183         </Slot>
+184        </Classification>
+185        <Classification classificationScheme="urn:uuid:aa543740-bdda-424e-8c96-df4873be8500" classifiedObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" nodeRepresentation="71388002" id="urn:uuid:3e3b7544-d7d8-498b-9bc1-6f16cce2ad38">
+186         <Slot name="codingScheme">
+187          <ValueList>
+188           <Value>2.16.840.1.113883.6.96</Value>
+189          </ValueList>
+190         </Slot>
+191         <Name>
+192          <LocalizedString xml:lang="en-US" charset="UTF-8" value="Procedure (procedure)"/>
+193         </Name>
+194        </Classification>
+195        <ExternalIdentifier registryObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" identificationScheme="urn:uuid:6b5aea1a-874d-4603-a4bc-96a0a7b38446" value="CHPAM3946^^^&amp;1.3.6.1.4.1.12559.11.20.1&amp;ISO" id="urn:uuid:b155cad3-b415-47a7-854f-0d8a0a29cfd2">
+196         <Name>
+197          <LocalizedString value="XDSSubmissionSet.patientId"/>
+198         </Name>
+199        </ExternalIdentifier>
+200        <ExternalIdentifier registryObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" identificationScheme="urn:uuid:96fdda7c-d067-4183-912e-bf5ee74998a8" value="2.25.194301908197721326796925171598754063498" id="urn:uuid:b19fdbbd-f545-43e6-82c1-2b7b60560635">
+201         <Name>
+202          <LocalizedString value="XDSSubmissionSet.uniqueId"/>
+203         </Name>
+204        </ExternalIdentifier>
+205        <ExternalIdentifier registryObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" identificationScheme="urn:uuid:554ac39e-e3fe-47fe-b233-965d2a147832" value="2.16.756.5.30.1.139.1.1.11" id="urn:uuid:c85aeade-175b-47ac-803e-efe2d1556895">
+206         <Name>
+207          <LocalizedString value="XDSSubmissionSet.sourceId"/>
+208         </Name>
+209        </ExternalIdentifier>
+210       </RegistryPackage>
+
+211       <Classification classifiedObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" classificationNode="urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd" id="urn:uuid:b855e4d0-4adb-44e4-9bd7-76f8ab15899c"/>
+
+212       <Association associationType="urn:oasis:names:tc:ebxml-regrep:AssociationType:HasMember" sourceObject="urn:uuid:a459a58b-1c47-4b43-b7db-82eb1b340168" targetObject="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d" id="urn:uuid:9aabf9f9-1a16-47d8-b280-281edd2fc3fc">
+213        <Slot name="SubmissionSetStatus">
+214         <ValueList>
+215          <Value>Original</Value>
+216         </ValueList>
+217        </Slot>
+218       </Association>
+
+219      </RegistryObjectList>
+220     </lcm:SubmitObjectsRequest>
+221     <xds:Document id="urn:uuid:af516d8d-c449-4a8b-bbb4-9e36489d474d">
+222      <xop:Include xmlns:xop="http://www.w3.org/2004/08/xop/include" href="cid:8ba22b9e-fcff-49d8-945e-438a11f25b0f-1@urn%3Aihe%3Aiti%3Axds-b%3A2007"/>
+223     </xds:Document>
+224    </xds:ProvideAndRegisterDocumentSetRequest>
+225   </soap:Body>
+226  </soap:Envelope>
+227 --uuid:df997b05-d075-415b-9cc8-0f68c74cd993
+228 Content-Type: application/fhir+json
+229 Content-Transfer-Encoding: binary
+230 Content-ID: <8ba22b9e-fcff-49d8-945e-438a11f25b0f-1@urn:ihe:iti:xds-b:2007>
+231 
+232   <!-- omitted for brevity -->
+233   
+234 --uuid:df997b05-d075-415b-9cc8-0f68c74cd993--Target endpoint: https://ehealthsuisse.ihe-europe.net/PAMSimulator-ejb/PDQSupplier_Service/

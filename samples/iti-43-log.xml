@@ -5,13 +5,12 @@
   <EventTypeCode csd-code="ITI-43" codeSystemName="IHE Transactions" originalText="Retrieve Document Set"/>
   <PurposeOfUse csd-code="NORM" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="Normal"/>
  </EventIdentification>
+ <ActiveParticipant UserID="pma@gnt.com" UserName="JD&lt;pma@gnt.com&gt;"/>
+ <ActiveParticipant UserID="2000000090108" UserName="Dr. med. John Doe" UserIsRequestor="true">
+  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
+ </ActiveParticipant>
  <ActiveParticipant UserID="https://repositoryService.com" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="172.18.0.49" NetworkAccessPointTypeCode="2">
   <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
- </ActiveParticipant>
- <ActiveParticipant UserID="pma@gnt.com" UserName="JD<pma@gnt.com>">
-  </ActiveParticipant>
- <ActiveParticipant UserID="pma@gnt.com" UserName="John Doe" UserIsRequestor="true">
-  <RoleIDCode csd-code="HCP" codeSystemName="2.16.756.5.30.1.127.3.10.6" originalText="Healthcare professional"/>
  </ActiveParticipant>
  <ActiveParticipant UserID="https://primarySystem.com" AlternativeUserID="UNKNOWN" UserIsRequestor="true" NetworkAccessPointID="hcohcdemo01-app06-icwpxs01.net.swisscom-health.it" NetworkAccessPointTypeCode="1">
   <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
