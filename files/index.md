@@ -44,6 +44,10 @@ Please see section below for details on the available public test systems.
 
 [Provide X-User Assertion](ProvideXAssertion.md) - Use SAML 2.0 Assertion in transactions to authorize access
 
+### Audit
+
+[Record Audit Event](Atna.md) - Send audit events to the EPR
+
 ### Public Test Systems
 
 [EPR Playground](playground.md) - Public available test system to test transaction messages and complex use cases.
