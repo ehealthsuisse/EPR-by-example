@@ -69,6 +69,9 @@ markdown_extensions:
       restrict_base_path: false
       auto_append:
         - helper/markdown_definitions.md
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 plugins:
   - search
   - git-revision-date-localized:
