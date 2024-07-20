@@ -83,14 +83,14 @@ The SOAP *Header* element conveys the following information:
 - *Action* element: The SOAP action identifier of the response as defined in the IHE ITI Technical Framework.
 - *RelatesTo* element: The *messageID* of the query request (see above).
 
-```xml title="ITI-18_request.xml" linenums="1" hl_lines="18 23"
---8<-- "samples/ITI-18_request.xml"
+```xml title="ITI-18_response.xml" linenums="2"
+--8<-- "samples/ITI-18_response_raw.xml:2:7"
 ```
 
 The SOAP *body* element conveys 0..N *ExtrinsicObject* elements, each conveying the metadata of a single document.
 
-```xml linenums="13"
---8<-- "samples/ITI-18_response.xml:13:19"
+```xml linenums="12"
+--8<-- "samples/ITI-18_response_raw.xml:12:12"
 ```
 
 The element has fixed attributes defined in the IHE ITI Technical Framework. Beyond these, the **ExtrinsicObject** conveys the following information for the primary system:
@@ -101,85 +101,57 @@ The element has fixed attributes defined in the IHE ITI Technical Framework. Bey
 
 As explained above, a subset of the relevant metadata are defined in ebXML *slot* elements. These are:   
 
-```
-14      <Slot name="repositoryUniqueId"
-15       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-16       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-17        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">1.1.4567332.1.75</Value>
-18       </ValueList>
-19      </Slot> 
+```xml linenums="14" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:14:19"
 ```
 
-- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see **[Retrieve Document Set](../files/RetrieveDocumentSet.md)**).
+- *repositoryUniqueId*: The unique ID of the repository the document is stored. This value must be used when retrieving documents to display (see [Retrieve Document Set](RetrieveDocumentSet.md)).
 
-```
-20      <Slot name="hash"
-21       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-22       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-23        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">a72f1824ea1d57af00faf5dd5ccb9aea0b0ce390</Value>
-24       </ValueList>
-25      </Slot>
+```xml linenums="20" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:20:25"
 ```
 
 - *hash*: The hash value of the binary.
 
-```
-26      <Slot name="size"
-27       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-28       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-29        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">5375</Value>
-30       </ValueList>
-31      </Slot>
+```xml linenums="26" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:26:31"
 ```
 
-- *hash*: The size of the binary.
+- *size*: The size of the binary.
 
-```
-32      <Slot name="creationTime"
-33       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-34       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-35        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">20231219095121</Value>
-36       </ValueList>
-37      </Slot>
+```xml linenums="32" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:32:37"
 ```
 
 - *creationTime*: The timestamp the document was uploaded to the patient EPR (or last modified).
 
-```
-38      <Slot name="languageCode"
-39       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-40       <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-41        <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">en</Value>
-42       </ValueList>
-43      </Slot>
-```xml linenums="25"
---8<-- "samples/ITI-18_response.xml:25:29"
+```xml linenums="38" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:38:43"
 ```
 
 - *languageCode*: The coded value of the documents language. It's value must match one code value supported by the Swiss
 EPR as defined in [Annex 3][annexes].
 
-```xml linenums="35"
---8<-- "samples/ITI-18_response.xml:35:39"
+```xml linenums="44" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:44:49"
 ```
 
 - *sourcePatientId*: The local ID of the patient in the document source system which uploaded the document.
 
-```xml linenums="45"
---8<-- "samples/ITI-18_response.xml:45:49"
+```xml linenums="50" hl_lines="4"
+--8<-- "samples/ITI-18_response_raw.xml:50:55"
 ```
 
 - *urn:e-health-suisse:2020:originalProviderRole*: The Role of original uploader who uploaded the initial version of the document as defined in Attachment 1 to **[Annex 5](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**. This attribute is used to track the initial uploader role which shall never be modified by metadat update transactions.
 
-```xml linenums="55"
---8<-- "samples/ITI-18_response.xml:55:57"
+```xml linenums="56"
+--8<-- "samples/ITI-18_response_raw.xml:56:59"
 ```
 
 - *Name*: The document name to display in the UI.
 
-```
-60      <VersionInfo versionName="1"
-61       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
+```xml linenums="60"
+--8<-- "samples/ITI-18_response_raw.xml:60:61"
 ```
 
 - the version info to track upadated by metadata update transactions and document replacements. 
@@ -187,36 +159,16 @@ EPR as defined in [Annex 3][annexes].
 
 A subset of the relevant metadata are defined in ebXML *Classification* elements. These are:  
 
-62      <Classification classificationScheme="urn:uuid:93606bcf-9494-43ec-9b4e-a7748d1a838d" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="" id="urn:uuid:e0fcf0a2-f44c-46c5-bc4a-26ac0743f193"
-63       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-64       <Slot name="authorPerson"
-65        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-66        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-67         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">^Max^Mustermann^^^Dr.Med</Value>
-68        </ValueList>
-69       </Slot>
-70       <Slot name="authorRole"
-71        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-72        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-73         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">HCP^^^&amp;2.16.756.5.30.1.127.3.10.6&amp;ISO</Value>
-74        </ValueList>
-75       </Slot>
-76       <Slot name="authorSpecialty"
-77        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-78        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-79         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">1050^^^&amp;2.16.756.5.30.1.127.3.5&amp;ISO</Value>
-80        </ValueList>
-81       </Slot>
-82       <VersionInfo versionName="-1"
-83        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-84      </Classification>
+```xml linenums="62" hl_lines="6 12 18"
+--8<-- "samples/ITI-18_response_raw.xml:62:84"
+```
 
 - authorPerson: The Name of the author of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)**. 
 - authorRole: The Role of the author of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 - authorSpeciality: The author speciality of the document binary as defined in **[IHE ITI Technical Framework Vol. 3](https://profiles.ihe.net/ITI/TF/Volume3/)** with a code value talen from **[Annex 3](https://www.fedlex.admin.ch/eli/oc/2023/221/de/annexes)**.
 
-```xml linenums="59"
---8<-- "samples/ITI-18_response.xml:59:72"
+```xml linenums="85"
+--8<-- "samples/ITI-18_response_raw.xml:85:99"
 ```
 
 - Class Code: The document Class Code metadata attribute, indicated by the value of the *classificationScheme* equal to
@@ -225,7 +177,16 @@ attribute and the *codingScheme* value must match one of the supported values in
 - *Name* : The human readable display name of the document class.
 
 ```xml linenums="115"
---8<-- "samples/ITI-18_response.xml:115:128"
+--8<-- "samples/ITI-18_response_raw.xml:115:129"
+```
+
+- Healthcare Facility Type Code: The type of the healthcare facility from which the document was registered. The value conveyed with the
+  *nodeRepresentation* attribute and the *codingScheme* value must match one of the supported values in the Swiss EPR as
+  defined in [Annex 3][annexes].
+- *Name* : The human readable display name of the healthcare facility type code.
+
+```xml linenums="130"
+--8<-- "samples/ITI-18_response_raw.xml:130:144"
 ```
 
 - Practice Setting Code: The practice setting code the document is registered with. The value conveyed with the
@@ -233,30 +194,16 @@ attribute and the *codingScheme* value must match one of the supported values in
 defined in [Annex 3][annexes].
 - *Name* : The human readable display name of the practice setting code.
 
-```xml linenums="129"
---8<-- "samples/ITI-18_response.xml:129:142"
+```xml linenums="145"
+--8<-- "samples/ITI-18_response_raw.xml:145:159"
 ```
 
 - Document Type Code: The type code of the document. The value conveyed with the *nodeRepresentation* attribute and the
 *codingScheme* value must match one of the supported values in the Swiss EPR as defined in [Annex 3][annexes].
 - *Name* : The human readable display name of the document type code.
 
-```
-160      <Classification classificationScheme="urn:uuid:f4f85eac-e6cb-4883-b524-f2705394840f" classifiedObject="urn:uuid:1415538d-41bc-41b2-9ae6-8b785f7f3aa6" nodeRepresentation="17621005" id="urn:uuid:4819ee10-581a-49f0-b144-6f85be87b38b"
-161       xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-162       <Slot name="codingScheme"
-163        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-164        <ValueList xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-165         <Value xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">2.16.840.1.113883.6.96</Value>
-166        </ValueList>
-167       </Slot>
-168       <Name xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
-169        <LocalizedString xml:lang="en-US" charset="UTF-8" value="Normal"
-170         xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-171       </Name>
-172       <VersionInfo versionName="-1"
-173        xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0"/>
-174      </Classification>
+```xml linenums="160"
+--8<-- "samples/ITI-18_response_raw.xml:160:174"
 ```
 
 - confidentiality code: The confidentiality of the the document. The value conveyed with the *nodeRepresentation* attribute and the
@@ -266,19 +213,19 @@ defined in [Annex 3][annexes].
 
 A subset of the relevant metadata are defined in ebXML *ExternalIdentifier* elements. These are:  
 
-```xml linenums="143"
---8<-- "samples/ITI-18_response.xml:143:153"
-```
-
-- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in [IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2). The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
-value must be used when retrieving documents to display (see [Retrieve Document Set](RetrieveDocumentSet.md)).
-
-```xml linenums="154"
---8<-- "samples/ITI-18_response.xml:154:164"
+```xml linenums="175"
+--8<-- "samples/ITI-18_response_raw.xml:175:183"
 ```
 
 - The master patient ID (XAD-SPID): The value conveyed with the *value* attribute conveys the master patient ID (XAD-SPID)
-in the repository. Its value must be used when retrieving documents to display (see [Retrieve Document Set](RetrieveDocumentSet.md)).
+  in the repository. Its value must be used when retrieving documents to display (see [Retrieve Document Set](RetrieveDocumentSet.md)).
+
+```xml linenums="184"
+--8<-- "samples/ITI-18_response_raw.xml:184:192"
+```
+
+- The document unique ID, indicated by the value of the *identificationScheme* equal to *urn:uuid:2e82c1f6-a085-4c72-9da3-8640a32e42ab* as defined in [IHE ITI Technical Framework Vol. 3, Section 4.2.5.2](https://profiles.ihe.net/ITI/TF/Volume3/ch-4.2.html#4.2.5.2). The value conveyed with the *id* attribute uniquely identifies the document in the repository. It's
+  value must be used when retrieving documents to display (see [Retrieve Document Set](RetrieveDocumentSet.md)).
 
 ### Transport Protocol
 
