@@ -1,0 +1,86 @@
+site_name: EPD by example
+site_author: eHealth Suisse
+site_description: The pages explain the transactions by using samples recorded or adapted from transactions performed
+  during the annual Swiss projectathon (September 2020).
+site_url: https://ehealthsuisse.github.io/EPD-by-example
+copyright: '<a href="https://www.e-health-suisse.ch/">eHealth Suisse</a> | <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/LICENSE"><em>Creative Commons Zero v1.0 Universal</em></a>'
+docs_dir: files
+theme:
+  name: material
+  favicon: media/favicon.png
+  logo: media/logo.svg
+  palette:
+    primary: custom
+    accent: custom
+  features:
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
+extra:
+  homepage: https://www.e-health-suisse.ch/
+extra_css:
+  - media/ehealthsuisse.css
+nav:
+  - "Home": index.md
+  - "Patient Management":
+      - PDQ.md
+      - PIXFeed.md
+      - PIXQuery.md
+  - "Document Management":
+      - RegistryStoredQuery.md
+      - RetrieveDocumentSet.md
+      - ProvideAndRegister.md
+  - Authentication:
+      - AuthenticateUser.md
+      - IdPRenew.md
+      - SSOLogout.md
+  - Authorization:
+      - GetXAssertion.md
+      - ProvideXAssertion.md
+  - "Public Test Systems":
+      - playground.md
+      - gazelle.md
+  - "Swiss EPR Exchange Formats":
+      - MedicationCardDocument.md
+      - ImmunizationAdministrationDocument.md
+      - Questionnaire.md
+markdown_extensions:
+  - toc:
+      toc_depth: 5
+      permalink: " ¶"
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path:
+        - .
+        - ..
+      check_paths: true
+      restrict_base_path: false
+      auto_append:
+        - helper/markdown_definitions.md
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: timeago
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+hooks:
+  - helper/external_links_md_extension.py

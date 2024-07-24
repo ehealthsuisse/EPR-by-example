@@ -1,0 +1,81 @@
+:root {
+    --md-primary-fg-color: #003460;
+    --md-accent-fg-color: #1179bf;
+}
+.md-grid {
+    max-width: 98%;
+}
+.md-content {
+    box-shadow: whitesmoke 0px 0px 32px 13px;
+}
+.md-content a[rel~=external]::after {
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 2px;
+    width: 10px;
+    height: 10px;
+    content: "";
+    background: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="10" width="10" viewBox="0 0 512 512"><path fill="%231179bf" d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>');
+}
+.md-content p a,
+.md-content ul a {
+    border-bottom: 1px solid #ddd;
+}
+.md-content p a:hover,
+.md-content ul a:hover {
+    border-color: var(--md-accent-fg-color);
+}
+.md-header__button.md-logo img {
+    width: 120px;
+}
+.md-typeset h5 {
+    color: #1179bf;
+}
+.highlight .hll {
+    display: inline;
+}
+.md-nav__item--section>.md-nav {
+    margin-left: 0!important;
+}
+.md-typeset h5 {
+    color: #003460;
+    font-size: .8em;
+    font-weight: 700;
+    letter-spacing: .15em;
+    margin: 1.25em 0;
+}
+.md-nav--primary .md-nav__title,
+.md-nav--secondary .md-nav__title {
+    background: none;
+    box-shadow: none;
+    color: #1179bf;
+    margin-bottom: 1.4em;
+    font-size: 1.15em;
+}
+.md-nav__item--section>.md-nav__link[for] {
+    color: #455b6d;
+}
+.md-typeset ol li,
+.md-typeset ul li {
+    margin-bottom: .2em;
+}
+
+.js .md-typeset .tabbed-labels:before {
+    background: #1179bf;
+}
+.md-typeset .tabbed-set>input:first-child:checked~.tabbed-labels>:first-child,
+.md-typeset .tabbed-set>input:nth-child(2):checked~.tabbed-labels>:nth-child(2),
+.md-typeset .tabbed-set>input:nth-child(3):checked~.tabbed-labels>:nth-child(3),
+.md-typeset .tabbed-set>input:nth-child(4):checked~.tabbed-labels>:nth-child(4),
+.md-typeset .tabbed-set>input:nth-child(5):checked~.tabbed-labels>:nth-child(5),
+.md-typeset .tabbed-set>input:nth-child(6):checked~.tabbed-labels>:nth-child(6),
+.md-typeset .tabbed-set>input:nth-child(7):checked~.tabbed-labels>:nth-child(7) {
+    color: #003460;
+}
+.tabbed-content {
+    padding: 0 1em;
+    background: #f5f5f5;
+}
+.tabbed-content code {
+    background: #e9e9e9;
+}
