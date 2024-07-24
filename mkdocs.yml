@@ -1,9 +1,9 @@
-site_name: EPD by example
+site_name: EPR by example
 site_author: eHealth Suisse
 site_description: The pages explain the transactions by using samples recorded or adapted from transactions performed
   during the annual Swiss projectathon (September 2020).
-site_url: https://ehealthsuisse.github.io/EPD-by-example
-copyright: '<a href="https://www.e-health-suisse.ch/">eHealth Suisse</a> | <a href="https://github.com/ehealthsuisse/EPD-by-example/blob/main/LICENSE"><em>Creative Commons Zero v1.0 Universal</em></a>'
+site_url: https://ehealthsuisse.github.io/EPR-by-example
+copyright: '<a href="https://www.e-health-suisse.ch/">eHealth Suisse</a> | <a href="https://github.com/ehealthsuisse/EPR-by-example/blob/main/LICENSE"><em>Creative Commons Zero v1.0 Universal</em></a>'
 docs_dir: files
 theme:
   name: material
