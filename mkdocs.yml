@@ -40,6 +40,8 @@ nav:
   - Authorization:
       - GetXAssertion.md
       - ProvideXAssertion.md
+  - Audit:
+      - Atna.md
   - "Public Test Systems":
       - playground.md
       - gazelle.md
