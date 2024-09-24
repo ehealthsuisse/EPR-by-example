@@ -61,7 +61,7 @@ system as specified in [Bindings for the OASIS Security Assertion Markup Languag
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
 were ommitted to increase readability. The raw request file may be found
-[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml).
+[here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/Auth_samples/04_AuthnRequest_raw.xml).
 
 The *AuthnRequest* conveys the following information to be set by the primary system:
 
@@ -109,7 +109,7 @@ The IdP server responds the SAML 2.0 IdP Assertion of the authenticated user.
 ##### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found
-[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml).
+[here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/Auth_samples/08_ArtifactResolve_raw.xml).
 
 The *ArtifactResolve* conveys the following information to be set by the primary system:
 
@@ -125,7 +125,7 @@ The *ArtifactResolve* conveys the following information to be set by the primary
 
 ##### Response Message
 
-The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml).
+The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw version may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/Auth_samples/09_ArtifactResponse_raw.xml).
 
 The *ArtifactResponse* conveys the following information which shall be evaluated by the primary system:
 

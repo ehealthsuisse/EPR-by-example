@@ -20,7 +20,7 @@ Messages are encoded as described in the [WS Trust](http://docs.oasis-open.org/w
 
 #### Request Message
 
-The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/GetXAssertion_request_raw.xml).
+The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements are omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/GetXAssertion_request_raw.xml).
 
 The snippet shows a request performed by a healthcare professional performing a the normal access. For other roles and situations the claims are different. Other examples may be found at [XUA examples][XUA_samples].   
 
@@ -67,7 +67,7 @@ of the ordinances of the Swiss electronic patient dossier.
 #### Response Message
 
 The following snippet is taken from a sample response recorded during the EPR projectathon in September 2020. Some elements
-were ommitted to increase readability. The raw file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/GetXAssertion_response_raw.xml).
+were ommitted to increase readability. The raw file may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/GetXAssertion_response_raw.xml).
 
 The response message is a XML SOAP envelope with the XUA Assertion embedded in the the *Body* element of the SOAP envelope (see example below, lines 21 to 23). Primary systems shall extract the XUA Assertion to use the im the security header of the XDS.b transactions, which require authorization. For primary systems, there is no need to extract information from the XUA assertion.  
 

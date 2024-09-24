@@ -40,7 +40,7 @@ and the ordinances to the Swiss EPR.
 
 Due to the genericity of the underlying [HL7 V3][hl7] standard, the request
 message is quite lengthy. A raw version of a request message may be found
-[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-44_request_raw.xml).
+[here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-44_request_raw.xml).
 
 For a step by step interpretation of the request message, see section below.
 
@@ -113,7 +113,7 @@ The *custodian* element shall convey the OID of the provider organization in the
 
 #### Response Message
 
-The PIX V3 Feed service responds with a message indicating the success of the transaction. A raw version of a response message may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-44_response.xml).
+The PIX V3 Feed service responds with a message indicating the success of the transaction. A raw version of a response message may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-44_response.xml).
 
 ### Transport Protocol
 

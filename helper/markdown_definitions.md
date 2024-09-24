@@ -4,7 +4,7 @@
 *[IdP]: Identity Provider
 *[XUA]: X-User Assertion
 
-[XUA_samples]: https://github.com/ehealthsuisse/EPD-by-example/tree/main/XUA_samples
+[XUA_samples]: https://github.com/ehealthsuisse/EPR-by-example/tree/main/XUA_samples
 [annexes]: https://www.fedlex.admin.ch/eli/oc/2024/194/de/annexes
 [soap]: https://www.w3.org/TR/2007/REC-soap12-part0-20070427/#L26866
 [wss]: http://docs.oasis-open.org/wss-m/wss/v1.1.1/os/wss-SOAPMessageSecurity-v1.1.1-os.html
