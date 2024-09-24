@@ -27,7 +27,7 @@ profile and the ordinances to the Swiss EPR.
 #### Request Message
 
 The following snippet is taken from a sample request recorded during the EPR projectathon in September 2020. Some elements
-were omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-18_request_raw.xml).
+were omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-18_request_raw.xml).
 
 The request message shall be a XML SOAP envelope with the query embedded in the *Body* element of the SOAP envelope.
 The SOAP *Header* element conveys the following information:
@@ -70,8 +70,8 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 the ordinances of the Swiss electronic patient dossier.
 
 A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found
-[here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-18_response.xml). The raw version of the message may
-be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-18_response_raw.xml).
+[here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-18_response.xml). The raw version of the message may
+be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-18_response_raw.xml).
 
 #### Message Interpretation
 

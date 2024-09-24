@@ -17,7 +17,7 @@ Messages are encoded as described in [Assertions and Protocols for the OASIS Sec
 Primary systems shall use this transaction to renew a assertion whose lifetime is exceeded.
 
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
-and namespaces were omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/Renew_request_raw.xml).
+and namespaces were omitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/Auth_samples/Renew_request_raw.xml).
 
 The *Header* element of the SOAP envelope contains the data used to sign the request message, as required from the ordinances of the Swiss EPR in [Annex 8][annexes] and specified in the [Web Service Security: SOAP Message Security 1.1.](https://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf) specification.
 
@@ -37,7 +37,7 @@ below).
 The community responds with a SAML 2.0 IdP assertion whose lifetime is updated.  
 
 The following snippet is adapted from a sample request recorded during the EPR projectathon in September 2020. Some elements
-and namespaces were ommitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/Auth_samples/Renew_response_raw.xml).
+and namespaces were ommitted to increase readability. The raw request file may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/Auth_samples/Renew_response_raw.xml).
 
 A SAML 2.0 IdP Assertion with identical attributes but updated lifetime is conveyed in the the *Body* of the SOAP envelope (see lines 67 .. 69). Examples of Swiss EPR compliant XUA assertions may be found [here][XUA_samples].
 
