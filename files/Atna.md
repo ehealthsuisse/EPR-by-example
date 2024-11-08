@@ -32,6 +32,7 @@ The first child is a _EventIdentification_ element that describes the transactio
 <EventIdentification EventActionCode="★action_code" EventDateTime="★date_time" EventOutcomeIndicator="★outcome">
   <EventID csd-code="★transaction_code" codeSystemName="DCM" originalText="★transaction_display"/>
   <EventTypeCode csd-code="★type_code" codeSystemName="IHE Transactions" originalText="★type_display"/>
+  <PurposeOfUse csd-code="★puo_code" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="★puo_display" />
 </EventIdentification>
 ```
 where:
@@ -42,9 +43,11 @@ where:
   [xsd:dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) format;
 - `outcome` describes whether the transaction was successful or not: `0` is a success, `4` is a minor 
   failure, `8` is a serious failure and `12` is a major failure. The choice of the failure type is left to the 
-  implementers.
+  implementers;
+- `puo_code` and `puo_display` are the _Purpose of Use_ code and display name, respectively. It is mandatory when the 
+  transaction is secured by XUA; otherwise, the whole `#!xml <PurposeOfUse>` element shall be omitted.
 
-Then two _ActiveParticipants_ describe the source and destination participants.
+Then, two _ActiveParticipants_ describe the source and destination participants.
 
 === "_ActiveParticipant_ source"
 
