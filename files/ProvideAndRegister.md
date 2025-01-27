@@ -8,7 +8,7 @@ Primary systems shall use this transaction to provide documents and the related 
 In the Swiss EPR the [IHE XDS.b](https://profiles.ihe.net/ITI/TF/Volume1/ch-10.html) profile and transactions shall
 be used.
 
-To store the document metadata of the document, the the primary system shall perform a
+To store the document metadata of the document, the primary system shall perform a
 [Provide And Register Document Set \[ITI-41\]](https://profiles.ihe.net/ITI/TF/Volume2/ITI-41.html) transaction.
 Within the request, the primary systems shall provide the master patient ID as retrieved from the
 [PIX Query](PIXQuery.md), the document metadata as defined in the ordinances of the Swiss EPR and the
@@ -44,7 +44,7 @@ The corresponding interpretation of the metadata attributes in the Swiss EPR and
 [Annex 3][annexes]
 of the ordinances of the Swiss electronic patient dossier.
 
-A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml). The raw version of the request message may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_request.xml).
+A request message is quite lengthy. A listing with abrevations used in the step by step interpretation below is found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-41_request.xml). The raw version of the request message may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-41_request.xml).
 
 #### Message Interpretation
 
@@ -59,17 +59,17 @@ The SOAP *Header* element conveys the following information:
 - *Security* element: The Web Service Security header as defined in the [WS Security][wss] specification. This element conveys the XUA Assertion used for
 authorization (see [Provide X-User Assertion](ProvideXAssertion.md)).  
 
-```xml title="SOAP header" linenums="3"
---8<-- "samples/ITI-41_request.xml:3:11"
+```xml title="SOAP header" linenums="28"
+--8<-- "samples/ITI-41_request_raw.xml:28:36"
 ```
 
 The SOAP *Body* element conveys the following objects in ebXML syntax:
 
-- *RegistryRegistryPackage* defining the submission set and it's metadata.
+- *RegistryPackage* defining the submission set and its metadata.
 - *ExtrinsicObject* defining the document metadata (matches the document metadata interpretation in [Registry Stored Query](RegistryStoredQuery.md#response-message)).
 - *Association* linking the document metadata to the submission set.  
 
-We will explain the *RegistryRegistryPackage* object defining the submission set first. For the other elements, see below.  
+We will explain the *RegistryPackage* object defining the submission set first. For the other elements, see below.  
 
 ##### Submission Set
 
@@ -80,15 +80,15 @@ The structure of the *RegistryPackage* object defining the submission set is as 
 - Metadata attributes encoded as *Classification* can be identified and interpreted by the classification's *classificationScheme* attribute.
 - The unique ID of the document is encoded as *ExternalIdentifier*, which has an *identificationScheme* attribute with a fixed value.
 
-The *RegistryRegistryPackage* object defining the submission set has one *Slot* child elements with name *submissionTime*
+The *RegistryPackage* object defining the submission set has one *Slot* child elements with name *submissionTime*
 which conveys the request timestamp, and a *Name* element to convey the display name of the submission set (see lines 17 to
 	25 below).
 
-```xml title="RegistryRegistryPackage element" linenums="17"
---8<-- "samples/ITI-41_request.xml:17:25"
+```xml title="RegistryPackage element" linenums="250"
+--8<-- "samples/ITI-41_request_raw.xml:250:255"
 ```
 
-The *RegistryRegistryPackage* object defining the submission set has three *Classification* child elements conveying the
+The *RegistryPackage* object defining the submission set has three *Classification* child elements conveying the
 submission set metadata:
 
 - Content Type Code: The submission set content type code attribute, indicated by the value of the classificationScheme
@@ -96,22 +96,22 @@ equal to *urn:uuid:aa543740-bdda-424e-8c96-df4873be8500*. The value conveyed wit
 codingScheme value must match one of the supported values in the Swiss EPR as defined in Annex 3.
 - submission author: The submission set author element, indicated by the value of the classificationScheme equal to *urn:uuid:a7058bb9-b4e4-4307-ba5b-e3f0ab85e12d*. The author element is optional in the EPR. If present, it shall convey the
 information on the person, which initiated the request.
-- submission set identificator: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd*
+- submission set identifier: An element with classification scheme *urn:uuid:a54d6aa5-d40d-43f9-88c5-b4633d873bdd*
 required to identify the *RegistryPackage* object as a XDS.b submission set.
 
-```xml title="RegistryRegistryPackage element" linenums="26"
---8<-- "samples/ITI-41_request.xml:26:64"
+```xml title="RegistryPackage element" linenums="256"
+--8<-- "samples/ITI-41_request_raw.xml:256:282"
 ```
 
-The *RegistryRegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements:
+The *RegistryPackage* object defining the submission set has three *ExternalIdentifier* child elements:
 
 - *XDSSubmissionSet.sourceId*: Conveys the OID of the primary system performing the request.
 - *XDSSubmissionSet.uniqueId*: Conveys a UUID of the submission set.
 - *XDSSubmissionSet.patientId*: The master patient ID (XAD-PID) of the patient in CX format
 (see [PIX Feed](PIXFeed.md)).
 
-```xml title="RegistryRegistryPackage element" linenums="65"
---8<-- "samples/ITI-41_request.xml:65:95"
+```xml title="RegistryPackage element" linenums="283"
+--8<-- "samples/ITI-41_request_raw.xml:283:297"
 ```
 
 ##### Document Metadata
@@ -132,8 +132,8 @@ The *Association* object thus conveys two parameter to link the objects:
 
 In addition the *Association* object conveys a status indicator, which must take the value *Original* (see snippet below).
 
-```xml title="Association element" linenums="277"
---8<-- "samples/ITI-41_request.xml:277:287"
+```xml title="Association element" linenums="300"
+--8<-- "samples/ITI-41_request_raw.xml:300:306"
 ```
 
 #### Response Message
@@ -142,10 +142,10 @@ The provide and register service responds with a message indicating the success 
 encoded in the *Body* element of the SOAP envelope as follows:
 
 ```xml linenums="9"
-  <ns2:RegistryResponse xmlns=" !--namespace ommitted " status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>.
+<ns2:RegistryResponse xmlns="namespace omitted" status="urn:oasis:names:tc:ebxml-regrep:ResponseStatusType:Success"/>
 ```
 
-The raw version of a response message may be found [here](https://github.com/ehealthsuisse/EPD-by-example/tree/main/samples/ITI-41_response.xml).
+The raw version of a response message may be found [here](https://github.com/ehealthsuisse/EPR-by-example/tree/main/samples/ITI-41_response.xml).
 
 
 ### Transport Protocol
@@ -227,7 +227,7 @@ specified in the [IHE ITI TF](https://ehealthsuisse.ihe-europe.net/gss/audit-mes
 [Extension 1 to Annex5][annexes] in the ordinances of the Swiss electronic patient record (see Section
 1.5 "Requirements on ATNA").  
 
-The following snippet shows a example audit message to be written by the primary system:
+The following snippet shows an example audit message to be written by the primary system:
 
 ```xml title="iti-41-log.xml" linenums="1"
 --8<-- "samples/iti-41-log.xml"

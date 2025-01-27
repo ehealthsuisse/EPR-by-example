@@ -32,23 +32,27 @@ The first child is a _EventIdentification_ element that describes the transactio
 <EventIdentification EventActionCode="★action_code" EventDateTime="★date_time" EventOutcomeIndicator="★outcome">
   <EventID csd-code="★transaction_code" codeSystemName="DCM" originalText="★transaction_display"/>
   <EventTypeCode csd-code="★type_code" codeSystemName="IHE Transactions" originalText="★type_display"/>
+  <PurposeOfUse csd-code="★puo_code" codeSystemName="2.16.756.5.30.1.127.3.10.5" originalText="★puo_display" />
 </EventIdentification>
 ```
 where:
 
 - `action_code`, `transaction_code`, `transaction_display`,`type_code` and `type_display` depend on the 
   transaction type and are defined in the IHE transaction profile, in the 'Security Considerations' section;
-- `date_time` is the date and time at which the transaction was made. It shall be given in UTC, and shall follow the 
-  xsd:dateTime format;
+- `date_time` is the date and time at which the transaction was made. It shall contain a timezone, and shall follow the 
+  [xsd:dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) format;
 - `outcome` describes whether the transaction was successful or not: `0` is a success, `4` is a minor 
   failure, `8` is a serious failure and `12` is a major failure. The choice of the failure type is left to the 
-  implementers.
+  implementers;
+- `puo_code` and `puo_display` are the _Purpose of Use_ code and display name, respectively. It is mandatory when the 
+  transaction is secured by XUA; otherwise, the whole `#!xml <PurposeOfUse>` element shall be omitted.
 
-Then two _ActiveParticipants_ describe the source and destination participants.
+Then, two _ActiveParticipants_ describe the source and destination participants.
 
-=== "First _ActiveParticipant_"
+=== "_ActiveParticipant_ source"
 
-    The first _ActiveParticipant_ describes the source participant, which is the one that has sent the transaction.
+    The first _ActiveParticipant_ describes the source participant, which often is the one that has sent the 
+    transaction (but not always).
     It has the following content:
     ```xml
     <ActiveParticipant UserID="★user_id" AlternativeUserID="★alt_user_id" NetworkAccessPointID="★nap_id" NetworkAccessPointTypeCode="★nap_type" UserIsRequest="true">
@@ -64,10 +68,10 @@ Then two _ActiveParticipants_ describe the source and destination participants.
     
     Other attributes are optional.
 
-=== "Second _ActiveParticipant_"
+=== "_ActiveParticipant_ destination"
 
-    The second _ActiveParticipant_ describes the destination participant, which is the one that has received the 
-    transaction.
+    The second _ActiveParticipant_ describes the destination participant, which often is the one that has received the 
+    transaction (but not always).
     It has the following content:
     ```xml
     <ActiveParticipant UserID="★user_id" NetworkAccessPointID="★nap_id" NetworkAccessPointTypeCode="★nap_type" UserIsRequest="false">
@@ -82,19 +86,26 @@ Then two _ActiveParticipants_ describe the source and destination participants.
     
     Other attributes are optional.
 
+!!! warning
+    In some transactions such as ITI-43, the source and destination participants are reversed. Always check the IHE 
+    specifications for the correct order. The participant "server" is the one having the "SOAP endpoint URI", the 
+    participant "client" is the one having the "process ID".
+
 Following that is the `#!xml <AuditSourceIdentification>` element.
 It contains the following:
 ```xml
-<AuditSourceIdentification AuditEnterpriseSiteID="★oid" />
+<AuditSourceIdentification AuditSourceID="★source" AuditEnterpriseSiteID="★oid" />
 ```
-where `oid` is required and must be an OID of your OID hierarchy.
+where `oid` is required by the [Amendment 1 to Annex 5][annexes] (§1.5.2) and must be an OID of your OID hierarchy.
 Please ask your community if it has requirements about the use of this OID.
-Other attributes are optional.
+The `source` value is required by the standard, but its value choice is left to the implementers;
+it should contain an "_Identifier of the source_".
+You can copy the `oid` value if you want.
 
 ## Requirements for transactions secured by XUA
 
 If the transaction is secured by XUA (like ITI-18, ITI-41, ITI-43), then additional _ActiveParticipants_ shall be 
-specified.
+specified to describe the authenticated participant of the transaction.
 
 === "First _ActiveParticipant_"
 
@@ -185,7 +196,7 @@ where `home_community_id_b64` is the value of the homeCommunityId, base64-encode
   <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number" />
 </ParticipantObjectIdentification>
 ```
-where `patient_id` is the patient identifier encoded in HL7 CX format (e.g. `value^^^&1.2.3&aISO`).
+where `patient_id` is the patient identifier encoded in HL7 CX format (e.g. `value^^^&1.2.3&ISO`).
 
 ### Submission set
 
@@ -253,4 +264,21 @@ The value must be base64-encoded.
 
 ## Sending an audit log
 
-[Amendment 1 to Annex 5][annexes], §1.5.1
+The audit log shall be sent to the community as a syslog message either over TCP (with TLS).
+The relevant specifications are:
+
+- [RFC 5424](https://tools.ietf.org/html/rfc5424): _The Syslog Protocol_ for information about the syslog message format;
+- [RFC 5425](https://tools.ietf.org/html/rfc5425): _Transport Layer Security (TLS) Transport Mapping for Syslog_ 
+  which formalizes sending Syslog messages over TCP;
+
+The choice of values in the Syslog headers is left to the implementers.
+
+An example of a Syslog message sent over TCP is:
+```
+2027 <85>1 2024-06-25T13:47:57.600Z mag-cara-695f6f7f49-zsxxw IPF 1 IHE+RFC-3881 - ﻿<?xml version="1.0" encoding="UTF-8"?><AuditMessage><EventIdentification EventActionCode="E" EventDateTime="2024-06-25T13:47:57.598829760Z" EventOutcomeIndicator="12"><EventID csd-code="110112" codeSystemName="DCM" originalText="Query" /><EventTypeCode csd-code="ITI-67" codeSystemName="IHE Transactions" originalText="Mobile Document Reference Query" /></EventIdentification><ActiveParticipant UserID="/mag-cara/fhir/DocumentReference" UserIsRequestor="true" NetworkAccessPointID="147.87.210.77" NetworkAccessPointTypeCode="2"><RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID" /></ActiveParticipant><ActiveParticipant UserID="https://test.ahdis.ch/mag-cara/fhir/DocumentReference" AlternativeUserID="1" UserIsRequestor="false" NetworkAccessPointID="10.28.2.28" NetworkAccessPointTypeCode="2"><RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID" /></ActiveParticipant><AuditSourceIdentification AuditEnterpriseSiteID="1.3.6.1.4.1.21367.2017.2.7.109" AuditSourceID="IPF"><AuditSourceTypeCode csd-code="9" codeSystemName="DCM" originalText="Other" /></AuditSourceIdentification><ParticipantObjectIdentification ParticipantObjectID="urn:oid:1.1.1.99.1|215503a0-11d2-4197-822a-053791ab5a8e" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1"><ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881" originalText="Patient Number" /></ParticipantObjectIdentification><ParticipantObjectIdentification ParticipantObjectID="MobileDocumentReferenceQuery" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24"><ParticipantObjectIDTypeCode csd-code="ITI-67" codeSystemName="IHE Transactions" originalText="Mobile Document Reference Query" /><ParticipantObjectQuery>c3RhdHVzPWN1cnJlbnQmcGF0aWVudC5pZGVudGlmaWVyPXVybjpvaWQ6MS4xLjEuOTkuMXwyMTU1MDNhMC0xMWQyLTQxOTctODIyYS0wNTM3OTFhYjVhOGU=</ParticipantObjectQuery></ParticipantObjectIdentification></AuditMessage>
+```
+
+!!! info "Note"
+    Notice the UTF-8 BOM at the beginning of the payload (just before `<?xml`). It is required by the syslog protocol
+    for UTF-8 messages. 2027 is the number of bytes in the following message (2025 characters + 2 extra bytes for 
+    the BOM).
