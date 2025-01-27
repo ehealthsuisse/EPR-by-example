@@ -51,7 +51,8 @@ Then, two _ActiveParticipants_ describe the source and destination participants.
 
 === "_ActiveParticipant_ source"
 
-    The first _ActiveParticipant_ describes the source participant, which is the one that has sent the transaction.
+    The first _ActiveParticipant_ describes the source participant, which often is the one that has sent the 
+    transaction (but not always).
     It has the following content:
     ```xml
     <ActiveParticipant UserID="★user_id" AlternativeUserID="★alt_user_id" NetworkAccessPointID="★nap_id" NetworkAccessPointTypeCode="★nap_type" UserIsRequest="true">
@@ -69,8 +70,8 @@ Then, two _ActiveParticipants_ describe the source and destination participants.
 
 === "_ActiveParticipant_ destination"
 
-    The second _ActiveParticipant_ describes the destination participant, which is the one that has received the 
-    transaction.
+    The second _ActiveParticipant_ describes the destination participant, which often is the one that has received the 
+    transaction (but not always).
     It has the following content:
     ```xml
     <ActiveParticipant UserID="★user_id" NetworkAccessPointID="★nap_id" NetworkAccessPointTypeCode="★nap_type" UserIsRequest="false">
@@ -84,6 +85,11 @@ Then, two _ActiveParticipants_ describe the source and destination participants.
     - `nap_type` is `1` for machine (DNS) name, `2` for IP address.
     
     Other attributes are optional.
+
+!!! warning
+    In some transactions such as ITI-43, the source and destination participants are reversed. Always check the IHE 
+    specifications for the correct order. The participant "server" is the one having the "SOAP endpoint URI", the 
+    participant "client" is the one having the "process ID".
 
 Following that is the `#!xml <AuditSourceIdentification>` element.
 It contains the following:
