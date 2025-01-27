@@ -56,15 +56,8 @@ The SOAP *Header* element shall convey the following information:
 
 Optional elements may be included according to the specification in the [W3C SOAP specification][soap].
 
-```xml title="SOAP header" linenums="1" hl_lines="3-5"
-<soap:Header>
-  	<Action xmlns="http://www.w3.org/2005/08/addressing">urn:hl7-org:v3:PRPA_IN201301UV02</Action>
-	<MessageID xmlns="http://www.w3.org/2005/08/addressing">urn:uuid:7a180388-6ba7-4cbc-bffe-dfcdc4e602b7</MessageID>
-	<To xmlns="http://www.w3.org/2005/08/addressing">http://epd-core.int.adswissnet.healthcare/mpi/pixmanager</To>
-	<ReplyTo xmlns="http://www.w3.org/2005/08/addressing">
-	    <Address>http://www.w3.org/2005/08/addressing/anonymous</Address>
-	</ReplyTo>
-</soap:Header>
+```xml title="SOAP header" linenums="1"
+--8<-- "samples/ITI-44_request_raw.xml:1:11"
 ```
 
 For the patient identity feed no *Security* header element is required, since in the Swiss EPR the access to the patient
@@ -79,14 +72,14 @@ Primary systems shall set the following values:
 - *sender* : The OID of the sender application initiating the request.
 - *receiver*: The OID of the receiver application which shall respond to the request.
 
-```xml title="PRPA_IN201301UV02 message" linenums="2"
---8<-- "samples/ITI-44_request_raw.xml:2:17"
+```xml title="PRPA_IN201301UV02 message" linenums="13"
+--8<-- "samples/ITI-44_request_raw.xml:13:29"
 ```
 
 The patient data are encoded in a HL7 V3 *controlActProcess* object as follows:
 
-```xml title="controlActProcess element" linenums="18"
---8<-- "samples/ITI-44_request_raw.xml:18:60"
+```xml title="controlActProcess element" linenums="30"
+--8<-- "samples/ITI-44_request_raw.xml:30:72"
 ```
 
 The *subject* child element conveys the following information in its child elements.
@@ -107,8 +100,8 @@ The patients demographic data are conveyed in the *patientPerson* child element:
 
 The *custodian* element shall convey the OID of the provider organization in the *id* child element:
 
-```xml title="custodian element" linenums="61"
---8<-- "samples/ITI-44_request_raw.xml:61:71"
+```xml title="custodian element" linenums="73"
+--8<-- "samples/ITI-44_request_raw.xml:73:84"
 ```
 
 #### Response Message
