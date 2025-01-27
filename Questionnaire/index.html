@@ -1,0 +1,852 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The pages explain the transactions by using samples recorded or adapted from transactions performed during the annual Swiss projectathon (September 2020)."><meta name=author content="eHealth Suisse"><link href=https://ehealthsuisse.github.io/EPR-by-example/Questionnaire/ rel=canonical><link href=../ImmunizationAdministrationDocument/ rel=prev><link rel=icon href=../media/favicon.png><meta name=generator content="mkdocs-1.6.1, mkdocs-material-9.4.14"><title>How to build a FHIR-Questionnaire - EPR by example</title><link rel=stylesheet href=../assets/stylesheets/main.fad675c6.min.css><link rel=stylesheet href=../assets/stylesheets/palette.356b1318.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><link rel=stylesheet href=../css/timeago.css><link rel=stylesheet href=../media/ehealthsuisse.css><script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=custom data-md-color-accent=custom> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#how-to-build-a-fhir-questionnaire class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class="md-header md-header--shadow" data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=https://www.e-health-suisse.ch/ title="EPR by example" class="md-header__button md-logo" aria-label="EPR by example" data-md-component=logo> <img src=../media/logo.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> EPR by example </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> How to build a FHIR-Questionnaire </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" title=Clear aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg> </button> </nav> <div class=md-search__suggest data-md-component=search-suggest></div> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list role=presentation></ol> </div> </div> </div> </div> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://www.e-health-suisse.ch/ title="EPR by example" class="md-nav__button md-logo" aria-label="EPR by example" data-md-component=logo> <img src=../media/logo.svg alt=logo> </a> EPR by example </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=.. class=md-nav__link> <span class=md-ellipsis> Home </span> </a> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_2> <label class=md-nav__link for=__nav_2 id=__nav_2_label tabindex> <span class=md-ellipsis> Patient Management </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_2_label aria-expanded=false> <label class=md-nav__title for=__nav_2> <span class="md-nav__icon md-icon"></span> Patient Management </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../PDQ/ class=md-nav__link> <span class=md-ellipsis> Patient Demographics Query </span> </a> </li> <li class=md-nav__item> <a href=../PIXFeed/ class=md-nav__link> <span class=md-ellipsis> PIX Feed </span> </a> </li> <li class=md-nav__item> <a href=../PIXQuery/ class=md-nav__link> <span class=md-ellipsis> PIX Query </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3 id=__nav_3_label tabindex> <span class=md-ellipsis> Document Management </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_3_label aria-expanded=false> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> Document Management </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../RegistryStoredQuery/ class=md-nav__link> <span class=md-ellipsis> Registry Stored Query </span> </a> </li> <li class=md-nav__item> <a href=../RetrieveDocumentSet/ class=md-nav__link> <span class=md-ellipsis> Retrieve Document Set </span> </a> </li> <li class=md-nav__item> <a href=../ProvideAndRegister/ class=md-nav__link> <span class=md-ellipsis> Provide and Register Document Set </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4 id=__nav_4_label tabindex> <span class=md-ellipsis> Authentication </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_4_label aria-expanded=false> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> Authentication </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../AuthenticateUser/ class=md-nav__link> <span class=md-ellipsis> Authenticate User </span> </a> </li> <li class=md-nav__item> <a href=../IdPRenew/ class=md-nav__link> <span class=md-ellipsis> IdP Renew </span> </a> </li> <li class=md-nav__item> <a href=../SSOLogout/ class=md-nav__link> <span class=md-ellipsis> SSO Logout </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5 id=__nav_5_label tabindex> <span class=md-ellipsis> Authorization </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_5_label aria-expanded=false> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Authorization </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../GetXAssertion/ class=md-nav__link> <span class=md-ellipsis> Get X-User Assertion </span> </a> </li> <li class=md-nav__item> <a href=../ProvideXAssertion/ class=md-nav__link> <span class=md-ellipsis> Provide X-User Assertion </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6 id=__nav_6_label tabindex> <span class=md-ellipsis> Audit </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_6_label aria-expanded=false> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Audit </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../Atna/ class=md-nav__link> <span class=md-ellipsis> Audit logs </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7 id=__nav_7_label tabindex> <span class=md-ellipsis> Public Test Systems </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_7_label aria-expanded=false> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> Public Test Systems </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../playground/ class=md-nav__link> <span class=md-ellipsis> EPR Playground </span> </a> </li> <li class=md-nav__item> <a href=../gazelle/ class=md-nav__link> <span class=md-ellipsis> EPR Reference Environment </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_8 checked> <label class=md-nav__link for=__nav_8 id=__nav_8_label tabindex> <span class=md-ellipsis> Swiss EPR Exchange Formats </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_8_label aria-expanded=true> <label class=md-nav__title for=__nav_8> <span class="md-nav__icon md-icon"></span> Swiss EPR Exchange Formats </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../MedicationCardDocument/ class=md-nav__link> <span class=md-ellipsis> Medication Card document </span> </a> </li> <li class=md-nav__item> <a href=../ImmunizationAdministrationDocument/ class=md-nav__link> <span class=md-ellipsis> Immunization Administration Document </span> </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> <span class=md-ellipsis> How to build a FHIR-Questionnaire </span> <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> <span class=md-ellipsis> How to build a FHIR-Questionnaire </span> </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#useful-links class=md-nav__link> <span class=md-ellipsis> Useful Links </span> </a> </li> <li class=md-nav__item> <a href=#minimal-example class=md-nav__link> <span class=md-ellipsis> Minimal Example </span> </a> </li> <li class=md-nav__item> <a href=#adding-a-question class=md-nav__link> <span class=md-ellipsis> Adding a question </span> </a> <nav class=md-nav aria-label="Adding a question"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#required-questions class=md-nav__link> <span class=md-ellipsis> Required questions </span> </a> </li> <li class=md-nav__item> <a href=#answer-options-for-choice-questions class=md-nav__link> <span class=md-ellipsis> Answer options for choice questions </span> </a> </li> <li class=md-nav__item> <a href=#subquestions class=md-nav__link> <span class=md-ellipsis> Subquestions </span> </a> </li> <li class=md-nav__item> <a href=#depending-questions class=md-nav__link> <span class=md-ellipsis> Depending questions </span> </a> </li> <li class=md-nav__item> <a href=#initial-values class=md-nav__link> <span class=md-ellipsis> Initial values </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#questionnaire-item-ui-control-codes class=md-nav__link> <span class=md-ellipsis> Questionnaire Item UI Control Codes </span> </a> <nav class=md-nav aria-label="Questionnaire Item UI Control Codes"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#help-button class=md-nav__link> <span class=md-ellipsis> Help Button </span> </a> </li> <li class=md-nav__item> <a href=#prompt class=md-nav__link> <span class=md-ellipsis> Prompt </span> </a> </li> <li class=md-nav__item> <a href=#unit class=md-nav__link> <span class=md-ellipsis> Unit </span> </a> </li> <li class=md-nav__item> <a href=#check-box class=md-nav__link> <span class=md-ellipsis> Check-box </span> </a> </li> <li class=md-nav__item> <a href=#radio-button class=md-nav__link> <span class=md-ellipsis> Radio Button </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#internationalisation class=md-nav__link> <span class=md-ellipsis> Internationalisation </span> </a> </li> <li class=md-nav__item> <a href=#prepopulation class=md-nav__link> <span class=md-ellipsis> Prepopulation </span> </a> </li> <li class=md-nav__item> <a href=#detailed-example-with-comments class=md-nav__link> <span class=md-ellipsis> Detailed example with comments </span> </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#useful-links class=md-nav__link> <span class=md-ellipsis> Useful Links </span> </a> </li> <li class=md-nav__item> <a href=#minimal-example class=md-nav__link> <span class=md-ellipsis> Minimal Example </span> </a> </li> <li class=md-nav__item> <a href=#adding-a-question class=md-nav__link> <span class=md-ellipsis> Adding a question </span> </a> <nav class=md-nav aria-label="Adding a question"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#required-questions class=md-nav__link> <span class=md-ellipsis> Required questions </span> </a> </li> <li class=md-nav__item> <a href=#answer-options-for-choice-questions class=md-nav__link> <span class=md-ellipsis> Answer options for choice questions </span> </a> </li> <li class=md-nav__item> <a href=#subquestions class=md-nav__link> <span class=md-ellipsis> Subquestions </span> </a> </li> <li class=md-nav__item> <a href=#depending-questions class=md-nav__link> <span class=md-ellipsis> Depending questions </span> </a> </li> <li class=md-nav__item> <a href=#initial-values class=md-nav__link> <span class=md-ellipsis> Initial values </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#questionnaire-item-ui-control-codes class=md-nav__link> <span class=md-ellipsis> Questionnaire Item UI Control Codes </span> </a> <nav class=md-nav aria-label="Questionnaire Item UI Control Codes"> <ul class=md-nav__list> <li class=md-nav__item> <a href=#help-button class=md-nav__link> <span class=md-ellipsis> Help Button </span> </a> </li> <li class=md-nav__item> <a href=#prompt class=md-nav__link> <span class=md-ellipsis> Prompt </span> </a> </li> <li class=md-nav__item> <a href=#unit class=md-nav__link> <span class=md-ellipsis> Unit </span> </a> </li> <li class=md-nav__item> <a href=#check-box class=md-nav__link> <span class=md-ellipsis> Check-box </span> </a> </li> <li class=md-nav__item> <a href=#radio-button class=md-nav__link> <span class=md-ellipsis> Radio Button </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#internationalisation class=md-nav__link> <span class=md-ellipsis> Internationalisation </span> </a> </li> <li class=md-nav__item> <a href=#prepopulation class=md-nav__link> <span class=md-ellipsis> Prepopulation </span> </a> </li> <li class=md-nav__item> <a href=#detailed-example-with-comments class=md-nav__link> <span class=md-ellipsis> Detailed example with comments </span> </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <h1 id=how-to-build-a-fhir-questionnaire>How to build a FHIR-Questionnaire<a class=headerlink href=#how-to-build-a-fhir-questionnaire title="Permanent link"> ¶</a></h1> <p>This guide aims to explain how to build a FHIR Questionnaire, and in particular how to use the extensions necessary to make full use of the <code>@i4mi/fhir-questionnaire-renderer</code> library. You can use the <a href=https://github.com/mHealth-Prototyp/Questionnaire rel="external nofollow noopener" target=_blank>Questionnaire Prototype</a> from the <a href=https://github.com/mHealth-Prototyp rel="external nofollow noopener" target=_blank>mHealth prototype project</a> to render the questionnaire.</p> <h2 id=useful-links>Useful Links<a class=headerlink href=#useful-links title="Permanent link"> ¶</a></h2> <ul> <li><a href=https://hl7.org/fhir/r4b/questionnaire.html rel="external nofollow noopener" target=_blank>FHIR Resource Questionnaire</a>: Official documentation for FHIR Questionnaire</li> <li><a href=https://www.npmjs.com/package/@i4mi/fhir-questionnaire-renderer rel="external nofollow noopener" target=_blank>@i4mi/fhir-questionnaire-renderer</a>: Library for rendering a <code>Questionnaire</code> resource in Quasar</li> <li><a href=https://www.npmjs.com/package/@i4mi/fhir_questionnaire rel="external nofollow noopener" target=_blank>@i4mi/fhir_questionnaire</a>: Library for managing the logic of FHIR Questionnaires, with updating depending questions, generation of <code>QuestionnaireResponse</code> resources, prepopulation and more.</li> <li><a href=https://lhcformbuilder.nlm.nih.gov/ rel="external nofollow noopener" target=_blank>LHC FHIR Questionnaire Builder</a>: Tool to build basic FHIR Questionnaire.</li> <li><a href=https://validator.fhir.org rel="external nofollow noopener" target=_blank>FHIR Validator</a>: Useful tool to check if your Questionnaire is a valid FHIR resource.</li> </ul> <h2 id=minimal-example>Minimal Example<a class=headerlink href=#minimal-example title="Permanent link"> ¶</a></h2> <p>Your are free to set whatever fields you want inside your <code>Questionnaire</code> resource (note that the <code>status</code> field is mandatory), however only the following fields will be rendered by the Questionnaire Renderer:</p> <ul> <li><code>title</code> the title of the questionnaire</li> <li><code>description</code> the description as a markdown string</li> <li><code>item</code> the array that contains the questions</li> </ul> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Minimal example</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-0-1> 1</a></span>
+<span class=normal><a href=#__codelineno-0-2> 2</a></span>
+<span class=normal><a href=#__codelineno-0-3> 3</a></span>
+<span class=normal><a href=#__codelineno-0-4> 4</a></span>
+<span class=normal><a href=#__codelineno-0-5> 5</a></span>
+<span class=normal><a href=#__codelineno-0-6> 6</a></span>
+<span class=normal><a href=#__codelineno-0-7> 7</a></span>
+<span class=normal><a href=#__codelineno-0-8> 8</a></span>
+<span class=normal><a href=#__codelineno-0-9> 9</a></span>
+<span class=normal><a href=#__codelineno-0-10>10</a></span>
+<span class=normal><a href=#__codelineno-0-11>11</a></span>
+<span class=normal><a href=#__codelineno-0-12>12</a></span>
+<span class=normal><a href=#__codelineno-0-13>13</a></span>
+<span class=normal><a href=#__codelineno-0-14>14</a></span>
+<span class=normal><a href=#__codelineno-0-15>15</a></span>
+<span class=normal><a href=#__codelineno-0-16>16</a></span>
+<span class=normal><a href=#__codelineno-0-17>17</a></span>
+<span class=normal><a href=#__codelineno-0-18>18</a></span>
+<span class=normal><a href=#__codelineno-0-19>19</a></span>
+<span class=normal><a href=#__codelineno-0-20>20</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-0-1 name=__codelineno-0-1></a><span class=p>{</span>
+<a id=__codelineno-0-2 name=__codelineno-0-2></a><span class=w>  </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Questionnaire&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-3 name=__codelineno-0-3></a><span class=w>  </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;draft&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-4 name=__codelineno-0-4></a><span class=w>  </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Basic Data Questionnaire&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-5 name=__codelineno-0-5></a><span class=w>  </span><span class=nt>&quot;description&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;# How it works?\n\n Simply enter your date of birth and your name and press save!&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-6 name=__codelineno-0-6></a><span class=w>  </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-0-7 name=__codelineno-0-7></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-0-8 name=__codelineno-0-8></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-9 name=__codelineno-0-9></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;dateTime&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-10 name=__codelineno-0-10></a><span class=w>      </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-0-11 name=__codelineno-0-11></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Date of Birth&quot;</span>
+<a id=__codelineno-0-12 name=__codelineno-0-12></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-0-13 name=__codelineno-0-13></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-0-14 name=__codelineno-0-14></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q2&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-15 name=__codelineno-0-15></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;boolean&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-16 name=__codelineno-0-16></a><span class=w>      </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-0-17 name=__codelineno-0-17></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Vaccinated against polio&quot;</span>
+<a id=__codelineno-0-18 name=__codelineno-0-18></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-0-19 name=__codelineno-0-19></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-0-20 name=__codelineno-0-20></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <p>For a more detailed and commented example, see the last chapter of this guide.</p> <h2 id=adding-a-question>Adding a question<a class=headerlink href=#adding-a-question title="Permanent link"> ¶</a></h2> <p>To add a question, add an object inside the <code>item</code> array. Every question should have a unique <code>linkId</code> and a <code>type</code>. The rendering library supports the following subset of the <a href=https://www.hl7.org/fhir/valueset-item-type.html rel="external nofollow noopener" target=_blank>questionnaire item types</a>:</p> <ul> <li><code>group</code></li> <li><code>display</code></li> <li><code>boolean</code></li> <li><code>decimal</code></li> <li><code>integer</code></li> <li><code>date</code></li> <li><code>datetime</code></li> <li><code>time</code></li> <li><code>string</code></li> <li><code>text</code></li> <li><code>url</code></li> </ul> <h3 id=required-questions>Required questions<a class=headerlink href=#required-questions title="Permanent link"> ¶</a></h3> <p>To specify if a questionnaire item is required to be answered, set the field <code>required</code> to <code>true</code>.</p> <p>For details, please see <a href=https://hl7.org/fhir/r4b/questionnaire-definitions.html#Questionnaire.item.enableWhen rel="external nofollow noopener" target=_blank>the official documentation for enableWhen</a>.</p> <h3 id=answer-options-for-choice-questions>Answer options for choice questions<a class=headerlink href=#answer-options-for-choice-questions title="Permanent link"> ¶</a></h3> <p>For choice questions, you can specify the potential answer options in the answerOptions field. Usually, it makes the most sense to use the valueCoding type here, but in this documentation we chose valueString for keeping it simpler.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Choice question</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-1-1> 1</a></span>
+<span class=normal><a href=#__codelineno-1-2> 2</a></span>
+<span class=normal><a href=#__codelineno-1-3> 3</a></span>
+<span class=normal><a href=#__codelineno-1-4> 4</a></span>
+<span class=normal><a href=#__codelineno-1-5> 5</a></span>
+<span class=normal><a href=#__codelineno-1-6> 6</a></span>
+<span class=normal><a href=#__codelineno-1-7> 7</a></span>
+<span class=normal><a href=#__codelineno-1-8> 8</a></span>
+<span class=normal><a href=#__codelineno-1-9> 9</a></span>
+<span class=normal><a href=#__codelineno-1-10>10</a></span>
+<span class=normal><a href=#__codelineno-1-11>11</a></span>
+<span class=normal><a href=#__codelineno-1-12>12</a></span>
+<span class=normal><a href=#__codelineno-1-13>13</a></span>
+<span class=normal><a href=#__codelineno-1-14>14</a></span>
+<span class=normal><a href=#__codelineno-1-15>15</a></span>
+<span class=normal><a href=#__codelineno-1-16>16</a></span>
+<span class=normal><a href=#__codelineno-1-17>17</a></span>
+<span class=normal><a href=#__codelineno-1-18>18</a></span>
+<span class=normal><a href=#__codelineno-1-19>19</a></span>
+<span class=normal><a href=#__codelineno-1-20>20</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1></a><span class=p>{</span>
+<a id=__codelineno-1-2 name=__codelineno-1-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q4&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-3 name=__codelineno-1-3></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;choice&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-4 name=__codelineno-1-4></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Eye color&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-5 name=__codelineno-1-5></a><span class=w>  </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=p>,</span>
+<a id=__codelineno-1-6 name=__codelineno-1-6></a><span class=w>  </span><span class=nt>&quot;answerOptions&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-1-7 name=__codelineno-1-7></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-1-8 name=__codelineno-1-8></a><span class=w>      </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;green&quot;</span>
+<a id=__codelineno-1-9 name=__codelineno-1-9></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-1-10 name=__codelineno-1-10></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-1-11 name=__codelineno-1-11></a><span class=w>      </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;brown&quot;</span>
+<a id=__codelineno-1-12 name=__codelineno-1-12></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-1-13 name=__codelineno-1-13></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-1-14 name=__codelineno-1-14></a><span class=w>      </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;blue&quot;</span>
+<a id=__codelineno-1-15 name=__codelineno-1-15></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-1-16 name=__codelineno-1-16></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-1-17 name=__codelineno-1-17></a><span class=w>      </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;other&quot;</span>
+<a id=__codelineno-1-18 name=__codelineno-1-18></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-1-19 name=__codelineno-1-19></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-1-20 name=__codelineno-1-20></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <p>The <code>repeats</code> field declares if a choice question can have multiple answers or not. Set it to <code>true</code> to have a multiple choice question.</p> <p>As an alternative to <code>answerOptions</code>, you can link to a ValueSet in the <code>answerValueSet</code> field with an <code>#</code> and the id of the contained value-set. The valueSet resource must be in the <code>contained</code> of the Questionnaire, external ValueSets are not supported as of now.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Linking a ValueSet</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-2-1>1</a></span>
+<span class=normal><a href=#__codelineno-2-2>2</a></span>
+<span class=normal><a href=#__codelineno-2-3>3</a></span>
+<span class=normal><a href=#__codelineno-2-4>4</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-2-1 name=__codelineno-2-1></a><span class=p>{</span>
+<a id=__codelineno-2-2 name=__codelineno-2-2></a><span class=w>  </span><span class=err>...</span><span class=p>,</span>
+<a id=__codelineno-2-3 name=__codelineno-2-3></a><span class=w>  </span><span class=nt>&quot;answerValueSet&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;#ORGAN-DONATION-LIST-ValueSet&quot;</span>
+<a id=__codelineno-2-4 name=__codelineno-2-4></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=subquestions>Subquestions<a class=headerlink href=#subquestions title="Permanent link"> ¶</a></h3> <p>In a FHIR questionnaire, it is possible to have subquestions for a question. Just add the subquestion in the <code>item</code> field of the parent question. Of course, a parent item can have multiple subquestions, and the subquestions themselves can have subquestions again. This is rendered in a hierarchical way by the questionnaire renderer. If you want to display the subquestions depending from the answer given to the parent question, you have to declare them as depending questions (see next chapter).</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Sub-question</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-3-1> 1</a></span>
+<span class=normal><a href=#__codelineno-3-2> 2</a></span>
+<span class=normal><a href=#__codelineno-3-3> 3</a></span>
+<span class=normal><a href=#__codelineno-3-4> 4</a></span>
+<span class=normal><a href=#__codelineno-3-5> 5</a></span>
+<span class=normal><a href=#__codelineno-3-6> 6</a></span>
+<span class=normal><a href=#__codelineno-3-7> 7</a></span>
+<span class=normal><a href=#__codelineno-3-8> 8</a></span>
+<span class=normal><a href=#__codelineno-3-9> 9</a></span>
+<span class=normal><a href=#__codelineno-3-10>10</a></span>
+<span class=normal><a href=#__codelineno-3-11>11</a></span>
+<span class=normal><a href=#__codelineno-3-12>12</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-3-1 name=__codelineno-3-1></a><span class=p>{</span>
+<a id=__codelineno-3-2 name=__codelineno-3-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;parent&quot;</span><span class=p>,</span>
+<a id=__codelineno-3-3 name=__codelineno-3-3></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;boolean&quot;</span><span class=p>,</span>
+<a id=__codelineno-3-4 name=__codelineno-3-4></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Do you have children?&quot;</span><span class=p>,</span>
+<a id=__codelineno-3-5 name=__codelineno-3-5></a><span class=w>  </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-3-6 name=__codelineno-3-6></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-3-7 name=__codelineno-3-7></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;subQuestion&quot;</span><span class=p>,</span>
+<a id=__codelineno-3-8 name=__codelineno-3-8></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;integer&quot;</span><span class=p>,</span>
+<a id=__codelineno-3-9 name=__codelineno-3-9></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;How many children do you have?&quot;</span>
+<a id=__codelineno-3-10 name=__codelineno-3-10></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-3-11 name=__codelineno-3-11></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-3-12 name=__codelineno-3-12></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=depending-questions>Depending questions<a class=headerlink href=#depending-questions title="Permanent link"> ¶</a></h3> <p>You can also dynamically enable or not some questions, depending on the status of other questions.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Depending question</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-4-1> 1</a></span>
+<span class=normal><a href=#__codelineno-4-2> 2</a></span>
+<span class=normal><a href=#__codelineno-4-3> 3</a></span>
+<span class=normal><a href=#__codelineno-4-4> 4</a></span>
+<span class=normal><a href=#__codelineno-4-5> 5</a></span>
+<span class=normal><a href=#__codelineno-4-6> 6</a></span>
+<span class=normal><a href=#__codelineno-4-7> 7</a></span>
+<span class=normal><a href=#__codelineno-4-8> 8</a></span>
+<span class=normal><a href=#__codelineno-4-9> 9</a></span>
+<span class=normal><a href=#__codelineno-4-10>10</a></span>
+<span class=normal><a href=#__codelineno-4-11>11</a></span>
+<span class=normal><a href=#__codelineno-4-12>12</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-4-1 name=__codelineno-4-1></a><span class=p>{</span>
+<a id=__codelineno-4-2 name=__codelineno-4-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q3&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-3 name=__codelineno-4-3></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;date&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-4 name=__codelineno-4-4></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Date of vaccination&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-5 name=__codelineno-4-5></a><span class=w>  </span><span class=nt>&quot;enableWhen&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-4-6 name=__codelineno-4-6></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-4-7 name=__codelineno-4-7></a><span class=w>      </span><span class=nt>&quot;question&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q2&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-8 name=__codelineno-4-8></a><span class=w>      </span><span class=nt>&quot;operator&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;=&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-9 name=__codelineno-4-9></a><span class=w>      </span><span class=nt>&quot;answerBoolean&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span>
+<a id=__codelineno-4-10 name=__codelineno-4-10></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-4-11 name=__codelineno-4-11></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-4-12 name=__codelineno-4-12></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=initial-values>Initial values<a class=headerlink href=#initial-values title="Permanent link"> ¶</a></h3> <p>You can also define an initial answer, that is preset to a question and can be changed by the user.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Initial value</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-5-1> 1</a></span>
+<span class=normal><a href=#__codelineno-5-2> 2</a></span>
+<span class=normal><a href=#__codelineno-5-3> 3</a></span>
+<span class=normal><a href=#__codelineno-5-4> 4</a></span>
+<span class=normal><a href=#__codelineno-5-5> 5</a></span>
+<span class=normal><a href=#__codelineno-5-6> 6</a></span>
+<span class=normal><a href=#__codelineno-5-7> 7</a></span>
+<span class=normal><a href=#__codelineno-5-8> 8</a></span>
+<span class=normal><a href=#__codelineno-5-9> 9</a></span>
+<span class=normal><a href=#__codelineno-5-10>10</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-5-1 name=__codelineno-5-1></a><span class=p>{</span>
+<a id=__codelineno-5-2 name=__codelineno-5-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;initial&quot;</span><span class=p>,</span>
+<a id=__codelineno-5-3 name=__codelineno-5-3></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;boolean&quot;</span><span class=p>,</span>
+<a id=__codelineno-5-4 name=__codelineno-5-4></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Do you want to receive our amazing newsletter?&quot;</span><span class=p>,</span>
+<a id=__codelineno-5-5 name=__codelineno-5-5></a><span class=w>  </span><span class=nt>&quot;initial&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-5-6 name=__codelineno-5-6></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-5-7 name=__codelineno-5-7></a><span class=w>      </span><span class=nt>&quot;valueBoolean&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span>
+<a id=__codelineno-5-8 name=__codelineno-5-8></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-5-9 name=__codelineno-5-9></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-5-10 name=__codelineno-5-10></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h2 id=questionnaire-item-ui-control-codes>Questionnaire Item UI Control Codes<a class=headerlink href=#questionnaire-item-ui-control-codes title="Permanent link"> ¶</a></h2> <p>It is possible to specify how questions should be rendered by adding an <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> to an element or to its child (see next chapters for more information).</p> <p>Currently only the <code>Help-Button</code>, <code>Prompt</code> and <code>Unit</code> codes are supported. To see which items do support these codes, please refer on <a href=https://www.npmjs.com/package/@i4mi/fhir-questionnaire-renderer rel="external nofollow noopener" target=_blank>documentation of fhir-questionnaire-renderer</a>.</p> <p>For <code>choice</code> questions you can specify if the question should be rendered with radio control (one answer) or with checkboxes (multiple answer allowed) by adding an <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> directly to the question. If you do not use this extension on <code>choice</code> questions, they will be rendered as dropdown control and the <code>repeats</code> will be used to determine if it is or not a multiple answers question.</p> <h3 id=help-button>Help Button<a class=headerlink href=#help-button title="Permanent link"> ¶</a></h3> <p>If you want to add explanatory/help text to a question, you can do so by adding an item with <code>display</code> element with the <code>help</code> <a href=http://hl7.org/fhir/questionnaire-item-control rel="external nofollow noopener" target=_blank>code</a> and <code>questionnaire-itemControl</code> <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> as described below.</p> <p>The help element will take the form of an icon with a question mark which will display the text when hovering over it on a computer or pressing it on a mobile device.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Help button</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-6-1> 1</a></span>
+<span class=normal><a href=#__codelineno-6-2> 2</a></span>
+<span class=normal><a href=#__codelineno-6-3> 3</a></span>
+<span class=normal><a href=#__codelineno-6-4> 4</a></span>
+<span class=normal><a href=#__codelineno-6-5> 5</a></span>
+<span class=normal><a href=#__codelineno-6-6> 6</a></span>
+<span class=normal><a href=#__codelineno-6-7> 7</a></span>
+<span class=normal><a href=#__codelineno-6-8> 8</a></span>
+<span class=normal><a href=#__codelineno-6-9> 9</a></span>
+<span class=normal><a href=#__codelineno-6-10>10</a></span>
+<span class=normal><a href=#__codelineno-6-11>11</a></span>
+<span class=normal><a href=#__codelineno-6-12>12</a></span>
+<span class=normal><a href=#__codelineno-6-13>13</a></span>
+<span class=normal><a href=#__codelineno-6-14>14</a></span>
+<span class=normal><a href=#__codelineno-6-15>15</a></span>
+<span class=normal><a href=#__codelineno-6-16>16</a></span>
+<span class=normal><a href=#__codelineno-6-17>17</a></span>
+<span class=normal><a href=#__codelineno-6-18>18</a></span>
+<span class=normal><a href=#__codelineno-6-19>19</a></span>
+<span class=normal><a href=#__codelineno-6-20>20</a></span>
+<span class=normal><a href=#__codelineno-6-21>21</a></span>
+<span class=normal><a href=#__codelineno-6-22>22</a></span>
+<span class=normal><a href=#__codelineno-6-23>23</a></span>
+<span class=normal><a href=#__codelineno-6-24>24</a></span>
+<span class=normal><a href=#__codelineno-6-25>25</a></span>
+<span class=normal><a href=#__codelineno-6-26>26</a></span>
+<span class=normal><a href=#__codelineno-6-27>27</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-6-1 name=__codelineno-6-1></a><span class=p>{</span>
+<a id=__codelineno-6-2 name=__codelineno-6-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1-with-help&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-3 name=__codelineno-6-3></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Where did you put your advanced directives?&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-4 name=__codelineno-6-4></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;text&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-5 name=__codelineno-6-5></a><span class=w>  </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-6 name=__codelineno-6-6></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-6-7 name=__codelineno-6-7></a><span class=w>      </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-8 name=__codelineno-6-8></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-6-9 name=__codelineno-6-9></a><span class=w>          </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-10 name=__codelineno-6-10></a><span class=w>          </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-11 name=__codelineno-6-11></a><span class=w>            </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-12 name=__codelineno-6-12></a><span class=w>              </span><span class=p>{</span>
+<a id=__codelineno-6-13 name=__codelineno-6-13></a><span class=w>                </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-14 name=__codelineno-6-14></a><span class=w>                </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;help&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-15 name=__codelineno-6-15></a><span class=w>                </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Help-Button&quot;</span>
+<a id=__codelineno-6-16 name=__codelineno-6-16></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-6-17 name=__codelineno-6-17></a><span class=w>            </span><span class=p>],</span>
+<a id=__codelineno-6-18 name=__codelineno-6-18></a><span class=w>            </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Help-Button&quot;</span>
+<a id=__codelineno-6-19 name=__codelineno-6-19></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-6-20 name=__codelineno-6-20></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-6-21 name=__codelineno-6-21></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-6-22 name=__codelineno-6-22></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;H-Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-23 name=__codelineno-6-23></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Please, be precise e.g ”In the middle drawer of my desk at my house.”&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-24 name=__codelineno-6-24></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;display&quot;</span>
+<a id=__codelineno-6-25 name=__codelineno-6-25></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-6-26 name=__codelineno-6-26></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-6-27 name=__codelineno-6-27></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=prompt>Prompt<a class=headerlink href=#prompt title="Permanent link"> ¶</a></h3> <p>If you want to add prompt/placeholder to an input question, you can do so by adding an item with <code>display</code> element with the <code>prompt</code> <a href=http://hl7.org/fhir/questionnaire-item-control rel="external nofollow noopener" target=_blank>code</a> and <code>questionnaire-itemControl</code> <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> as described below.</p> <p>The prompt element will take the form of a text inside an input to give information about what should be entered.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Prompt</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-7-1> 1</a></span>
+<span class=normal><a href=#__codelineno-7-2> 2</a></span>
+<span class=normal><a href=#__codelineno-7-3> 3</a></span>
+<span class=normal><a href=#__codelineno-7-4> 4</a></span>
+<span class=normal><a href=#__codelineno-7-5> 5</a></span>
+<span class=normal><a href=#__codelineno-7-6> 6</a></span>
+<span class=normal><a href=#__codelineno-7-7> 7</a></span>
+<span class=normal><a href=#__codelineno-7-8> 8</a></span>
+<span class=normal><a href=#__codelineno-7-9> 9</a></span>
+<span class=normal><a href=#__codelineno-7-10>10</a></span>
+<span class=normal><a href=#__codelineno-7-11>11</a></span>
+<span class=normal><a href=#__codelineno-7-12>12</a></span>
+<span class=normal><a href=#__codelineno-7-13>13</a></span>
+<span class=normal><a href=#__codelineno-7-14>14</a></span>
+<span class=normal><a href=#__codelineno-7-15>15</a></span>
+<span class=normal><a href=#__codelineno-7-16>16</a></span>
+<span class=normal><a href=#__codelineno-7-17>17</a></span>
+<span class=normal><a href=#__codelineno-7-18>18</a></span>
+<span class=normal><a href=#__codelineno-7-19>19</a></span>
+<span class=normal><a href=#__codelineno-7-20>20</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-7-1 name=__codelineno-7-1></a><span class=p>{</span>
+<a id=__codelineno-7-2 name=__codelineno-7-2></a><span class=w>  </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-3 name=__codelineno-7-3></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-7-4 name=__codelineno-7-4></a><span class=w>      </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-5 name=__codelineno-7-5></a><span class=w>      </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-7-6 name=__codelineno-7-6></a><span class=w>        </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-7 name=__codelineno-7-7></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-7-8 name=__codelineno-7-8></a><span class=w>            </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-9 name=__codelineno-7-9></a><span class=w>            </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;prompt&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-10 name=__codelineno-7-10></a><span class=w>            </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Prompt&quot;</span>
+<a id=__codelineno-7-11 name=__codelineno-7-11></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-7-12 name=__codelineno-7-12></a><span class=w>        </span><span class=p>],</span>
+<a id=__codelineno-7-13 name=__codelineno-7-13></a><span class=w>        </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Prompt&quot;</span>
+<a id=__codelineno-7-14 name=__codelineno-7-14></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-7-15 name=__codelineno-7-15></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-7-16 name=__codelineno-7-16></a><span class=w>  </span><span class=p>],</span>
+<a id=__codelineno-7-17 name=__codelineno-7-17></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;P-Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-18 name=__codelineno-7-18></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Your advanced directive is ...&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-19 name=__codelineno-7-19></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;display&quot;</span>
+<a id=__codelineno-7-20 name=__codelineno-7-20></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=unit>Unit<a class=headerlink href=#unit title="Permanent link"> ¶</a></h3> <p>If you want to add unit to an input question, you can do so by adding an item with <code>display</code> element with the <code>unit</code> <a href=http://hl7.org/fhir/questionnaire-item-control rel="external nofollow noopener" target=_blank>code</a> and <code>questionnaire-itemControl</code> <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> as described below.</p> <p>The unit element will be displayed at the end of the input field as an indication of the unit of what the user should enter. Please not that the unit is only cosmetic, if you want to have an answer corresponding to an input with its unit, you should use a quantity item, but its not supported by this project.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Unit</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-8-1> 1</a></span>
+<span class=normal><a href=#__codelineno-8-2> 2</a></span>
+<span class=normal><a href=#__codelineno-8-3> 3</a></span>
+<span class=normal><a href=#__codelineno-8-4> 4</a></span>
+<span class=normal><a href=#__codelineno-8-5> 5</a></span>
+<span class=normal><a href=#__codelineno-8-6> 6</a></span>
+<span class=normal><a href=#__codelineno-8-7> 7</a></span>
+<span class=normal><a href=#__codelineno-8-8> 8</a></span>
+<span class=normal><a href=#__codelineno-8-9> 9</a></span>
+<span class=normal><a href=#__codelineno-8-10>10</a></span>
+<span class=normal><a href=#__codelineno-8-11>11</a></span>
+<span class=normal><a href=#__codelineno-8-12>12</a></span>
+<span class=normal><a href=#__codelineno-8-13>13</a></span>
+<span class=normal><a href=#__codelineno-8-14>14</a></span>
+<span class=normal><a href=#__codelineno-8-15>15</a></span>
+<span class=normal><a href=#__codelineno-8-16>16</a></span>
+<span class=normal><a href=#__codelineno-8-17>17</a></span>
+<span class=normal><a href=#__codelineno-8-18>18</a></span>
+<span class=normal><a href=#__codelineno-8-19>19</a></span>
+<span class=normal><a href=#__codelineno-8-20>20</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-8-1 name=__codelineno-8-1></a><span class=p>{</span>
+<a id=__codelineno-8-2 name=__codelineno-8-2></a><span class=w>  </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-3 name=__codelineno-8-3></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-8-4 name=__codelineno-8-4></a><span class=w>      </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-5 name=__codelineno-8-5></a><span class=w>      </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-8-6 name=__codelineno-8-6></a><span class=w>        </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-7 name=__codelineno-8-7></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-8-8 name=__codelineno-8-8></a><span class=w>            </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-9 name=__codelineno-8-9></a><span class=w>            </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;unit&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-10 name=__codelineno-8-10></a><span class=w>            </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Unit&quot;</span>
+<a id=__codelineno-8-11 name=__codelineno-8-11></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-8-12 name=__codelineno-8-12></a><span class=w>        </span><span class=p>],</span>
+<a id=__codelineno-8-13 name=__codelineno-8-13></a><span class=w>        </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Unit&quot;</span>
+<a id=__codelineno-8-14 name=__codelineno-8-14></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-8-15 name=__codelineno-8-15></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-8-16 name=__codelineno-8-16></a><span class=w>  </span><span class=p>],</span>
+<a id=__codelineno-8-17 name=__codelineno-8-17></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;U-Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-18 name=__codelineno-8-18></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;m / s ^ 2&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-19 name=__codelineno-8-19></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;display&quot;</span>
+<a id=__codelineno-8-20 name=__codelineno-8-20></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=check-box>Check-box<a class=headerlink href=#check-box title="Permanent link"> ¶</a></h3> <p>If you want to render <code>choice</code> question with checkbox control, you can do so by adding the <code>check-box</code> <a href=http://hl7.org/fhir/questionnaire-item-control rel="external nofollow noopener" target=_blank>code</a> and <code>questionnaire-itemControl</code> <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> as described below.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Checkbox</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-9-1> 1</a></span>
+<span class=normal><a href=#__codelineno-9-2> 2</a></span>
+<span class=normal><a href=#__codelineno-9-3> 3</a></span>
+<span class=normal><a href=#__codelineno-9-4> 4</a></span>
+<span class=normal><a href=#__codelineno-9-5> 5</a></span>
+<span class=normal><a href=#__codelineno-9-6> 6</a></span>
+<span class=normal><a href=#__codelineno-9-7> 7</a></span>
+<span class=normal><a href=#__codelineno-9-8> 8</a></span>
+<span class=normal><a href=#__codelineno-9-9> 9</a></span>
+<span class=normal><a href=#__codelineno-9-10>10</a></span>
+<span class=normal><a href=#__codelineno-9-11>11</a></span>
+<span class=normal><a href=#__codelineno-9-12>12</a></span>
+<span class=normal><a href=#__codelineno-9-13>13</a></span>
+<span class=normal><a href=#__codelineno-9-14>14</a></span>
+<span class=normal><a href=#__codelineno-9-15>15</a></span>
+<span class=normal><a href=#__codelineno-9-16>16</a></span>
+<span class=normal><a href=#__codelineno-9-17>17</a></span>
+<span class=normal><a href=#__codelineno-9-18>18</a></span>
+<span class=normal><a href=#__codelineno-9-19>19</a></span>
+<span class=normal><a href=#__codelineno-9-20>20</a></span>
+<span class=normal><a href=#__codelineno-9-21>21</a></span>
+<span class=normal><a href=#__codelineno-9-22>22</a></span>
+<span class=normal><a href=#__codelineno-9-23>23</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-9-1 name=__codelineno-9-1></a><span class=p>{</span>
+<a id=__codelineno-9-2 name=__codelineno-9-2></a><span class=w>  </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-9-3 name=__codelineno-9-3></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-9-4 name=__codelineno-9-4></a><span class=w>      </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-5 name=__codelineno-9-5></a><span class=w>      </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-9-6 name=__codelineno-9-6></a><span class=w>        </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-9-7 name=__codelineno-9-7></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-9-8 name=__codelineno-9-8></a><span class=w>            </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-9 name=__codelineno-9-9></a><span class=w>            </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;check-box&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-10 name=__codelineno-9-10></a><span class=w>            </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Check-box&quot;</span>
+<a id=__codelineno-9-11 name=__codelineno-9-11></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-9-12 name=__codelineno-9-12></a><span class=w>        </span><span class=p>],</span>
+<a id=__codelineno-9-13 name=__codelineno-9-13></a><span class=w>        </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Check-box&quot;</span>
+<a id=__codelineno-9-14 name=__codelineno-9-14></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-9-15 name=__codelineno-9-15></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-9-16 name=__codelineno-9-16></a><span class=w>  </span><span class=p>],</span>
+<a id=__codelineno-9-17 name=__codelineno-9-17></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1-&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-18 name=__codelineno-9-18></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;choice&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-19 name=__codelineno-9-19></a><span class=w>  </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-9-20 name=__codelineno-9-20></a><span class=w>  </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-9-21 name=__codelineno-9-21></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;I CONSENT to the removal of the following organs, tissues or cells, and to the associated preparatory medical measures:&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-22 name=__codelineno-9-22></a><span class=w>  </span><span class=nt>&quot;answerValueSet&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;#ORGAN-DONATION-LIST-ValueSet&quot;</span>
+<a id=__codelineno-9-23 name=__codelineno-9-23></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h3 id=radio-button>Radio Button<a class=headerlink href=#radio-button title="Permanent link"> ¶</a></h3> <p>If you want to render <code>choice</code> question with radio control, you can do so by adding the <code>radio-button</code> <a href=http://hl7.org/fhir/questionnaire-item-control rel="external nofollow noopener" target=_blank>code</a> and <code>questionnaire-itemControl</code> <a href=http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl rel="external nofollow noopener" target=_blank>extension</a> as described below.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Radio button</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-10-1> 1</a></span>
+<span class=normal><a href=#__codelineno-10-2> 2</a></span>
+<span class=normal><a href=#__codelineno-10-3> 3</a></span>
+<span class=normal><a href=#__codelineno-10-4> 4</a></span>
+<span class=normal><a href=#__codelineno-10-5> 5</a></span>
+<span class=normal><a href=#__codelineno-10-6> 6</a></span>
+<span class=normal><a href=#__codelineno-10-7> 7</a></span>
+<span class=normal><a href=#__codelineno-10-8> 8</a></span>
+<span class=normal><a href=#__codelineno-10-9> 9</a></span>
+<span class=normal><a href=#__codelineno-10-10>10</a></span>
+<span class=normal><a href=#__codelineno-10-11>11</a></span>
+<span class=normal><a href=#__codelineno-10-12>12</a></span>
+<span class=normal><a href=#__codelineno-10-13>13</a></span>
+<span class=normal><a href=#__codelineno-10-14>14</a></span>
+<span class=normal><a href=#__codelineno-10-15>15</a></span>
+<span class=normal><a href=#__codelineno-10-16>16</a></span>
+<span class=normal><a href=#__codelineno-10-17>17</a></span>
+<span class=normal><a href=#__codelineno-10-18>18</a></span>
+<span class=normal><a href=#__codelineno-10-19>19</a></span>
+<span class=normal><a href=#__codelineno-10-20>20</a></span>
+<span class=normal><a href=#__codelineno-10-21>21</a></span>
+<span class=normal><a href=#__codelineno-10-22>22</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-10-1 name=__codelineno-10-1></a><span class=p>{</span>
+<a id=__codelineno-10-2 name=__codelineno-10-2></a><span class=w>      </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-3 name=__codelineno-10-3></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-10-4 name=__codelineno-10-4></a><span class=w>          </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-5 name=__codelineno-10-5></a><span class=w>          </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-6 name=__codelineno-10-6></a><span class=w>            </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-7 name=__codelineno-10-7></a><span class=w>              </span><span class=p>{</span>
+<a id=__codelineno-10-8 name=__codelineno-10-8></a><span class=w>                </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-9 name=__codelineno-10-9></a><span class=w>                </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;radio-button&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-10 name=__codelineno-10-10></a><span class=w>                </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Radio Button&quot;</span>
+<a id=__codelineno-10-11 name=__codelineno-10-11></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-10-12 name=__codelineno-10-12></a><span class=w>            </span><span class=p>],</span>
+<a id=__codelineno-10-13 name=__codelineno-10-13></a><span class=w>            </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Radio Button&quot;</span>
+<a id=__codelineno-10-14 name=__codelineno-10-14></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-10-15 name=__codelineno-10-15></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-10-16 name=__codelineno-10-16></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-10-17 name=__codelineno-10-17></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-18 name=__codelineno-10-18></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;In the event that removal of organs, tissues or cells is possible after my death, my wishes are as follows:&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-19 name=__codelineno-10-19></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;choice&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-20 name=__codelineno-10-20></a><span class=w>      </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-10-21 name=__codelineno-10-21></a><span class=w>      </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=p>,</span>
+<a id=__codelineno-10-22 name=__codelineno-10-22></a><span class=w>      </span><span class=nt>&quot;answerValueSet&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;#ORGAN-DONATION-RESPONSE-ValueSet&quot;</span><span class=p>,</span>
+</code></pre></div></td></tr></table></div> <h2 id=internationalisation>Internationalisation<a class=headerlink href=#internationalisation title="Permanent link"> ¶</a></h2> <p>To add internationalisation to a questionnaire, use the FHIR extension <a href=http://hl7.org/fhir/StructureDefinition/translation rel="external nofollow noopener" target=_blank>translation</a>. The following is applicable for most text elements of a questionnaire (<code>text</code>, <code>title</code>, <code>description</code>, ...). Please note, that for choice questions with answerOptions, internationalisation is not supported. In this case, you need to use an <a href=https://www.hl7.org/fhir/valueset-definitions.html#ValueSet.compose.include.concept.designation rel="external nofollow noopener" target=_blank>answerValueSet with designation</a>.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Internationalisation</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-11-1> 1</a></span>
+<span class=normal><a href=#__codelineno-11-2> 2</a></span>
+<span class=normal><a href=#__codelineno-11-3> 3</a></span>
+<span class=normal><a href=#__codelineno-11-4> 4</a></span>
+<span class=normal><a href=#__codelineno-11-5> 5</a></span>
+<span class=normal><a href=#__codelineno-11-6> 6</a></span>
+<span class=normal><a href=#__codelineno-11-7> 7</a></span>
+<span class=normal><a href=#__codelineno-11-8> 8</a></span>
+<span class=normal><a href=#__codelineno-11-9> 9</a></span>
+<span class=normal><a href=#__codelineno-11-10>10</a></span>
+<span class=normal><a href=#__codelineno-11-11>11</a></span>
+<span class=normal><a href=#__codelineno-11-12>12</a></span>
+<span class=normal><a href=#__codelineno-11-13>13</a></span>
+<span class=normal><a href=#__codelineno-11-14>14</a></span>
+<span class=normal><a href=#__codelineno-11-15>15</a></span>
+<span class=normal><a href=#__codelineno-11-16>16</a></span>
+<span class=normal><a href=#__codelineno-11-17>17</a></span>
+<span class=normal><a href=#__codelineno-11-18>18</a></span>
+<span class=normal><a href=#__codelineno-11-19>19</a></span>
+<span class=normal><a href=#__codelineno-11-20>20</a></span>
+<span class=normal><a href=#__codelineno-11-21>21</a></span>
+<span class=normal><a href=#__codelineno-11-22>22</a></span>
+<span class=normal><a href=#__codelineno-11-23>23</a></span>
+<span class=normal><a href=#__codelineno-11-24>24</a></span>
+<span class=normal><a href=#__codelineno-11-25>25</a></span>
+<span class=normal><a href=#__codelineno-11-26>26</a></span>
+<span class=normal><a href=#__codelineno-11-27>27</a></span>
+<span class=normal><a href=#__codelineno-11-28>28</a></span>
+<span class=normal><a href=#__codelineno-11-29>29</a></span>
+<span class=normal><a href=#__codelineno-11-30>30</a></span>
+<span class=normal><a href=#__codelineno-11-31>31</a></span>
+<span class=normal><a href=#__codelineno-11-32>32</a></span>
+<span class=normal><a href=#__codelineno-11-33>33</a></span>
+<span class=normal><a href=#__codelineno-11-34>34</a></span>
+<span class=normal><a href=#__codelineno-11-35>35</a></span>
+<span class=normal><a href=#__codelineno-11-36>36</a></span>
+<span class=normal><a href=#__codelineno-11-37>37</a></span>
+<span class=normal><a href=#__codelineno-11-38>38</a></span>
+<span class=normal><a href=#__codelineno-11-39>39</a></span>
+<span class=normal><a href=#__codelineno-11-40>40</a></span>
+<span class=normal><a href=#__codelineno-11-41>41</a></span>
+<span class=normal><a href=#__codelineno-11-42>42</a></span>
+<span class=normal><a href=#__codelineno-11-43>43</a></span>
+<span class=normal><a href=#__codelineno-11-44>44</a></span>
+<span class=normal><a href=#__codelineno-11-45>45</a></span>
+<span class=normal><a href=#__codelineno-11-46>46</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-11-1 name=__codelineno-11-1></a><span class=p>{</span>
+<a id=__codelineno-11-2 name=__codelineno-11-2></a><span class=w>  </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Digital Organ Donation Card&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-3 name=__codelineno-11-3></a><span class=w>  </span><span class=nt>&quot;_title&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-11-4 name=__codelineno-11-4></a><span class=w>    </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-11-5 name=__codelineno-11-5></a><span class=w>      </span><span class=p>{</span>
+<a id=__codelineno-11-6 name=__codelineno-11-6></a><span class=w>        </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/translation&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-7 name=__codelineno-11-7></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-11-8 name=__codelineno-11-8></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-9 name=__codelineno-11-9></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;lang&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-10 name=__codelineno-11-10></a><span class=w>            </span><span class=nt>&quot;valueCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;de&quot;</span>
+<a id=__codelineno-11-11 name=__codelineno-11-11></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-11-12 name=__codelineno-11-12></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-13 name=__codelineno-11-13></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;content&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-14 name=__codelineno-11-14></a><span class=w>            </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Digitale Organspende-Karte&quot;</span>
+<a id=__codelineno-11-15 name=__codelineno-11-15></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-11-16 name=__codelineno-11-16></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-11-17 name=__codelineno-11-17></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-11-18 name=__codelineno-11-18></a><span class=w>      </span><span class=p>{</span>
+<a id=__codelineno-11-19 name=__codelineno-11-19></a><span class=w>        </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/translation&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-20 name=__codelineno-11-20></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-11-21 name=__codelineno-11-21></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-22 name=__codelineno-11-22></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;lang&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-23 name=__codelineno-11-23></a><span class=w>            </span><span class=nt>&quot;valueCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;fr&quot;</span>
+<a id=__codelineno-11-24 name=__codelineno-11-24></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-11-25 name=__codelineno-11-25></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-26 name=__codelineno-11-26></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;content&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-27 name=__codelineno-11-27></a><span class=w>            </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Carte numérique de don d&#39;organes&quot;</span>
+<a id=__codelineno-11-28 name=__codelineno-11-28></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-11-29 name=__codelineno-11-29></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-11-30 name=__codelineno-11-30></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-11-31 name=__codelineno-11-31></a><span class=w>      </span><span class=p>{</span>
+<a id=__codelineno-11-32 name=__codelineno-11-32></a><span class=w>        </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/translation&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-33 name=__codelineno-11-33></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-11-34 name=__codelineno-11-34></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-35 name=__codelineno-11-35></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;lang&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-36 name=__codelineno-11-36></a><span class=w>            </span><span class=nt>&quot;valueCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;it&quot;</span>
+<a id=__codelineno-11-37 name=__codelineno-11-37></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-11-38 name=__codelineno-11-38></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-11-39 name=__codelineno-11-39></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;content&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-40 name=__codelineno-11-40></a><span class=w>            </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Carta digitale per la donazione di organi&quot;</span>
+<a id=__codelineno-11-41 name=__codelineno-11-41></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-11-42 name=__codelineno-11-42></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-11-43 name=__codelineno-11-43></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-11-44 name=__codelineno-11-44></a><span class=w>    </span><span class=p>]</span>
+<a id=__codelineno-11-45 name=__codelineno-11-45></a><span class=w>  </span><span class=p>}</span>
+<a id=__codelineno-11-46 name=__codelineno-11-46></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <p>The <code>@i4mi/fhir_questionnaire</code> library will process the extension, see the <a href=https://www.npmjs.com/package/@i4mi/fhir_questionnaire rel="external nofollow noopener" target=_blank>documentation</a> for more information.</p> <h2 id=prepopulation>Prepopulation<a class=headerlink href=#prepopulation title="Permanent link"> ¶</a></h2> <p>Besides the initial value (see above), it is also possible to prepopulate the answers to the questions, using another FHIR resource with the information contained. The difference between initial values and prepopulation is that, with initial values, the preset answers are the same for every user, while with prepopulation, the answers can be set dynamically for every user, depending on the resource that is passed to the Questionnaire library. How the information is to be extracted from the passed resource is described in <a href=https://hl7.org/fhirpath/ rel="external nofollow noopener" target=_blank>FHIRPath</a>.</p> <p>For this, you have to have the initialExpression extension in every item that should be prepopulated, with the FHIRPath expression that extracts the wanted value from the passed resource.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Prepopulation</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-12-1> 1</a></span>
+<span class=normal><a href=#__codelineno-12-2> 2</a></span>
+<span class=normal><a href=#__codelineno-12-3> 3</a></span>
+<span class=normal><a href=#__codelineno-12-4> 4</a></span>
+<span class=normal><a href=#__codelineno-12-5> 5</a></span>
+<span class=normal><a href=#__codelineno-12-6> 6</a></span>
+<span class=normal><a href=#__codelineno-12-7> 7</a></span>
+<span class=normal><a href=#__codelineno-12-8> 8</a></span>
+<span class=normal><a href=#__codelineno-12-9> 9</a></span>
+<span class=normal><a href=#__codelineno-12-10>10</a></span>
+<span class=normal><a href=#__codelineno-12-11>11</a></span>
+<span class=normal><a href=#__codelineno-12-12>12</a></span>
+<span class=normal><a href=#__codelineno-12-13>13</a></span>
+<span class=normal><a href=#__codelineno-12-14>14</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-12-1 name=__codelineno-12-1></a><span class=p>{</span>
+<a id=__codelineno-12-2 name=__codelineno-12-2></a><span class=w>  </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;populateExample&quot;</span><span class=p>,</span>
+<a id=__codelineno-12-3 name=__codelineno-12-3></a><span class=w>  </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Birthdate&quot;</span><span class=p>,</span>
+<a id=__codelineno-12-4 name=__codelineno-12-4></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;date&quot;</span><span class=p>,</span>
+<a id=__codelineno-12-5 name=__codelineno-12-5></a><span class=w>  </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-12-6 name=__codelineno-12-6></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-12-7 name=__codelineno-12-7></a><span class=w>      </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&quot;</span><span class=p>,</span>
+<a id=__codelineno-12-8 name=__codelineno-12-8></a><span class=w>      </span><span class=nt>&quot;valueExpression&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-12-9 name=__codelineno-12-9></a><span class=w>        </span><span class=nt>&quot;language&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;text/fhirpath&quot;</span><span class=p>,</span>
+<a id=__codelineno-12-10 name=__codelineno-12-10></a><span class=w>        </span><span class=nt>&quot;expression&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;%patient.birthDate&quot;</span>
+<a id=__codelineno-12-11 name=__codelineno-12-11></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-12-12 name=__codelineno-12-12></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-12-13 name=__codelineno-12-13></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-12-14 name=__codelineno-12-14></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <p>Of course, you also have to pass the resource containing the information to the QuestionnaireData library. You can do this like this:</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>QuestionnaireData library</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-13-1>1</a></span>
+<span class=normal><a href=#__codelineno-13-2>2</a></span>
+<span class=normal><a href=#__codelineno-13-3>3</a></span>
+<span class=normal><a href=#__codelineno-13-4>4</a></span>
+<span class=normal><a href=#__codelineno-13-5>5</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-13-1 name=__codelineno-13-1></a><span class=kd>const</span><span class=w> </span><span class=nx>fhirQuestionnaire</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=ow>new</span><span class=w> </span><span class=nx>QuestionnaireData</span><span class=p>(</span><span class=nx>myQuestionnaire</span><span class=p>,</span><span class=w> </span><span class=nx>languages</span><span class=p>);</span><span class=w> </span><span class=c1>// fhirQuestionnaire is the instance of your QuestionnaireData</span>
+<a id=__codelineno-13-2 name=__codelineno-13-2></a><span class=nx>fhirQuestionnaire</span><span class=p>.</span><span class=nx>populate</span><span class=p>(</span>
+<a id=__codelineno-13-3 name=__codelineno-13-3></a><span class=w>  </span><span class=p>[</span><span class=nx>myPatientResource</span><span class=p>],</span><span class=w> </span><span class=c1>// the resources containing the needed information; you can only provide one resource of every ResourceType (e.g. Patient)</span>
+<a id=__codelineno-13-4 name=__codelineno-13-4></a><span class=w>  </span><span class=kc>true</span><span class=w> </span><span class=c1>// true if you want to overwrite potentially already existing answers</span>
+<a id=__codelineno-13-5 name=__codelineno-13-5></a><span class=p>);</span>
+</code></pre></div></td></tr></table></div> <p>More information on prepopulating are found on the <a href=https://github.com/i4mi/fhir-questionnaire rel="external nofollow noopener" target=_blank>@i4mi/fhir-questionnaire README</a>.</p> <h2 id=detailed-example-with-comments>Detailed example with comments<a class=headerlink href=#detailed-example-with-comments title="Permanent link"> ¶</a></h2> <p>This is a detailled example using many of the concepts explained above. It is based on the organ donation questionnaire used in this app, however some redundancies are stripped out for better readability.</p> <div class=highlight><table class=highlighttable><tr><th colspan=2 class=filename><span class=filename>Detailed example</span></th></tr><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-14-1>  1</a></span>
+<span class=normal><a href=#__codelineno-14-2>  2</a></span>
+<span class=normal><a href=#__codelineno-14-3>  3</a></span>
+<span class=normal><a href=#__codelineno-14-4>  4</a></span>
+<span class=normal><a href=#__codelineno-14-5>  5</a></span>
+<span class=normal><a href=#__codelineno-14-6>  6</a></span>
+<span class=normal><a href=#__codelineno-14-7>  7</a></span>
+<span class=normal><a href=#__codelineno-14-8>  8</a></span>
+<span class=normal><a href=#__codelineno-14-9>  9</a></span>
+<span class=normal><a href=#__codelineno-14-10> 10</a></span>
+<span class=normal><a href=#__codelineno-14-11> 11</a></span>
+<span class=normal><a href=#__codelineno-14-12> 12</a></span>
+<span class=normal><a href=#__codelineno-14-13> 13</a></span>
+<span class=normal><a href=#__codelineno-14-14> 14</a></span>
+<span class=normal><a href=#__codelineno-14-15> 15</a></span>
+<span class=normal><a href=#__codelineno-14-16> 16</a></span>
+<span class=normal><a href=#__codelineno-14-17> 17</a></span>
+<span class=normal><a href=#__codelineno-14-18> 18</a></span>
+<span class=normal><a href=#__codelineno-14-19> 19</a></span>
+<span class=normal><a href=#__codelineno-14-20> 20</a></span>
+<span class=normal><a href=#__codelineno-14-21> 21</a></span>
+<span class=normal><a href=#__codelineno-14-22> 22</a></span>
+<span class=normal><a href=#__codelineno-14-23> 23</a></span>
+<span class=normal><a href=#__codelineno-14-24> 24</a></span>
+<span class=normal><a href=#__codelineno-14-25> 25</a></span>
+<span class=normal><a href=#__codelineno-14-26> 26</a></span>
+<span class=normal><a href=#__codelineno-14-27> 27</a></span>
+<span class=normal><a href=#__codelineno-14-28> 28</a></span>
+<span class=normal><a href=#__codelineno-14-29> 29</a></span>
+<span class=normal><a href=#__codelineno-14-30> 30</a></span>
+<span class=normal><a href=#__codelineno-14-31> 31</a></span>
+<span class=normal><a href=#__codelineno-14-32> 32</a></span>
+<span class=normal><a href=#__codelineno-14-33> 33</a></span>
+<span class=normal><a href=#__codelineno-14-34> 34</a></span>
+<span class=normal><a href=#__codelineno-14-35> 35</a></span>
+<span class=normal><a href=#__codelineno-14-36> 36</a></span>
+<span class=normal><a href=#__codelineno-14-37> 37</a></span>
+<span class=normal><a href=#__codelineno-14-38> 38</a></span>
+<span class=normal><a href=#__codelineno-14-39> 39</a></span>
+<span class=normal><a href=#__codelineno-14-40> 40</a></span>
+<span class=normal><a href=#__codelineno-14-41> 41</a></span>
+<span class=normal><a href=#__codelineno-14-42> 42</a></span>
+<span class=normal><a href=#__codelineno-14-43> 43</a></span>
+<span class=normal><a href=#__codelineno-14-44> 44</a></span>
+<span class=normal><a href=#__codelineno-14-45> 45</a></span>
+<span class=normal><a href=#__codelineno-14-46> 46</a></span>
+<span class=normal><a href=#__codelineno-14-47> 47</a></span>
+<span class=normal><a href=#__codelineno-14-48> 48</a></span>
+<span class=normal><a href=#__codelineno-14-49> 49</a></span>
+<span class=normal><a href=#__codelineno-14-50> 50</a></span>
+<span class=normal><a href=#__codelineno-14-51> 51</a></span>
+<span class=normal><a href=#__codelineno-14-52> 52</a></span>
+<span class=normal><a href=#__codelineno-14-53> 53</a></span>
+<span class=normal><a href=#__codelineno-14-54> 54</a></span>
+<span class=normal><a href=#__codelineno-14-55> 55</a></span>
+<span class=normal><a href=#__codelineno-14-56> 56</a></span>
+<span class=normal><a href=#__codelineno-14-57> 57</a></span>
+<span class=normal><a href=#__codelineno-14-58> 58</a></span>
+<span class=normal><a href=#__codelineno-14-59> 59</a></span>
+<span class=normal><a href=#__codelineno-14-60> 60</a></span>
+<span class=normal><a href=#__codelineno-14-61> 61</a></span>
+<span class=normal><a href=#__codelineno-14-62> 62</a></span>
+<span class=normal><a href=#__codelineno-14-63> 63</a></span>
+<span class=normal><a href=#__codelineno-14-64> 64</a></span>
+<span class=normal><a href=#__codelineno-14-65> 65</a></span>
+<span class=normal><a href=#__codelineno-14-66> 66</a></span>
+<span class=normal><a href=#__codelineno-14-67> 67</a></span>
+<span class=normal><a href=#__codelineno-14-68> 68</a></span>
+<span class=normal><a href=#__codelineno-14-69> 69</a></span>
+<span class=normal><a href=#__codelineno-14-70> 70</a></span>
+<span class=normal><a href=#__codelineno-14-71> 71</a></span>
+<span class=normal><a href=#__codelineno-14-72> 72</a></span>
+<span class=normal><a href=#__codelineno-14-73> 73</a></span>
+<span class=normal><a href=#__codelineno-14-74> 74</a></span>
+<span class=normal><a href=#__codelineno-14-75> 75</a></span>
+<span class=normal><a href=#__codelineno-14-76> 76</a></span>
+<span class=normal><a href=#__codelineno-14-77> 77</a></span>
+<span class=normal><a href=#__codelineno-14-78> 78</a></span>
+<span class=normal><a href=#__codelineno-14-79> 79</a></span>
+<span class=normal><a href=#__codelineno-14-80> 80</a></span>
+<span class=normal><a href=#__codelineno-14-81> 81</a></span>
+<span class=normal><a href=#__codelineno-14-82> 82</a></span>
+<span class=normal><a href=#__codelineno-14-83> 83</a></span>
+<span class=normal><a href=#__codelineno-14-84> 84</a></span>
+<span class=normal><a href=#__codelineno-14-85> 85</a></span>
+<span class=normal><a href=#__codelineno-14-86> 86</a></span>
+<span class=normal><a href=#__codelineno-14-87> 87</a></span>
+<span class=normal><a href=#__codelineno-14-88> 88</a></span>
+<span class=normal><a href=#__codelineno-14-89> 89</a></span>
+<span class=normal><a href=#__codelineno-14-90> 90</a></span>
+<span class=normal><a href=#__codelineno-14-91> 91</a></span>
+<span class=normal><a href=#__codelineno-14-92> 92</a></span>
+<span class=normal><a href=#__codelineno-14-93> 93</a></span>
+<span class=normal><a href=#__codelineno-14-94> 94</a></span>
+<span class=normal><a href=#__codelineno-14-95> 95</a></span>
+<span class=normal><a href=#__codelineno-14-96> 96</a></span>
+<span class=normal><a href=#__codelineno-14-97> 97</a></span>
+<span class=normal><a href=#__codelineno-14-98> 98</a></span>
+<span class=normal><a href=#__codelineno-14-99> 99</a></span>
+<span class=normal><a href=#__codelineno-14-100>100</a></span>
+<span class=normal><a href=#__codelineno-14-101>101</a></span>
+<span class=normal><a href=#__codelineno-14-102>102</a></span>
+<span class=normal><a href=#__codelineno-14-103>103</a></span>
+<span class=normal><a href=#__codelineno-14-104>104</a></span>
+<span class=normal><a href=#__codelineno-14-105>105</a></span>
+<span class=normal><a href=#__codelineno-14-106>106</a></span>
+<span class=normal><a href=#__codelineno-14-107>107</a></span>
+<span class=normal><a href=#__codelineno-14-108>108</a></span>
+<span class=normal><a href=#__codelineno-14-109>109</a></span>
+<span class=normal><a href=#__codelineno-14-110>110</a></span>
+<span class=normal><a href=#__codelineno-14-111>111</a></span>
+<span class=normal><a href=#__codelineno-14-112>112</a></span>
+<span class=normal><a href=#__codelineno-14-113>113</a></span>
+<span class=normal><a href=#__codelineno-14-114>114</a></span>
+<span class=normal><a href=#__codelineno-14-115>115</a></span>
+<span class=normal><a href=#__codelineno-14-116>116</a></span>
+<span class=normal><a href=#__codelineno-14-117>117</a></span>
+<span class=normal><a href=#__codelineno-14-118>118</a></span>
+<span class=normal><a href=#__codelineno-14-119>119</a></span>
+<span class=normal><a href=#__codelineno-14-120>120</a></span>
+<span class=normal><a href=#__codelineno-14-121>121</a></span>
+<span class=normal><a href=#__codelineno-14-122>122</a></span>
+<span class=normal><a href=#__codelineno-14-123>123</a></span>
+<span class=normal><a href=#__codelineno-14-124>124</a></span>
+<span class=normal><a href=#__codelineno-14-125>125</a></span>
+<span class=normal><a href=#__codelineno-14-126>126</a></span>
+<span class=normal><a href=#__codelineno-14-127>127</a></span>
+<span class=normal><a href=#__codelineno-14-128>128</a></span>
+<span class=normal><a href=#__codelineno-14-129>129</a></span>
+<span class=normal><a href=#__codelineno-14-130>130</a></span>
+<span class=normal><a href=#__codelineno-14-131>131</a></span>
+<span class=normal><a href=#__codelineno-14-132>132</a></span>
+<span class=normal><a href=#__codelineno-14-133>133</a></span>
+<span class=normal><a href=#__codelineno-14-134>134</a></span>
+<span class=normal><a href=#__codelineno-14-135>135</a></span>
+<span class=normal><a href=#__codelineno-14-136>136</a></span>
+<span class=normal><a href=#__codelineno-14-137>137</a></span>
+<span class=normal><a href=#__codelineno-14-138>138</a></span>
+<span class=normal><a href=#__codelineno-14-139>139</a></span>
+<span class=normal><a href=#__codelineno-14-140>140</a></span>
+<span class=normal><a href=#__codelineno-14-141>141</a></span>
+<span class=normal><a href=#__codelineno-14-142>142</a></span>
+<span class=normal><a href=#__codelineno-14-143>143</a></span>
+<span class=normal><a href=#__codelineno-14-144>144</a></span>
+<span class=normal><a href=#__codelineno-14-145>145</a></span>
+<span class=normal><a href=#__codelineno-14-146>146</a></span>
+<span class=normal><a href=#__codelineno-14-147>147</a></span>
+<span class=normal><a href=#__codelineno-14-148>148</a></span>
+<span class=normal><a href=#__codelineno-14-149>149</a></span>
+<span class=normal><a href=#__codelineno-14-150>150</a></span>
+<span class=normal><a href=#__codelineno-14-151>151</a></span>
+<span class=normal><a href=#__codelineno-14-152>152</a></span>
+<span class=normal><a href=#__codelineno-14-153>153</a></span>
+<span class=normal><a href=#__codelineno-14-154>154</a></span>
+<span class=normal><a href=#__codelineno-14-155>155</a></span>
+<span class=normal><a href=#__codelineno-14-156>156</a></span>
+<span class=normal><a href=#__codelineno-14-157>157</a></span>
+<span class=normal><a href=#__codelineno-14-158>158</a></span>
+<span class=normal><a href=#__codelineno-14-159>159</a></span>
+<span class=normal><a href=#__codelineno-14-160>160</a></span>
+<span class=normal><a href=#__codelineno-14-161>161</a></span>
+<span class=normal><a href=#__codelineno-14-162>162</a></span>
+<span class=normal><a href=#__codelineno-14-163>163</a></span>
+<span class=normal><a href=#__codelineno-14-164>164</a></span>
+<span class=normal><a href=#__codelineno-14-165>165</a></span>
+<span class=normal><a href=#__codelineno-14-166>166</a></span>
+<span class=normal><a href=#__codelineno-14-167>167</a></span>
+<span class=normal><a href=#__codelineno-14-168>168</a></span>
+<span class=normal><a href=#__codelineno-14-169>169</a></span>
+<span class=normal><a href=#__codelineno-14-170>170</a></span>
+<span class=normal><a href=#__codelineno-14-171>171</a></span>
+<span class=normal><a href=#__codelineno-14-172>172</a></span>
+<span class=normal><a href=#__codelineno-14-173>173</a></span>
+<span class=normal><a href=#__codelineno-14-174>174</a></span>
+<span class=normal><a href=#__codelineno-14-175>175</a></span>
+<span class=normal><a href=#__codelineno-14-176>176</a></span>
+<span class=normal><a href=#__codelineno-14-177>177</a></span>
+<span class=normal><a href=#__codelineno-14-178>178</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-14-1 name=__codelineno-14-1></a><span class=p>{</span>
+<a id=__codelineno-14-2 name=__codelineno-14-2></a><span class=w>  </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Questionnaire&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-3 name=__codelineno-14-3></a><span class=w>  </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;https://github.com/mHealth-Prototyp/Questionnaires/blob/main/resources/Questionnaire/organ-donation.json&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-4 name=__codelineno-14-4></a><span class=w>  </span><span class=nt>&quot;version&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;0.0.1&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the questionnaire needs a version number so the QuestionnaireResponse resource can be matched with the exact version of the questionnaire</span>
+<a id=__codelineno-14-5 name=__codelineno-14-5></a><span class=w>  </span><span class=nt>&quot;name&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;OrganDonation&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the technical name of the questionnaire, which is usually not displayed to the user</span>
+<a id=__codelineno-14-6 name=__codelineno-14-6></a><span class=w>  </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Digital Organ Donation Card&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the title of the questionnaire as it is displayed to the user</span>
+<a id=__codelineno-14-7 name=__codelineno-14-7></a><span class=w>  </span><span class=nt>&quot;_title&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-8 name=__codelineno-14-8></a><span class=w>    </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-9 name=__codelineno-14-9></a><span class=w>      </span><span class=p>{</span>
+<a id=__codelineno-14-10 name=__codelineno-14-10></a><span class=w>        </span><span class=c1>// for every language translation of the title, we need an extension of the title field, which are placed in the &quot;_title&quot; field</span>
+<a id=__codelineno-14-11 name=__codelineno-14-11></a><span class=w>        </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/translation&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-12 name=__codelineno-14-12></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-13 name=__codelineno-14-13></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-14-14 name=__codelineno-14-14></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;lang&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-15 name=__codelineno-14-15></a><span class=w>            </span><span class=nt>&quot;valueCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;de&quot;</span>
+<a id=__codelineno-14-16 name=__codelineno-14-16></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-14-17 name=__codelineno-14-17></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-14-18 name=__codelineno-14-18></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;content&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-19 name=__codelineno-14-19></a><span class=w>            </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Digitale Organspende-Karte&quot;</span>
+<a id=__codelineno-14-20 name=__codelineno-14-20></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-14-21 name=__codelineno-14-21></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-14-22 name=__codelineno-14-22></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-14-23 name=__codelineno-14-23></a><span class=w>      </span><span class=p>{</span>
+<a id=__codelineno-14-24 name=__codelineno-14-24></a><span class=w>        </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/translation&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-25 name=__codelineno-14-25></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-26 name=__codelineno-14-26></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-14-27 name=__codelineno-14-27></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;lang&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-28 name=__codelineno-14-28></a><span class=w>            </span><span class=nt>&quot;valueCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;fr&quot;</span>
+<a id=__codelineno-14-29 name=__codelineno-14-29></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-14-30 name=__codelineno-14-30></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-14-31 name=__codelineno-14-31></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;content&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-32 name=__codelineno-14-32></a><span class=w>            </span><span class=nt>&quot;valueString&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Carte numérique de don d&#39;organes&quot;</span>
+<a id=__codelineno-14-33 name=__codelineno-14-33></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-14-34 name=__codelineno-14-34></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-14-35 name=__codelineno-14-35></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-14-36 name=__codelineno-14-36></a><span class=w>    </span><span class=p>]</span>
+<a id=__codelineno-14-37 name=__codelineno-14-37></a><span class=w>  </span><span class=p>},</span>
+<a id=__codelineno-14-38 name=__codelineno-14-38></a><span class=w>  </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;draft&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the status of the questionnaire</span>
+<a id=__codelineno-14-39 name=__codelineno-14-39></a><span class=w>  </span><span class=nt>&quot;date&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2023-03-20&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// when the questionnaire was published</span>
+<a id=__codelineno-14-40 name=__codelineno-14-40></a><span class=w>  </span><span class=nt>&quot;description&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;**Here&#39;s how it works**  \n1. Fill in the online form completely.  \n2. Register it in your EPR.  \n3. Inform your relatives of your wishes and inform them of the presence of this form on your EPD. If you change your mind, fill in the form again, and inform your relatives of this new decision.&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-41 name=__codelineno-14-41></a><span class=w>  </span><span class=nt>&quot;_description&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-42 name=__codelineno-14-42></a><span class=w>    </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-43 name=__codelineno-14-43></a><span class=w>      </span><span class=c1>// internationalisation for the description works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-44 name=__codelineno-14-44></a><span class=w>    </span><span class=p>]</span>
+<a id=__codelineno-14-45 name=__codelineno-14-45></a><span class=w>  </span><span class=p>},</span>
+<a id=__codelineno-14-46 name=__codelineno-14-46></a><span class=w>  </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-47 name=__codelineno-14-47></a><span class=w>    </span><span class=c1>// this code represents the whole questionnaire</span>
+<a id=__codelineno-14-48 name=__codelineno-14-48></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-14-49 name=__codelineno-14-49></a><span class=w>      </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:prototype-4-codes&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// in lack of a better alternative, we use an own code system</span>
+<a id=__codelineno-14-50 name=__codelineno-14-50></a><span class=w>      </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;organ-donation&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-51 name=__codelineno-14-51></a><span class=w>      </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Organ Donation&quot;</span>
+<a id=__codelineno-14-52 name=__codelineno-14-52></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-14-53 name=__codelineno-14-53></a><span class=w>  </span><span class=p>],</span>
+<a id=__codelineno-14-54 name=__codelineno-14-54></a><span class=w>  </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-55 name=__codelineno-14-55></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-14-56 name=__codelineno-14-56></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Dgroup&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// a question group is also a question...</span>
+<a id=__codelineno-14-57 name=__codelineno-14-57></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;group&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// ... of type group</span>
+<a id=__codelineno-14-58 name=__codelineno-14-58></a><span class=w>      </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-59 name=__codelineno-14-59></a><span class=w>        </span><span class=c1>// the actual subquestions of the group are in the &quot;item&quot; field</span>
+<a id=__codelineno-14-60 name=__codelineno-14-60></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-14-61 name=__codelineno-14-61></a><span class=w>          </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;D1&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the unique ID of the question</span>
+<a id=__codelineno-14-62 name=__codelineno-14-62></a><span class=w>          </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;First and familiy name&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// text displayed for the question</span>
+<a id=__codelineno-14-63 name=__codelineno-14-63></a><span class=w>          </span><span class=nt>&quot;_text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-64 name=__codelineno-14-64></a><span class=w>            </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-65 name=__codelineno-14-65></a><span class=w>              </span><span class=c1>// internationalisation for the item texts works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-66 name=__codelineno-14-66></a><span class=w>            </span><span class=p>]</span>
+<a id=__codelineno-14-67 name=__codelineno-14-67></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-14-68 name=__codelineno-14-68></a><span class=w>          </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;string&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the name of the user is a string</span>
+<a id=__codelineno-14-69 name=__codelineno-14-69></a><span class=w>          </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;true&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// this question is mandatory</span>
+<a id=__codelineno-14-70 name=__codelineno-14-70></a><span class=w>          </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=p>,</span><span class=w> </span><span class=c1>// but only one answer is allowed</span>
+<a id=__codelineno-14-71 name=__codelineno-14-71></a><span class=w>          </span><span class=nt>&quot;readOnly&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w> </span><span class=c1>// because we populate it from the Patient resource, in this case the name is read only</span>
+<a id=__codelineno-14-72 name=__codelineno-14-72></a><span class=w>          </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-73 name=__codelineno-14-73></a><span class=w>            </span><span class=p>{</span>
+<a id=__codelineno-14-74 name=__codelineno-14-74></a><span class=w>              </span><span class=c1>// with this extension, we can define with a FHIRPath expression, how the value of the question should be prepopulated</span>
+<a id=__codelineno-14-75 name=__codelineno-14-75></a><span class=w>              </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-76 name=__codelineno-14-76></a><span class=w>              </span><span class=nt>&quot;valueExpression&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-77 name=__codelineno-14-77></a><span class=w>                </span><span class=nt>&quot;language&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;text/fhirpath&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-78 name=__codelineno-14-78></a><span class=w>                </span><span class=nt>&quot;expression&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;%patient.name.given.first() + &#39; &#39; + %patient.name.family.first()&quot;</span>
+<a id=__codelineno-14-79 name=__codelineno-14-79></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-14-80 name=__codelineno-14-80></a><span class=w>            </span><span class=p>}</span>
+<a id=__codelineno-14-81 name=__codelineno-14-81></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-14-82 name=__codelineno-14-82></a><span class=w>        </span><span class=p>},</span>
+<a id=__codelineno-14-83 name=__codelineno-14-83></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-14-84 name=__codelineno-14-84></a><span class=w>          </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;D2&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-85 name=__codelineno-14-85></a><span class=w>          </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Birthdate&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-86 name=__codelineno-14-86></a><span class=w>          </span><span class=nt>&quot;_text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-87 name=__codelineno-14-87></a><span class=w>            </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-88 name=__codelineno-14-88></a><span class=w>              </span><span class=c1>// internationalisation for the item texts works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-89 name=__codelineno-14-89></a><span class=w>            </span><span class=p>]</span>
+<a id=__codelineno-14-90 name=__codelineno-14-90></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-14-91 name=__codelineno-14-91></a><span class=w>          </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;date&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// type of birth date is a date</span>
+<a id=__codelineno-14-92 name=__codelineno-14-92></a><span class=w>          </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;true&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// this question is mandatory</span>
+<a id=__codelineno-14-93 name=__codelineno-14-93></a><span class=w>          </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=p>,</span><span class=w> </span><span class=c1>// but only one answer is allowed</span>
+<a id=__codelineno-14-94 name=__codelineno-14-94></a><span class=w>          </span><span class=nt>&quot;readOnly&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w> </span><span class=c1>// because we populate it from the Patient resource, in this case the name is read only</span>
+<a id=__codelineno-14-95 name=__codelineno-14-95></a><span class=w>          </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-96 name=__codelineno-14-96></a><span class=w>            </span><span class=p>{</span>
+<a id=__codelineno-14-97 name=__codelineno-14-97></a><span class=w>              </span><span class=c1>// another example how to prepopulate the answer with the birthdate from the patient resource</span>
+<a id=__codelineno-14-98 name=__codelineno-14-98></a><span class=w>              </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-99 name=__codelineno-14-99></a><span class=w>              </span><span class=nt>&quot;valueExpression&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-100 name=__codelineno-14-100></a><span class=w>                </span><span class=nt>&quot;language&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;text/fhirpath&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-101 name=__codelineno-14-101></a><span class=w>                </span><span class=nt>&quot;expression&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;%patient.birthDate&quot;</span>
+<a id=__codelineno-14-102 name=__codelineno-14-102></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-14-103 name=__codelineno-14-103></a><span class=w>            </span><span class=p>}</span>
+<a id=__codelineno-14-104 name=__codelineno-14-104></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-14-105 name=__codelineno-14-105></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-14-106 name=__codelineno-14-106></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-14-107 name=__codelineno-14-107></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-14-108 name=__codelineno-14-108></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-14-109 name=__codelineno-14-109></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-110 name=__codelineno-14-110></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;In the event that removal of organs, tissues or cells is possible after my death, my wishes are as follows:&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-111 name=__codelineno-14-111></a><span class=w>      </span><span class=nt>&quot;_text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-112 name=__codelineno-14-112></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-113 name=__codelineno-14-113></a><span class=w>          </span><span class=c1>// internationalisation for the item texts works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-114 name=__codelineno-14-114></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-14-115 name=__codelineno-14-115></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-14-116 name=__codelineno-14-116></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;choice&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// this is a choice question</span>
+<a id=__codelineno-14-117 name=__codelineno-14-117></a><span class=w>      </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w> </span><span class=c1>// that is also required</span>
+<a id=__codelineno-14-118 name=__codelineno-14-118></a><span class=w>      </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=p>,</span><span class=w> </span><span class=c1>// but only one answer can be selected</span>
+<a id=__codelineno-14-119 name=__codelineno-14-119></a><span class=w>      </span><span class=nt>&quot;answerValueSet&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;#ORGAN-DONATION-RESPONSE-ValueSet&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// this refers to the answerValueset, where the answers options are defined</span>
+<a id=__codelineno-14-120 name=__codelineno-14-120></a><span class=w>      </span><span class=c1>// the valueSet can be found in the &quot;contained&quot; field of the Questionnaire resource</span>
+<a id=__codelineno-14-121 name=__codelineno-14-121></a><span class=w>      </span><span class=nt>&quot;item&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-122 name=__codelineno-14-122></a><span class=w>        </span><span class=c1>// the choice question has some sub-questions</span>
+<a id=__codelineno-14-123 name=__codelineno-14-123></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-14-124 name=__codelineno-14-124></a><span class=w>          </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1-SQ1&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-125 name=__codelineno-14-125></a><span class=w>          </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;choice&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-126 name=__codelineno-14-126></a><span class=w>          </span><span class=nt>&quot;required&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span>
+<a id=__codelineno-14-127 name=__codelineno-14-127></a><span class=w>          </span><span class=nt>&quot;repeats&quot;</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w> </span><span class=c1>// other than the parent question, multiple answers are allowed here</span>
+<a id=__codelineno-14-128 name=__codelineno-14-128></a><span class=w>          </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;I CONSENT to the removal of the following organs, tissues or cells, and to the associated preparatory medical measures:&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-129 name=__codelineno-14-129></a><span class=w>          </span><span class=nt>&quot;_text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-130 name=__codelineno-14-130></a><span class=w>            </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-131 name=__codelineno-14-131></a><span class=w>              </span><span class=c1>// internationalisation for the item texts works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-132 name=__codelineno-14-132></a><span class=w>            </span><span class=p>]</span>
+<a id=__codelineno-14-133 name=__codelineno-14-133></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-14-134 name=__codelineno-14-134></a><span class=w>          </span><span class=nt>&quot;enableWhen&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-135 name=__codelineno-14-135></a><span class=w>            </span><span class=p>{</span>
+<a id=__codelineno-14-136 name=__codelineno-14-136></a><span class=w>              </span><span class=c1>// here we can define when the question should be enabled and thus displayed to the user</span>
+<a id=__codelineno-14-137 name=__codelineno-14-137></a><span class=w>              </span><span class=nt>&quot;question&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Q1&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// this declares on which question this question depends</span>
+<a id=__codelineno-14-138 name=__codelineno-14-138></a><span class=w>              </span><span class=nt>&quot;operator&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;=&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// we want to enable it when the answer to Q1 equals the following answer (could also be not equal, or bigger / smaller for numeric answers)</span>
+<a id=__codelineno-14-139 name=__codelineno-14-139></a><span class=w>              </span><span class=nt>&quot;answerCoding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-140 name=__codelineno-14-140></a><span class=w>                </span><span class=c1>// and here we define the answer that must be set in Q1 to enable this question</span>
+<a id=__codelineno-14-141 name=__codelineno-14-141></a><span class=w>                </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;https://github.com/mHealth-Prototyp/Questionnaires/blob/main/resources/ValueSet/organ-donation-response.json&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-142 name=__codelineno-14-142></a><span class=w>                </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;yes_following&quot;</span>
+<a id=__codelineno-14-143 name=__codelineno-14-143></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-14-144 name=__codelineno-14-144></a><span class=w>            </span><span class=p>}</span>
+<a id=__codelineno-14-145 name=__codelineno-14-145></a><span class=w>          </span><span class=p>],</span>
+<a id=__codelineno-14-146 name=__codelineno-14-146></a><span class=w>          </span><span class=nt>&quot;answerValueSet&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;#ORGAN-DONATION-LIST-ValueSet&quot;</span><span class=w> </span><span class=c1>// this refers to the answerValueset, where the answers options are defined</span>
+<a id=__codelineno-14-147 name=__codelineno-14-147></a><span class=w>          </span><span class=c1>// the valueSet can be found in the &quot;contained&quot; field of the Questionnaire resource</span>
+<a id=__codelineno-14-148 name=__codelineno-14-148></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-14-149 name=__codelineno-14-149></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-14-150 name=__codelineno-14-150></a><span class=w>      </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-151 name=__codelineno-14-151></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-14-152 name=__codelineno-14-152></a><span class=w>          </span><span class=c1>// this itemControl extensions defines that the answer options should be displayed as radio buttons</span>
+<a id=__codelineno-14-153 name=__codelineno-14-153></a><span class=w>          </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-154 name=__codelineno-14-154></a><span class=w>          </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-155 name=__codelineno-14-155></a><span class=w>            </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-156 name=__codelineno-14-156></a><span class=w>              </span><span class=p>{</span>
+<a id=__codelineno-14-157 name=__codelineno-14-157></a><span class=w>                </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://hl7.org/fhir/questionnaire-item-control&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-158 name=__codelineno-14-158></a><span class=w>                </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;radio-button&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-159 name=__codelineno-14-159></a><span class=w>                </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Radio Button&quot;</span>
+<a id=__codelineno-14-160 name=__codelineno-14-160></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-14-161 name=__codelineno-14-161></a><span class=w>            </span><span class=p>],</span>
+<a id=__codelineno-14-162 name=__codelineno-14-162></a><span class=w>            </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Radio Button&quot;</span>
+<a id=__codelineno-14-163 name=__codelineno-14-163></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-14-164 name=__codelineno-14-164></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-14-165 name=__codelineno-14-165></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-14-166 name=__codelineno-14-166></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-14-167 name=__codelineno-14-167></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-14-168 name=__codelineno-14-168></a><span class=w>      </span><span class=nt>&quot;linkId&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;I1&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-169 name=__codelineno-14-169></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;The information you provide here is only recorded on your EPR.&quot;</span><span class=p>,</span>
+<a id=__codelineno-14-170 name=__codelineno-14-170></a><span class=w>      </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;display&quot;</span><span class=p>,</span><span class=w> </span><span class=c1>// the final question is only for displaying the information, and does not take any answers</span>
+<a id=__codelineno-14-171 name=__codelineno-14-171></a><span class=w>      </span><span class=nt>&quot;_text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-14-172 name=__codelineno-14-172></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-14-173 name=__codelineno-14-173></a><span class=w>          </span><span class=c1>// internationalisation for the item texts works the same as for the title and is stripped out for better readability</span>
+<a id=__codelineno-14-174 name=__codelineno-14-174></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-14-175 name=__codelineno-14-175></a><span class=w>      </span><span class=p>}</span>
+<a id=__codelineno-14-176 name=__codelineno-14-176></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-14-177 name=__codelineno-14-177></a><span class=w>  </span><span class=p>]</span>
+<a id=__codelineno-14-178 name=__codelineno-14-178></a><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <hr> <div class=md-source-file> <small> Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class=timeago datetime=2025-01-27T09:58:37+00:00 locale=en></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span> </small> </div> </article> </div> </div> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> <a href=https://www.e-health-suisse.ch/ >eHealth Suisse</a> | <a href=https://github.com/ehealthsuisse/EPR-by-example/blob/main/LICENSE><em>Creative Commons Zero v1.0 Universal</em></a> </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "..", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.follow"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script> <script src=../assets/javascripts/bundle.cd18aaf1.min.js></script> <script src=../js/timeago.min.js></script> <script src=../js/timeago_mkdocs_material.js></script> </body> </html>

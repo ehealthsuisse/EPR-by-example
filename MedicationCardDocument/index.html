@@ -1,0 +1,906 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The pages explain the transactions by using samples recorded or adapted from transactions performed during the annual Swiss projectathon (September 2020)."><meta name=author content="eHealth Suisse"><link href=https://ehealthsuisse.github.io/EPR-by-example/MedicationCardDocument/ rel=canonical><link href=../gazelle/ rel=prev><link href=../ImmunizationAdministrationDocument/ rel=next><link rel=icon href=../media/favicon.png><meta name=generator content="mkdocs-1.6.1, mkdocs-material-9.4.14"><title>Medication Card document - EPR by example</title><link rel=stylesheet href=../assets/stylesheets/main.fad675c6.min.css><link rel=stylesheet href=../assets/stylesheets/palette.356b1318.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><link rel=stylesheet href=../css/timeago.css><link rel=stylesheet href=../media/ehealthsuisse.css><script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary=custom data-md-color-accent=custom> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#medication-card-document class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class="md-header md-header--shadow" data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=https://www.e-health-suisse.ch/ title="EPR by example" class="md-header__button md-logo" aria-label="EPR by example" data-md-component=logo> <img src=../media/logo.svg alt=logo> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> EPR by example </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Medication Card document </span> </div> </div> </div> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" title=Clear aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg> </button> </nav> <div class=md-search__suggest data-md-component=search-suggest></div> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list role=presentation></ol> </div> </div> </div> </div> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=https://www.e-health-suisse.ch/ title="EPR by example" class="md-nav__button md-logo" aria-label="EPR by example" data-md-component=logo> <img src=../media/logo.svg alt=logo> </a> EPR by example </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=.. class=md-nav__link> <span class=md-ellipsis> Home </span> </a> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_2> <label class=md-nav__link for=__nav_2 id=__nav_2_label tabindex> <span class=md-ellipsis> Patient Management </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_2_label aria-expanded=false> <label class=md-nav__title for=__nav_2> <span class="md-nav__icon md-icon"></span> Patient Management </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../PDQ/ class=md-nav__link> <span class=md-ellipsis> Patient Demographics Query </span> </a> </li> <li class=md-nav__item> <a href=../PIXFeed/ class=md-nav__link> <span class=md-ellipsis> PIX Feed </span> </a> </li> <li class=md-nav__item> <a href=../PIXQuery/ class=md-nav__link> <span class=md-ellipsis> PIX Query </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3 id=__nav_3_label tabindex> <span class=md-ellipsis> Document Management </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_3_label aria-expanded=false> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> Document Management </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../RegistryStoredQuery/ class=md-nav__link> <span class=md-ellipsis> Registry Stored Query </span> </a> </li> <li class=md-nav__item> <a href=../RetrieveDocumentSet/ class=md-nav__link> <span class=md-ellipsis> Retrieve Document Set </span> </a> </li> <li class=md-nav__item> <a href=../ProvideAndRegister/ class=md-nav__link> <span class=md-ellipsis> Provide and Register Document Set </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4 id=__nav_4_label tabindex> <span class=md-ellipsis> Authentication </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_4_label aria-expanded=false> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> Authentication </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../AuthenticateUser/ class=md-nav__link> <span class=md-ellipsis> Authenticate User </span> </a> </li> <li class=md-nav__item> <a href=../IdPRenew/ class=md-nav__link> <span class=md-ellipsis> IdP Renew </span> </a> </li> <li class=md-nav__item> <a href=../SSOLogout/ class=md-nav__link> <span class=md-ellipsis> SSO Logout </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5 id=__nav_5_label tabindex> <span class=md-ellipsis> Authorization </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_5_label aria-expanded=false> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Authorization </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../GetXAssertion/ class=md-nav__link> <span class=md-ellipsis> Get X-User Assertion </span> </a> </li> <li class=md-nav__item> <a href=../ProvideXAssertion/ class=md-nav__link> <span class=md-ellipsis> Provide X-User Assertion </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6 id=__nav_6_label tabindex> <span class=md-ellipsis> Audit </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_6_label aria-expanded=false> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> Audit </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../Atna/ class=md-nav__link> <span class=md-ellipsis> Audit logs </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7 id=__nav_7_label tabindex> <span class=md-ellipsis> Public Test Systems </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_7_label aria-expanded=false> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> Public Test Systems </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../playground/ class=md-nav__link> <span class=md-ellipsis> EPR Playground </span> </a> </li> <li class=md-nav__item> <a href=../gazelle/ class=md-nav__link> <span class=md-ellipsis> EPR Reference Environment </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type=checkbox id=__nav_8 checked> <label class=md-nav__link for=__nav_8 id=__nav_8_label tabindex> <span class=md-ellipsis> Swiss EPR Exchange Formats </span> <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav data-md-level=1 aria-labelledby=__nav_8_label aria-expanded=true> <label class=md-nav__title for=__nav_8> <span class="md-nav__icon md-icon"></span> Swiss EPR Exchange Formats </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> <span class=md-ellipsis> Medication Card document </span> <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> <span class=md-ellipsis> Medication Card document </span> </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#bundle class=md-nav__link> <span class=md-ellipsis> Bundle </span> </a> </li> <li class=md-nav__item> <a href=#composition class=md-nav__link> <span class=md-ellipsis> Composition </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-patient class=md-nav__link> <span class=md-ellipsis> Information about the patient </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-practitioner class=md-nav__link> <span class=md-ellipsis> Information about the practitioner </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-organization class=md-nav__link> <span class=md-ellipsis> Information about the organization </span> </a> </li> <li class=md-nav__item> <a href=#medication class=md-nav__link> <span class=md-ellipsis> Medication </span> </a> <nav class=md-nav aria-label=Medication> <ul class=md-nav__list> <li class=md-nav__item> <a href=#medication-information class=md-nav__link> <span class=md-ellipsis> Medication information </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#dosage class=md-nav__link> <span class=md-ellipsis> Dosage </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../ImmunizationAdministrationDocument/ class=md-nav__link> <span class=md-ellipsis> Immunization Administration Document </span> </a> </li> <li class=md-nav__item> <a href=../Questionnaire/ class=md-nav__link> <span class=md-ellipsis> How to build a FHIR-Questionnaire </span> </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#bundle class=md-nav__link> <span class=md-ellipsis> Bundle </span> </a> </li> <li class=md-nav__item> <a href=#composition class=md-nav__link> <span class=md-ellipsis> Composition </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-patient class=md-nav__link> <span class=md-ellipsis> Information about the patient </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-practitioner class=md-nav__link> <span class=md-ellipsis> Information about the practitioner </span> </a> </li> <li class=md-nav__item> <a href=#information-about-the-organization class=md-nav__link> <span class=md-ellipsis> Information about the organization </span> </a> </li> <li class=md-nav__item> <a href=#medication class=md-nav__link> <span class=md-ellipsis> Medication </span> </a> <nav class=md-nav aria-label=Medication> <ul class=md-nav__list> <li class=md-nav__item> <a href=#medication-information class=md-nav__link> <span class=md-ellipsis> Medication information </span> </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=#dosage class=md-nav__link> <span class=md-ellipsis> Dosage </span> </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <h1 id=medication-card-document>Medication Card document<a class=headerlink href=#medication-card-document title="Permanent link"> ¶</a></h1> <p>In a primary system, different medications are documented in a treatment context. Primary systems can use this Exchange Format to generate a Medication Card document with the help of the Content Creator.</p> <h2 id=bundle>Bundle<a class=headerlink href=#bundle title="Permanent link"> ¶</a></h2> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <p>In the resource "Bundle", all resources are collected in a container.</p> <ul> <li><em>id:</em> Local id of the resource (line 3)</li> <li><em>meta:</em> Shows the metadata of the document (line 4 to 9).</li> <li><em>identifier:</em> Unique identifier for the bundle - fixed Value: "<em>urn:ietf:rfc:3986</em>" (line 10 to 13).</li> <li><em>type:</em> Indicates the purpose of this bundle - fixed Value: "<em>document</em>"; binding: <em><a href=http://hl7.org/fhir/R4/valueset-bundle-type.html rel="external nofollow noopener" target=_blank>BundleType</a></em> (line 14).</li> <li><em>timestamp:</em> The date/time the bundle was composed (line 15).</li> <li><em>entry:</em> The list to add all resources belonging to the document (line 16-18).</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-0-1> 1</a></span>
+<span class=normal><a href=#__codelineno-0-2> 2</a></span>
+<span class=normal><a href=#__codelineno-0-3> 3</a></span>
+<span class=normal><a href=#__codelineno-0-4> 4</a></span>
+<span class=normal><a href=#__codelineno-0-5> 5</a></span>
+<span class=normal><a href=#__codelineno-0-6> 6</a></span>
+<span class=normal><a href=#__codelineno-0-7> 7</a></span>
+<span class=normal><a href=#__codelineno-0-8> 8</a></span>
+<span class=normal><a href=#__codelineno-0-9> 9</a></span>
+<span class=normal><a href=#__codelineno-0-10>10</a></span>
+<span class=normal><a href=#__codelineno-0-11>11</a></span>
+<span class=normal><a href=#__codelineno-0-12>12</a></span>
+<span class=normal><a href=#__codelineno-0-13>13</a></span>
+<span class=normal><a href=#__codelineno-0-14>14</a></span>
+<span class=normal><a href=#__codelineno-0-15>15</a></span>
+<span class=normal><a href=#__codelineno-0-16>16</a></span>
+<span class=normal><a href=#__codelineno-0-17>17</a></span>
+<span class=normal><a href=#__codelineno-0-18>18</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-0-1 name=__codelineno-0-1></a><span class=w>  </span><span class=p>{</span>
+<a id=__codelineno-0-2 name=__codelineno-0-2></a><span class=w>    </span><span class=nt>&quot;resourceType&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Bundle&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-3 name=__codelineno-0-3></a><span class=w>    </span><span class=nt>&quot;id&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2-7-MedicationCard&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-4 name=__codelineno-0-4></a><span class=w>    </span><span class=nt>&quot;meta&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-0-5 name=__codelineno-0-5></a><span class=w>      </span><span class=nt>&quot;lastUpdated&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2020-02-21T12:31:59.738+00:00&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-6 name=__codelineno-0-6></a><span class=w>      </span><span class=nt>&quot;profile&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-0-7 name=__codelineno-0-7></a><span class=w>        </span><span class=s2>&quot;http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard&quot;</span>
+<a id=__codelineno-0-8 name=__codelineno-0-8></a><span class=w>     </span><span class=p>]</span>
+<a id=__codelineno-0-9 name=__codelineno-0-9></a><span class=w>   </span><span class=p>},</span>
+<a id=__codelineno-0-10 name=__codelineno-0-10></a><span class=w>  </span><span class=nt>&quot;identifier&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-0-11 name=__codelineno-0-11></a><span class=w>    </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:ietf:rfc:3986&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-12 name=__codelineno-0-12></a><span class=w>    </span><span class=nt>&quot;value&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0&quot;</span>
+<a id=__codelineno-0-13 name=__codelineno-0-13></a><span class=w>  </span><span class=p>},</span>
+<a id=__codelineno-0-14 name=__codelineno-0-14></a><span class=w>  </span><span class=nt>&quot;type&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;document&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-15 name=__codelineno-0-15></a><span class=w>  </span><span class=nt>&quot;timestamp&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04T14:05:00+01:00&quot;</span><span class=p>,</span>
+<a id=__codelineno-0-16 name=__codelineno-0-16></a><span class=w>  </span><span class=nt>&quot;entry&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-0-17 name=__codelineno-0-17></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-0-18 name=__codelineno-0-18></a><span class=w>      </span><span class=nt>&quot;fullUrl&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://test.fhir.ch/r4/Composition/2-7-MedicationCard&quot;</span><span class=p>,</span>
+</code></pre></div></td></tr></table></div> <h2 id=composition>Composition<a class=headerlink href=#composition title="Permanent link"> ¶</a></h2> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <p>In the resource "Composition", general information about the document is specified.</p> <ul> <li><em>entry:</em> An entry in a bundle resource - will either contain a resource or information about a resource (line 1)</li> <li><em>id:</em> Local id of the resource (line 6).</li> <li><em>language:</em> Specifies the language of the document - binding: <em><a href=http://hl7.org/fhir/R4/valueset-languages.html rel="external nofollow noopener" target=_blank>CommonLanguages</a></em> (line 7).</li> <li><em>text:</em> Presents the narrative text of the resource (line 8 to 11).</li> <li><em>extension:</em> Extension to Information Recipient (line 12 to 19).</li> <li><em>identifier:</em> A version-independent identifier for the Composition (line 20 to 23).</li> <li><em>status:</em> The status of the document - fixed Value: "<em>final</em>"; binding: <em><a href=http://hl7.org/fhir/R4/valueset-composition-status.html rel="external nofollow noopener" target=_blank>CompositionStatus</a></em> (line 24).</li> <li><em>type:</em> Specifies the particular kind of composition - binding: <em><a href=http://fhir.ch/ig/ch-epr-term/ValueSet-DocumentEntry.typeCode.html rel="external nofollow noopener" target=_blank>DocumentEntry.typeCode</a></em>(line 25 to 38).</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-1-1> 1</a></span>
+<span class=normal><a href=#__codelineno-1-2> 2</a></span>
+<span class=normal><a href=#__codelineno-1-3> 3</a></span>
+<span class=normal><a href=#__codelineno-1-4> 4</a></span>
+<span class=normal><a href=#__codelineno-1-5> 5</a></span>
+<span class=normal><a href=#__codelineno-1-6> 6</a></span>
+<span class=normal><a href=#__codelineno-1-7> 7</a></span>
+<span class=normal><a href=#__codelineno-1-8> 8</a></span>
+<span class=normal><a href=#__codelineno-1-9> 9</a></span>
+<span class=normal><a href=#__codelineno-1-10>10</a></span>
+<span class=normal><a href=#__codelineno-1-11>11</a></span>
+<span class=normal><a href=#__codelineno-1-12>12</a></span>
+<span class=normal><a href=#__codelineno-1-13>13</a></span>
+<span class=normal><a href=#__codelineno-1-14>14</a></span>
+<span class=normal><a href=#__codelineno-1-15>15</a></span>
+<span class=normal><a href=#__codelineno-1-16>16</a></span>
+<span class=normal><a href=#__codelineno-1-17>17</a></span>
+<span class=normal><a href=#__codelineno-1-18>18</a></span>
+<span class=normal><a href=#__codelineno-1-19>19</a></span>
+<span class=normal><a href=#__codelineno-1-20>20</a></span>
+<span class=normal><a href=#__codelineno-1-21>21</a></span>
+<span class=normal><a href=#__codelineno-1-22>22</a></span>
+<span class=normal><a href=#__codelineno-1-23>23</a></span>
+<span class=normal><a href=#__codelineno-1-24>24</a></span>
+<span class=normal><a href=#__codelineno-1-25>25</a></span>
+<span class=normal><a href=#__codelineno-1-26>26</a></span>
+<span class=normal><a href=#__codelineno-1-27>27</a></span>
+<span class=normal><a href=#__codelineno-1-28>28</a></span>
+<span class=normal><a href=#__codelineno-1-29>29</a></span>
+<span class=normal><a href=#__codelineno-1-30>30</a></span>
+<span class=normal><a href=#__codelineno-1-31>31</a></span>
+<span class=normal><a href=#__codelineno-1-32>32</a></span>
+<span class=normal><a href=#__codelineno-1-33>33</a></span>
+<span class=normal><a href=#__codelineno-1-34>34</a></span>
+<span class=normal><a href=#__codelineno-1-35>35</a></span>
+<span class=normal><a href=#__codelineno-1-36>36</a></span>
+<span class=normal><a href=#__codelineno-1-37>37</a></span>
+<span class=normal><a href=#__codelineno-1-38>38</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-1-1 name=__codelineno-1-1></a><span class=w>  </span><span class=nt>&quot;entry&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-1-2 name=__codelineno-1-2></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-1-3 name=__codelineno-1-3></a><span class=w>      </span><span class=nt>&quot;fullUrl&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://test.fhir.ch/r4/Composition/2-7-MedicationCard&quot;</span><span class=p>,</span><span class=w>  </span>
+<a id=__codelineno-1-4 name=__codelineno-1-4></a><span class=w>      </span><span class=nt>&quot;resource&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-1-5 name=__codelineno-1-5></a><span class=w>        </span><span class=nt>&quot;resourceType&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Composition&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-6 name=__codelineno-1-6></a><span class=w>        </span><span class=nt>&quot;id&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2-7-MedicationCard&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-7 name=__codelineno-1-7></a><span class=w>        </span><span class=nt>&quot;language&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;de-CH&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-8 name=__codelineno-1-8></a><span class=w>        </span><span class=nt>&quot;text&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-1-9 name=__codelineno-1-9></a><span class=w>          </span><span class=nt>&quot;status&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;extensions&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-10 name=__codelineno-1-10></a><span class=w>         </span><span class=nt>&quot;div&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot; xml:lang=\&quot;de-CH\&quot; lang=\&quot;de-CH\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Resource \&quot;2-7-MedicationCard\&quot;  (Language \&quot;de-CH\&quot;) &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;EPR Information Recipient&lt;/b&gt;: &lt;a href=\&quot;#Patient_MonikaWegmuellerRecipient\&quot;&gt;See above (Patient/MonikaWegmuellerRecipient)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: final&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: Medication summary &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;https://loinc.org/\&quot;&gt;LOINC&lt;/a&gt;#56445-0; &lt;a href=\&quot;https://browser.ihtsdotools.org/\&quot;&gt;SNOMED CT&lt;/a&gt;#721912009\&quot;Medication summary document (record artifact)\&quot;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: 2012-02-04T14:05:00+01:00&lt;/p&gt;&lt;p&gt;&lt;b&gt;author&lt;/b&gt;: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=\&quot;#Practitioner_FamilienHausarzt\&quot;&gt;See above (Practitioner/FamilienHausarzt)&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=\&quot;#Organization_Hausarzt\&quot;&gt;See above (Organization/Hausarzt)&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Medikationsplan&lt;/p&gt;&lt;p&gt;&lt;b&gt;confidentiality&lt;/b&gt;: N&lt;/p&gt;&lt;p&gt;&lt;b&gt;custodian&lt;/b&gt;: &lt;a href=\&quot;#Organization_Custodian\&quot;&gt;See above (Organization/Custodian)&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&quot;</span>
+<a id=__codelineno-1-11 name=__codelineno-1-11></a><span class=w>        </span><span class=p>},</span>
+<a id=__codelineno-1-12 name=__codelineno-1-12></a><span class=w>        </span><span class=nt>&quot;extension&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-1-13 name=__codelineno-1-13></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-1-14 name=__codelineno-1-14></a><span class=w>            </span><span class=nt>&quot;url&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-informationrecipient&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-15 name=__codelineno-1-15></a><span class=w>            </span><span class=nt>&quot;valueReference&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-1-16 name=__codelineno-1-16></a><span class=w>             </span><span class=nt>&quot;reference&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Patient/MonikaWegmuellerRecipient&quot;</span>
+<a id=__codelineno-1-17 name=__codelineno-1-17></a><span class=w>            </span><span class=p>}</span>
+<a id=__codelineno-1-18 name=__codelineno-1-18></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-1-19 name=__codelineno-1-19></a><span class=w>        </span><span class=p>],</span>
+<a id=__codelineno-1-20 name=__codelineno-1-20></a><span class=w>        </span><span class=nt>&quot;identifier&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-1-21 name=__codelineno-1-21></a><span class=w>          </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:ietf:rfc:3986&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-22 name=__codelineno-1-22></a><span class=w>          </span><span class=nt>&quot;value&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0&quot;</span>
+<a id=__codelineno-1-23 name=__codelineno-1-23></a><span class=w>        </span><span class=p>},</span>
+<a id=__codelineno-1-24 name=__codelineno-1-24></a><span class=w>        </span><span class=nt>&quot;status&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;final&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-25 name=__codelineno-1-25></a><span class=w>        </span><span class=nt>&quot;type&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-1-26 name=__codelineno-1-26></a><span class=w>          </span><span class=nt>&quot;coding&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-1-27 name=__codelineno-1-27></a><span class=w>            </span><span class=p>{</span>
+<a id=__codelineno-1-28 name=__codelineno-1-28></a><span class=w>              </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://loinc.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-29 name=__codelineno-1-29></a><span class=w>              </span><span class=nt>&quot;code&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;56445-0&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-30 name=__codelineno-1-30></a><span class=w>              </span><span class=nt>&quot;display&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Medication summary&quot;</span>
+<a id=__codelineno-1-31 name=__codelineno-1-31></a><span class=w>            </span><span class=p>},</span>
+<a id=__codelineno-1-32 name=__codelineno-1-32></a><span class=w>            </span><span class=p>{</span>
+<a id=__codelineno-1-33 name=__codelineno-1-33></a><span class=w>              </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-34 name=__codelineno-1-34></a><span class=w>              </span><span class=nt>&quot;code&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;721912009&quot;</span><span class=p>,</span>
+<a id=__codelineno-1-35 name=__codelineno-1-35></a><span class=w>              </span><span class=nt>&quot;display&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Medication summary document (record artifact)&quot;</span>
+<a id=__codelineno-1-36 name=__codelineno-1-36></a><span class=w>            </span><span class=p>}</span>
+<a id=__codelineno-1-37 name=__codelineno-1-37></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-1-38 name=__codelineno-1-38></a><span class=w>        </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>subject:</em> Who the composition is about. Its a reference to the resource contained as entry in the bundle (line 39 to 44).</li> <li><em>date</em> The date of the composition creation (line 42).</li> <li><em>author:</em> Identifies who is responsible for the information in the composition (line 43 to 56).</li> <li><em>extension:</em> Extension to <abbr title="Electronic Patient Record">EPR</abbr> Time (line 45 to 50).</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-2-1> 1</a></span>
+<span class=normal><a href=#__codelineno-2-2> 2</a></span>
+<span class=normal><a href=#__codelineno-2-3> 3</a></span>
+<span class=normal><a href=#__codelineno-2-4> 4</a></span>
+<span class=normal><a href=#__codelineno-2-5> 5</a></span>
+<span class=normal><a href=#__codelineno-2-6> 6</a></span>
+<span class=normal><a href=#__codelineno-2-7> 7</a></span>
+<span class=normal><a href=#__codelineno-2-8> 8</a></span>
+<span class=normal><a href=#__codelineno-2-9> 9</a></span>
+<span class=normal><a href=#__codelineno-2-10>10</a></span>
+<span class=normal><a href=#__codelineno-2-11>11</a></span>
+<span class=normal><a href=#__codelineno-2-12>12</a></span>
+<span class=normal><a href=#__codelineno-2-13>13</a></span>
+<span class=normal><a href=#__codelineno-2-14>14</a></span>
+<span class=normal><a href=#__codelineno-2-15>15</a></span>
+<span class=normal><a href=#__codelineno-2-16>16</a></span>
+<span class=normal><a href=#__codelineno-2-17>17</a></span>
+<span class=normal><a href=#__codelineno-2-18>18</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-2-1 name=__codelineno-2-1></a><span class=w>      </span><span class=nt>&quot;subject&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-2-2 name=__codelineno-2-2></a><span class=w>         </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Patient/MonikaWegmueller&quot;</span>
+<a id=__codelineno-2-3 name=__codelineno-2-3></a><span class=w>       </span><span class=p>},</span>
+<a id=__codelineno-2-4 name=__codelineno-2-4></a><span class=w>       </span><span class=nt>&quot;date&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04T14:05:00+01:00&quot;</span><span class=p>,</span>
+<a id=__codelineno-2-5 name=__codelineno-2-5></a><span class=w>       </span><span class=nt>&quot;author&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-2-6 name=__codelineno-2-6></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-2-7 name=__codelineno-2-7></a><span class=w>           </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-2-8 name=__codelineno-2-8></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-2-9 name=__codelineno-2-9></a><span class=w>               </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time&quot;</span><span class=p>,</span>
+<a id=__codelineno-2-10 name=__codelineno-2-10></a><span class=w>               </span><span class=nt>&quot;valueDateTime&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04T13:55:00+01:00&quot;</span>
+<a id=__codelineno-2-11 name=__codelineno-2-11></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-2-12 name=__codelineno-2-12></a><span class=w>           </span><span class=p>],</span>
+<a id=__codelineno-2-13 name=__codelineno-2-13></a><span class=w>           </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Practitioner/FamilienHausarzt&quot;</span>
+<a id=__codelineno-2-14 name=__codelineno-2-14></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-2-15 name=__codelineno-2-15></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-2-16 name=__codelineno-2-16></a><span class=w>           </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Organization/Hausarzt&quot;</span>
+<a id=__codelineno-2-17 name=__codelineno-2-17></a><span class=w>         </span><span class=p>}</span>
+<a id=__codelineno-2-18 name=__codelineno-2-18></a><span class=w>       </span><span class=p>],</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>title:</em> Human readable label for the composition.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-3-1>1</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-3-1 name=__codelineno-3-1></a><span class=w>       </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Medikationsplan&quot;</span><span class=p>,</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>confidentiality:</em> Level of confidentiality of the Composition - binding: <em><a href=http://hl7.org/fhir/R4/v3/ConfidentialityClassification/vs.html rel="external nofollow noopener" target=_blank>v3.ConfidentialityClassification (2014-03-26)</a></em>.</li> <li>extension <em><a href=http://fhir.ch/ig/ch-core/StructureDefinition-ch-ext-epr-confidentialitycode.html rel="external nofollow noopener" target=_blank><abbr title="Electronic Patient Record">EPR</abbr> Confidentiality Code</a></em></li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-4-1> 1</a></span>
+<span class=normal><a href=#__codelineno-4-2> 2</a></span>
+<span class=normal><a href=#__codelineno-4-3> 3</a></span>
+<span class=normal><a href=#__codelineno-4-4> 4</a></span>
+<span class=normal><a href=#__codelineno-4-5> 5</a></span>
+<span class=normal><a href=#__codelineno-4-6> 6</a></span>
+<span class=normal><a href=#__codelineno-4-7> 7</a></span>
+<span class=normal><a href=#__codelineno-4-8> 8</a></span>
+<span class=normal><a href=#__codelineno-4-9> 9</a></span>
+<span class=normal><a href=#__codelineno-4-10>10</a></span>
+<span class=normal><a href=#__codelineno-4-11>11</a></span>
+<span class=normal><a href=#__codelineno-4-12>12</a></span>
+<span class=normal><a href=#__codelineno-4-13>13</a></span>
+<span class=normal><a href=#__codelineno-4-14>14</a></span>
+<span class=normal><a href=#__codelineno-4-15>15</a></span>
+<span class=normal><a href=#__codelineno-4-16>16</a></span>
+<span class=normal><a href=#__codelineno-4-17>17</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-4-1 name=__codelineno-4-1></a><span class=w>       </span><span class=nt>&quot;confidentiality&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;N&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-2 name=__codelineno-4-2></a><span class=w>       </span><span class=nt>&quot;_confidentiality&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-4-3 name=__codelineno-4-3></a><span class=w>         </span><span class=nt>&quot;extension&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-4-4 name=__codelineno-4-4></a><span class=w>           </span><span class=p>{</span>
+<a id=__codelineno-4-5 name=__codelineno-4-5></a><span class=w>             </span><span class=nt>&quot;url&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-6 name=__codelineno-4-6></a><span class=w>             </span><span class=nt>&quot;valueCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-4-7 name=__codelineno-4-7></a><span class=w>               </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-4-8 name=__codelineno-4-8></a><span class=w>                 </span><span class=p>{</span>
+<a id=__codelineno-4-9 name=__codelineno-4-9></a><span class=w>                   </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-10 name=__codelineno-4-10></a><span class=w>                   </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;17621005&quot;</span><span class=p>,</span>
+<a id=__codelineno-4-11 name=__codelineno-4-11></a><span class=w>                   </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Normally accessible&quot;</span>
+<a id=__codelineno-4-12 name=__codelineno-4-12></a><span class=w>                 </span><span class=p>}</span>
+<a id=__codelineno-4-13 name=__codelineno-4-13></a><span class=w>               </span><span class=p>]</span>
+<a id=__codelineno-4-14 name=__codelineno-4-14></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-4-15 name=__codelineno-4-15></a><span class=w>           </span><span class=p>}</span>
+<a id=__codelineno-4-16 name=__codelineno-4-16></a><span class=w>         </span><span class=p>]</span>
+<a id=__codelineno-4-17 name=__codelineno-4-17></a><span class=w>       </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>custodian:</em> Organization who is responsible for the document and access.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-5-1>1</a></span>
+<span class=normal><a href=#__codelineno-5-2>2</a></span>
+<span class=normal><a href=#__codelineno-5-3>3</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-5-1 name=__codelineno-5-1></a><span class=w>       </span><span class=nt>&quot;custodian&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-5-2 name=__codelineno-5-2></a><span class=w>         </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Organization/Custodian&quot;</span>
+<a id=__codelineno-5-3 name=__codelineno-5-3></a><span class=w>       </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>section:</em> The root of the sections that make up the composition.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-6-1> 1</a></span>
+<span class=normal><a href=#__codelineno-6-2> 2</a></span>
+<span class=normal><a href=#__codelineno-6-3> 3</a></span>
+<span class=normal><a href=#__codelineno-6-4> 4</a></span>
+<span class=normal><a href=#__codelineno-6-5> 5</a></span>
+<span class=normal><a href=#__codelineno-6-6> 6</a></span>
+<span class=normal><a href=#__codelineno-6-7> 7</a></span>
+<span class=normal><a href=#__codelineno-6-8> 8</a></span>
+<span class=normal><a href=#__codelineno-6-9> 9</a></span>
+<span class=normal><a href=#__codelineno-6-10>10</a></span>
+<span class=normal><a href=#__codelineno-6-11>11</a></span>
+<span class=normal><a href=#__codelineno-6-12>12</a></span>
+<span class=normal><a href=#__codelineno-6-13>13</a></span>
+<span class=normal><a href=#__codelineno-6-14>14</a></span>
+<span class=normal><a href=#__codelineno-6-15>15</a></span>
+<span class=normal><a href=#__codelineno-6-16>16</a></span>
+<span class=normal><a href=#__codelineno-6-17>17</a></span>
+<span class=normal><a href=#__codelineno-6-18>18</a></span>
+<span class=normal><a href=#__codelineno-6-19>19</a></span>
+<span class=normal><a href=#__codelineno-6-20>20</a></span>
+<span class=normal><a href=#__codelineno-6-21>21</a></span>
+<span class=normal><a href=#__codelineno-6-22>22</a></span>
+<span class=normal><a href=#__codelineno-6-23>23</a></span>
+<span class=normal><a href=#__codelineno-6-24>24</a></span>
+<span class=normal><a href=#__codelineno-6-25>25</a></span>
+<span class=normal><a href=#__codelineno-6-26>26</a></span>
+<span class=normal><a href=#__codelineno-6-27>27</a></span>
+<span class=normal><a href=#__codelineno-6-28>28</a></span>
+<span class=normal><a href=#__codelineno-6-29>29</a></span>
+<span class=normal><a href=#__codelineno-6-30>30</a></span>
+<span class=normal><a href=#__codelineno-6-31>31</a></span>
+<span class=normal><a href=#__codelineno-6-32>32</a></span>
+<span class=normal><a href=#__codelineno-6-33>33</a></span>
+<span class=normal><a href=#__codelineno-6-34>34</a></span>
+<span class=normal><a href=#__codelineno-6-35>35</a></span>
+<span class=normal><a href=#__codelineno-6-36>36</a></span>
+<span class=normal><a href=#__codelineno-6-37>37</a></span>
+<span class=normal><a href=#__codelineno-6-38>38</a></span>
+<span class=normal><a href=#__codelineno-6-39>39</a></span>
+<span class=normal><a href=#__codelineno-6-40>40</a></span>
+<span class=normal><a href=#__codelineno-6-41>41</a></span>
+<span class=normal><a href=#__codelineno-6-42>42</a></span>
+<span class=normal><a href=#__codelineno-6-43>43</a></span>
+<span class=normal><a href=#__codelineno-6-44>44</a></span>
+<span class=normal><a href=#__codelineno-6-45>45</a></span>
+<span class=normal><a href=#__codelineno-6-46>46</a></span>
+<span class=normal><a href=#__codelineno-6-47>47</a></span>
+<span class=normal><a href=#__codelineno-6-48>48</a></span>
+<span class=normal><a href=#__codelineno-6-49>49</a></span>
+<span class=normal><a href=#__codelineno-6-50>50</a></span>
+<span class=normal><a href=#__codelineno-6-51>51</a></span>
+<span class=normal><a href=#__codelineno-6-52>52</a></span>
+<span class=normal><a href=#__codelineno-6-53>53</a></span>
+<span class=normal><a href=#__codelineno-6-54>54</a></span>
+<span class=normal><a href=#__codelineno-6-55>55</a></span>
+<span class=normal><a href=#__codelineno-6-56>56</a></span>
+<span class=normal><a href=#__codelineno-6-57>57</a></span>
+<span class=normal><a href=#__codelineno-6-58>58</a></span>
+<span class=normal><a href=#__codelineno-6-59>59</a></span>
+<span class=normal><a href=#__codelineno-6-60>60</a></span>
+<span class=normal><a href=#__codelineno-6-61>61</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-6-1 name=__codelineno-6-1></a><span class=w>       </span><span class=nt>&quot;section&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-2 name=__codelineno-6-2></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-6-3 name=__codelineno-6-3></a><span class=w>           </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Medikamentenliste&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-4 name=__codelineno-6-4></a><span class=w>           </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-5 name=__codelineno-6-5></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-6 name=__codelineno-6-6></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-6-7 name=__codelineno-6-7></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://loinc.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-8 name=__codelineno-6-8></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;10160-0&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-9 name=__codelineno-6-9></a><span class=w>                </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;History of medication use&quot;</span>
+<a id=__codelineno-6-10 name=__codelineno-6-10></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-6-11 name=__codelineno-6-11></a><span class=w>             </span><span class=p>]</span>
+<a id=__codelineno-6-12 name=__codelineno-6-12></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-6-13 name=__codelineno-6-13></a><span class=w>           </span><span class=nt>&quot;entry&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-14 name=__codelineno-6-14></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-6-15 name=__codelineno-6-15></a><span class=w>               </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;MedicationStatement/2-7-MedStatBeloczok&quot;</span>
+<a id=__codelineno-6-16 name=__codelineno-6-16></a><span class=w>             </span><span class=p>},</span>
+<a id=__codelineno-6-17 name=__codelineno-6-17></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-6-18 name=__codelineno-6-18></a><span class=w>               </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;MedicationStatement/2-7-MedStatNorvasc&quot;</span>
+<a id=__codelineno-6-19 name=__codelineno-6-19></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-6-20 name=__codelineno-6-20></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-6-21 name=__codelineno-6-21></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-6-22 name=__codelineno-6-22></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-6-23 name=__codelineno-6-23></a><span class=w>           </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Kommentar&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-24 name=__codelineno-6-24></a><span class=w>           </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-25 name=__codelineno-6-25></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-26 name=__codelineno-6-26></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-6-27 name=__codelineno-6-27></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://loinc.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-28 name=__codelineno-6-28></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;48767-8&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-29 name=__codelineno-6-29></a><span class=w>                 </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Annotation comment&quot;</span>
+<a id=__codelineno-6-30 name=__codelineno-6-30></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-6-31 name=__codelineno-6-31></a><span class=w>             </span><span class=p>]</span>
+<a id=__codelineno-6-32 name=__codelineno-6-32></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-6-33 name=__codelineno-6-33></a><span class=w>           </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-34 name=__codelineno-6-34></a><span class=w>             </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;generated&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-35 name=__codelineno-6-35></a><span class=w>             </span><span class=nt>&quot;div&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n              &lt;span id=\&quot;co1\&quot;&gt;\n                  Kommentar zu Medication Treatment\n              &lt;/span&gt;\n            &lt;/div&gt;&quot;</span>
+<a id=__codelineno-6-36 name=__codelineno-6-36></a><span class=w>           </span><span class=p>}</span>
+<a id=__codelineno-6-37 name=__codelineno-6-37></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-6-38 name=__codelineno-6-38></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-6-39 name=__codelineno-6-39></a><span class=w>           </span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Original Darstellung&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-40 name=__codelineno-6-40></a><span class=w>           </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-41 name=__codelineno-6-41></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-42 name=__codelineno-6-42></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-6-43 name=__codelineno-6-43></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://loinc.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-44 name=__codelineno-6-44></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;55108-5&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-45 name=__codelineno-6-45></a><span class=w>                 </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Clinical presentation&quot;</span>
+<a id=__codelineno-6-46 name=__codelineno-6-46></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-6-47 name=__codelineno-6-47></a><span class=w>             </span><span class=p>]</span>
+<a id=__codelineno-6-48 name=__codelineno-6-48></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-6-49 name=__codelineno-6-49></a><span class=w>           </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-6-50 name=__codelineno-6-50></a><span class=w>             </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;generated&quot;</span><span class=p>,</span>
+<a id=__codelineno-6-51 name=__codelineno-6-51></a><span class=w>             </span><span class=nt>&quot;div&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n              &lt;a href=\&quot;Binary/2-7-pdf\&quot;&gt;Representation of the original view&lt;/a&gt;\n            &lt;/div&gt;&quot;</span>
+<a id=__codelineno-6-52 name=__codelineno-6-52></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-6-53 name=__codelineno-6-53></a><span class=w>           </span><span class=nt>&quot;entry&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-6-54 name=__codelineno-6-54></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-6-55 name=__codelineno-6-55></a><span class=w>               </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Binary/2-7-pdf&quot;</span>
+<a id=__codelineno-6-56 name=__codelineno-6-56></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-6-57 name=__codelineno-6-57></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-6-58 name=__codelineno-6-58></a><span class=w>         </span><span class=p>}</span>
+<a id=__codelineno-6-59 name=__codelineno-6-59></a><span class=w>       </span><span class=p>]</span>
+<a id=__codelineno-6-60 name=__codelineno-6-60></a><span class=w>     </span><span class=p>}</span>
+<a id=__codelineno-6-61 name=__codelineno-6-61></a><span class=w>   </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <h2 id=information-about-the-patient>Information about the patient<a class=headerlink href=#information-about-the-patient title="Permanent link"> ¶</a></h2> <p>In the "Patient" resource, the demographic and administrative data of a patient are specified.</p> <p><a href=http://fhir.ch/ig/ch-core/StructureDefinition-ch-core-patient-epr.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-7-1> 1</a></span>
+<span class=normal><a href=#__codelineno-7-2> 2</a></span>
+<span class=normal><a href=#__codelineno-7-3> 3</a></span>
+<span class=normal><a href=#__codelineno-7-4> 4</a></span>
+<span class=normal><a href=#__codelineno-7-5> 5</a></span>
+<span class=normal><a href=#__codelineno-7-6> 6</a></span>
+<span class=normal><a href=#__codelineno-7-7> 7</a></span>
+<span class=normal><a href=#__codelineno-7-8> 8</a></span>
+<span class=normal><a href=#__codelineno-7-9> 9</a></span>
+<span class=normal><a href=#__codelineno-7-10>10</a></span>
+<span class=normal><a href=#__codelineno-7-11>11</a></span>
+<span class=normal><a href=#__codelineno-7-12>12</a></span>
+<span class=normal><a href=#__codelineno-7-13>13</a></span>
+<span class=normal><a href=#__codelineno-7-14>14</a></span>
+<span class=normal><a href=#__codelineno-7-15>15</a></span>
+<span class=normal><a href=#__codelineno-7-16>16</a></span>
+<span class=normal><a href=#__codelineno-7-17>17</a></span>
+<span class=normal><a href=#__codelineno-7-18>18</a></span>
+<span class=normal><a href=#__codelineno-7-19>19</a></span>
+<span class=normal><a href=#__codelineno-7-20>20</a></span>
+<span class=normal><a href=#__codelineno-7-21>21</a></span>
+<span class=normal><a href=#__codelineno-7-22>22</a></span>
+<span class=normal><a href=#__codelineno-7-23>23</a></span>
+<span class=normal><a href=#__codelineno-7-24>24</a></span>
+<span class=normal><a href=#__codelineno-7-25>25</a></span>
+<span class=normal><a href=#__codelineno-7-26>26</a></span>
+<span class=normal><a href=#__codelineno-7-27>27</a></span>
+<span class=normal><a href=#__codelineno-7-28>28</a></span>
+<span class=normal><a href=#__codelineno-7-29>29</a></span>
+<span class=normal><a href=#__codelineno-7-30>30</a></span>
+<span class=normal><a href=#__codelineno-7-31>31</a></span>
+<span class=normal><a href=#__codelineno-7-32>32</a></span>
+<span class=normal><a href=#__codelineno-7-33>33</a></span>
+<span class=normal><a href=#__codelineno-7-34>34</a></span>
+<span class=normal><a href=#__codelineno-7-35>35</a></span>
+<span class=normal><a href=#__codelineno-7-36>36</a></span>
+<span class=normal><a href=#__codelineno-7-37>37</a></span>
+<span class=normal><a href=#__codelineno-7-38>38</a></span>
+<span class=normal><a href=#__codelineno-7-39>39</a></span>
+<span class=normal><a href=#__codelineno-7-40>40</a></span>
+<span class=normal><a href=#__codelineno-7-41>41</a></span>
+<span class=normal><a href=#__codelineno-7-42>42</a></span>
+<span class=normal><a href=#__codelineno-7-43>43</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-7-1 name=__codelineno-7-1></a><span class=w>  </span><span class=nt>&quot;resource&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-7-2 name=__codelineno-7-2></a><span class=w>      </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Patient&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-3 name=__codelineno-7-3></a><span class=w>      </span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;MonikaWegmueller&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-4 name=__codelineno-7-4></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-7-5 name=__codelineno-7-5></a><span class=w>        </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;generated&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-6 name=__codelineno-7-6></a><span class=w>        </span><span class=nt>&quot;div&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: Medical record number: 11111111&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Monika Wegmüller &lt;/p&gt;&lt;p&gt;&lt;b&gt;gender&lt;/b&gt;: female&lt;/p&gt;&lt;p&gt;&lt;b&gt;birthDate&lt;/b&gt;: 1943-05-15&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Wiesenstr. 12 Zürich 8003 CH &lt;/p&gt;&lt;/div&gt;&quot;</span>
+<a id=__codelineno-7-7 name=__codelineno-7-7></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-7-8 name=__codelineno-7-8></a><span class=w>     </span><span class=nt>&quot;identifier&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-9 name=__codelineno-7-9></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-7-10 name=__codelineno-7-10></a><span class=w>          </span><span class=nt>&quot;type&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-7-11 name=__codelineno-7-11></a><span class=w>            </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-12 name=__codelineno-7-12></a><span class=w>              </span><span class=p>{</span>
+<a id=__codelineno-7-13 name=__codelineno-7-13></a><span class=w>                </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://terminology.hl7.org/CodeSystem/v2-0203&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-14 name=__codelineno-7-14></a><span class=w>                </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;MR&quot;</span>
+<a id=__codelineno-7-15 name=__codelineno-7-15></a><span class=w>              </span><span class=p>}</span>
+<a id=__codelineno-7-16 name=__codelineno-7-16></a><span class=w>            </span><span class=p>]</span>
+<a id=__codelineno-7-17 name=__codelineno-7-17></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-7-18 name=__codelineno-7-18></a><span class=w>          </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:2.999&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-19 name=__codelineno-7-19></a><span class=w>          </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;11111111&quot;</span>
+<a id=__codelineno-7-20 name=__codelineno-7-20></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-7-21 name=__codelineno-7-21></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-7-22 name=__codelineno-7-22></a><span class=w>      </span><span class=nt>&quot;name&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-23 name=__codelineno-7-23></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-7-24 name=__codelineno-7-24></a><span class=w>          </span><span class=nt>&quot;family&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Wegmüller&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-25 name=__codelineno-7-25></a><span class=w>          </span><span class=nt>&quot;given&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-26 name=__codelineno-7-26></a><span class=w>            </span><span class=s2>&quot;Monika&quot;</span>
+<a id=__codelineno-7-27 name=__codelineno-7-27></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-7-28 name=__codelineno-7-28></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-7-29 name=__codelineno-7-29></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-7-30 name=__codelineno-7-30></a><span class=w>      </span><span class=nt>&quot;gender&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;female&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-31 name=__codelineno-7-31></a><span class=w>      </span><span class=nt>&quot;birthDate&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;1943-05-15&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-32 name=__codelineno-7-32></a><span class=w>      </span><span class=nt>&quot;address&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-33 name=__codelineno-7-33></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-7-34 name=__codelineno-7-34></a><span class=w>          </span><span class=nt>&quot;line&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-7-35 name=__codelineno-7-35></a><span class=w>            </span><span class=s2>&quot;Wiesenstr. 12&quot;</span>
+<a id=__codelineno-7-36 name=__codelineno-7-36></a><span class=w>          </span><span class=p>],</span>
+<a id=__codelineno-7-37 name=__codelineno-7-37></a><span class=w>          </span><span class=nt>&quot;city&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Zürich&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-38 name=__codelineno-7-38></a><span class=w>          </span><span class=nt>&quot;postalCode&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;8003&quot;</span><span class=p>,</span>
+<a id=__codelineno-7-39 name=__codelineno-7-39></a><span class=w>          </span><span class=nt>&quot;country&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;CH&quot;</span>
+<a id=__codelineno-7-40 name=__codelineno-7-40></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-7-41 name=__codelineno-7-41></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-7-42 name=__codelineno-7-42></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-7-43 name=__codelineno-7-43></a><span class=w>  </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <h2 id=information-about-the-practitioner>Information about the practitioner<a class=headerlink href=#information-about-the-practitioner title="Permanent link"> ¶</a></h2> <p>The resource Practitioner indicates which practitioner has prescribed a medication.</p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-practitionerrole.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-8-1> 1</a></span>
+<span class=normal><a href=#__codelineno-8-2> 2</a></span>
+<span class=normal><a href=#__codelineno-8-3> 3</a></span>
+<span class=normal><a href=#__codelineno-8-4> 4</a></span>
+<span class=normal><a href=#__codelineno-8-5> 5</a></span>
+<span class=normal><a href=#__codelineno-8-6> 6</a></span>
+<span class=normal><a href=#__codelineno-8-7> 7</a></span>
+<span class=normal><a href=#__codelineno-8-8> 8</a></span>
+<span class=normal><a href=#__codelineno-8-9> 9</a></span>
+<span class=normal><a href=#__codelineno-8-10>10</a></span>
+<span class=normal><a href=#__codelineno-8-11>11</a></span>
+<span class=normal><a href=#__codelineno-8-12>12</a></span>
+<span class=normal><a href=#__codelineno-8-13>13</a></span>
+<span class=normal><a href=#__codelineno-8-14>14</a></span>
+<span class=normal><a href=#__codelineno-8-15>15</a></span>
+<span class=normal><a href=#__codelineno-8-16>16</a></span>
+<span class=normal><a href=#__codelineno-8-17>17</a></span>
+<span class=normal><a href=#__codelineno-8-18>18</a></span>
+<span class=normal><a href=#__codelineno-8-19>19</a></span>
+<span class=normal><a href=#__codelineno-8-20>20</a></span>
+<span class=normal><a href=#__codelineno-8-21>21</a></span>
+<span class=normal><a href=#__codelineno-8-22>22</a></span>
+<span class=normal><a href=#__codelineno-8-23>23</a></span>
+<span class=normal><a href=#__codelineno-8-24>24</a></span>
+<span class=normal><a href=#__codelineno-8-25>25</a></span>
+<span class=normal><a href=#__codelineno-8-26>26</a></span>
+<span class=normal><a href=#__codelineno-8-27>27</a></span>
+<span class=normal><a href=#__codelineno-8-28>28</a></span>
+<span class=normal><a href=#__codelineno-8-29>29</a></span>
+<span class=normal><a href=#__codelineno-8-30>30</a></span>
+<span class=normal><a href=#__codelineno-8-31>31</a></span>
+<span class=normal><a href=#__codelineno-8-32>32</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-8-1 name=__codelineno-8-1></a><span class=w> </span><span class=nt>&quot;resource&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-8-2 name=__codelineno-8-2></a><span class=w>      </span><span class=nt>&quot;resourceType&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Practitioner&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-3 name=__codelineno-8-3></a><span class=w>      </span><span class=nt>&quot;id&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;FamilienHausarzt&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-4 name=__codelineno-8-4></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-8-5 name=__codelineno-8-5></a><span class=w>        </span><span class=nt>&quot;status&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;generated&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-6 name=__codelineno-8-6></a><span class=w>        </span><span class=nt>&quot;div&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Resource \&quot;FamilienHausarzt\&quot; &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Familien Hausarzt &lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Krankenstrasse 2 Zürich 8005 CH &lt;/p&gt;&lt;/div&gt;&quot;</span>
+<a id=__codelineno-8-7 name=__codelineno-8-7></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-8-8 name=__codelineno-8-8></a><span class=w>      </span><span class=nt>&quot;identifier&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-9 name=__codelineno-8-9></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-8-10 name=__codelineno-8-10></a><span class=w>          </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:2.51.1.3&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-11 name=__codelineno-8-11></a><span class=w>          </span><span class=nt>&quot;value&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;7601000234438&quot;</span>
+<a id=__codelineno-8-12 name=__codelineno-8-12></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-8-13 name=__codelineno-8-13></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-8-14 name=__codelineno-8-14></a><span class=w>      </span><span class=nt>&quot;name&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-15 name=__codelineno-8-15></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-8-16 name=__codelineno-8-16></a><span class=w>          </span><span class=nt>&quot;family&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Hausarzt&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-17 name=__codelineno-8-17></a><span class=w>          </span><span class=nt>&quot;given&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-18 name=__codelineno-8-18></a><span class=w>            </span><span class=s2>&quot;Familien&quot;</span>
+<a id=__codelineno-8-19 name=__codelineno-8-19></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-8-20 name=__codelineno-8-20></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-8-21 name=__codelineno-8-21></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-8-22 name=__codelineno-8-22></a><span class=w>      </span><span class=nt>&quot;address&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-23 name=__codelineno-8-23></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-8-24 name=__codelineno-8-24></a><span class=w>          </span><span class=nt>&quot;line&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-8-25 name=__codelineno-8-25></a><span class=w>            </span><span class=s2>&quot;Krankenstrasse 2&quot;</span>
+<a id=__codelineno-8-26 name=__codelineno-8-26></a><span class=w>          </span><span class=p>],</span>
+<a id=__codelineno-8-27 name=__codelineno-8-27></a><span class=w>          </span><span class=nt>&quot;city&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Zürich&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-28 name=__codelineno-8-28></a><span class=w>          </span><span class=nt>&quot;postalCode&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;8005&quot;</span><span class=p>,</span>
+<a id=__codelineno-8-29 name=__codelineno-8-29></a><span class=w>          </span><span class=nt>&quot;country&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;CH&quot;</span>
+<a id=__codelineno-8-30 name=__codelineno-8-30></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-8-31 name=__codelineno-8-31></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-8-32 name=__codelineno-8-32></a><span class=w>    </span><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h2 id=information-about-the-organization>Information about the organization<a class=headerlink href=#information-about-the-organization title="Permanent link"> ¶</a></h2> <p>The resource stores the information about the organization that create the Medication Card document.</p> <p><a href=http://fhir.ch/ig/ch-core/StructureDefinition-ch-core-organization-epr.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-9-1> 1</a></span>
+<span class=normal><a href=#__codelineno-9-2> 2</a></span>
+<span class=normal><a href=#__codelineno-9-3> 3</a></span>
+<span class=normal><a href=#__codelineno-9-4> 4</a></span>
+<span class=normal><a href=#__codelineno-9-5> 5</a></span>
+<span class=normal><a href=#__codelineno-9-6> 6</a></span>
+<span class=normal><a href=#__codelineno-9-7> 7</a></span>
+<span class=normal><a href=#__codelineno-9-8> 8</a></span>
+<span class=normal><a href=#__codelineno-9-9> 9</a></span>
+<span class=normal><a href=#__codelineno-9-10>10</a></span>
+<span class=normal><a href=#__codelineno-9-11>11</a></span>
+<span class=normal><a href=#__codelineno-9-12>12</a></span>
+<span class=normal><a href=#__codelineno-9-13>13</a></span>
+<span class=normal><a href=#__codelineno-9-14>14</a></span>
+<span class=normal><a href=#__codelineno-9-15>15</a></span>
+<span class=normal><a href=#__codelineno-9-16>16</a></span>
+<span class=normal><a href=#__codelineno-9-17>17</a></span>
+<span class=normal><a href=#__codelineno-9-18>18</a></span>
+<span class=normal><a href=#__codelineno-9-19>19</a></span>
+<span class=normal><a href=#__codelineno-9-20>20</a></span>
+<span class=normal><a href=#__codelineno-9-21>21</a></span>
+<span class=normal><a href=#__codelineno-9-22>22</a></span>
+<span class=normal><a href=#__codelineno-9-23>23</a></span>
+<span class=normal><a href=#__codelineno-9-24>24</a></span>
+<span class=normal><a href=#__codelineno-9-25>25</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-9-1 name=__codelineno-9-1></a><span class=w> </span><span class=nt>&quot;resource&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-9-2 name=__codelineno-9-2></a><span class=w>      </span><span class=nt>&quot;resourceType&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Organization&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-3 name=__codelineno-9-3></a><span class=w>      </span><span class=nt>&quot;id&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Hausarzt&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-4 name=__codelineno-9-4></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-9-5 name=__codelineno-9-5></a><span class=w>        </span><span class=nt>&quot;status&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;generated&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-6 name=__codelineno-9-6></a><span class=w>        </span><span class=nt>&quot;div&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Resource \&quot;Hausarzt\&quot; &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Hausarzt&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Krankenstrasse 2 Zürich 8005 CH &lt;/p&gt;&lt;/div&gt;&quot;</span>
+<a id=__codelineno-9-7 name=__codelineno-9-7></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-9-8 name=__codelineno-9-8></a><span class=w>      </span><span class=nt>&quot;identifier&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-9-9 name=__codelineno-9-9></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-9-10 name=__codelineno-9-10></a><span class=w>          </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:2.51.1.3&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-11 name=__codelineno-9-11></a><span class=w>          </span><span class=nt>&quot;value&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;7601000234438&quot;</span>
+<a id=__codelineno-9-12 name=__codelineno-9-12></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-9-13 name=__codelineno-9-13></a><span class=w>      </span><span class=p>],</span>
+<a id=__codelineno-9-14 name=__codelineno-9-14></a><span class=w>      </span><span class=nt>&quot;name&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Hausarzt&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-15 name=__codelineno-9-15></a><span class=w>      </span><span class=nt>&quot;address&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-9-16 name=__codelineno-9-16></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-9-17 name=__codelineno-9-17></a><span class=w>          </span><span class=nt>&quot;line&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-9-18 name=__codelineno-9-18></a><span class=w>            </span><span class=s2>&quot;Krankenstrasse 2&quot;</span>
+<a id=__codelineno-9-19 name=__codelineno-9-19></a><span class=w>          </span><span class=p>],</span>
+<a id=__codelineno-9-20 name=__codelineno-9-20></a><span class=w>          </span><span class=nt>&quot;city&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Zürich&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-21 name=__codelineno-9-21></a><span class=w>          </span><span class=nt>&quot;postalCode&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;8005&quot;</span><span class=p>,</span>
+<a id=__codelineno-9-22 name=__codelineno-9-22></a><span class=w>          </span><span class=nt>&quot;country&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;CH&quot;</span>
+<a id=__codelineno-9-23 name=__codelineno-9-23></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-9-24 name=__codelineno-9-24></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-9-25 name=__codelineno-9-25></a><span class=w>    </span><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <h2 id=medication>Medication<a class=headerlink href=#medication title="Permanent link"> ¶</a></h2> <p>In the resource "MedicationStatement" the data of the patient's medication are specified.</p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationstatement-card.html rel="external nofollow noopener" target=_blank>Profile information</a></p> <h3 id=medication-information>Medication information<a class=headerlink href=#medication-information title="Permanent link"> ¶</a></h3> <ul> <li><em>id:</em> Local id of the resource (line 2).</li> <li><em>text:</em> Presents the narrative text of the resource (line 3, 19, 54).</li> <li><em>contained:</em> The resource cannot be identified independently and therefore cannot exist independently apart from the resource it contains (line 7 to 73).</li> <li><em>code:</em> A code (or set of codes) that specify this medication, or a textual description if no code is available. (line 11, 25, 35, 41, 50, 67).</li> <li><em>coding</em> A reference to a code defined by a terminology system. (line 12,22, 47).</li> <li><em>form</em> Describes the form of the medication. Powder; tablets; capsule. (line 21 to 29).</li> <li><em>amount:</em> A relationship of two Quantity values - expressed as a numerator and a denominator. (line 30 to 36).</li> <li><em>ingredient:</em> Particular ingredient of a medication (line 44 to 71).</li> <li><em>strength:</em> A relationship of two Quantity values - expressed as a numerator and a denominator (line 56 to 69).</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-10-1> 1</a></span>
+<span class=normal><a href=#__codelineno-10-2> 2</a></span>
+<span class=normal><a href=#__codelineno-10-3> 3</a></span>
+<span class=normal><a href=#__codelineno-10-4> 4</a></span>
+<span class=normal><a href=#__codelineno-10-5> 5</a></span>
+<span class=normal><a href=#__codelineno-10-6> 6</a></span>
+<span class=normal><a href=#__codelineno-10-7> 7</a></span>
+<span class=normal><a href=#__codelineno-10-8> 8</a></span>
+<span class=normal><a href=#__codelineno-10-9> 9</a></span>
+<span class=normal><a href=#__codelineno-10-10>10</a></span>
+<span class=normal><a href=#__codelineno-10-11>11</a></span>
+<span class=normal><a href=#__codelineno-10-12>12</a></span>
+<span class=normal><a href=#__codelineno-10-13>13</a></span>
+<span class=normal><a href=#__codelineno-10-14>14</a></span>
+<span class=normal><a href=#__codelineno-10-15>15</a></span>
+<span class=normal><a href=#__codelineno-10-16>16</a></span>
+<span class=normal><a href=#__codelineno-10-17>17</a></span>
+<span class=normal><a href=#__codelineno-10-18>18</a></span>
+<span class=normal><a href=#__codelineno-10-19>19</a></span>
+<span class=normal><a href=#__codelineno-10-20>20</a></span>
+<span class=normal><a href=#__codelineno-10-21>21</a></span>
+<span class=normal><a href=#__codelineno-10-22>22</a></span>
+<span class=normal><a href=#__codelineno-10-23>23</a></span>
+<span class=normal><a href=#__codelineno-10-24>24</a></span>
+<span class=normal><a href=#__codelineno-10-25>25</a></span>
+<span class=normal><a href=#__codelineno-10-26>26</a></span>
+<span class=normal><a href=#__codelineno-10-27>27</a></span>
+<span class=normal><a href=#__codelineno-10-28>28</a></span>
+<span class=normal><a href=#__codelineno-10-29>29</a></span>
+<span class=normal><a href=#__codelineno-10-30>30</a></span>
+<span class=normal><a href=#__codelineno-10-31>31</a></span>
+<span class=normal><a href=#__codelineno-10-32>32</a></span>
+<span class=normal><a href=#__codelineno-10-33>33</a></span>
+<span class=normal><a href=#__codelineno-10-34>34</a></span>
+<span class=normal><a href=#__codelineno-10-35>35</a></span>
+<span class=normal><a href=#__codelineno-10-36>36</a></span>
+<span class=normal><a href=#__codelineno-10-37>37</a></span>
+<span class=normal><a href=#__codelineno-10-38>38</a></span>
+<span class=normal><a href=#__codelineno-10-39>39</a></span>
+<span class=normal><a href=#__codelineno-10-40>40</a></span>
+<span class=normal><a href=#__codelineno-10-41>41</a></span>
+<span class=normal><a href=#__codelineno-10-42>42</a></span>
+<span class=normal><a href=#__codelineno-10-43>43</a></span>
+<span class=normal><a href=#__codelineno-10-44>44</a></span>
+<span class=normal><a href=#__codelineno-10-45>45</a></span>
+<span class=normal><a href=#__codelineno-10-46>46</a></span>
+<span class=normal><a href=#__codelineno-10-47>47</a></span>
+<span class=normal><a href=#__codelineno-10-48>48</a></span>
+<span class=normal><a href=#__codelineno-10-49>49</a></span>
+<span class=normal><a href=#__codelineno-10-50>50</a></span>
+<span class=normal><a href=#__codelineno-10-51>51</a></span>
+<span class=normal><a href=#__codelineno-10-52>52</a></span>
+<span class=normal><a href=#__codelineno-10-53>53</a></span>
+<span class=normal><a href=#__codelineno-10-54>54</a></span>
+<span class=normal><a href=#__codelineno-10-55>55</a></span>
+<span class=normal><a href=#__codelineno-10-56>56</a></span>
+<span class=normal><a href=#__codelineno-10-57>57</a></span>
+<span class=normal><a href=#__codelineno-10-58>58</a></span>
+<span class=normal><a href=#__codelineno-10-59>59</a></span>
+<span class=normal><a href=#__codelineno-10-60>60</a></span>
+<span class=normal><a href=#__codelineno-10-61>61</a></span>
+<span class=normal><a href=#__codelineno-10-62>62</a></span>
+<span class=normal><a href=#__codelineno-10-63>63</a></span>
+<span class=normal><a href=#__codelineno-10-64>64</a></span>
+<span class=normal><a href=#__codelineno-10-65>65</a></span>
+<span class=normal><a href=#__codelineno-10-66>66</a></span>
+<span class=normal><a href=#__codelineno-10-67>67</a></span>
+<span class=normal><a href=#__codelineno-10-68>68</a></span>
+<span class=normal><a href=#__codelineno-10-69>69</a></span>
+<span class=normal><a href=#__codelineno-10-70>70</a></span>
+<span class=normal><a href=#__codelineno-10-71>71</a></span>
+<span class=normal><a href=#__codelineno-10-72>72</a></span>
+<span class=normal><a href=#__codelineno-10-73>73</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-10-1 name=__codelineno-10-1></a><span class=w> </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;MedicationStatement&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-2 name=__codelineno-10-2></a><span class=w>        </span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2-7-MedStatBeloczok&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-3 name=__codelineno-10-3></a><span class=w>        </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-4 name=__codelineno-10-4></a><span class=w>          </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;extensions&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-5 name=__codelineno-10-5></a><span class=w>          </span><span class=nt>&quot;div&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;CH EMED Extension Treatment Plan&lt;/b&gt;&lt;/p&gt;&lt;h3&gt;Urls&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;value&lt;/b&gt;: id: urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77&lt;/p&gt;&lt;h3&gt;Urls&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;value&lt;/b&gt;: id: urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: urn:uuid:d0f885ca-afa6-4e7e-905d-f7698f9607aa&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: completed&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a name=\&quot;med\&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: &lt;span title=\&quot;Codes: {urn:oid:2.51.1.1 7680521101306}\&quot;&gt;BELOC ZOK Ret Tabl 50 mg&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: &lt;span title=\&quot;Codes: {urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\&quot;&gt;Tablet&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;amount&lt;/b&gt;: 30 Tablet (unit of presentation)/1 Package&lt;/p&gt;&lt;h3&gt;Ingredients&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Item[x]&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Strength&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Codes: {http://snomed.info/sct 372826007}\&quot;&gt;Metoprolol&lt;/span&gt;&lt;/td&gt;&lt;td&gt;50 milligram/1 Tablet (unit of presentation)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=\&quot;#Patient_MonikaWegmueller\&quot;&gt;See above (Patient/MonikaWegmueller)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;reasonCode&lt;/b&gt;: &lt;span title=\&quot;Codes: \&quot;&gt;Bluthochdruck&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;note&lt;/b&gt;: -&lt;/p&gt;&lt;h3&gt;Dosages&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&quot;</span>
+<a id=__codelineno-10-6 name=__codelineno-10-6></a><span class=w>        </span><span class=p>},</span>
+<a id=__codelineno-10-7 name=__codelineno-10-7></a><span class=w>        </span><span class=nt>&quot;contained&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-8 name=__codelineno-10-8></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-10-9 name=__codelineno-10-9></a><span class=w>            </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Medication&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-10 name=__codelineno-10-10></a><span class=w>           </span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;med&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-11 name=__codelineno-10-11></a><span class=w>           </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-12 name=__codelineno-10-12></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-13 name=__codelineno-10-13></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-10-14 name=__codelineno-10-14></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:2.51.1.1&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-15 name=__codelineno-10-15></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;7680521101306&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-16 name=__codelineno-10-16></a><span class=w>               </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;BELOC ZOK Ret Tabl 50 mg 30 Stk&quot;</span>
+<a id=__codelineno-10-17 name=__codelineno-10-17></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-10-18 name=__codelineno-10-18></a><span class=w>           </span><span class=p>],</span>
+<a id=__codelineno-10-19 name=__codelineno-10-19></a><span class=w>           </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;BELOC ZOK Ret Tabl 50 mg&quot;</span>
+<a id=__codelineno-10-20 name=__codelineno-10-20></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-10-21 name=__codelineno-10-21></a><span class=w>         </span><span class=nt>&quot;form&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-22 name=__codelineno-10-22></a><span class=w>           </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-23 name=__codelineno-10-23></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-10-24 name=__codelineno-10-24></a><span class=w>               </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-25 name=__codelineno-10-25></a><span class=w>               </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;10219000&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-26 name=__codelineno-10-26></a><span class=w>               </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet&quot;</span>
+<a id=__codelineno-10-27 name=__codelineno-10-27></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-10-28 name=__codelineno-10-28></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-10-29 name=__codelineno-10-29></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-10-30 name=__codelineno-10-30></a><span class=w>         </span><span class=nt>&quot;amount&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-31 name=__codelineno-10-31></a><span class=w>           </span><span class=nt>&quot;numerator&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-32 name=__codelineno-10-32></a><span class=w>             </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>30</span><span class=p>,</span>
+<a id=__codelineno-10-33 name=__codelineno-10-33></a><span class=w>             </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet (unit of presentation)&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-34 name=__codelineno-10-34></a><span class=w>             </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-35 name=__codelineno-10-35></a><span class=w>             </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;732936001&quot;</span>
+<a id=__codelineno-10-36 name=__codelineno-10-36></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-10-37 name=__codelineno-10-37></a><span class=w>           </span><span class=nt>&quot;denominator&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-38 name=__codelineno-10-38></a><span class=w>             </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>1</span><span class=p>,</span>
+<a id=__codelineno-10-39 name=__codelineno-10-39></a><span class=w>             </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Package&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-40 name=__codelineno-10-40></a><span class=w>             </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://unitsofmeasure.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-41 name=__codelineno-10-41></a><span class=w>             </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;{Package}&quot;</span>
+<a id=__codelineno-10-42 name=__codelineno-10-42></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-10-43 name=__codelineno-10-43></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-10-44 name=__codelineno-10-44></a><span class=w>           </span><span class=nt>&quot;ingredient&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-45 name=__codelineno-10-45></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-10-46 name=__codelineno-10-46></a><span class=w>               </span><span class=nt>&quot;itemCodeableConcept&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-47 name=__codelineno-10-47></a><span class=w>                 </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-10-48 name=__codelineno-10-48></a><span class=w>                   </span><span class=p>{</span>
+<a id=__codelineno-10-49 name=__codelineno-10-49></a><span class=w>                     </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-50 name=__codelineno-10-50></a><span class=w>                     </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;372826007&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-51 name=__codelineno-10-51></a><span class=w>                     </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Metoprolol (substance)&quot;</span>
+<a id=__codelineno-10-52 name=__codelineno-10-52></a><span class=w>                   </span><span class=p>}</span>
+<a id=__codelineno-10-53 name=__codelineno-10-53></a><span class=w>                 </span><span class=p>],</span>
+<a id=__codelineno-10-54 name=__codelineno-10-54></a><span class=w>                 </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Metoprolol&quot;</span>
+<a id=__codelineno-10-55 name=__codelineno-10-55></a><span class=w>               </span><span class=p>},</span>
+<a id=__codelineno-10-56 name=__codelineno-10-56></a><span class=w>               </span><span class=nt>&quot;strength&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-57 name=__codelineno-10-57></a><span class=w>                 </span><span class=nt>&quot;numerator&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-58 name=__codelineno-10-58></a><span class=w>                   </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>50</span><span class=p>,</span>
+<a id=__codelineno-10-59 name=__codelineno-10-59></a><span class=w>                   </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;milligram&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-60 name=__codelineno-10-60></a><span class=w>                   </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://unitsofmeasure.org&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-61 name=__codelineno-10-61></a><span class=w>                   </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;mg&quot;</span>
+<a id=__codelineno-10-62 name=__codelineno-10-62></a><span class=w>                 </span><span class=p>},</span>
+<a id=__codelineno-10-63 name=__codelineno-10-63></a><span class=w>                 </span><span class=nt>&quot;denominator&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-10-64 name=__codelineno-10-64></a><span class=w>                   </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>1</span><span class=p>,</span>
+<a id=__codelineno-10-65 name=__codelineno-10-65></a><span class=w>                   </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet (unit of presentation)&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-66 name=__codelineno-10-66></a><span class=w>                   </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-10-67 name=__codelineno-10-67></a><span class=w>                   </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;732936001&quot;</span>
+<a id=__codelineno-10-68 name=__codelineno-10-68></a><span class=w>                 </span><span class=p>}</span>
+<a id=__codelineno-10-69 name=__codelineno-10-69></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-10-70 name=__codelineno-10-70></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-10-71 name=__codelineno-10-71></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-10-72 name=__codelineno-10-72></a><span class=w>         </span><span class=p>}</span>
+<a id=__codelineno-10-73 name=__codelineno-10-73></a><span class=w>       </span><span class=p>],</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>indentifier:</em> Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate -fixed Value "<em>urn:ietf:rfc:3986</em>".</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-11-1>1</a></span>
+<span class=normal><a href=#__codelineno-11-2>2</a></span>
+<span class=normal><a href=#__codelineno-11-3>3</a></span>
+<span class=normal><a href=#__codelineno-11-4>4</a></span>
+<span class=normal><a href=#__codelineno-11-5>5</a></span>
+<span class=normal><a href=#__codelineno-11-6>6</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-11-1 name=__codelineno-11-1></a><span class=w> </span><span class=nt>&quot;identifier&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-11-2 name=__codelineno-11-2></a><span class=w>        </span><span class=p>{</span>
+<a id=__codelineno-11-3 name=__codelineno-11-3></a><span class=w>          </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:ietf:rfc:3986&quot;</span><span class=p>,</span>
+<a id=__codelineno-11-4 name=__codelineno-11-4></a><span class=w>          </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:uuid:d0f885ca-afa6-4e7e-905d-f7698f9607aa&quot;</span>
+<a id=__codelineno-11-5 name=__codelineno-11-5></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-11-6 name=__codelineno-11-6></a><span class=w>      </span><span class=p>],</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>status:</em> A code representing the status of the use of the medication - fixed Value: "<em>completed</em>"; binding: <em><a href=http://hl7.org/fhir/R4/valueset-medication-statement-status.html rel="external nofollow noopener" target=_blank>Medication Status Codes</a></em>.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-12-1>1</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-12-1 name=__codelineno-12-1></a><span class=w> </span><span class=nt>&quot;status&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;completed&quot;</span><span class=p>,</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>subject:</em> The person who is taking the medication.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-13-1>1</a></span>
+<span class=normal><a href=#__codelineno-13-2>2</a></span>
+<span class=normal><a href=#__codelineno-13-3>3</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-13-1 name=__codelineno-13-1></a><span class=w> </span><span class=nt>&quot;subject&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-13-2 name=__codelineno-13-2></a><span class=w>                    </span><span class=nt>&quot;reference&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Patient/69d661eb-e3ed-4e86-b34c-b5e747c13021&quot;</span>
+<a id=__codelineno-13-3 name=__codelineno-13-3></a><span class=w>                </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>reasonCode:</em> A reason for why the medication is taken - binding: <em><a href=http://hl7.org/fhir/R4/valueset-condition-code.html rel="external nofollow noopener" target=_blank>Condition/Problem/DiagnosisCodes </a></em>.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-14-1>1</a></span>
+<span class=normal><a href=#__codelineno-14-2>2</a></span>
+<span class=normal><a href=#__codelineno-14-3>3</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-14-1 name=__codelineno-14-1></a><span class=w> </span><span class=nt>&quot;reasonCode&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[{</span>
+<a id=__codelineno-14-2 name=__codelineno-14-2></a><span class=w>                        </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Bluthochdruck/Herz&quot;</span>
+<a id=__codelineno-14-3 name=__codelineno-14-3></a><span class=w>                    </span><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>note:</em> Provides extra information about the medication statement that is not conveyed by the other attributes.</li> </ul> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-15-1>1</a></span>
+<span class=normal><a href=#__codelineno-15-2>2</a></span>
+<span class=normal><a href=#__codelineno-15-3>3</a></span>
+<span class=normal><a href=#__codelineno-15-4>4</a></span>
+<span class=normal><a href=#__codelineno-15-5>5</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-15-1 name=__codelineno-15-1></a><span class=w> </span><span class=nt>&quot;note&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-15-2 name=__codelineno-15-2></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-15-3 name=__codelineno-15-3></a><span class=w>           </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;-&quot;</span>
+<a id=__codelineno-15-4 name=__codelineno-15-4></a><span class=w>         </span><span class=p>}</span>
+<a id=__codelineno-15-5 name=__codelineno-15-5></a><span class=w>       </span><span class=p>],</span>
+</code></pre></div></td></tr></table></div> <h2 id=dosage>Dosage<a class=headerlink href=#dosage title="Permanent link"> ¶</a></h2> <ul> <li><em>text:</em> Non-structured dosage element (line 3).</li> <li><em>timing:</em> when the medication should be taken (line 6 to 16).</li> <li><em>route:</em> Indicates the route of administration - binding: <em><a href=http://hl7.org/fhir/R4/valueset-route-codes.html rel="external nofollow noopener" target=_blank>SNOMEDCTRouteCodes</a></em>; <em><a href=http://fhir.ch/ig/ch-emed/ValueSet-edqm-routeofadministration.html rel="external nofollow noopener" target=_blank>EDQM - RouteOfAdministration</a></em> (line 17 to 25).</li> <li><em>doseAndRate:</em> The amount of medication administered (line 26 to 36).</li> </ul> <p>Example normal Dosing (incl. Dosage Non-Structured):</p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-structured-normal.html rel="external nofollow noopener" target=_blank>Profile information (normal Dosing)</a></p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-nonstructured.html rel="external nofollow noopener" target=_blank>Profile information (Dosage Non-Structured)</a></p> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-16-1> 1</a></span>
+<span class=normal><a href=#__codelineno-16-2> 2</a></span>
+<span class=normal><a href=#__codelineno-16-3> 3</a></span>
+<span class=normal><a href=#__codelineno-16-4> 4</a></span>
+<span class=normal><a href=#__codelineno-16-5> 5</a></span>
+<span class=normal><a href=#__codelineno-16-6> 6</a></span>
+<span class=normal><a href=#__codelineno-16-7> 7</a></span>
+<span class=normal><a href=#__codelineno-16-8> 8</a></span>
+<span class=normal><a href=#__codelineno-16-9> 9</a></span>
+<span class=normal><a href=#__codelineno-16-10>10</a></span>
+<span class=normal><a href=#__codelineno-16-11>11</a></span>
+<span class=normal><a href=#__codelineno-16-12>12</a></span>
+<span class=normal><a href=#__codelineno-16-13>13</a></span>
+<span class=normal><a href=#__codelineno-16-14>14</a></span>
+<span class=normal><a href=#__codelineno-16-15>15</a></span>
+<span class=normal><a href=#__codelineno-16-16>16</a></span>
+<span class=normal><a href=#__codelineno-16-17>17</a></span>
+<span class=normal><a href=#__codelineno-16-18>18</a></span>
+<span class=normal><a href=#__codelineno-16-19>19</a></span>
+<span class=normal><a href=#__codelineno-16-20>20</a></span>
+<span class=normal><a href=#__codelineno-16-21>21</a></span>
+<span class=normal><a href=#__codelineno-16-22>22</a></span>
+<span class=normal><a href=#__codelineno-16-23>23</a></span>
+<span class=normal><a href=#__codelineno-16-24>24</a></span>
+<span class=normal><a href=#__codelineno-16-25>25</a></span>
+<span class=normal><a href=#__codelineno-16-26>26</a></span>
+<span class=normal><a href=#__codelineno-16-27>27</a></span>
+<span class=normal><a href=#__codelineno-16-28>28</a></span>
+<span class=normal><a href=#__codelineno-16-29>29</a></span>
+<span class=normal><a href=#__codelineno-16-30>30</a></span>
+<span class=normal><a href=#__codelineno-16-31>31</a></span>
+<span class=normal><a href=#__codelineno-16-32>32</a></span>
+<span class=normal><a href=#__codelineno-16-33>33</a></span>
+<span class=normal><a href=#__codelineno-16-34>34</a></span>
+<span class=normal><a href=#__codelineno-16-35>35</a></span>
+<span class=normal><a href=#__codelineno-16-36>36</a></span>
+<span class=normal><a href=#__codelineno-16-37>37</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-16-1 name=__codelineno-16-1></a><span class=w> </span><span class=nt>&quot;dosage&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-16-2 name=__codelineno-16-2></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-16-3 name=__codelineno-16-3></a><span class=w>      </span><span class=nt>&quot;text&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Morgens und abends je 1 Tablette einnehmen&quot;</span>
+<a id=__codelineno-16-4 name=__codelineno-16-4></a><span class=w>    </span><span class=p>},</span>
+<a id=__codelineno-16-5 name=__codelineno-16-5></a><span class=w>    </span><span class=p>{</span>
+<a id=__codelineno-16-6 name=__codelineno-16-6></a><span class=w>      </span><span class=nt>&quot;timing&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-16-7 name=__codelineno-16-7></a><span class=w>          </span><span class=nt>&quot;repeat&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-16-8 name=__codelineno-16-8></a><span class=w>          </span><span class=nt>&quot;boundsPeriod&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-16-9 name=__codelineno-16-9></a><span class=w>              </span><span class=nt>&quot;start&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04&quot;</span>
+<a id=__codelineno-16-10 name=__codelineno-16-10></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-16-11 name=__codelineno-16-11></a><span class=w>          </span><span class=nt>&quot;when&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-16-12 name=__codelineno-16-12></a><span class=w>              </span><span class=s2>&quot;MORN&quot;</span><span class=p>,</span>
+<a id=__codelineno-16-13 name=__codelineno-16-13></a><span class=w>              </span><span class=s2>&quot;EVE&quot;</span>
+<a id=__codelineno-16-14 name=__codelineno-16-14></a><span class=w>          </span><span class=p>]</span>
+<a id=__codelineno-16-15 name=__codelineno-16-15></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-16-16 name=__codelineno-16-16></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-16-17 name=__codelineno-16-17></a><span class=w>      </span><span class=nt>&quot;route&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-16-18 name=__codelineno-16-18></a><span class=w>          </span><span class=nt>&quot;coding&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-16-19 name=__codelineno-16-19></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-16-20 name=__codelineno-16-20></a><span class=w>              </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;</span><span class=p>,</span>
+<a id=__codelineno-16-21 name=__codelineno-16-21></a><span class=w>              </span><span class=nt>&quot;code&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;20053000&quot;</span><span class=p>,</span>
+<a id=__codelineno-16-22 name=__codelineno-16-22></a><span class=w>              </span><span class=nt>&quot;display&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Oral use&quot;</span>
+<a id=__codelineno-16-23 name=__codelineno-16-23></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-16-24 name=__codelineno-16-24></a><span class=w>        </span><span class=p>]</span>
+<a id=__codelineno-16-25 name=__codelineno-16-25></a><span class=w>      </span><span class=p>},</span>
+<a id=__codelineno-16-26 name=__codelineno-16-26></a><span class=w>      </span><span class=nt>&quot;doseAndRate&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-16-27 name=__codelineno-16-27></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-16-28 name=__codelineno-16-28></a><span class=w>          </span><span class=nt>&quot;doseQuantity&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-16-29 name=__codelineno-16-29></a><span class=w>              </span><span class=nt>&quot;value&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=mi>1</span><span class=p>,</span>
+<a id=__codelineno-16-30 name=__codelineno-16-30></a><span class=w>              </span><span class=nt>&quot;unit&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet (unit of presentation)&quot;</span><span class=p>,</span>
+<a id=__codelineno-16-31 name=__codelineno-16-31></a><span class=w>              </span><span class=nt>&quot;system&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-16-32 name=__codelineno-16-32></a><span class=w>              </span><span class=nt>&quot;code&quot;</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s2>&quot;732936001&quot;</span>
+<a id=__codelineno-16-33 name=__codelineno-16-33></a><span class=w>          </span><span class=p>}</span>
+<a id=__codelineno-16-34 name=__codelineno-16-34></a><span class=w>        </span><span class=p>}</span>
+<a id=__codelineno-16-35 name=__codelineno-16-35></a><span class=w>      </span><span class=p>]</span>
+<a id=__codelineno-16-36 name=__codelineno-16-36></a><span class=w>    </span><span class=p>}</span>
+<a id=__codelineno-16-37 name=__codelineno-16-37></a><span class=w>  </span><span class=p>]</span>
+</code></pre></div></td></tr></table></div> <ul> <li><em>text:</em> Non-structured dosage element (line 3).</li> <li><em>timing:</em> when the medication should be taken (line 7 to 16).</li> <li><em>route:</em> Indicates the route of administration - binding: <em><a href=http://hl7.org/fhir/R4/valueset-route-codes.html rel="external nofollow noopener" target=_blank>SNOMEDCTRouteCodes</a></em>; <em><a href=http://fhir.ch/ig/ch-emed/ValueSet-edqm-routeofadministration.html rel="external nofollow noopener" target=_blank>EDQM - RouteOfAdministration</a></em> (line 17 to 25).</li> <li><em>doseAndRate:</em> The amount of medication administered (line 26 to 36).</li> </ul> <p>Example split Dosing (incl. Dosage Non-Structured):</p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-structured-split.html rel="external nofollow noopener" target=_blank>Profile information (split Dosing)</a></p> <p><a href=http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-dosage-nonstructured.html rel="external nofollow noopener" target=_blank>Profile information (Dosage Non-Structured)</a> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-17-1> 1</a></span>
+<span class=normal><a href=#__codelineno-17-2> 2</a></span>
+<span class=normal><a href=#__codelineno-17-3> 3</a></span>
+<span class=normal><a href=#__codelineno-17-4> 4</a></span>
+<span class=normal><a href=#__codelineno-17-5> 5</a></span>
+<span class=normal><a href=#__codelineno-17-6> 6</a></span>
+<span class=normal><a href=#__codelineno-17-7> 7</a></span>
+<span class=normal><a href=#__codelineno-17-8> 8</a></span>
+<span class=normal><a href=#__codelineno-17-9> 9</a></span>
+<span class=normal><a href=#__codelineno-17-10>10</a></span>
+<span class=normal><a href=#__codelineno-17-11>11</a></span>
+<span class=normal><a href=#__codelineno-17-12>12</a></span>
+<span class=normal><a href=#__codelineno-17-13>13</a></span>
+<span class=normal><a href=#__codelineno-17-14>14</a></span>
+<span class=normal><a href=#__codelineno-17-15>15</a></span>
+<span class=normal><a href=#__codelineno-17-16>16</a></span>
+<span class=normal><a href=#__codelineno-17-17>17</a></span>
+<span class=normal><a href=#__codelineno-17-18>18</a></span>
+<span class=normal><a href=#__codelineno-17-19>19</a></span>
+<span class=normal><a href=#__codelineno-17-20>20</a></span>
+<span class=normal><a href=#__codelineno-17-21>21</a></span>
+<span class=normal><a href=#__codelineno-17-22>22</a></span>
+<span class=normal><a href=#__codelineno-17-23>23</a></span>
+<span class=normal><a href=#__codelineno-17-24>24</a></span>
+<span class=normal><a href=#__codelineno-17-25>25</a></span>
+<span class=normal><a href=#__codelineno-17-26>26</a></span>
+<span class=normal><a href=#__codelineno-17-27>27</a></span>
+<span class=normal><a href=#__codelineno-17-28>28</a></span>
+<span class=normal><a href=#__codelineno-17-29>29</a></span>
+<span class=normal><a href=#__codelineno-17-30>30</a></span>
+<span class=normal><a href=#__codelineno-17-31>31</a></span>
+<span class=normal><a href=#__codelineno-17-32>32</a></span>
+<span class=normal><a href=#__codelineno-17-33>33</a></span>
+<span class=normal><a href=#__codelineno-17-34>34</a></span>
+<span class=normal><a href=#__codelineno-17-35>35</a></span>
+<span class=normal><a href=#__codelineno-17-36>36</a></span>
+<span class=normal><a href=#__codelineno-17-37>37</a></span>
+<span class=normal><a href=#__codelineno-17-38>38</a></span>
+<span class=normal><a href=#__codelineno-17-39>39</a></span>
+<span class=normal><a href=#__codelineno-17-40>40</a></span>
+<span class=normal><a href=#__codelineno-17-41>41</a></span>
+<span class=normal><a href=#__codelineno-17-42>42</a></span>
+<span class=normal><a href=#__codelineno-17-43>43</a></span>
+<span class=normal><a href=#__codelineno-17-44>44</a></span>
+<span class=normal><a href=#__codelineno-17-45>45</a></span>
+<span class=normal><a href=#__codelineno-17-46>46</a></span>
+<span class=normal><a href=#__codelineno-17-47>47</a></span>
+<span class=normal><a href=#__codelineno-17-48>48</a></span>
+<span class=normal><a href=#__codelineno-17-49>49</a></span>
+<span class=normal><a href=#__codelineno-17-50>50</a></span>
+<span class=normal><a href=#__codelineno-17-51>51</a></span>
+<span class=normal><a href=#__codelineno-17-52>52</a></span>
+<span class=normal><a href=#__codelineno-17-53>53</a></span>
+<span class=normal><a href=#__codelineno-17-54>54</a></span>
+<span class=normal><a href=#__codelineno-17-55>55</a></span>
+<span class=normal><a href=#__codelineno-17-56>56</a></span>
+<span class=normal><a href=#__codelineno-17-57>57</a></span>
+<span class=normal><a href=#__codelineno-17-58>58</a></span>
+<span class=normal><a href=#__codelineno-17-59>59</a></span>
+<span class=normal><a href=#__codelineno-17-60>60</a></span>
+<span class=normal><a href=#__codelineno-17-61>61</a></span>
+<span class=normal><a href=#__codelineno-17-62>62</a></span>
+<span class=normal><a href=#__codelineno-17-63>63</a></span>
+<span class=normal><a href=#__codelineno-17-64>64</a></span>
+<span class=normal><a href=#__codelineno-17-65>65</a></span>
+<span class=normal><a href=#__codelineno-17-66>66</a></span>
+<span class=normal><a href=#__codelineno-17-67>67</a></span>
+<span class=normal><a href=#__codelineno-17-68>68</a></span>
+<span class=normal><a href=#__codelineno-17-69>69</a></span>
+<span class=normal><a href=#__codelineno-17-70>70</a></span>
+<span class=normal><a href=#__codelineno-17-71>71</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-17-1 name=__codelineno-17-1></a><span class=w> </span><span class=nt>&quot;dosage&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-2 name=__codelineno-17-2></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-17-3 name=__codelineno-17-3></a><span class=w>            </span><span class=nt>&quot;text&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Morgens 1 und abends 1/2 Tablette nehmen&quot;</span>
+<a id=__codelineno-17-4 name=__codelineno-17-4></a><span class=w>          </span><span class=p>},</span>
+<a id=__codelineno-17-5 name=__codelineno-17-5></a><span class=w>          </span><span class=p>{</span>
+<a id=__codelineno-17-6 name=__codelineno-17-6></a><span class=w>            </span><span class=nt>&quot;sequence&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>1</span><span class=p>,</span>
+<a id=__codelineno-17-7 name=__codelineno-17-7></a><span class=w>            </span><span class=nt>&quot;timing&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-8 name=__codelineno-17-8></a><span class=w>              </span><span class=nt>&quot;repeat&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-9 name=__codelineno-17-9></a><span class=w>                </span><span class=nt>&quot;boundsPeriod&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-10 name=__codelineno-17-10></a><span class=w>                 </span><span class=nt>&quot;start&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04&quot;</span>
+<a id=__codelineno-17-11 name=__codelineno-17-11></a><span class=w>               </span><span class=p>},</span>
+<a id=__codelineno-17-12 name=__codelineno-17-12></a><span class=w>               </span><span class=nt>&quot;when&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-13 name=__codelineno-17-13></a><span class=w>                 </span><span class=s2>&quot;MORN&quot;</span>
+<a id=__codelineno-17-14 name=__codelineno-17-14></a><span class=w>               </span><span class=p>]</span>
+<a id=__codelineno-17-15 name=__codelineno-17-15></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-17-16 name=__codelineno-17-16></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-17-17 name=__codelineno-17-17></a><span class=w>           </span><span class=nt>&quot;route&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-18 name=__codelineno-17-18></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-19 name=__codelineno-17-19></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-17-20 name=__codelineno-17-20></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-21 name=__codelineno-17-21></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;20053000&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-22 name=__codelineno-17-22></a><span class=w>                 </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Oral use&quot;</span>
+<a id=__codelineno-17-23 name=__codelineno-17-23></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-17-24 name=__codelineno-17-24></a><span class=w>             </span><span class=p>]</span>
+<a id=__codelineno-17-25 name=__codelineno-17-25></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-17-26 name=__codelineno-17-26></a><span class=w>           </span><span class=nt>&quot;doseAndRate&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-27 name=__codelineno-17-27></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-17-28 name=__codelineno-17-28></a><span class=w>               </span><span class=nt>&quot;doseQuantity&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-29 name=__codelineno-17-29></a><span class=w>                 </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>1</span><span class=p>,</span>
+<a id=__codelineno-17-30 name=__codelineno-17-30></a><span class=w>                 </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet (unit of presentation)&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-31 name=__codelineno-17-31></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-32 name=__codelineno-17-32></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;732936001&quot;</span>
+<a id=__codelineno-17-33 name=__codelineno-17-33></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-17-34 name=__codelineno-17-34></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-17-35 name=__codelineno-17-35></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-17-36 name=__codelineno-17-36></a><span class=w>         </span><span class=p>},</span>
+<a id=__codelineno-17-37 name=__codelineno-17-37></a><span class=w>         </span><span class=p>{</span>
+<a id=__codelineno-17-38 name=__codelineno-17-38></a><span class=w>           </span><span class=nt>&quot;sequence&quot;</span><span class=p>:</span><span class=w> </span><span class=mi>2</span><span class=p>,</span>
+<a id=__codelineno-17-39 name=__codelineno-17-39></a><span class=w>           </span><span class=nt>&quot;timing&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-40 name=__codelineno-17-40></a><span class=w>             </span><span class=nt>&quot;repeat&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-41 name=__codelineno-17-41></a><span class=w>               </span><span class=nt>&quot;boundsPeriod&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-42 name=__codelineno-17-42></a><span class=w>                 </span><span class=nt>&quot;start&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2012-02-04&quot;</span>
+<a id=__codelineno-17-43 name=__codelineno-17-43></a><span class=w>               </span><span class=p>},</span>
+<a id=__codelineno-17-44 name=__codelineno-17-44></a><span class=w>               </span><span class=nt>&quot;when&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-45 name=__codelineno-17-45></a><span class=w>                 </span><span class=s2>&quot;EVE&quot;</span>
+<a id=__codelineno-17-46 name=__codelineno-17-46></a><span class=w>               </span><span class=p>]</span>
+<a id=__codelineno-17-47 name=__codelineno-17-47></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-17-48 name=__codelineno-17-48></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-17-49 name=__codelineno-17-49></a><span class=w>           </span><span class=nt>&quot;route&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-50 name=__codelineno-17-50></a><span class=w>             </span><span class=nt>&quot;coding&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-51 name=__codelineno-17-51></a><span class=w>               </span><span class=p>{</span>
+<a id=__codelineno-17-52 name=__codelineno-17-52></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-53 name=__codelineno-17-53></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;20053000&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-54 name=__codelineno-17-54></a><span class=w>                 </span><span class=nt>&quot;display&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Oral use&quot;</span>
+<a id=__codelineno-17-55 name=__codelineno-17-55></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-17-56 name=__codelineno-17-56></a><span class=w>             </span><span class=p>]</span>
+<a id=__codelineno-17-57 name=__codelineno-17-57></a><span class=w>           </span><span class=p>},</span>
+<a id=__codelineno-17-58 name=__codelineno-17-58></a><span class=w>           </span><span class=nt>&quot;doseAndRate&quot;</span><span class=p>:</span><span class=w> </span><span class=p>[</span>
+<a id=__codelineno-17-59 name=__codelineno-17-59></a><span class=w>             </span><span class=p>{</span>
+<a id=__codelineno-17-60 name=__codelineno-17-60></a><span class=w>               </span><span class=nt>&quot;doseQuantity&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-17-61 name=__codelineno-17-61></a><span class=w>                 </span><span class=nt>&quot;value&quot;</span><span class=p>:</span><span class=w> </span><span class=mf>0.5</span><span class=p>,</span>
+<a id=__codelineno-17-62 name=__codelineno-17-62></a><span class=w>                 </span><span class=nt>&quot;unit&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Tablet (unit of presentation)&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-63 name=__codelineno-17-63></a><span class=w>                 </span><span class=nt>&quot;system&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;http://snomed.info/sct&quot;</span><span class=p>,</span>
+<a id=__codelineno-17-64 name=__codelineno-17-64></a><span class=w>                 </span><span class=nt>&quot;code&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;732936001&quot;</span>
+<a id=__codelineno-17-65 name=__codelineno-17-65></a><span class=w>               </span><span class=p>}</span>
+<a id=__codelineno-17-66 name=__codelineno-17-66></a><span class=w>             </span><span class=p>}</span>
+<a id=__codelineno-17-67 name=__codelineno-17-67></a><span class=w>           </span><span class=p>]</span>
+<a id=__codelineno-17-68 name=__codelineno-17-68></a><span class=w>         </span><span class=p>}</span>
+<a id=__codelineno-17-69 name=__codelineno-17-69></a><span class=w>       </span><span class=p>]</span>
+<a id=__codelineno-17-70 name=__codelineno-17-70></a><span class=w>     </span><span class=p>}</span>
+<a id=__codelineno-17-71 name=__codelineno-17-71></a><span class=w>   </span><span class=p>},</span>
+</code></pre></div></td></tr></table></div></p> <p>The resource "Binary" represents the original representation of the Medication Card document.</p> <div class=highlight><table class=highlighttable><tr><td class=linenos><div class=linenodiv><pre><span></span><span class=normal><a href=#__codelineno-18-1>1</a></span>
+<span class=normal><a href=#__codelineno-18-2>2</a></span>
+<span class=normal><a href=#__codelineno-18-3>3</a></span>
+<span class=normal><a href=#__codelineno-18-4>4</a></span>
+<span class=normal><a href=#__codelineno-18-5>5</a></span>
+<span class=normal><a href=#__codelineno-18-6>6</a></span>
+<span class=normal><a href=#__codelineno-18-7>7</a></span></pre></div></td><td class=code><div><pre><span></span><code><a id=__codelineno-18-1 name=__codelineno-18-1></a><span class=w> </span><span class=nt>&quot;resource&quot;</span><span class=p>:</span><span class=w> </span><span class=p>{</span>
+<a id=__codelineno-18-2 name=__codelineno-18-2></a><span class=w>                </span><span class=nt>&quot;resourceType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;Binary&quot;</span><span class=p>,</span>
+<a id=__codelineno-18-3 name=__codelineno-18-3></a><span class=w>                </span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;2-7-pdf&quot;</span><span class=p>,</span>
+<a id=__codelineno-18-4 name=__codelineno-18-4></a><span class=w>                </span><span class=nt>&quot;language&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;de-CH&quot;</span><span class=p>,</span>
+<a id=__codelineno-18-5 name=__codelineno-18-5></a><span class=w>                </span><span class=nt>&quot;contentType&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;application/pdf&quot;</span><span class=p>,</span>
+<a id=__codelineno-18-6 name=__codelineno-18-6></a><span class=w>                </span><span class=nt>&quot;data&quot;</span><span class=p>:</span><span class=w> </span><span class=s2>&quot;JVBERi0xLjQKMSAwIG9iago8PAovVGl0bGU...&quot;</span>
+<a id=__codelineno-18-7 name=__codelineno-18-7></a><span class=w>            </span><span class=p>}</span>
+</code></pre></div></td></tr></table></div> <hr> <div class=md-source-file> <small> Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class=timeago datetime=2025-01-27T09:58:37+00:00 locale=en></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span> </small> </div> </article> </div> </div> </main> <footer class=md-footer> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> <a href=https://www.e-health-suisse.ch/ >eHealth Suisse</a> | <a href=https://github.com/ehealthsuisse/EPR-by-example/blob/main/LICENSE><em>Creative Commons Zero v1.0 Universal</em></a> </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "..", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.follow"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script> <script src=../assets/javascripts/bundle.cd18aaf1.min.js></script> <script src=../js/timeago.min.js></script> <script src=../js/timeago_mkdocs_material.js></script> </body> </html>
