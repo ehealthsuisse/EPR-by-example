@@ -154,4 +154,4 @@ To ensure privacy the transaction must be secured using https with mutual authen
 
 ## Test Opportunity
 
-The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md), test systems of the EPR communities or the **[EPR Playground](playground.md).
+The transaction can be tested with the test suite of the [EPR reference environment](gazelle.md).
