@@ -50,8 +50,6 @@ Please see section below for details on the available public test systems.
 
 ### Public Test Systems
 
-[EPR Playground](playground.md) - Public available test system to test transaction messages and complex use cases.
-
 [EPR Reference Environment](gazelle.md) - Public available test system to test isolated transaction for EPR compliance.
 
 ## Swiss EPR Exchange Formats
