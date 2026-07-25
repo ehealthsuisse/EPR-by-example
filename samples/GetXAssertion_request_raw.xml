@@ -1,11 +1,26 @@
-<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
- <env:Header>
-  <wsa:Action xmlns:wsa="http://www.w3.org/2005/08/addressing">http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
-  <wsa:MessageID xmlns:wsa="http://www.w3.org/2005/08/addressing">urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:MessageID>
-  <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-   <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_dbce1232740fcad9e020f927fd25a5d04779b4cc" IssueInstant="2020-09-21T13:38:43.857Z" Version="2.0">
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+               xmlns:wsa="http://www.w3.org/2005/08/addressing"
+               xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+               xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
+               xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+               xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#"
+               xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+               xmlns:hl7v3="urn:hl7-org:v3"
+               xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+ <soap:Header>
+  <wsa:Action>http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue</wsa:Action>
+  <wsa:MessageID>urn:uuid:005300f3-c686-4960-8ae8-f8c1720eda41</wsa:MessageID>
+  <wsse:Security>
+    <wsu:Timestamp wsu:Id="timestamp-id">
+      <wsu:Created>2026-07-22T11:57:42.052520800Z</wsu:Created>
+      <wsu:Expires>2026-07-22T12:02:42.052520800Z</wsu:Expires>
+    </wsu:Timestamp>
+    <wsse:BinarySecurityToken EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary" ValueType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3">
+      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
+    </wsse:BinarySecurityToken>
+   <saml2:Assertion xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="Assertion_dbce1232740fcad9e020f927fd25a5d04779b4cc" IssueInstant="2020-09-21T13:38:43.857Z" Version="2.0">
     <saml2:Issuer>fed.hintest.ch</saml2:Issuer>
-    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <ds:Signature>
      <ds:SignedInfo>
       <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
       <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
@@ -13,7 +28,7 @@
        <ds:Transforms>
         <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
         <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
-         <ec:InclusiveNamespaces xmlns:ec="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="xs"/>
+         <ec:InclusiveNamespaces PrefixList="xs"/>
         </ds:Transform>
        </ds:Transforms>
        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
@@ -49,32 +64,66 @@
      </saml2:Attribute>
     </saml2:AttributeStatement>
    </saml2:Assertion>
+    <ds:Signature>
+      <ds:SignedInfo>
+        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+        <ds:Reference URI="#timestamp-id">
+          <ds:Transforms>
+            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+          <ds:DigestValue>GC+zUmb76mHBDlrkTK/SGyx7MOCQMKx8AoDGDBdIExk=</ds:DigestValue>
+        </ds:Reference>
+        <ds:Reference URI="#body-id">
+          <ds:Transforms>
+            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+          <ds:DigestValue>KNXv6+h9kd5rhupXhFxUbtUDiSwwUsg1M9til9dCGm0=</ds:DigestValue>
+        </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue>ZatQBw3q54IuNDIRiX9jAEtEqZKdUSKbQq2cGGZOq8QR5/nC+abMgO5KQDeN8vInQ4j8Xmow72Xd&#xd;
+        fV48GmnYG5Zow8e1Cq8VeZvz0qfahlAFyYCi5AFpJChqpubZK8/t9GDMst/6JJhscO6CrFyyY/Fq&#xd;
+        UGQIDLMk1dEXCVWIwGqB+u77G96/SLKIxeI7FrTZgydSKtr/+brLo8ZKfhQDXSZ8mwu+uQZR4tOb&#xd;
+        zXm7pr9hpgMmZg0fq5MrOduVWXsw68b24HzljBsSiw1gGyATIKt7IwrM20SMSrr887WDAwmnJzPL&#xd;
+        4H+1fsH2/cuEsfaVnd5AaDDxgPVBdeD+ONKeLEG40uJdXW5cReC8gl3gCKxHLu0S+WozWWyNRC7w&#xd;
+        nqxyA+AiEROiewMU3vRpke4R5IftuwYJiOUCfzJkB5oK4ejYTpIYgmhMcyOXN0CCm5n8s2GVSKss&#xd;
+        4bgGT/7nfBJwRY1pT6Ka8NqZEV+YY9OB3s5u/4B2VHRiQPVEQsdb/CvG9OpkxJA0rgwFKb+a3dZI&#xd;
+        PRnaDdPTaCx8xdMdHAHkFt8O79H8GFIGfrXbXRaqdZFya/pKCfHn74wA9OudSNba4HZjviaOF7Fp&#xd;
+        dutxInnhtpbHXY+WFosUbmG8O/HKUrtQADo2EDOaJMkoAvCWZ0xBL5SgR4rASXhq409EnsniM/Y=</ds:SignatureValue>
+      <ds:KeyInfo>
+        <wsse:SecurityTokenReference>
+          <ds:X509Data>
+            <ds:X509IssuerSerial>
+              <ds:X509IssuerName>CN=XYZ_CA,O=Organization,L=Bern,ST=Bern,C=CH</ds:X509IssuerName>
+              <ds:X509SerialNumber>1234</ds:X509SerialNumber>
+            </ds:X509IssuerSerial>
+          </ds:X509Data>
+        </wsse:SecurityTokenReference>
+      </ds:KeyInfo>
+    </ds:Signature>
   </wsse:Security>
- </env:Header>
- <env:Body>
-  <wst:RequestSecurityToken xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512">
-   <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
-    <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
-     <wsa:Address>https://sp.communilty.ch</wsa:Address>
-    </wsa:EndpointReference>
-   </wsp:AppliesTo>
+ </soap:Header>
+ <soap:Body wsu:Id="body-id">
+  <wst:RequestSecurityToken>
    <wst:Claims Dialect="http://www.bag.admin.ch/epr/2017/annex/5/amendment/2">
-    <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
+    <saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:resource:resource-id">
      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:token">761337610411353650^^^&amp;2.16.756.5.30.1.127.3.10.3&amp;ISO</saml2:AttributeValue>
     </saml2:Attribute>
-    <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
+    <saml2:Attribute Name="urn:oasis:names:tc:xspa:1.0:subject:purposeofuse">
      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-      <PurposeOfUse xmlns="urn:hl7-org:v3" code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="CE"/>
+      <hl7v3:PurposeOfUse code="NORM" codeSystem="2.16.756.5.30.1.127.3.10.5" codeSystemName="eHealth Suisse Verwendungszweck" displayName="Normalzugriff" xsi:type="hl7v3:CE"/>
      </saml2:AttributeValue>
     </saml2:Attribute>
-    <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" Name="urn:oasis:names:tc:xacml:2.0:subject:role">
+    <saml2:Attribute Name="urn:oasis:names:tc:xacml:2.0:subject:role">
      <saml2:AttributeValue xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:anyType">
-      <Role xmlns="urn:hl7-org:v3" code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Behandelnde(r)" xsi:type="CE"/>
+      <hl7v3:Role code="HCP" codeSystem="2.16.756.5.30.1.127.3.10.6" codeSystemName="eHealth Suisse EPR Akteure" displayName="Behandelnde(r)" xsi:type="hl7v3:CE"/>
      </saml2:AttributeValue>
     </saml2:Attribute>
    </wst:Claims>
    <wst:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wst:TokenType>
    <wst:RequestType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Issue</wst:RequestType>
   </wst:RequestSecurityToken>
- </env:Body>
-</env:Envelope>
+ </soap:Body>
+</soap:Envelope>
