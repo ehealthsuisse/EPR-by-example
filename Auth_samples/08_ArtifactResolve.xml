@@ -1,6 +1,10 @@
 1 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
 2  <Body>
-3   <ArtifactResolve xmlns="urn:oasis:names:tc:SAML:2.0:protocol" ID="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF" Version="2.0" IssueInstant="2020-09-24T13:19:41.822+02:00" Destination="https://fed.idp.ch/nevisauth/services/artifactresolution">
+3   <ArtifactResolve xmlns="urn:oasis:names:tc:SAML:2.0:protocol" 
+      ID="SAML-D76F77F0-FE57-11EA-8007-9DB4CDFD82EF" 
+      Version="2.0" 
+      IssueInstant="2020-09-24T13:19:41.822+02:00" 
+      Destination="https://fed.idp.ch/nevisauth/services/artifactresolution">
 4    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://epdtest.mycompany.local</Issuer>
 5    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
 6     <SignedInfo>
